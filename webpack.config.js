@@ -1,21 +1,51 @@
-module.exports = {
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const path = require('path');
+
+const sassLoaders = [
+  'css-loader',
+  'postcss-loader',
+  `sass-loader?indentedSyntax=sass&includePaths[]=${ path.resolve(__dirname, './assets/styles') }`,
+];
+
+const config = {
   // devtool: 'eval-source-map',
-  entry: __dirname + "/app/App.js",
+  entry: __dirname + "/app/App",
   output: {
     path: __dirname + "/static/js",
     filename: "bundle.js"
   },
 
   module: {
-    loaders: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['es2015', 'react']
+    preLoaders: [
+      { test: /\.js$/, exclude: './node_modules/', loader: 'jshint-loader' }
+    ],
+
+    loaders: [
+      {
+        test: /\.jsx?$/, exclude: './node_modules/', loader: 'babel',
+      },
+
+      {
+        test: /\.scss$/,
+        loader: "style!css!autoprefixer!sass",
       }
-    }]
+    ]
   },
+
+  plugins: [
+    new ExtractTextPlugin('[name].css')
+  ],
+
+  postcss: [
+    autoprefixer({ browsers: ['last 2 versions'] })
+  ],
+
+  resolve: {
+    extensions: ['', '.css', '.js', '.scss'],
+    root: [path.join(__dirname, './app/')]
+  },
+
   devServer: {
     contentBase: './static',
     colors: true,
@@ -23,3 +53,5 @@ module.exports = {
     inline: true
   },
 }
+
+module.exports = config
