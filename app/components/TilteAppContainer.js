@@ -1,33 +1,26 @@
 import { Provider, connect } from 'react-redux';
 import React, { PropTypes, Component } from 'react';
-import Welcome from './Welcome';
-import Footer from './Footer';
-import UserActionCreators from '../actions/UserActionCreators';
+import ConfigActionCreators from '../actions/ConfigActionCreators';
 
 const mapStateToProps = (state) => ({
-  currentUser: state.currentUser,
-  viewConfig: {
-  },
-  feedData: [],
+  appData: state.appData
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getCurrentUser: () => dispatch(UserActionCreators.getCurrentUser())
+  getAppData: () => dispatch(ConfigActionCreators.getAppData())
 });
 
 class TilteAppContainer extends Component {
   componentDidMount() {
-    this.props.getCurrentUser();
+    this.props.getAppData();
   }
 
   render() {
-    //conditionally render the landing or welcome page, dpending on if the user is logged in.
-    return (
-      <section className='container__wrap'>
-        <Welcome user={ this.props.currentUser } viewConfig={ this.props.viewConfig } feedItems = { this.props.feedData } />
-        <Footer/>
-      </section>
-    );
+    let appData = this.props.children && React.cloneElement(this.props.children, {
+      appData: this.props.appData,
+    });
+
+    return appData;
   }
 }
 

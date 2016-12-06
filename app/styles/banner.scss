@@ -1,3 +1,49 @@
 .app__banner {
   margin: 0;
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+
+  .slide__container {
+    position: relative;
+    height: 30em;
+    width: 100%;
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+      transition: opacity 0.8s ease-in;
+
+      &.slide__active {
+        opacity: 1;
+        transition: opacity 0.8s ease-in;
+      }
+    }
+  }
+
+  .toggle {
+    display: inline-block;
+
+    position: absolute;
+    top: 48%;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    z-index: 10;
+    height: 30px;
+    width: 30px;
+
+    &.toggle__prev {
+      left: 1.3em;
+    }
+
+    &.toggle__next {
+      right: 1.3em;;
+    }
+  }
 }

@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import PostReducer from './PostReducer';
 import UserReducer from './UserReducer';
-import BannerReducer from './BannerReducer';
+import ConfigReducer from './ConfigReducer';
 
 const rootReducer = combineReducers({
   posts: PostReducer.posts,
   users: UserReducer.users,
-  bannerConfig: BannerReducer.banners,
+  config: ConfigReducer.config,
 });
 
 export default rootReducer;
