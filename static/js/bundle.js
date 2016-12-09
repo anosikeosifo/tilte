@@ -72,7 +72,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(294);
+	__webpack_require__(296);
 
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRedux.Provider,
@@ -28742,29 +28742,32 @@
 	  bannerConfig: {
 	    slides: [{
 	      id: 1,
-	      imagePath: 'http://localhost:8080/images/capetown.jpg',
+	      imagePath: 'http://localhost:8080/images/image1.jpg',
 	      widgetText: 'test',
 	      widgetImage: '',
-	      widgetLink: 'www.facebook.com'
+	      widgetLink: 'www.facebook.com',
+	      widgetTitle: 'Facebook'
 	    }, {
 	      id: 2,
-	      imagePath: 'http://localhost:8080/images/badagry.jpg',
+	      imagePath: 'http://localhost:8080/images/image2.jpg',
 	      widgetText: 'test2',
 	      widgetImage: '',
-	      widgetLink: 'www.facebook.com'
+	      widgetLink: 'www.yahoo.com',
+	      widgetTitle: 'Yahoo Mail'
 	    }, {
 	      id: 3,
-	      imagePath: 'http://localhost:8080/images/hero_african.jpg',
+	      imagePath: 'http://localhost:8080/images/image4.jpg',
 	      widgetText: 'test2',
 	      widgetImage: '',
-	      widgetLink: 'www.facebook.com'
+	      widgetLink: 'www.gmail.com',
+	      widgetTitle: 'Google Mail'
 	    }],
 
 	    currentSlideIndex: 0
 	  },
 	  appDetails: {
 	    name: 'Borderless',
-	    logo: 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50'
+	    logo: 'http://localhost:8080/images/logo.png'
 	  },
 	  currentUser: null
 	};
@@ -28970,6 +28973,13 @@
 	        });
 	      };
 	    }
+	  }, {
+	    key: 'updateCategoryPreference',
+	    value: function updateCategoryPreference() {
+	      return function (dispatch) {
+	        dispatch({ type: _constants2.default.UPDATE_CATEGORY_CONFIG });
+	      };
+	    }
 	  }]);
 
 	  return ConfigActionCreators;
@@ -29038,13 +29048,21 @@
 
 	var _Header2 = _interopRequireDefault(_Header);
 
-	var _Banner = __webpack_require__(283);
+	var _Carousel = __webpack_require__(298);
 
-	var _Banner2 = _interopRequireDefault(_Banner);
+	var _Carousel2 = _interopRequireDefault(_Carousel);
 
-	var _Feed = __webpack_require__(291);
+	var _BannerSearch = __webpack_require__(304);
+
+	var _BannerSearch2 = _interopRequireDefault(_BannerSearch);
+
+	var _Feed = __webpack_require__(292);
 
 	var _Feed2 = _interopRequireDefault(_Feed);
+
+	var _Footer = __webpack_require__(293);
+
+	var _Footer2 = _interopRequireDefault(_Footer);
 
 	var _reactRedux = __webpack_require__(178);
 
@@ -29052,9 +29070,9 @@
 
 	var _ConfigActionCreators2 = _interopRequireDefault(_ConfigActionCreators);
 
-	var _BannerActionCreators = __webpack_require__(288);
+	var _SlideActionCreators = __webpack_require__(299);
 
-	var _BannerActionCreators2 = _interopRequireDefault(_BannerActionCreators);
+	var _SlideActionCreators2 = _interopRequireDefault(_SlideActionCreators);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29064,7 +29082,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(292);
+	__webpack_require__(294);
 
 	var mapStateToProps = function mapStateToProps(state) {
 	  return {
@@ -29080,15 +29098,18 @@
 	      return dispatch(_ConfigActionCreators2.default.fetchConfigData());
 	    },
 	    togglePreviousBanner: function togglePreviousBanner() {
-	      return dispatch(_BannerActionCreators2.default.togglePrevious());
+	      return dispatch(_SlideActionCreators2.default.togglePrevious());
 	    },
 	    toggleNextBanner: function toggleNextBanner() {
-	      return dispatch(_BannerActionCreators2.default.toggleNext());
+	      return dispatch(_SlideActionCreators2.default.toggleNext());
 	    },
 	    autoToggleBanner: function autoToggleBanner() {
 	      return setInterval(function () {
-	        return dispatch(_BannerActionCreators2.default.toggleNext());
-	      }, 4000);
+	        return dispatch(_SlideActionCreators2.default.toggleNext());
+	      }, 5000);
+	    },
+	    updateCategoryPreference: function updateCategoryPreference() {
+	      return dispatch(_ConfigActionCreators2.default.updateCategoryPreference());
 	    }
 	  };
 	};
@@ -29115,11 +29136,17 @@
 	        { className: 'index__shell' },
 	        _react2.default.createElement(_Header2.default, { loggedInUser: this.props.currentUser,
 	          appDetails: this.props.appDetails }),
-	        _react2.default.createElement(_Banner2.default, { togglePrevious: this.props.togglePreviousBanner,
-	          toggleNext: this.props.toggleNextBanner,
-	          autoToggle: this.props.autoToggleBanner,
-	          bannerConfig: this.props.bannerConfig }),
-	        _react2.default.createElement(_Feed2.default, null)
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'banner__section' },
+	          _react2.default.createElement(_Carousel2.default, { togglePrevious: this.props.togglePreviousBanner,
+	            toggleNext: this.props.toggleNextBanner,
+	            autoToggle: this.props.autoToggleBanner,
+	            bannerConfig: this.props.bannerConfig }),
+	          _react2.default.createElement(_BannerSearch2.default, null)
+	        ),
+	        _react2.default.createElement(_Feed2.default, null),
+	        _react2.default.createElement(_Footer2.default, null)
 	      );
 	    }
 	  }]);
@@ -29156,6 +29183,10 @@
 
 	var _HeaderProfile2 = _interopRequireDefault(_HeaderProfile);
 
+	var _CategoryNavbar = __webpack_require__(279);
+
+	var _CategoryNavbar2 = _interopRequireDefault(_CategoryNavbar);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29164,7 +29195,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(279);
+	__webpack_require__(280);
 
 	//TODO:: get the root url from: this.props.appDefaults.rootUrl
 	var Header = function (_Component) {
@@ -29195,21 +29226,21 @@
 	            { className: 'app__info' },
 	            _react2.default.createElement(
 	              'span',
-	              { className: 'app__logo' },
+	              { className: 'app__logo inline__block' },
 	              _react2.default.createElement('img', { width: '40', src: this.props.appDetails.logo, alt: this.props.appDetails.name })
 	            ),
 	            _react2.default.createElement(
 	              'span',
-	              { className: 'app__name' },
+	              { className: 'app__name inline__block' },
 	              this.props.appDetails.name
 	            )
 	          ),
 	          _react2.default.createElement(
 	            'section',
-	            { className: (0, _classnames2.default)({ actions: true, tilte__action: true, btn__primary: true }) },
+	            { className: (0, _classnames2.default)({ actions: true, tilte__action: true }) },
 	            _react2.default.createElement(
 	              _reactRouter.Link,
-	              { className: 'tilte__action_link', to: this.props.loggedInUser == null ? '/new_tilte' : '/login' },
+	              { className: 'tilte__action_link btn btn-primary', to: this.props.loggedInUser == null ? '/new_tilte' : '/login' },
 	              'tilte!'
 	            ),
 	            _react2.default.createElement(_HeaderProfile2.default, { user: this.props.loggedInUser })
@@ -29217,12 +29248,8 @@
 	        ),
 	        _react2.default.createElement(
 	          'nav',
-	          { className: 'navbar category__container' },
-	          _react2.default.createElement(
-	            'div',
-	            null,
-	            'Category Navigation'
-	          )
+	          { className: (0, _classnames2.default)({ hidden: !this.props.loggedInUser, navbar: true, category__container: true }) },
+	          _react2.default.createElement(_CategoryNavbar2.default, { user: this.props.loggedInUser, updatePreference: this.props.updateCategoryPreference })
 	        )
 	      );
 	    }
@@ -29364,13 +29391,67 @@
 /* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var CategoryNavbar = function (_Component) {
+	  _inherits(CategoryNavbar, _Component);
+
+	  function CategoryNavbar() {
+	    _classCallCheck(this, CategoryNavbar);
+
+	    return _possibleConstructorReturn(this, (CategoryNavbar.__proto__ || Object.getPrototypeOf(CategoryNavbar)).apply(this, arguments));
+	  }
+
+	  _createClass(CategoryNavbar, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'section',
+	        { className: 'category__filter__container' },
+	        'This is the category section'
+	      );
+	    }
+	  }]);
+
+	  return CategoryNavbar;
+	}(_react.Component);
+
+	CategoryNavbar.PropTypes = {
+	  user: _react.PropTypes.object,
+	  updatePreference: _react.PropTypes.func
+	};
+
+	exports.default = CategoryNavbar;
+
+/***/ },
+/* 280 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(280);
+	var content = __webpack_require__(281);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(282)(content, {});
+	var update = __webpack_require__(283)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -29387,21 +29468,21 @@
 	}
 
 /***/ },
-/* 280 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(281)();
+	exports = module.exports = __webpack_require__(282)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".header__container {\n  border-top: 3px solid #e55300;\n  background-color: transparent; }\n\n.navbar {\n  height: 3em; }\n", ""]);
+	exports.push([module.id, ".header {\n  border-top: 3px solid #ff5a5f;\n  background-color: transparent;\n  z-index: 10;\n  position: fixed;\n  width: 100%; }\n\n.navbar {\n  padding: 10px 20px;\n  color: #fff; }\n  .navbar.navigation__container {\n    height: 2em;\n    padding-top: 1em; }\n    .navbar.navigation__container .app__info {\n      display: inline-block;\n      width: 10em; }\n      .navbar.navigation__container .app__info * {\n        vertical-align: middle; }\n      .navbar.navigation__container .app__info .app__name {\n        font-size: 20px;\n        font-weight: bold;\n        margin-left: 10px; }\n    .navbar.navigation__container .actions {\n      float: right;\n      display: inline-block; }\n      .navbar.navigation__container .actions .tilte__action_link {\n        margin-right: 1em;\n        font-size: 16px;\n        padding: 6px 19px; }\n  .navbar.category__container {\n    height: 1.5em; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 281 */
+/* 282 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29456,7 +29537,7 @@
 	};
 
 /***/ },
-/* 282 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -29708,7 +29789,8 @@
 
 
 /***/ },
-/* 283 */
+/* 284 */,
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29719,94 +29801,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _BannerHelper = __webpack_require__(284);
-
-	var _BannerHelper2 = _interopRequireDefault(_BannerHelper);
-
-	var _BannerSlideContainer = __webpack_require__(286);
-
-	var _BannerSlideContainer2 = _interopRequireDefault(_BannerSlideContainer);
-
-	var _BannerActionCreators = __webpack_require__(288);
-
-	var _BannerActionCreators2 = _interopRequireDefault(_BannerActionCreators);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	__webpack_require__(289);
-
-	var Banner = function (_Component) {
-	  _inherits(Banner, _Component);
-
-	  function Banner() {
-	    _classCallCheck(this, Banner);
-
-	    return _possibleConstructorReturn(this, (Banner.__proto__ || Object.getPrototypeOf(Banner)).apply(this, arguments));
-	  }
-
-	  _createClass(Banner, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.props.autoToggle();
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'section',
-	        { className: 'app__banner' },
-	        _react2.default.createElement(
-	          'span',
-	          { className: 'toggle toggle__prev', onClick: this.props.togglePrevious },
-	          'Prev'
-	        ),
-	        _react2.default.createElement(_BannerSlideContainer2.default, {
-	          slides: this.props.bannerConfig.slides,
-	          currentSlide: this.props.bannerConfig.currentSlideIndex }),
-	        _react2.default.createElement(
-	          'span',
-	          { className: 'toggle toggle__next', onClick: this.props.toggleNext },
-	          'Next'
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Banner;
-	}(_react.Component);
-
-	Banner.propTypes = {
-	  togglePrevious: _react.PropTypes.func.isRequired,
-	  toggleNext: _react.PropTypes.func.isRequired,
-	  autoToggle: _react.PropTypes.func,
-	  bannerConfig: _react.PropTypes.object.isRequired
-	};
-
-	exports.default = Banner;
-
-/***/ },
-/* 284 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _DOMHelper = __webpack_require__(285);
+	var _DOMHelper = __webpack_require__(286);
 
 	var _DOMHelper2 = _interopRequireDefault(_DOMHelper);
 
@@ -29909,7 +29904,7 @@
 	exports.default = new BannerHelper();
 
 /***/ },
-/* 285 */
+/* 286 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -29984,250 +29979,12 @@
 	exports.default = DOMHelper;
 
 /***/ },
-/* 286 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _BannerSlide = __webpack_require__(287);
-
-	var _BannerSlide2 = _interopRequireDefault(_BannerSlide);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var BannerSlideContainer = function (_Component) {
-	  _inherits(BannerSlideContainer, _Component);
-
-	  function BannerSlideContainer() {
-	    _classCallCheck(this, BannerSlideContainer);
-
-	    return _possibleConstructorReturn(this, (BannerSlideContainer.__proto__ || Object.getPrototypeOf(BannerSlideContainer)).apply(this, arguments));
-	  }
-
-	  _createClass(BannerSlideContainer, [{
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-
-	      var slides = this.props.slides.map(function (slide, index) {
-	        var isActive = _this2.props.currentSlide == index;
-
-	        return _react2.default.createElement(_BannerSlide2.default, { active: isActive,
-	          key: slide.id,
-	          imagePath: slide.imagePath,
-	          imageAlt: slide.imageAlt,
-	          widgetText: slide.text,
-	          widgetImage: slide.widgetImage,
-	          widgetLink: slide.widgetLink });
-	      });
-
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'slide__container' },
-	        slides
-	      );
-	    }
-	  }]);
-
-	  return BannerSlideContainer;
-	}(_react.Component);
-
-	BannerSlideContainer.propTypes = {
-	  slides: _react.PropTypes.array.isRequired
-	};
-
-	exports.default = BannerSlideContainer;
-
-/***/ },
-/* 287 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _classnames = __webpack_require__(276);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var BannerSlide = function (_Component) {
-	  _inherits(BannerSlide, _Component);
-
-	  function BannerSlide() {
-	    _classCallCheck(this, BannerSlide);
-
-	    return _possibleConstructorReturn(this, (BannerSlide.__proto__ || Object.getPrototypeOf(BannerSlide)).apply(this, arguments));
-	  }
-
-	  _createClass(BannerSlide, [{
-	    key: 'render',
-	    value: function render() {
-	      var backgroundStyle = { backgroundImage: 'url(' + this.props.imagePath + ')' };
-	      var classes = (0, _classnames2.default)({
-	        slide: true,
-	        'slide__active': this.props.active
-	      });
-
-	      return _react2.default.createElement(
-	        'div',
-	        { className: classes, style: backgroundStyle },
-	        _react2.default.createElement(
-	          'section',
-	          { className: 'banner__widget' },
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            this.props.widgetImage
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            this.props.widgetText
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            this.props.widgetLink
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return BannerSlide;
-	}(_react.Component);
-
-	BannerSlide.propTypes = {
-	  active: _react.PropTypes.boolean,
-	  imagePath: _react.PropTypes.string,
-	  imageAlt: _react.PropTypes.string,
-	  widgetText: _react.PropTypes.string,
-	  widgetImagePath: _react.PropTypes.string,
-	  widgetLink: _react.PropTypes.string
-	};
-
-	exports.default = BannerSlide;
-
-/***/ },
-/* 288 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _constants = __webpack_require__(264);
-
-	var _constants2 = _interopRequireDefault(_constants);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var BannerActionCreators = function () {
-	  function BannerActionCreators() {
-	    _classCallCheck(this, BannerActionCreators);
-	  }
-
-	  _createClass(BannerActionCreators, null, [{
-	    key: 'toggleNext',
-	    value: function toggleNext() {
-	      return {
-	        type: _constants2.default.BANNER_TOGGLE_NEXT
-	      };
-	    }
-	  }, {
-	    key: 'togglePrevious',
-	    value: function togglePrevious() {
-	      return {
-	        type: _constants2.default.BANNER_TOGGLE_PREV
-	      };
-	    }
-	  }]);
-
-	  return BannerActionCreators;
-	}();
-
-	exports.default = BannerActionCreators;
-
-/***/ },
-/* 289 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(290);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(282)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js!./../../node_modules/sass-loader/index.js!./banner.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js!./../../node_modules/sass-loader/index.js!./banner.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 290 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(281)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".app__banner {\n  margin: 0;\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0; }\n  .app__banner .slide__container {\n    position: relative;\n    height: 30em;\n    width: 100%; }\n    .app__banner .slide__container .slide {\n      position: absolute;\n      top: 0;\n      left: 0;\n      right: 0;\n      bottom: 0;\n      opacity: 0;\n      -webkit-transition: opacity 0.8s ease-in;\n      transition: opacity 0.8s ease-in; }\n      .app__banner .slide__container .slide.slide__active {\n        opacity: 1;\n        -webkit-transition: opacity 0.8s ease-in;\n        transition: opacity 0.8s ease-in; }\n  .app__banner .toggle {\n    display: inline-block;\n    position: absolute;\n    top: 48%;\n    padding: 5px;\n    background-color: rgba(255, 255, 255, 0.3);\n    border-radius: 50%;\n    z-index: 10;\n    height: 30px;\n    width: 30px; }\n    .app__banner .toggle.toggle__prev {\n      left: 1.3em; }\n    .app__banner .toggle.toggle__next {\n      right: 1.3em; }\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 291 */
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */,
+/* 291 */,
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30264,7 +30021,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'section',
-	        { className: 'app__footer' },
+	        { className: 'app__feed' },
 	        'This is the feed section'
 	      );
 	    }
@@ -30276,16 +30033,65 @@
 	exports.default = Feed;
 
 /***/ },
-/* 292 */
+/* 293 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Footer = function (_Component) {
+	  _inherits(Footer, _Component);
+
+	  function Footer() {
+	    _classCallCheck(this, Footer);
+
+	    return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
+	  }
+
+	  _createClass(Footer, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'section',
+	        { className: 'app__footer' },
+	        'This is the footer'
+	      );
+	    }
+	  }]);
+
+	  return Footer;
+	}(_react.Component);
+
+	exports.default = Footer;
+
+/***/ },
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(293);
+	var content = __webpack_require__(295);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(282)(content, {});
+	var update = __webpack_require__(283)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -30302,30 +30108,30 @@
 	}
 
 /***/ },
-/* 293 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(281)();
+	exports = module.exports = __webpack_require__(282)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".index__shell {\n  position: relative;\n  padding: 0;\n  margin: 0; }\n", ""]);
+	exports.push([module.id, ".index__shell {\n  position: relative;\n  padding: 0;\n  margin: 0; }\n\n.banner__section {\n  position: relative; }\n\n* {\n  box-sizing: border-box; }\n\n.hidden {\n  display: none; }\n\n.btn {\n  display: inline-block;\n  padding: 6px 12px;\n  margin-bottom: 0;\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 1.42857143;\n  text-align: center;\n  white-space: nowrap;\n  vertical-align: middle;\n  -ms-touch-action: manipulation;\n  touch-action: manipulation;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  background-image: none;\n  border: 1px solid transparent;\n  border-radius: 4px;\n  text-decoration: none; }\n\n.btn-primary {\n  background-color: #ff5a5f;\n  border-color: #ff5a5f;\n  color: #fff; }\n\n.inline__block {\n  display: inline-block; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 294 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(295);
+	var content = __webpack_require__(297);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(282)(content, {});
+	var update = __webpack_require__(283)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -30342,15 +30148,461 @@
 	}
 
 /***/ },
-/* 295 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(281)();
+	exports = module.exports = __webpack_require__(282)();
 	// imports
 
 
 	// module
 	exports.push([module.id, "body {\n  padding: 0;\n  margin: 0; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 298 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _BannerHelper = __webpack_require__(285);
+
+	var _BannerHelper2 = _interopRequireDefault(_BannerHelper);
+
+	var _SlideContainer = __webpack_require__(300);
+
+	var _SlideContainer2 = _interopRequireDefault(_SlideContainer);
+
+	var _SlideActionCreators = __webpack_require__(299);
+
+	var _SlideActionCreators2 = _interopRequireDefault(_SlideActionCreators);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	__webpack_require__(302);
+
+	var Carousel = function (_Component) {
+	  _inherits(Carousel, _Component);
+
+	  function Carousel() {
+	    _classCallCheck(this, Carousel);
+
+	    return _possibleConstructorReturn(this, (Carousel.__proto__ || Object.getPrototypeOf(Carousel)).apply(this, arguments));
+	  }
+
+	  _createClass(Carousel, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.props.autoToggle();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'section',
+	        { className: 'carousel' },
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'toggle toggle__prev', onClick: this.props.togglePrevious },
+	          '<'
+	        ),
+	        _react2.default.createElement(_SlideContainer2.default, {
+	          slides: this.props.bannerConfig.slides,
+	          currentSlide: this.props.bannerConfig.currentSlideIndex }),
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'toggle toggle__next', onClick: this.props.toggleNext },
+	          '>'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Carousel;
+	}(_react.Component);
+
+	Carousel.propTypes = {
+	  togglePrevious: _react.PropTypes.func.isRequired,
+	  toggleNext: _react.PropTypes.func.isRequired,
+	  autoToggle: _react.PropTypes.func,
+	  bannerConfig: _react.PropTypes.object.isRequired
+	};
+
+	exports.default = Carousel;
+
+/***/ },
+/* 299 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _constants = __webpack_require__(264);
+
+	var _constants2 = _interopRequireDefault(_constants);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var SlideActionCreators = function () {
+	  function SlideActionCreators() {
+	    _classCallCheck(this, SlideActionCreators);
+	  }
+
+	  _createClass(SlideActionCreators, null, [{
+	    key: 'toggleNext',
+	    value: function toggleNext() {
+	      return {
+	        type: _constants2.default.BANNER_TOGGLE_NEXT
+	      };
+	    }
+	  }, {
+	    key: 'togglePrevious',
+	    value: function togglePrevious() {
+	      return {
+	        type: _constants2.default.BANNER_TOGGLE_PREV
+	      };
+	    }
+	  }]);
+
+	  return SlideActionCreators;
+	}();
+
+	exports.default = SlideActionCreators;
+
+/***/ },
+/* 300 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Slide = __webpack_require__(301);
+
+	var _Slide2 = _interopRequireDefault(_Slide);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var SlideContainer = function (_Component) {
+	  _inherits(SlideContainer, _Component);
+
+	  function SlideContainer() {
+	    _classCallCheck(this, SlideContainer);
+
+	    return _possibleConstructorReturn(this, (SlideContainer.__proto__ || Object.getPrototypeOf(SlideContainer)).apply(this, arguments));
+	  }
+
+	  _createClass(SlideContainer, [{
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      var slides = this.props.slides.map(function (slide, index) {
+	        var isActive = _this2.props.currentSlide == index;
+
+	        return _react2.default.createElement(_Slide2.default, { active: isActive,
+	          key: slide.id,
+	          imagePath: slide.imagePath,
+	          imageAlt: slide.imageAlt,
+	          widgetText: slide.text,
+	          widgetImage: slide.widgetImage,
+	          widgetLink: slide.widgetLink,
+	          widgetTitle: slide.widgetTitle });
+	      });
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'slide__container' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'slide_wrap' },
+	          slides
+	        ),
+	        _react2.default.createElement('div', { className: 'slide__overlay' })
+	      );
+	    }
+	  }]);
+
+	  return SlideContainer;
+	}(_react.Component);
+
+	SlideContainer.propTypes = {
+	  slides: _react.PropTypes.array.isRequired
+	};
+
+	exports.default = SlideContainer;
+
+/***/ },
+/* 301 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(276);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _reactRouter = __webpack_require__(208);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Slide = function (_Component) {
+	  _inherits(Slide, _Component);
+
+	  function Slide() {
+	    _classCallCheck(this, Slide);
+
+	    return _possibleConstructorReturn(this, (Slide.__proto__ || Object.getPrototypeOf(Slide)).apply(this, arguments));
+	  }
+
+	  _createClass(Slide, [{
+	    key: 'render',
+	    value: function render() {
+	      var backgroundStyle = {
+	        backgroundImage: 'url(' + this.props.imagePath + ')',
+	        backgroundPosition: 'center'
+	      };
+	      var classes = (0, _classnames2.default)({
+	        slide: true,
+	        'slide__active': this.props.active
+	      });
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: classes, style: backgroundStyle },
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'banner__widget' },
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            this.props.widgetImage
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            this.props.widgetText
+	          ),
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: this.props.widgetLink },
+	            this.props.widgetTitle
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Slide;
+	}(_react.Component);
+
+	Slide.propTypes = {
+	  active: _react.PropTypes.boolean,
+	  imagePath: _react.PropTypes.string,
+	  imageAlt: _react.PropTypes.string,
+	  widgetText: _react.PropTypes.string,
+	  widgetImagePath: _react.PropTypes.string,
+	  widgetLink: _react.PropTypes.string
+	};
+
+	exports.default = Slide;
+
+/***/ },
+/* 302 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(303);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(283)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js!./../../node_modules/sass-loader/index.js!./carousel.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js!./../../node_modules/sass-loader/index.js!./carousel.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 303 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(282)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".carousel {\n  margin: 0;\n  position: relative; }\n  .carousel .slide__container {\n    position: relative;\n    height: 30em;\n    width: 100%; }\n    .carousel .slide__container .slide__overlay {\n      position: absolute;\n      top: 0;\n      right: 0;\n      bottom: 0;\n      left: 0;\n      background-color: rgba(0, 0, 0, 0.4); }\n    .carousel .slide__container .slide {\n      position: absolute;\n      top: 0;\n      left: 0;\n      right: 0;\n      bottom: 0;\n      opacity: 0;\n      -webkit-transition: opacity 0.8s ease-in;\n      transition: opacity 0.8s ease-in; }\n      .carousel .slide__container .slide.slide__active {\n        opacity: 1;\n        -webkit-transition: opacity 0.8s ease-in;\n        transition: opacity 0.8s ease-in; }\n      .carousel .slide__container .slide .banner__widget {\n        position: absolute;\n        right: 1em;\n        bottom: 1em; }\n  .carousel .toggle {\n    display: inline-block;\n    cursor: pointer;\n    position: absolute;\n    top: 48%;\n    padding: 5px;\n    background-color: rgba(255, 255, 255, 0.5);\n    border-radius: 50%;\n    z-index: 10;\n    height: 30px;\n    width: 30px; }\n    .carousel .toggle:hover {\n      background-color: rgba(255, 255, 255, 0.8); }\n    .carousel .toggle.toggle__prev {\n      left: 1.3em; }\n    .carousel .toggle.toggle__next {\n      right: 1.3em; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 304 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	__webpack_require__(305);
+
+	var BannerSearch = function (_Component) {
+	  _inherits(BannerSearch, _Component);
+
+	  function BannerSearch() {
+	    _classCallCheck(this, BannerSearch);
+
+	    return _possibleConstructorReturn(this, (BannerSearch.__proto__ || Object.getPrototypeOf(BannerSearch)).apply(this, arguments));
+	  }
+
+	  _createClass(BannerSearch, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'section',
+	        { className: 'bannersearch' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'search__wrap' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'search__input inline__block' },
+	            _react2.default.createElement('span', { className: 'logo inline__block' }),
+	            _react2.default.createElement('input', { type: 'text', className: 'search__text inline__block', ref: 'search__text', placeholder: 'Find what you\'re looking for' })
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'search__trigger btn btn-primary' },
+	            'Search'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return BannerSearch;
+	}(_react.Component);
+
+	exports.default = BannerSearch;
+
+/***/ },
+/* 305 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(306);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(283)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js!./../../node_modules/sass-loader/index.js!./banner_search.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js!./../../node_modules/sass-loader/index.js!./banner_search.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 306 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(282)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".bannersearch {\n  position: absolute;\n  top: 20em;\n  height: 5em;\n  left: 15%;\n  right: 15%;\n  margin: 0 auto;\n  padding: 10px 20px; }\n  .bannersearch .search__wrap {\n    width: 100%;\n    position: relative; }\n    .bannersearch .search__wrap .search__input {\n      width: 85%;\n      padding: 0;\n      border-top-left-radius: 4px;\n      border-bottom-left-radius: 4px;\n      background-color: #fff;\n      margin-right: 0; }\n      .bannersearch .search__wrap .search__input * {\n        vertical-align: middle; }\n      .bannersearch .search__wrap .search__input.in__focus {\n        border: 1px solid #ff6166; }\n      .bannersearch .search__wrap .search__input .logo {\n        width: 5%;\n        margin: 0;\n        background-color: #dcdede;\n        height: 3em;\n        border-top-left-radius: 4px;\n        border-bottom-left-radius: 4px; }\n      .bannersearch .search__wrap .search__input .search__text {\n        margin: 0;\n        padding: 0 8px;\n        width: 95%;\n        line-height: 2em;\n        outline: none;\n        border: none;\n        font-size: 20px;\n        color: #2b2b2b; }\n    .bannersearch .search__wrap .search__trigger {\n      display: inline-block;\n      width: 15%;\n      height: 3em;\n      border-top-left-radius: 0;\n      border-bottom-left-radius: 0;\n      vertical-align: top;\n      font-size: 16px; }\n", ""]);
 
 	// exports
 

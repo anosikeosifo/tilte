@@ -1,35 +1,35 @@
-require('../styles/banner.scss');
+require('../styles/carousel.scss');
 
 import React, { Component, PropTypes } from 'react';
 import BannerHelper from '../helpers/BannerHelper';
-import BannerSlideContainer from './BannerSlideContainer';
-import BannerActionCreators from '../actions/BannerActionCreators';
+import SlideContainer from './SlideContainer';
+import SlideActionCreators from '../actions/SlideActionCreators';
 
-class Banner extends Component {
+class Carousel extends Component {
   componentDidMount() {
     this.props.autoToggle();
   }
 
   render() {
     return(
-      <section className='app__banner'>
-        <span className='toggle toggle__prev' onClick={ this.props.togglePrevious }>Prev</span>
+      <section className='carousel'>
+        <span className='toggle toggle__prev' onClick={ this.props.togglePrevious }>&lt;</span>
 
-        <BannerSlideContainer
+        <SlideContainer
           slides={ this.props.bannerConfig.slides }
           currentSlide={ this.props.bannerConfig.currentSlideIndex } />
 
-        <span className='toggle toggle__next' onClick={ this.props.toggleNext }>Next</span>
+        <span className='toggle toggle__next' onClick={ this.props.toggleNext }>&gt;</span>
       </section>
     );
   }
 }
 
-Banner.propTypes = {
+Carousel.propTypes = {
   togglePrevious: PropTypes.func.isRequired,
   toggleNext: PropTypes.func.isRequired,
   autoToggle: PropTypes.func,
   bannerConfig: PropTypes.object.isRequired,
 }
 
-export default Banner;
+export default Carousel;

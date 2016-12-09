@@ -16,4 +16,10 @@ export default class ConfigActionCreators {
       );
     }
   }
+
+  static updateCategoryPreference() {
+    return (dispatch) => {
+      dispatch({ type: constants.UPDATE_CATEGORY_CONFIG });
+    }
+  }
 }

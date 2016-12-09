@@ -2,11 +2,13 @@ require('../styles/index.scss');
 
 import React, { Component, PropTypes } from 'react';
 import Header from './Header';
-import Banner from './Banner';
+import Carousel from './Carousel';
+import BannerSearch from './BannerSearch';
 import Feed from './Feed';
+import Footer from './Footer';
 import { connect } from 'react-redux';
 import ConfigActionCreators from '../actions/ConfigActionCreators';
-import BannerActionCreators from '../actions/BannerActionCreators';
+import SlideActionCreators from '../actions/SlideActionCreators';
 
 const mapStateToProps = (state) => ({
   bannerConfig: state.config.bannerConfig,
@@ -16,9 +18,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchConfigData: () => dispatch(ConfigActionCreators.fetchConfigData()),
-  togglePreviousBanner: () => dispatch(BannerActionCreators.togglePrevious()),
-  toggleNextBanner: () => dispatch(BannerActionCreators.toggleNext()),
-  autoToggleBanner: () => setInterval(() => dispatch(BannerActionCreators.toggleNext()), 4000),
+  togglePreviousBanner: () => dispatch(SlideActionCreators.togglePrevious()),
+  toggleNextBanner: () => dispatch(SlideActionCreators.toggleNext()),
+  autoToggleBanner: () => setInterval(() => dispatch(SlideActionCreators.toggleNext()), 5000),
+  updateCategoryPreference: () => dispatch(ConfigActionCreators.updateCategoryPreference()),
 });
 
 class Index extends Component {
@@ -31,13 +34,17 @@ class Index extends Component {
       <section className='index__shell'>
         <Header loggedInUser={ this.props.currentUser }
                 appDetails={ this.props.appDetails } />
-
-        <Banner togglePrevious={ this.props.togglePreviousBanner }
+        <section className='banner__section'>
+          <Carousel togglePrevious={ this.props.togglePreviousBanner }
           toggleNext={ this.props.toggleNextBanner }
           autoToggle={ this.props.autoToggleBanner }
           bannerConfig={ this.props.bannerConfig } />
 
+          <BannerSearch/>
+        </section>
+
         <Feed/>
+        <Footer/>
       </section>
     );
   }

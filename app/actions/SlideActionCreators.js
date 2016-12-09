@@ -1,6 +1,6 @@
 import constants from '../constants';
 
-export default class BannerActionCreators {
+export default class SlideActionCreators {
   static toggleNext() {
     return ({
       type: constants.BANNER_TOGGLE_NEXT,

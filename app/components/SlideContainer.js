@@ -1,33 +1,38 @@
 import React, { Component, PropTypes } from 'react';
-import BannerSlide from './BannerSlide';
+import Slide from './Slide';
 
-class BannerSlideContainer extends Component {
+class SlideContainer extends Component {
   render() {
     let slides = this.props.slides.map((slide, index) => {
       let isActive = this.props.currentSlide == index;
 
       return(
-        <BannerSlide active={ isActive }
+        <Slide active={ isActive }
          key={ slide.id }
          imagePath={ slide.imagePath }
          imageAlt={ slide.imageAlt }
          widgetText={ slide.text }
          widgetImage={ slide.widgetImage }
-         widgetLink={ slide.widgetLink } />
+         widgetLink={ slide.widgetLink }
+         widgetTitle = { slide.widgetTitle }/>
       );
     });
 
     return(
       <div className='slide__container'>
-        { slides }
+        <div className='slide_wrap'>
+          { slides }
+        </div>
+        <div className='slide__overlay'>
+        </div>
       </div>
     );
   }
 }
 
 
-BannerSlideContainer.propTypes = {
+SlideContainer.propTypes = {
   slides: PropTypes.array.isRequired,
 };
 
-export default BannerSlideContainer;
+export default SlideContainer;

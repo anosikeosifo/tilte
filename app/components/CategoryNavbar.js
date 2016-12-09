@@ -1,11 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 
-export default class CategoryNavbar extends Component {
+class CategoryNavbar extends Component {
   render() {
     return(
-      <section className='app__footer'>
-        This is the footer
+      <section className='category__filter__container'>
+        This is the category section
       </section>
     );
   }
 }
+
+CategoryNavbar.PropTypes = {
+  user: PropTypes.object,
+  updatePreference: PropTypes.func,
+}
+
+export default CategoryNavbar
