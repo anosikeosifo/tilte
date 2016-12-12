@@ -1,14 +1,15 @@
-require('../styles/index.scss');
+require('../styles/home.scss');
 
 import React, { Component, PropTypes } from 'react';
-import Header from './Header';
-import Carousel from './Carousel';
-import BannerSearch from './BannerSearch';
-import Feed from './Feed';
-import Footer from './Footer';
 import { connect } from 'react-redux';
 import ConfigActionCreators from '../actions/ConfigActionCreators';
 import SlideActionCreators from '../actions/SlideActionCreators';
+import FeedContainer from './FeedContainer';
+import Header from '../components/Header';
+import Carousel from '../components/Carousel';
+import BannerSearch from '../components/BannerSearch';
+import Feed from '../components//Feed';
+import Footer from '../components/Footer';
 
 const mapStateToProps = (state) => ({
   bannerConfig: state.config.bannerConfig,
@@ -24,10 +25,10 @@ const mapDispatchToProps = (dispatch) => ({
   updateCategoryPreference: () => dispatch(ConfigActionCreators.updateCategoryPreference()),
 });
 
-class Index extends Component {
-  componentWillMount() {
-    // this.props.fetchConfigData();
-  }
+class HomeContainer extends Component {
+  // componentWillMount() {
+  //   // this.props.fetchConfigData();
+  // }
 
   render() {
     return(
@@ -43,12 +44,12 @@ class Index extends Component {
           <BannerSearch/>
         </section>
 
-        <Feed/>
+        <FeedContainer />
         <Footer/>
       </section>
     );
   }
 }
 
-const IndexWrap = connect(mapStateToProps, mapDispatchToProps)(Index);
-export default IndexWrap;
+const ConnectedHomeContainer = connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
+export default ConnectedHomeContainer;
