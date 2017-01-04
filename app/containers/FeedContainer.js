@@ -57,8 +57,10 @@ class FeedContainer extends Component {
     }
 
     return(
-      <Feed data={ this.props.feedData }
-      actions={ feedActions } />
+      <div className='feed__container'>
+        <Feed data={ this.props.feedData }
+          actions={ feedActions } />
+      </div>
     );
   }
 }

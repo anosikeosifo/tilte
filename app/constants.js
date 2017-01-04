@@ -11,4 +11,13 @@ export default {
   RECEIVE_SEARCH_SUGGESTIONS: 'Receive search suggestions',
   FETCH_USER_FEED: 'Fetch user feed',
   RECEIVE_USER_FEED: 'Receive user feed',
+  USER_AVATAR_PLACEHOLDER: 'http://localhost:8080/images/avatar_small.png',
+  FEED_IMAGE_PLACEHOLDERS: [
+    'http://localhost:8080/images/feed1.jpg',
+    'http://localhost:8080/images/feed2.jpg',
+    'http://localhost:8080/images/feed3.jpg',
+    'http://localhost:8080/images/feed4.jpg',
+  ],
+  LIKE_DEFAULT_IMG_URL: 'http://localhost:8080/images/avatar_small.png',
+  API_BASE_URL: 'http://tilte-api.herokuapp.com/api',
 };

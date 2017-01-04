@@ -7,13 +7,13 @@ export default class FeedAPI {
     if(!userId) return this.fetchWelcomeFeed(userLocation, pageNumber);
 
     console.log('about to fetch user feed');
-    return fetch('http://localhost:3000/api/posts')
+    return fetch(`${ constants.API_BASE_URL }/posts`)
     .then(response => response.json());
   }
 
   static fetchWelcomeFeed(userLocation, pageNumber) {
     console.log('about to fetch welcome feed');
-    return fetch('http://localhost:3000/api/posts')
+    return fetch(`${ constants.API_BASE_URL }/posts`)
     .then(response => response.json());
   }
 }

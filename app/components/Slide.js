@@ -8,6 +8,7 @@ class Slide extends Component {
       backgroundImage: `url(${ this.props.imagePath })`,
       backgroundPosition: 'center'
      };
+
     let classes = classNames({
       slide: true,
       'slide__active': this.props.active,
@@ -26,7 +27,6 @@ class Slide extends Component {
 }
 
 Slide.propTypes = {
-  active: PropTypes.boolean,
   imagePath: PropTypes.string,
   imageAlt: PropTypes.string,
   widgetText: PropTypes.string,

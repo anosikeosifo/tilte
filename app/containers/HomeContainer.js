@@ -1,4 +1,6 @@
+require('../styles/layout.scss');
 require('../styles/home.scss');
+
 
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';

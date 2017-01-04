@@ -1,5 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import FeedItem from './FeedItem';
+import Masonry from 'react-masonry-component';
+
+let masonryOptions = {
+  transitionDuration: 0,
+};
 
 const Feed = (props) => {
   let feedItems = props.data.map((item) => {
@@ -7,8 +12,13 @@ const Feed = (props) => {
   });
 
   return(
-    <section className='app__feed'>
-      { feedItems }
+    <section className='feed__section'>
+      <Masonry
+        className={ 'masonry__wrap' }
+        elementType='div'
+        options={ masonryOptions } >
+        { feedItems }
+      </Masonry>
     </section>
   );
 }

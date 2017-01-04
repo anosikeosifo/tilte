@@ -1,12 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 
-class HeaderProfile extends Component {
-  render() {
-    return(
-      <section className='header__profile'>{ this.props.user }</section>
-    );
-  }
+const HeaderProfile = (props) => {
+  return(
+    <section className='header__profile'>{ props.user }</section>
+  );
 }
 
 HeaderProfile.PropTypes = {
