@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Provider, connect } from 'react-redux';
 import { loadUserFeed } from '../actions/FeedActionCreators';
-import { reportMoment, favoriteMoment, showMomentDetail, fetchSimilarMomentsByTag, fetchSimilarMomentsByLocation, fetchSimilarMomentsByUser } from '../actions/MomentActionCreators';
 import Feed from '../components/Feed';
 
 const mapStateToProps = (state) => ({
