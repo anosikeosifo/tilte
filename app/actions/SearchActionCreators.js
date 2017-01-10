@@ -1,14 +1,24 @@
 import constants from '../constants';
 import SearchAPI from '../api/SearchAPI';
 
-export default class SearchActionCreators {
-  static fetchSuggestions(text) {
-    return (dispatch) => {
-      dispatch({ type: constants.FETCH_SEARCH_SUGGESTIONS });
-      SearchAPI.fetchSuggestions(text).then(
-        (results) => dispatch({ type: constants.RECEIVE_SEARCH_SUGGESTIONS, success: true, payload: results }),
-        (error) => dispatch({ type: constants.RECEIVE_SEARCH_SUGGESTIONS, success: false, error })
-      );
-    }
+const requestSuggestions = () => ({
+  type: constants.FETCH_SEARCH_SUGGESTIONS,
+});
+
+const fetchSuggestionsSuccess = (payload) => ({
+   type: constants.RECEIVE_SEARCH_SUGGESTIONS_SUCCESS, success: true, payload,
+});
+
+const fetchSuggestionsError = (error) => ({
+  type: constants.RECEIVE_SEARCH_SUGGESTIONS_ERROR, success: false, error,
+});
+
+export const fetchSuggestions = () => {
+  return (dispatch) => {
+    requestSuggestions();
+
+    SearchAPI.fetchSuggestions(text)
+      .then(fetchSuggestionsSuccess)
+      .catch(fetchSuggestionsError);
   }
-}
+};

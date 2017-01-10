@@ -4,7 +4,7 @@ require('../styles/home.scss');
 
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import ConfigActionCreators from '../actions/ConfigActionCreators';
+import { fetchConfigData, updateCategoryPreference } from '../actions/ConfigActionCreators';
 import SlideActionCreators from '../actions/SlideActionCreators';
 import FeedContainer from './FeedContainer';
 import Header from '../components/Header';
@@ -20,11 +20,11 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchConfigData: () => dispatch(ConfigActionCreators.fetchConfigData()),
+  fetchConfigData: () => dispatch(fetchConfigData()),
   togglePreviousBanner: () => dispatch(SlideActionCreators.togglePrevious()),
   toggleNextBanner: () => dispatch(SlideActionCreators.toggleNext()),
   autoToggleBanner: () => setInterval(() => dispatch(SlideActionCreators.toggleNext()), 5000),
-  updateCategoryPreference: () => dispatch(ConfigActionCreators.updateCategoryPreference()),
+  updateCategoryPreference: () => dispatch(updateCategoryPreference()),
 });
 
 class HomeContainer extends Component {

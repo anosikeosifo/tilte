@@ -1,39 +1,27 @@
 import constants from '../constants';
 import FeedAPI from '../api/FeedAPI';
 
-export default class FeedActionCreators {
-  static fetchUserFeed(userId, userLocation, pageNumber) {
-    return (dispatch) => {
-      dispatch({ type: constants.FETCH_USER_FEED });
 
-      FeedAPI.fetchUserFeed(userId = null,userLocation=null, pageNumber=1).then(
-        (feedItems) => dispatch({ type: constants.RECEIVE_USER_FEED, success: true, payload: feedItems }),
-        (error) => dispatch({ type: constants.RECEIVE_USER_FEED, success: false, error })
-      );
-    }
-  }
+const feedActionSuccess = (actionType, payload) => ({
+  type: constants[`${actionType}_SUCCESS`], success: true, payload 
+});
 
-  static reportItem(itemId, itemType, userId) {
+const feedActionError = (actionType, error) => ({
+  type: constants[`${actionType}_ERROR`], success: false, error 
+});
 
-  }
+const requestUserFeed = () => ({
+  type: constants.FETCH_USER_FEED
+});
 
-  static showItemDetail(itemId, itemType, userId) {
+export const fetchUserFeed = (actorId = null, actorLocation =null, pageNumber=1) => {
+  const actionType = 'FETCH_USER_FEED';
 
-  }
+  return (dispatch) => {
+    requestUserFeed();
 
-  static favoriteItem(itemId, itemType, userId) {
-
-  }
-
-  static fetchSimilarItemsByTag(itemId, itemType, userId) {
-
-  }
-
-  static fetchSimilarItemsByLocation(itemId, itemType, userId) {
-
-  }
-
-  static fetchSimilarItemsByUser(itemId, itemType, userId) {
-
+    FeedAPI.fetchUserFeed(actorId, userLocation, pageNumber)
+      .then((payload) => feedActionSuccess(actionType, payload))
+      .catch((error) => feedActionSuccess(actionType, error))
   }
 }

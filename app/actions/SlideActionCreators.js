@@ -1,15 +1,9 @@
 import constants from '../constants';
 
-export default class SlideActionCreators {
-  static toggleNext() {
-    return ({
-      type: constants.BANNER_TOGGLE_NEXT,
-    });
-  }
+export const toggleNext = () => ({
+  type: constants.BANNER_TOGGLE_NEXT,
+});
 
-  static togglePrevious() {
-    return ({
-      type: constants.BANNER_TOGGLE_PREV,
-    });
-  }
-}
+export togglePrevious = () => ({
+  type: constants.BANNER_TOGGLE_PREV,
+})l

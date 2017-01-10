@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Provider, connect } from 'react-redux';
-import FeedActionCreators from '../actions/FeedActionCreators';
+import { fetchUserFeed, reportMoment, favoriteMoment, showMomentDetail, fetchSimilarMomentsByTag, fetchSimilarMomentsByLocation, fetchSimilarMomentsByUser } from '../actions/FeedActionCreators';
 import Feed from '../components/Feed';
 
 const mapStateToProps = (state) => ({
@@ -8,13 +8,13 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchUserFeed: () => dispatch(FeedActionCreators.fetchUserFeed()),
-  reportItem: (itemId, itemType, userId) => dispatch(FeedActionCreators.report(itemId, itemType, userId)),
-  favoriteItem: (itemId, itemType, userId) => dispatch(FeedActionCreators.favorite(itemId, itemType, userId)),
-  showItemDetail: (itemId, itemType, userId) => dispatch(FeedActionCreators.showItemDetail(itemId, itemType, userId)),
-  fetchSimilarItemsByTag: (itemId, itemType, userId) => dispatch(FeedActionCreators.fetchSimilarItemsByTag(itemId, itemType, userId)),
-  fetchSimilarItemsByLocation: (itemId, itemType, userId) => dispatch(FeedActionCreators.fetchSimilarItemsByLocation(itemId, itemType, userId)),
-  fetchSimilarItemsByUser: (itemId, itemType, userId) => dispatch(FeedActionCreators.fetchSimilarItemsByUser(itemId, itemType, userId)),
+  fetchUserFeed: () => dispatch(fetchUserFeed()),
+  reportItem: (itemId, itemType, userId) => dispatch(reportMoment(itemId, itemType, userId)),
+  favoriteItem: (itemId, itemType, userId) => dispatch(favoriteMoment(itemId, itemType, userId)),
+  showItemDetail: (itemId, itemType, userId) => dispatch(showMomentDetail(itemId, itemType, userId)),
+  fetchSimilarItemsByTag: (itemId, itemType, userId) => dispatch(fetchSimilarMomentsByTag(itemId, itemType, userId)),
+  fetchSimilarItemsByLocation: (itemId, itemType, userId) => dispatch(fetchSimilarMomentsByLocation(itemId, itemType, userId)),
+  fetchSimilarItemsByUser: (itemId, itemType, userId) => dispatch(fetchSimilarMomentsByUser(itemId, itemType, userId)),
 });
 
 class FeedContainer extends Component {
