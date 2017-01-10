@@ -1,10 +1,10 @@
-import constants from '../constants';
+import { API_BASE_URL } from '../constants';
 import 'whatwg-fetch';
 
-export default class SearchAPI {
-  //TODO:: use the api endponts instead of raw strings
-  static fetchSuggestions(searchText) {
-    return fetch('http://localhost:3000/api/posts')
-    .then(response => response.json());
-  }
+
+
+export const fetchSuggestions = (searchText) => {
+  //TODO:: Make request to elastic search endpoint.
+  return fetch(`${ API_BASE_URL }/posts`)
+          .then(response => response.json());
 }

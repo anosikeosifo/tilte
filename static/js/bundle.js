@@ -29354,10 +29354,6 @@
 
 	var _constants = __webpack_require__(277);
 
-	var _constants2 = _interopRequireDefault(_constants);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var FeedReducer = function () {
@@ -29372,13 +29368,11 @@
 	      var action = arguments[1];
 
 	      switch (action.type) {
-	        case _constants2.default.RECEIVE_USER_FEED:
-	          console.log('action: ', action);
-	          if (action.success) {
-	            return action.payload.data;
-	          } else {
-	            console.log('an error occurred: ', action.error);
-	          }
+	        case _constants.FEED_ACTIONS.fetchSuccess:
+	          console.log('user feed fetched');
+	          return action.payload.data;
+	        case _constants.FEED_ACTIONS.fetchError:
+	          return console.log('an error occurred: ', action.error);
 	        default:
 	          return state;
 	      }
@@ -29399,26 +29393,35 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.default = {
-	  REQUEST_USER_FEED: 'Request user feed',
-	  REQUEST_CURRENT_USER: 'Request current user',
-	  RECEIVE_CURRENT_USER: 'Receive current user',
-	  BANNER_TOGGLE_PREV: 'toggle previous banner',
-	  BANNER_TOGGLE_NEXT: 'toggle next banner',
-	  FETCH_CONFIG_DATA: 'Fetch config data',
-	  RECEIVE_CONFIG_DATA_SUCCESS: 'Config data received',
-	  RECEIVE_CONFIG_DATA_ERROR: 'Config data receipt failed',
-	  FETCH_APP_DATA: 'Fetch app data',
-	  FETCH_SEARCH_SUGGESTIONS: 'Fetch search suggestions',
-	  RECEIVE_SEARCH_SUGGESTIONS: 'Receive search suggestions',
-	  FETCH_USER_FEED: 'Fetch user feed',
-	  FETCH_USER_FEED_SUCCESS: 'Fetch user feed succeful',
-	  FETCH_USER_FEED_ERROR: 'Fetch user feed failed',
-	  USER_AVATAR_PLACEHOLDER: 'http://localhost:8080/images/avatar_small.png',
-	  FEED_IMAGE_PLACEHOLDERS: ['http://localhost:8080/images/feed1.jpg', 'http://localhost:8080/images/feed2.jpg', 'http://localhost:8080/images/feed3.jpg', 'http://localhost:8080/images/feed4.jpg'],
-	  LIKE_DEFAULT_IMG_URL: 'http://localhost:8080/images/avatar_small.png',
-	  API_BASE_URL: 'http://tilte-api.herokuapp.com/api'
+	var REQUEST_USER_FEED = exports.REQUEST_USER_FEED = 'Request user feed';
+	var REQUEST_CURRENT_USER = exports.REQUEST_CURRENT_USER = 'Request current user';
+	var RECEIVE_CURRENT_USER = exports.RECEIVE_CURRENT_USER = 'Receive current user';
+	var BANNER_TOGGLE_PREV = exports.BANNER_TOGGLE_PREV = 'toggle previous banner';
+	var BANNER_TOGGLE_NEXT = exports.BANNER_TOGGLE_NEXT = 'toggle next banner';
+	var FETCH_CONFIG_DATA = exports.FETCH_CONFIG_DATA = 'Fetch config data';
+	var FETCH_CONFIG_DATA_SUCCESS = exports.FETCH_CONFIG_DATA_SUCCESS = 'Config data received';
+	var FETCH_CONFIG_DATA_ERROR = exports.FETCH_CONFIG_DATA_ERROR = 'Config data receipt failed';
+	var FETCH_APP_DATA = exports.FETCH_APP_DATA = 'Fetch app data';
+	var FETCH_SEARCH_SUGGESTIONS = exports.FETCH_SEARCH_SUGGESTIONS = 'Fetch search suggestions';
+	var RECEIVE_SEARCH_SUGGESTIONS = exports.RECEIVE_SEARCH_SUGGESTIONS = 'Receive search suggestions';
+	var FETCH_USER_FEED = exports.FETCH_USER_FEED = 'Fetch user feed';
+
+	var FEED_ACTIONS = exports.FEED_ACTIONS = {
+	  fetchRequest: 'Fetch user feed',
+	  fetchSuccess: 'Fetch user feed succeful',
+	  fetchError: 'Fetch user feed failed'
 	};
+
+	var USER_AVATAR_PLACEHOLDER = exports.USER_AVATAR_PLACEHOLDER = 'http://localhost:8080/images/avatar_small.png';
+	var FEED_IMAGE_PLACEHOLDERS = exports.FEED_IMAGE_PLACEHOLDERS = ['http://localhost:8080/images/feed1.jpg', 'http://localhost:8080/images/feed2.jpg', 'http://localhost:8080/images/feed3.jpg', 'http://localhost:8080/images/feed4.jpg'];
+
+	var LIKE_DEFAULT_IMG_URL = exports.LIKE_DEFAULT_IMG_URL = 'http://localhost:8080/images/avatar_small.png';
+	// API_BASE_URL = 'http://tilte-api.herokuapp.com/api';
+	var API_BASE_URL = exports.API_BASE_URL = 'http://tilte-api.herokuapp.com/api';
+
+	var ICON_FAVORITE = exports.ICON_FAVORITE = 'M864 0c-79.232 0-155.392 29.472-214.528 83.040-22.464 20.32-41.696 43.424-57.472 68.928-15.776-25.504-35.008-48.608-57.472-68.96-59.136-53.536-135.296-83.008-214.528-83.008-176.448 0-320 143.552-320 320 0 119.104 37.056 213.12 123.872 314.4 126.144 147.2 445.408 371.84 458.944 381.344 2.752 1.952 5.984 2.912 9.184 2.912s6.432-0.96 9.184-2.912c13.536-9.504 332.8-234.144 458.976-381.344 86.784-101.28 123.84-195.296 123.84-314.4 0-176.448-143.552-320-320-320zM1035.872 613.6c-111.84 130.432-389.76 330.912-443.872 369.44-54.112-38.528-332.032-239.008-443.84-369.44-81.44-95.008-116.16-182.816-116.16-293.6 0-158.816 129.216-288 288-288 71.264 0 139.84 26.528 193.024 74.72 26.816 24.32 48.576 52.992 64.64 85.248 5.44 10.88 23.232 10.88 28.672 0 16.064-32.256 37.824-60.928 64.64-85.216 53.184-48.224 121.76-74.752 193.024-74.752 158.784 0 288 129.184 288 288 0 110.784-34.72 198.592-116.128 293.6z';
+
+	var ICON_FAVORITE_2 = exports.ICON_FAVORITE_2 = 'M516 792c204-184 338-306 338-430 0-86-64-148-150-148-66 0-130 42-152 100h-80c-22-58-86-100-152-100-86 0-150 62-150 148 0 124 134 246 338 430l4 4zM704 128c132 0 234 102 234 234 0 162-144 292-364 492l-62 56-62-54c-220-200-364-332-364-494 0-132 102-234 234-234 74 0 146 36 192 90 46-54 118-90 192-90z';
 
 /***/ },
 /* 278 */
@@ -29433,8 +29436,6 @@
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _constants = __webpack_require__(277);
-
-	var _constants2 = _interopRequireDefault(_constants);
 
 	var _SessionStorage = __webpack_require__(279);
 
@@ -29460,7 +29461,7 @@
 	      var action = arguments[1];
 
 	      switch (action.type) {
-	        case _constants2.default.REQUEST_CURRENT_USER:
+	        case _constants.REQUEST_CURRENT_USER:
 	          return state;
 	        // return update(state, {
 	        //   currentUser: { $set: SessionUtils.getCurrentUser() }
@@ -29648,8 +29649,6 @@
 
 	var _constants = __webpack_require__(277);
 
-	var _constants2 = _interopRequireDefault(_constants);
-
 	var _reactAddonsUpdate = __webpack_require__(280);
 
 	var _reactAddonsUpdate2 = _interopRequireDefault(_reactAddonsUpdate);
@@ -29706,7 +29705,7 @@
 
 
 	      switch (action.type) {
-	        case _constants2.default.BANNER_TOGGLE_NEXT:
+	        case _constants.BANNER_TOGGLE_NEXT:
 	          var nextSlideIndex = currentSlideIndex + 1;
 	          if (nextSlideIndex > state.bannerConfig.slides.length - 1) nextSlideIndex = 0;
 
@@ -29716,7 +29715,7 @@
 	            }
 	          });
 
-	        case _constants2.default.BANNER_TOGGLE_PREV:
+	        case _constants.BANNER_TOGGLE_PREV:
 	          var prevSlideIndex = currentSlideIndex - 1;
 	          if (prevSlideIndex < 0) prevSlideIndex = state.bannerConfig.slides.length - 1;
 
@@ -29751,8 +29750,6 @@
 
 	var _constants = __webpack_require__(277);
 
-	var _constants2 = _interopRequireDefault(_constants);
-
 	var _reactAddonsUpdate = __webpack_require__(280);
 
 	var _reactAddonsUpdate2 = _interopRequireDefault(_reactAddonsUpdate);
@@ -29773,7 +29770,7 @@
 	      var action = arguments[1];
 
 	      switch (action.type) {
-	        case _constants2.default.RECEIVE_SEARCH_SUGGESTIONS:
+	        case _constants.RECEIVE_SEARCH_SUGGESTIONS:
 	          if (action.payload.success) {
 	            return action.payload.data;
 	          } else {}
@@ -29837,8 +29834,6 @@
 
 	var _ConfigActionCreators = __webpack_require__(286);
 
-	var _ConfigActionCreators2 = _interopRequireDefault(_ConfigActionCreators);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29856,7 +29851,7 @@
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
 	    getAppData: function getAppData() {
-	      return dispatch(_ConfigActionCreators2.default.getAppData());
+	      return dispatch((0, _ConfigActionCreators.fetchConfigData)());
 	    }
 	  };
 	};
@@ -29910,35 +29905,29 @@
 
 	var _constants = __webpack_require__(277);
 
-	var _constants2 = _interopRequireDefault(_constants);
-
 	var _ConfigAPI = __webpack_require__(287);
-
-	var _ConfigAPI2 = _interopRequireDefault(_ConfigAPI);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var updateCategoryPreference = exports.updateCategoryPreference = function updateCategoryPreference() {
 	  return {
-	    type: _constants2.default.UPDATE_CATEGORY_CONFIG
+	    type: _constants.UPDATE_CATEGORY_CONFIG
 	  };
 	};
 
 	var requestConfigData = function requestConfigData() {
 	  return {
-	    type: _constants2.default.FETCH_CONFIG_DATA
+	    type: _constants.FETCH_CONFIG_DATA
 	  };
 	};
 
 	var fetchConfigDataSuccess = function fetchConfigDataSuccess(payload) {
 	  return {
-	    type: _constants2.default.RECEIVE_CONFIG_DATA_SUCCESS, payload: payload
+	    type: _constants.FETCH_CONFIG_DATA_SUCCESS, payload: payload
 	  };
 	};
 
 	var fetchConfigDataError = function fetchConfigDataError(error) {
 	  return {
-	    type: _constants2.default.RECEIVE_CONFIG_DATA_ERROR, error: error
+	    type: _constants.FETCH_CONFIG_DATA_ERROR, error: error
 	  };
 	};
 
@@ -29946,7 +29935,7 @@
 	  return function (dispatch) {
 	    requestConfigData();
 
-	    _ConfigAPI2.default.fetchConfig().then(fetchConfigDataSuccess).catch(fetchConfigDataError);
+	    (0, _ConfigAPI.fetchConfig)().then(dispatch(fetchConfigDataSuccess)).catch(dispatch(fetchConfigDataError));
 	  };
 	};
 
@@ -29959,37 +29948,15 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	exports.fetchConfig = undefined;
 
 	var _constants = __webpack_require__(277);
 
-	var _constants2 = _interopRequireDefault(_constants);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var ConfigAPI = function () {
-	  function ConfigAPI() {
-	    _classCallCheck(this, ConfigAPI);
-	  }
-
-	  _createClass(ConfigAPI, null, [{
-	    key: 'fetchConfig',
-
-	    //TODO:: use the api endponts instead of raw strings
-	    value: function fetchConfig() {
-	      return fetch('https://aircheapapi.pro-react.com/airports').then(function (response) {
-	        return response.json();
-	      });
-	    }
-	  }]);
-
-	  return ConfigAPI;
-	}();
-
-	exports.default = ConfigAPI;
+	var fetchConfig = exports.fetchConfig = function fetchConfig() {
+	  return fetch(_constants.API_BASE_URL + '/posts').then(function (response) {
+	    return response.json();
+	  });
+	};
 
 /***/ },
 /* 288 */
@@ -30011,9 +29978,7 @@
 
 	var _ConfigActionCreators = __webpack_require__(286);
 
-	var _SlideActionCreators = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../actions/SlideActionCreators\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-
-	var _SlideActionCreators2 = _interopRequireDefault(_SlideActionCreators);
+	var _SlideActionCreators = __webpack_require__(289);
 
 	var _FeedContainer = __webpack_require__(290);
 
@@ -30064,14 +30029,14 @@
 	      return dispatch((0, _ConfigActionCreators.fetchConfigData)());
 	    },
 	    togglePreviousBanner: function togglePreviousBanner() {
-	      return dispatch(_SlideActionCreators2.default.togglePrevious());
+	      return dispatch((0, _SlideActionCreators.togglePrevious)());
 	    },
 	    toggleNextBanner: function toggleNextBanner() {
-	      return dispatch(_SlideActionCreators2.default.toggleNext());
+	      return dispatch((0, _SlideActionCreators.toggleNext)());
 	    },
 	    autoToggleBanner: function autoToggleBanner() {
 	      return setInterval(function () {
-	        return dispatch(_SlideActionCreators2.default.toggleNext());
+	        return dispatch((0, _SlideActionCreators.toggleNext)());
 	      }, 5000);
 	    },
 	    updateCategoryPreference: function updateCategoryPreference() {
@@ -30124,7 +30089,31 @@
 	exports.default = ConnectedHomeContainer;
 
 /***/ },
-/* 289 */,
+/* 289 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.togglePrevious = exports.toggleNext = undefined;
+
+	var _constants = __webpack_require__(277);
+
+	var toggleNext = exports.toggleNext = function toggleNext() {
+	  return {
+	    type: _constants.BANNER_TOGGLE_NEXT
+	  };
+	};
+
+	var togglePrevious = exports.togglePrevious = function togglePrevious() {
+	  return {
+	    type: _constants.BANNER_TOGGLE_PREV
+	  };
+	};
+
+/***/ },
 /* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -30143,6 +30132,8 @@
 	var _reactRedux = __webpack_require__(183);
 
 	var _FeedActionCreators = __webpack_require__(291);
+
+	var _MomentActionCreators = __webpack_require__(371);
 
 	var _Feed = __webpack_require__(294);
 
@@ -30165,25 +30156,25 @@
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
 	    fetchUserFeed: function fetchUserFeed() {
-	      return dispatch((0, _FeedActionCreators.fetchUserFeed)());
+	      return dispatch((0, _FeedActionCreators.loadUserFeed)());
 	    },
 	    reportItem: function reportItem(itemId, itemType, userId) {
-	      return dispatch((0, _FeedActionCreators.reportMoment)(itemId, itemType, userId));
+	      return dispatch((0, _MomentActionCreators.reportMoment)(itemId, itemType, userId));
 	    },
 	    favoriteItem: function favoriteItem(itemId, itemType, userId) {
-	      return dispatch((0, _FeedActionCreators.favoriteMoment)(itemId, itemType, userId));
+	      return dispatch((0, _MomentActionCreators.favoriteMoment)(itemId, itemType, userId));
 	    },
 	    showItemDetail: function showItemDetail(itemId, itemType, userId) {
-	      return dispatch((0, _FeedActionCreators.showMomentDetail)(itemId, itemType, userId));
+	      return dispatch((0, _MomentActionCreators.showMomentDetail)(itemId, itemType, userId));
 	    },
 	    fetchSimilarItemsByTag: function fetchSimilarItemsByTag(itemId, itemType, userId) {
-	      return dispatch((0, _FeedActionCreators.fetchSimilarMomentsByTag)(itemId, itemType, userId));
+	      return dispatch((0, _MomentActionCreators.fetchSimilarMomentsByTag)(itemId, itemType, userId));
 	    },
 	    fetchSimilarItemsByLocation: function fetchSimilarItemsByLocation(itemId, itemType, userId) {
-	      return dispatch((0, _FeedActionCreators.fetchSimilarMomentsByLocation)(itemId, itemType, userId));
+	      return dispatch((0, _MomentActionCreators.fetchSimilarMomentsByLocation)(itemId, itemType, userId));
 	    },
 	    fetchSimilarItemsByUser: function fetchSimilarItemsByUser(itemId, itemType, userId) {
-	      return dispatch((0, _FeedActionCreators.fetchSimilarMomentsByUser)(itemId, itemType, userId));
+	      return dispatch((0, _MomentActionCreators.fetchSimilarMomentsByUser)(itemId, itemType, userId));
 	    }
 	  };
 	};
@@ -30268,50 +30259,45 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.fetchUserFeed = undefined;
+	exports.loadUserFeed = undefined;
 
 	var _constants = __webpack_require__(277);
 
-	var _constants2 = _interopRequireDefault(_constants);
-
 	var _FeedAPI = __webpack_require__(292);
-
-	var _FeedAPI2 = _interopRequireDefault(_FeedAPI);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var feedActionSuccess = function feedActionSuccess(actionType, payload) {
 	  return {
-	    type: _constants2.default[actionType + '_SUCCESS'], success: true, payload: payload
+	    type: _constants.FEED_ACTIONS[actionType + 'Success'], success: true, payload: payload
 	  };
 	};
 
 	var feedActionError = function feedActionError(actionType, error) {
 	  return {
-	    type: _constants2.default[actionType + '_ERROR'], success: false, error: error
+	    type: _constants.FEED_ACTIONS[actionType + 'Error'], success: false, error: error
 	  };
 	};
 
 	var requestUserFeed = function requestUserFeed() {
 	  return {
-	    type: _constants2.default.FETCH_USER_FEED
+	    type: _constants.FEED_ACTIONS.fetchRequest
 	  };
 	};
 
-	var fetchUserFeed = exports.fetchUserFeed = function fetchUserFeed() {
+	var loadUserFeed = exports.loadUserFeed = function loadUserFeed() {
 	  var actorId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 	  var actorLocation = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 	  var pageNumber = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
 
-	  var actionType = 'FETCH_USER_FEED';
+	  var actionType = 'fetch';
 
 	  return function (dispatch) {
+	    var actionType = 'fetch';
 	    requestUserFeed();
 
-	    _FeedAPI2.default.fetchUserFeed(actorId, userLocation, pageNumber).then(function (payload) {
-	      return feedActionSuccess(actionType, payload);
+	    (0, _FeedAPI.fetchUserFeed)(actorId, actorLocation, pageNumber).then(function (payload) {
+	      return dispatch(feedActionSuccess(actionType, payload));
 	    }).catch(function (error) {
-	      return feedActionSuccess(actionType, error);
+	      return dispatch(feedActionSuccess(actionType, error));
 	    });
 	  };
 	};
@@ -30325,50 +30311,25 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	exports.fetchWelcomeFeed = exports.fetchUserFeed = undefined;
 
 	var _constants = __webpack_require__(277);
 
-	var _constants2 = _interopRequireDefault(_constants);
-
 	__webpack_require__(293);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	var fetchUserFeed = exports.fetchUserFeed = function fetchUserFeed(userId, userLocation, pageNumber) {
+	  if (!userId) return fetchWelcomeFeed(userLocation, pageNumber);
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	  return fetch(_constants.API_BASE_URL + '/posts').then(function (response) {
+	    return response.json();
+	  });
+	};
 
-	var FeedAPI = function () {
-	  function FeedAPI() {
-	    _classCallCheck(this, FeedAPI);
-	  }
-
-	  _createClass(FeedAPI, null, [{
-	    key: 'fetchUserFeed',
-
-	    //TODO:: use the api endponts instead of raw strings
-	    value: function fetchUserFeed(userId, userLocation, pageNumber) {
-	      if (!userId) return this.fetchWelcomeFeed(userLocation, pageNumber);
-
-	      console.log('about to fetch user feed');
-	      return fetch(_constants2.default.API_BASE_URL + '/posts').then(function (response) {
-	        return response.json();
-	      });
-	    }
-	  }, {
-	    key: 'fetchWelcomeFeed',
-	    value: function fetchWelcomeFeed(userLocation, pageNumber) {
-	      console.log('about to fetch welcome feed');
-	      return fetch(_constants2.default.API_BASE_URL + '/posts').then(function (response) {
-	        return response.json();
-	      });
-	    }
-	  }]);
-
-	  return FeedAPI;
-	}();
-
-	exports.default = FeedAPI;
+	var fetchWelcomeFeed = exports.fetchWelcomeFeed = function fetchWelcomeFeed(userLocation, pageNumber) {
+	  return fetch(_constants.API_BASE_URL + '/posts').then(function (response) {
+	    return response.json();
+	  });
+	};
 
 /***/ },
 /* 293 */
@@ -30975,8 +30936,6 @@
 
 	var _constants = __webpack_require__(277);
 
-	var _constants2 = _interopRequireDefault(_constants);
-
 	var _reactRouter = __webpack_require__(221);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -30990,7 +30949,7 @@
 	    _react2.default.createElement(
 	      'span',
 	      { className: 'user__image__wrap' },
-	      _react2.default.createElement('img', { className: 'image', src: props.actor.avatarUrl || _constants2.default.USER_AVATAR_PLACEHOLDER })
+	      _react2.default.createElement('img', { className: 'image', src: props.actor.avatarUrl || _constants.USER_AVATAR_PLACEHOLDER })
 	    ),
 	    _react2.default.createElement(
 	      'span',
@@ -31152,10 +31111,6 @@
 	var _react = __webpack_require__(182);
 
 	var _react2 = _interopRequireDefault(_react);
-
-	var _constants = __webpack_require__(277);
-
-	var _constants2 = _interopRequireDefault(_constants);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38558,10 +38513,6 @@
 
 	var _SlideContainer2 = _interopRequireDefault(_SlideContainer);
 
-	var _SlideActionCreators = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../actions/SlideActionCreators\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-
-	var _SlideActionCreators2 = _interopRequireDefault(_SlideActionCreators);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38847,8 +38798,6 @@
 
 	var _SearchActionCreators = __webpack_require__(348);
 
-	var _SearchActionCreators2 = _interopRequireDefault(_SearchActionCreators);
-
 	var _reactRedux = __webpack_require__(183);
 
 	var _reactSelect = __webpack_require__(350);
@@ -38873,8 +38822,8 @@
 
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
-	    fetchSuggestions: function fetchSuggestions(text) {
-	      return dispatch(_SearchActionCreators2.default.fetchSuggestions(text));
+	    loadSearchSuggestions: function loadSearchSuggestions(text) {
+	      return dispatch((0, _SearchActionCreators.loadSuggestions)(text));
 	    }
 	  };
 	};
@@ -38897,7 +38846,7 @@
 	      if (searchText.length > 3) {
 	        clearTimeout(this.delayTimer);
 	        this.delayTimer = setTimeout(function () {
-	          return _this2.props.fetchSuggestions(searchText);
+	          return _this2.props.loadSearchSuggestions(searchText);
 	        }, 1000);
 	      }
 	    }
@@ -38941,15 +38890,13 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.fetchSuggestions = undefined;
+	exports.loadSuggestions = undefined;
 
 	var _constants = __webpack_require__(277);
 
 	var _constants2 = _interopRequireDefault(_constants);
 
 	var _SearchAPI = __webpack_require__(349);
-
-	var _SearchAPI2 = _interopRequireDefault(_SearchAPI);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38959,23 +38906,23 @@
 	  };
 	};
 
-	var fetchSuggestionsSuccess = function fetchSuggestionsSuccess(payload) {
+	var loadSuggestionsSuccess = function loadSuggestionsSuccess(payload) {
 	  return {
 	    type: _constants2.default.RECEIVE_SEARCH_SUGGESTIONS_SUCCESS, success: true, payload: payload
 	  };
 	};
 
-	var fetchSuggestionsError = function fetchSuggestionsError(error) {
+	var loadSuggestionsError = function loadSuggestionsError(error) {
 	  return {
 	    type: _constants2.default.RECEIVE_SEARCH_SUGGESTIONS_ERROR, success: false, error: error
 	  };
 	};
 
-	var fetchSuggestions = exports.fetchSuggestions = function fetchSuggestions() {
+	var loadSuggestions = exports.loadSuggestions = function loadSuggestions() {
 	  return function (dispatch) {
 	    requestSuggestions();
 
-	    _SearchAPI2.default.fetchSuggestions(text).then(fetchSuggestionsSuccess).catch(fetchSuggestionsError);
+	    (0, _SearchAPI.fetchSuggestions)(text).then(dispatch(loadSuggestionsSuccess)).catch(dispatch(loadSuggestionsError));
 	  };
 	};
 
@@ -38988,39 +38935,18 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	exports.fetchSuggestions = undefined;
 
 	var _constants = __webpack_require__(277);
 
-	var _constants2 = _interopRequireDefault(_constants);
-
 	__webpack_require__(293);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var SearchAPI = function () {
-	  function SearchAPI() {
-	    _classCallCheck(this, SearchAPI);
-	  }
-
-	  _createClass(SearchAPI, null, [{
-	    key: 'fetchSuggestions',
-
-	    //TODO:: use the api endponts instead of raw strings
-	    value: function fetchSuggestions(searchText) {
-	      return fetch('http://localhost:3000/api/posts').then(function (response) {
-	        return response.json();
-	      });
-	    }
-	  }]);
-
-	  return SearchAPI;
-	}();
-
-	exports.default = SearchAPI;
+	var fetchSuggestions = exports.fetchSuggestions = function fetchSuggestions(searchText) {
+	  //TODO:: Make request to elastic search endpoint.
+	  return fetch(_constants.API_BASE_URL + '/posts').then(function (response) {
+	    return response.json();
+	  });
+	};
 
 /***/ },
 /* 350 */
@@ -41424,8 +41350,6 @@
 
 	var _constants = __webpack_require__(277);
 
-	var _constants2 = _interopRequireDefault(_constants);
-
 	var _ActorCard = __webpack_require__(300);
 
 	var _ActorCard2 = _interopRequireDefault(_ActorCard);
@@ -41473,7 +41397,7 @@
 	      _react2.default.createElement(
 	        'section',
 	        { className: 'feed_media_object' },
-	        _react2.default.createElement('img', { src: _constants2.default.FEED_IMAGE_PLACEHOLDERS[Math.floor(Math.random() * 4)], alt: '', className: 'feed_img' })
+	        _react2.default.createElement('img', { src: _constants.FEED_IMAGE_PLACEHOLDERS[Math.floor(Math.random() * 4)], alt: '', className: 'feed_img' })
 	      ),
 	      _react2.default.createElement(
 	        'figcaption',
@@ -41763,6 +41687,90 @@
 	}();
 
 	exports.default = DOMHelper;
+
+/***/ },
+/* 371 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.loadMomentUser = exports.fetchSimilarMomentsByUser = exports.fetchSimilarMomentsByLocation = exports.fetchSimilarMomentsByTag = exports.favoriteMoment = exports.showMomentDetail = exports.reportMoment = undefined;
+
+	var _constants = __webpack_require__(277);
+
+	var _constants2 = _interopRequireDefault(_constants);
+
+	var _MomentAPI = __webpack_require__(372);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var momentActionSuccess = function momentActionSuccess(actionType, payload) {
+	  return {
+	    type: _constants2.default[actionType + '_SUCCESS'], success: true, payload: payload
+	  };
+	};
+
+	var momentActionError = function momentActionError(actionType, error) {
+	  return {
+	    type: _constants2.default[actionType + '_ERROR'], success: false, error: error
+	  };
+	};
+
+	var reportMoment = exports.reportMoment = function reportMoment(momentId, momentType, actorId) {};
+
+	var showMomentDetail = exports.showMomentDetail = function showMomentDetail(momentId, momentType, actorId) {};
+
+	var favoriteMoment = exports.favoriteMoment = function favoriteMoment(momentId, momentType, actorId) {};
+
+	var fetchSimilarMomentsByTag = exports.fetchSimilarMomentsByTag = function fetchSimilarMomentsByTag(momentId, momentType, actorId) {};
+
+	var fetchSimilarMomentsByLocation = exports.fetchSimilarMomentsByLocation = function fetchSimilarMomentsByLocation(momentId, momentType, actorId) {};
+
+	var fetchSimilarMomentsByUser = exports.fetchSimilarMomentsByUser = function fetchSimilarMomentsByUser(momentId, momentType, actorId) {};
+
+	var requestMomentUser = function requestMomentUser() {
+	  return {
+	    type: _constants2.default.FETCH_MOMENT_USER
+	  };
+	};
+
+	var loadMomentUser = exports.loadMomentUser = function loadMomentUser(userId, actorId) {
+	  var actionType = 'FETCH_MOMENT_USER';
+
+	  return function (dispatch) {
+	    requestMomentUser();
+
+	    fetchMomentUser(userId, actorId).then(function (payload) {
+	      return dispatch(momentActionSuccess(actionType, payload));
+	    }).catch(function (error) {
+	      return dispatch(momentActionError(actionType, error));
+	    });
+	  };
+	};
+
+/***/ },
+/* 372 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.fetchUserData = undefined;
+
+	var _constants = __webpack_require__(277);
+
+	var _constants2 = _interopRequireDefault(_constants);
+
+	__webpack_require__(293);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var fetchUserData = exports.fetchUserData = function fetchUserData(userId, actorId) {};
 
 /***/ }
 /******/ ]);

@@ -1,9 +1,9 @@
-import constants from '../constants';
+import { BANNER_TOGGLE_NEXT, BANNER_TOGGLE_PREV } from '../constants';
 
 export const toggleNext = () => ({
-  type: constants.BANNER_TOGGLE_NEXT,
+  type: BANNER_TOGGLE_NEXT,
 });
 
-export togglePrevious = () => ({
-  type: constants.BANNER_TOGGLE_PREV,
-})l
+export const togglePrevious = () => ({
+  type: BANNER_TOGGLE_PREV,
+});

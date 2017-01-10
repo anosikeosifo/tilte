@@ -1,29 +1,29 @@
-import constants from '../constants';
-import ConfigAPI from '../api/ConfigAPI';
+import { UPDATE_CATEGORY_CONFIG, FETCH_CONFIG_DATA, FETCH_CONFIG_DATA_SUCCESS, FETCH_CONFIG_DATA_ERROR } from '../constants';
+import { fetchConfig } from '../api/ConfigAPI';
 
 
 export const updateCategoryPreference = () => ({ 
-  type: constants.UPDATE_CATEGORY_CONFIG,
+  type: UPDATE_CATEGORY_CONFIG,
 });
 
 const requestConfigData = () => ({
-  type: constants.FETCH_CONFIG_DATA,
+  type: FETCH_CONFIG_DATA,
 });
 
 const fetchConfigDataSuccess = (payload) => ({
-  type: constants.RECEIVE_CONFIG_DATA_SUCCESS, payload 
+  type: FETCH_CONFIG_DATA_SUCCESS, payload 
 });
 
 const fetchConfigDataError = (error) => ({
-  type: constants.RECEIVE_CONFIG_DATA_ERROR, error 
+  type: FETCH_CONFIG_DATA_ERROR, error 
 });
 
 export const fetchConfigData = () => {
   return (dispatch) => {
     requestConfigData();
     
-    ConfigAPI.fetchConfig()
-      .then(fetchConfigDataSuccess)
-      .catch(fetchConfigDataError);
+    fetchConfig()
+      .then(dispatch(fetchConfigDataSuccess))
+      .catch(dispatch(fetchConfigDataError));
   }
 };

@@ -1,10 +1,8 @@
-import constants from '../constants';
+import { API_BASE_URL } from '../constants';
 
-export default class ConfigAPI {
-  //TODO:: use the api endponts instead of raw strings
-  static fetchConfig() {
-    return fetch('https://aircheapapi.pro-react.com/airports')
-      .then(response => response.json());
-  }
+
+
+export const fetchConfig = () => {
+  return fetch(`${ API_BASE_URL }/posts`)
+          .then(response => response.json());
 }
- 

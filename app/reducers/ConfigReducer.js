@@ -1,4 +1,4 @@
-import constants from '../constants';
+import { BANNER_TOGGLE_NEXT, BANNER_TOGGLE_PREV } from '../constants';
 import update from 'react-addons-update';
 
 const initialState = {
@@ -44,7 +44,7 @@ class ConfigReducer {
     let { currentSlideIndex } = state.bannerConfig;
 
     switch (action.type) {
-      case constants.BANNER_TOGGLE_NEXT:
+      case BANNER_TOGGLE_NEXT:
         let nextSlideIndex = currentSlideIndex + 1;
         if(nextSlideIndex > state.bannerConfig.slides.length - 1) nextSlideIndex = 0;
 
@@ -54,7 +54,7 @@ class ConfigReducer {
           }
         });
 
-      case constants.BANNER_TOGGLE_PREV:
+      case BANNER_TOGGLE_PREV:
         let prevSlideIndex = currentSlideIndex - 1;
         if(prevSlideIndex < 0) prevSlideIndex = state.bannerConfig.slides.length - 1;
 

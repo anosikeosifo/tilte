@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Provider, connect } from 'react-redux';
-import { fetchUserFeed, reportMoment, favoriteMoment, showMomentDetail, fetchSimilarMomentsByTag, fetchSimilarMomentsByLocation, fetchSimilarMomentsByUser } from '../actions/FeedActionCreators';
+import { loadUserFeed } from '../actions/FeedActionCreators';
+import { reportMoment, favoriteMoment, showMomentDetail, fetchSimilarMomentsByTag, fetchSimilarMomentsByLocation, fetchSimilarMomentsByUser } from '../actions/MomentActionCreators';
 import Feed from '../components/Feed';
 
 const mapStateToProps = (state) => ({
@@ -8,7 +9,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchUserFeed: () => dispatch(fetchUserFeed()),
+  fetchUserFeed: () => dispatch(loadUserFeed()),
   reportItem: (itemId, itemType, userId) => dispatch(reportMoment(itemId, itemType, userId)),
   favoriteItem: (itemId, itemType, userId) => dispatch(favoriteMoment(itemId, itemType, userId)),
   showItemDetail: (itemId, itemType, userId) => dispatch(showMomentDetail(itemId, itemType, userId)),

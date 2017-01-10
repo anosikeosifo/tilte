@@ -1,7 +1,7 @@
 require('../styles/banner_search.scss');
 
 import React, { Component, PropTypes } from 'react';
-import SearchActionCreators from '../actions/SearchActionCreators';
+import { loadSuggestions } from '../actions/SearchActionCreators';
 import { connect, Provider } from 'react-redux';
 import Select from 'react-select';
 
@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchSuggestions: (text) => dispatch(SearchActionCreators.fetchSuggestions(text)),
+  loadSearchSuggestions: (text) => dispatch(loadSuggestions(text)),
 });
 
 class BannerSearch extends Component {
@@ -18,7 +18,7 @@ class BannerSearch extends Component {
     const searchText = this.refs.searchText.value;
     if (searchText.length > 3) {
       clearTimeout(this.delayTimer);
-      this.delayTimer = setTimeout(() => this.props.fetchSuggestions(searchText), 1000);
+      this.delayTimer = setTimeout(() => this.props.loadSearchSuggestions(searchText), 1000);
     }
   }
 

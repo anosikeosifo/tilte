@@ -2,7 +2,7 @@ import '../styles/actor_card.scss';
 
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import constants from '../constants';
+import { USER_AVATAR_PLACEHOLDER } from '../constants';
 import { Link } from 'react-router';
 
 
@@ -12,7 +12,7 @@ const ActorCard = (props) => {
   return(
     <section className='component__actor__card'>
       <span className='user__image__wrap'>
-        <img className='image' src={ props.actor.avatarUrl || constants.USER_AVATAR_PLACEHOLDER }/>
+        <img className='image' src={ props.actor.avatarUrl || USER_AVATAR_PLACEHOLDER }/>
       </span>
       <span className='other__details'>
         <span className='actor__name'>{ props.actor.fullname }</span>

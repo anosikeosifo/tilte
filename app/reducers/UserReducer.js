@@ -1,11 +1,11 @@
-import constants from '../constants';
+import { REQUEST_CURRENT_USER } from '../constants';
 import SessionUtils from '../utils/SessionStorage';
 import update from 'react-addons-update';
 
 class UserReducer {
   users(state = [], action) {
     switch (action.type) {
-      case constants.REQUEST_CURRENT_USER:
+      case REQUEST_CURRENT_USER:
         return state;
         // return update(state, {
         //   currentUser: { $set: SessionUtils.getCurrentUser() }

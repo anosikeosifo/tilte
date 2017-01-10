@@ -2,7 +2,7 @@ import '../styles/feed_item.scss';
 
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import constants from '../constants';
+import { FEED_IMAGE_PLACEHOLDERS,  } from '../constants';
 import ActorCard from './ActorCard';
 import LocationDetailsTrigger from './LocationDetailsTrigger';
 import LikeTrigger from './LikeTrigger';
@@ -28,7 +28,7 @@ const FeedItem = (props) => {
     <article className='component__feed__item'>
       <figure className={ classes }>
         <section className='feed_media_object'>
-          <img src={ constants.FEED_IMAGE_PLACEHOLDERS[Math.floor(Math.random() * 4)] } alt='' className='feed_img'/>
+          <img src={ FEED_IMAGE_PLACEHOLDERS[Math.floor(Math.random() * 4)] } alt='' className='feed_img'/>
         </section>
         <figcaption>
           <section className='item__main'>

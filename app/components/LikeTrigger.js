@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import constants from '../constants';
 
 const LikeTrigger = (props) => {
   return(

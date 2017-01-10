@@ -5,7 +5,7 @@ require('../styles/home.scss');
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { fetchConfigData, updateCategoryPreference } from '../actions/ConfigActionCreators';
-import SlideActionCreators from '../actions/SlideActionCreators';
+import { togglePrevious, toggleNext } from '../actions/SlideActionCreators';
 import FeedContainer from './FeedContainer';
 import Header from '../components/Header';
 import Carousel from '../components/Carousel';
@@ -21,9 +21,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchConfigData: () => dispatch(fetchConfigData()),
-  togglePreviousBanner: () => dispatch(SlideActionCreators.togglePrevious()),
-  toggleNextBanner: () => dispatch(SlideActionCreators.toggleNext()),
-  autoToggleBanner: () => setInterval(() => dispatch(SlideActionCreators.toggleNext()), 5000),
+  togglePreviousBanner: () => dispatch(togglePrevious()),
+  toggleNextBanner: () => dispatch(toggleNext()),
+  autoToggleBanner: () => setInterval(() => dispatch(toggleNext()), 5000),
   updateCategoryPreference: () => dispatch(updateCategoryPreference()),
 });
 

@@ -1,14 +1,15 @@
 import { Provider, connect } from 'react-redux';
 import React, { PropTypes, Component } from 'react';
-import ConfigActionCreators from '../actions/ConfigActionCreators';
+import { fetchConfigData } from '../actions/ConfigActionCreators';
 
 const mapStateToProps = (state) => ({
   appData: state.appData
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getAppData: () => dispatch(ConfigActionCreators.getAppData())
+  getAppData: () => dispatch(fetchConfigData())
 });
+
 
 class TilteAppContainer extends Component {
   componentDidMount() {

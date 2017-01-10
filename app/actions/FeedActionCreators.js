@@ -1,27 +1,28 @@
-import constants from '../constants';
-import FeedAPI from '../api/FeedAPI';
+import { FEED_ACTIONS } from '../constants';
+import { fetchUserFeed } from '../api/FeedAPI';
 
 
 const feedActionSuccess = (actionType, payload) => ({
-  type: constants[`${actionType}_SUCCESS`], success: true, payload 
+  type: FEED_ACTIONS[`${actionType}Success`], success: true, payload 
 });
 
 const feedActionError = (actionType, error) => ({
-  type: constants[`${actionType}_ERROR`], success: false, error 
+  type: FEED_ACTIONS[`${actionType}Error`], success: false, error 
 });
 
 const requestUserFeed = () => ({
-  type: constants.FETCH_USER_FEED
+  type: FEED_ACTIONS.fetchRequest
 });
 
-export const fetchUserFeed = (actorId = null, actorLocation =null, pageNumber=1) => {
-  const actionType = 'FETCH_USER_FEED';
+export const loadUserFeed = (actorId = null, actorLocation = null, pageNumber = 1) => {
+  const actionType = 'fetch';
 
   return (dispatch) => {
+    const actionType = 'fetch';
     requestUserFeed();
 
-    FeedAPI.fetchUserFeed(actorId, userLocation, pageNumber)
-      .then((payload) => feedActionSuccess(actionType, payload))
-      .catch((error) => feedActionSuccess(actionType, error))
+    fetchUserFeed(actorId, actorLocation, pageNumber)
+      .then(payload => dispatch(feedActionSuccess(actionType, payload)))
+      .catch(error => dispatch(feedActionSuccess(actionType, error)));
   }
 }

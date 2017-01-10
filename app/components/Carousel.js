@@ -3,7 +3,6 @@ require('../styles/carousel.scss');
 import React, { Component, PropTypes } from 'react';
 import BannerHelper from '../helpers/BannerHelper';
 import SlideContainer from './SlideContainer';
-import SlideActionCreators from '../actions/SlideActionCreators';
 
 class Carousel extends Component {
   componentDidMount() {
