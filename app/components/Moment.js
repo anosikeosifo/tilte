@@ -1,15 +1,14 @@
-import '../styles/feed_item.scss';
-
+import '../styles/moment.scss';
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import { FEED_IMAGE_PLACEHOLDERS,  } from '../constants';
+import { FEED_IMAGE_PLACEHOLDERS, USER_AVATAR_PLACEHOLDER } from '../constants';
 import ActorCard from './ActorCard';
 import LocationDetailsTrigger from './LocationDetailsTrigger';
 import LikeTrigger from './LikeTrigger';
 import CommentTrigger from './CommentTrigger';
 import MoreInteractionsTrigger from './MoreInteractionsTrigger';
 
-const FeedItem = (props) => {
+const Moment = (props) => {
   const classes = classNames({
     'feed__item__wrap': true,
     [props.id]: true,
@@ -46,7 +45,9 @@ const FeedItem = (props) => {
 
           <section className='item__interactions'>
             <span className='nested user'>
-              <ActorCard actor={ props.user } />
+              <span className='user__image__wrap'>
+                <img className='image' src={ props.user.avatarUrl || USER_AVATAR_PLACEHOLDER }/>
+              </span>
             </span>
             <span className='nested  like'>
               <LikeTrigger />
@@ -64,7 +65,7 @@ const FeedItem = (props) => {
   );
 }
 
-FeedItem.propTypes = {
+Moment.propTypes = {
 }
 
-export default FeedItem;
+export default Moment;

@@ -46,13 +46,25 @@
       padding-bottom: 3px;
       border-bottom: 1px solid #efefef;
     }
+  }
 
-    .item__interactions {
-      text-align: right;
+  .item__interactions {
+    text-align: right;
+    display: inline-block;
+    width: 100%;
+    padding: 3px 5px;
+
+    .nested {
+      vertical-align: middle;
+      height: 24px;
       display: inline-block;
+    }
 
-      .nested.user {
-        display: inline-block;
+    .nested.user {
+      .image {
+        width: 24px;
+        border-radius: 50%;
+        border: 1px solid #ccc;
       }
     }
   }

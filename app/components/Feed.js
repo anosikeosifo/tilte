@@ -1,12 +1,12 @@
 import React, { Component, PropTypes } from 'react';
-import FeedItem from './FeedItem';
+import FeedItem from './Moment';
 import Masonry from 'react-masonry-component';
 
 let masonryOptions = {
   transitionDuration: 0,
 };
 
-const Feed = (props) => {
+const Feed = (props) => { 
   let feedItems = props.data.map((item) => {
     return <FeedItem key={ item.id } actions={ props.actions} {...item} />
   });

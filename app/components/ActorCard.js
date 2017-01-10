@@ -14,10 +14,6 @@ const ActorCard = (props) => {
       <span className='user__image__wrap'>
         <img className='image' src={ props.actor.avatarUrl || USER_AVATAR_PLACEHOLDER }/>
       </span>
-      <span className='other__details'>
-        <span className='actor__name'>{ props.actor.fullname }</span>
-        <span className='top__interest'><Link to='' className='link'>{ topInterest }</Link></span>
-      </span>
     </section>
   );
 }
