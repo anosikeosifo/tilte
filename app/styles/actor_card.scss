@@ -1,0 +1,44 @@
+.component__actor__card {
+	display: inline-block;
+	border-color: #333;
+  margin: 5px;
+  font-size: 13px;
+
+  .user__image__wrap {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    vertical-align: middle;
+    margin-right: 5px;
+
+    .image {
+      width: 2em;
+    }
+  }
+  
+  .other__details {
+    vertical-align: middle;
+    display: inline-block;
+
+    .actor__name {
+      display: block;
+      color: #565656;
+    }
+
+    .top__interest {
+      font-size: 12px;
+
+      .link {
+        text-decoration: none;
+        color: #565656;
+
+        &:hover {
+          color: #2e5580;
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,24 @@
+.index__shell {
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.banner__section {
+  position: relative;
+}
+
+.feed__section {
+  font-size: 14px;
+
+  .feed__item__wrap {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.feed__container {
+  position: relative;
+  text-align: center;
+  padding: 1.5em 3% 0 3%;
+}

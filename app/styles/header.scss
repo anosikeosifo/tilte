@@ -1,0 +1,45 @@
+.header {
+  border-top: 3px solid #ff5a5f;
+  background-color: transparent;;
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+}
+
+.navbar {
+  padding: 10px 20px;
+  color: #fff;
+
+  &.navigation__container {
+    height: 2em;
+    padding-top: 1em;
+    .app__info {
+      display: inline-block;
+      * {
+        vertical-align: middle;
+      }
+      width: 10em;
+
+      .app__name {
+        font-size: 20px;
+        font-weight: bold;
+        margin-left: 10px;
+      }
+    }
+
+    .actions {
+      float: right;
+      display: inline-block;
+
+      .tilte__action_link {
+        margin-right: 1em;
+        font-size: 16px;
+        padding: 6px 19px;
+      }
+    }
+  }
+
+  &.category__container {
+    height: 1.5em;
+  }
+}

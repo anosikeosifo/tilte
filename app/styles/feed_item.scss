@@ -1,0 +1,60 @@
+.component__feed__item {
+	display: inline-block;
+  width: 25%;
+	padding: 4px;
+  text-align: left;
+  color: #303030;
+
+  .feed__item__wrap {
+    display: inline-block;
+    position: relative;
+    padding: 0;
+    border: 1px solid #efefef;
+    border-radius: 5px;
+  }
+
+  .feed_media_object {
+    position: relative;
+
+    .feed_img {
+      width: 100%;
+    }
+  }
+
+  .feed_media_object, .feed_img {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  .item__main {
+    padding: 5px;
+    padding-bottom: 0;
+    margin: 0;
+
+    .item__metadata {
+      margin-bottom: 3px;
+      font-size: 12px;
+      display: inline-block;
+      color: #565656;
+
+      .timestamp {
+        margin-right: 3px;
+      }
+    }
+
+    .item__content {
+      padding-bottom: 3px;
+      border-bottom: 1px solid #efefef;
+    }
+
+    .item__interactions {
+      text-align: right;
+      display: inline-block;
+
+      .nested.user {
+        display: inline-block;
+      }
+    }
+  }
+
+}
