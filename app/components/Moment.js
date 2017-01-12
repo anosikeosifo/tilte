@@ -20,9 +20,6 @@ const Moment = (props) => {
     actor: props.user,
   }
 
-  console.log('image_url: ', props.image_url);
-
-  console.log('image placeholder: ',  );
   return(
     <article className='component__feed__item'>
       <figure className={ classes }>
@@ -49,10 +46,10 @@ const Moment = (props) => {
                 <img className='image' src={ props.user.avatarUrl || USER_AVATAR_PLACEHOLDER }/>
               </span>
             </span>
-            <span className='nested  like'>
-              <LikeTrigger />
+            <span className='nested like'>
+              <LikeTrigger momentId={ props.id } likeAction={ props.actions.like }/>
             </span>
-            <span className='nested  comment'>
+            <span className='nested comment'>
               <CommentTrigger />
             </span>
             <span className='nested  more'>
@@ -66,6 +63,7 @@ const Moment = (props) => {
 }
 
 Moment.propTypes = {
+  actions: PropTypes.object.isRequired,
 }
 
 export default Moment;

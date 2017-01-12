@@ -23,6 +23,6 @@ export const loadUserFeed = (actorId = null, actorLocation = null, pageNumber = 
 
     fetchUserFeed(actorId, actorLocation, pageNumber)
       .then(payload => dispatch(feedActionSuccess(actionType, payload)))
-      .catch(error => dispatch(feedActionSuccess(actionType, error)));
+      .catch(error => dispatch(feedActionError(actionType, error)));
   }
 }
