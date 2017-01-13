@@ -29488,6 +29488,7 @@
 	exports.default = new SearchReducer();
 
 /***/ },
+<<<<<<< Updated upstream
 /* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -29542,6 +29543,9 @@
 	exports.default = new MomentReducer();
 
 /***/ },
+=======
+/* 280 */,
+>>>>>>> Stashed changes
 /* 281 */
 /***/ function(module, exports) {
 
@@ -29887,8 +29891,11 @@
 	var _reactRedux = __webpack_require__(179);
 
 	var _FeedActionCreators = __webpack_require__(288);
+<<<<<<< Updated upstream
 
 	var _MomentActionCreators = __webpack_require__(291);
+=======
+>>>>>>> Stashed changes
 
 	var _Feed = __webpack_require__(293);
 
@@ -30550,6 +30557,7 @@
 	})(typeof self !== 'undefined' ? self : undefined);
 
 /***/ },
+<<<<<<< Updated upstream
 /* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -30629,6 +30637,10 @@
 	};
 
 /***/ },
+=======
+/* 291 */,
+/* 292 */,
+>>>>>>> Stashed changes
 /* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -30644,7 +30656,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+<<<<<<< Updated upstream
 	var _Moment = __webpack_require__(294);
+=======
+	var _FeedItem = __webpack_require__(371);
+>>>>>>> Stashed changes
 
 	var _Moment2 = _interopRequireDefault(_Moment);
 
@@ -30684,6 +30700,7 @@
 	exports.default = Feed;
 
 /***/ },
+<<<<<<< Updated upstream
 /* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -30858,6 +30875,11 @@
 
 
 /***/ },
+=======
+/* 294 */,
+/* 295 */,
+/* 296 */,
+>>>>>>> Stashed changes
 /* 297 */
 /***/ function(module, exports) {
 
@@ -31489,6 +31511,7 @@
 	exports.default = LikeTrigger;
 
 /***/ },
+<<<<<<< Updated upstream
 /* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -31576,6 +31599,11 @@
 	exports.default = Icon;
 
 /***/ },
+=======
+/* 308 */,
+/* 309 */,
+/* 310 */,
+>>>>>>> Stashed changes
 /* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -42031,6 +42059,177 @@
 
 	// module
 	exports.push([module.id, ".index__shell {\n  position: relative;\n  padding: 0;\n  margin: 0; }\n\n.banner__section {\n  position: relative; }\n\n.feed__section {\n  font-size: 14px; }\n  .feed__section .feed__item__wrap {\n    padding: 0;\n    margin: 0; }\n\n.feed__container {\n  position: relative;\n  text-align: center;\n  padding: 1.5em 3% 0 3%; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 371 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	__webpack_require__(372);
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(299);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _constants = __webpack_require__(273);
+
+	var _ActorCard = __webpack_require__(301);
+
+	var _ActorCard2 = _interopRequireDefault(_ActorCard);
+
+	var _LocationDetailsTrigger = __webpack_require__(304);
+
+	var _LocationDetailsTrigger2 = _interopRequireDefault(_LocationDetailsTrigger);
+
+	var _LikeTrigger = __webpack_require__(307);
+
+	var _LikeTrigger2 = _interopRequireDefault(_LikeTrigger);
+
+	var _CommentTrigger = __webpack_require__(311);
+
+	var _CommentTrigger2 = _interopRequireDefault(_CommentTrigger);
+
+	var _MoreInteractionsTrigger = __webpack_require__(312);
+
+	var _MoreInteractionsTrigger2 = _interopRequireDefault(_MoreInteractionsTrigger);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	var FeedItem = function FeedItem(props) {
+	  var classes = (0, _classnames2.default)(_defineProperty({
+	    'feed__item__wrap': true
+	  }, props.id, true));
+
+	  var locationInfo = {
+	    latitude: '',
+	    longitude: '',
+	    actor: props.user
+	  };
+
+	  console.log('image_url: ', props.image_url);
+
+	  console.log('image placeholder: ');
+	  return _react2.default.createElement(
+	    'article',
+	    { className: 'component__feed__item' },
+	    _react2.default.createElement(
+	      'figure',
+	      { className: classes },
+	      _react2.default.createElement(
+	        'section',
+	        { className: 'feed_media_object' },
+	        _react2.default.createElement('img', { src: _constants.FEED_IMAGE_PLACEHOLDERS[Math.floor(Math.random() * 4)], alt: '', className: 'feed_img' })
+	      ),
+	      _react2.default.createElement(
+	        'figcaption',
+	        null,
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'item__main' },
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'item__metadata' },
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'timestamp' },
+	              '3m'
+	            ),
+	            '\xB7',
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'nested location' },
+	              _react2.default.createElement(_LocationDetailsTrigger2.default, { metadata: locationInfo })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'item__content' },
+	            props.desription || "hello! welcome to tilte, the place where we share the most fun experiences!"
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'item__interactions' },
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'nested user' },
+	            _react2.default.createElement(_ActorCard2.default, { actor: props.user })
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'nested  like' },
+	            _react2.default.createElement(_LikeTrigger2.default, null)
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'nested  comment' },
+	            _react2.default.createElement(_CommentTrigger2.default, null)
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'nested  more' },
+	            _react2.default.createElement(_MoreInteractionsTrigger2.default, null)
+	          )
+	        )
+	      )
+	    )
+	  );
+	};
+
+	FeedItem.propTypes = {};
+
+	exports.default = FeedItem;
+
+/***/ },
+/* 372 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(373);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(298)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js!./../../node_modules/sass-loader/index.js!./feed_item.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js!./../../node_modules/sass-loader/index.js!./feed_item.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 373 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(297)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".component__feed__item {\n  display: inline-block;\n  width: 25%;\n  padding: 4px;\n  text-align: left;\n  color: #303030; }\n  .component__feed__item .feed__item__wrap {\n    display: inline-block;\n    position: relative;\n    padding: 0;\n    border: 1px solid #efefef;\n    border-radius: 5px; }\n  .component__feed__item .feed_media_object {\n    position: relative; }\n    .component__feed__item .feed_media_object .feed_img {\n      width: 100%; }\n  .component__feed__item .feed_media_object, .component__feed__item .feed_img {\n    border-top-left-radius: 5px;\n    border-top-right-radius: 5px; }\n  .component__feed__item .item__main {\n    padding: 5px;\n    padding-bottom: 0;\n    margin: 0; }\n    .component__feed__item .item__main .item__metadata {\n      margin-bottom: 3px;\n      font-size: 12px;\n      display: inline-block;\n      color: #565656; }\n      .component__feed__item .item__main .item__metadata .timestamp {\n        margin-right: 3px; }\n    .component__feed__item .item__main .item__content {\n      padding-bottom: 3px;\n      border-bottom: 1px solid #efefef; }\n    .component__feed__item .item__main .item__interactions {\n      text-align: right;\n      display: inline-block; }\n      .component__feed__item .item__main .item__interactions .nested.user {\n        display: inline-block; }\n", ""]);
 
 	// exports
 

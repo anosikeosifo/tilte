@@ -4,7 +4,6 @@ class FeedReducer {
   userFeed(state =[], action) {
     switch (action.type) {
       case FEED_ACTIONS.fetchSuccess:
-        console.log('user feed fetched')
         return action.payload.data;
       case FEED_ACTIONS.fetchError:
         return console.log('an error occurred: ', action.error);

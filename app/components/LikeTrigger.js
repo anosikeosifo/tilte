@@ -23,7 +23,6 @@ class LikeTrigger extends Component {
   }
 
   handleClick() {
-    console.log('likeAction: ', this.props)
     this.props.likeAction(this.props.momentId, "1");
   }
 
