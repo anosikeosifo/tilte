@@ -4,9 +4,9 @@ import update from 'react-addons-update';
 
 class MomentReducer {
   moment(state = [], action) {
-    console.log('momentreducer state: ', state);
     switch (action.type) {
       case MOMENT_ACTIONS.likeSuccess:
+        console.log('moment response: ', action.payload.data);
         return update(state, {
           currentUser: { $set: SessionUtils.getCurrentUser() }
         });

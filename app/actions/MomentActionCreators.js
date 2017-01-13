@@ -14,7 +14,7 @@ const triggerlikeMoment = () => ({
   type: MOMENT_ACTIONS.likeRequest
 });
 
-export const buildPostFormData = (jsonParams) => {
+export const buildRequestParams = (jsonParams) => {
   const form_data = new FormData();
   form_data.append('data', jsonParams);
   return form_data;
@@ -22,7 +22,7 @@ export const buildPostFormData = (jsonParams) => {
 
 export const likeMoment = (momentId, actorId) => {
   const actionType = 'like';
-  const requestData = buildPostFormData(JSON.stringify({ 
+  const requestData = buildRequestParams(JSON.stringify({ 
     moment_id: momentId, user_id: actorId 
   }));
   
