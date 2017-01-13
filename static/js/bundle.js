@@ -29006,32 +29006,20 @@
 
 	var _FeedReducer = __webpack_require__(272);
 
-	var _FeedReducer2 = _interopRequireDefault(_FeedReducer);
-
 	var _UserReducer = __webpack_require__(274);
-
-	var _UserReducer2 = _interopRequireDefault(_UserReducer);
 
 	var _ConfigReducer = __webpack_require__(278);
 
-	var _ConfigReducer2 = _interopRequireDefault(_ConfigReducer);
-
 	var _SearchReducer = __webpack_require__(279);
-
-	var _SearchReducer2 = _interopRequireDefault(_SearchReducer);
 
 	var _MomentReducer = __webpack_require__(280);
 
-	var _MomentReducer2 = _interopRequireDefault(_MomentReducer);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 	var rootReducer = (0, _redux.combineReducers)({
-	  userFeed: _FeedReducer2.default.userFeed,
-	  users: _UserReducer2.default.users,
-	  config: _ConfigReducer2.default.config,
-	  searchSuggestions: _SearchReducer2.default.suggestions,
-	  moment: _MomentReducer2.default.moment
+	  userFeed: _FeedReducer.feedData,
+	  users: _UserReducer.userData,
+	  config: _ConfigReducer.configData,
+	  searchSuggestions: _SearchReducer.searchData,
+	  moment: _MomentReducer.momentData
 	});
 
 	exports.default = rootReducer;
@@ -29045,40 +29033,23 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	exports.feedData = undefined;
 
 	var _constants = __webpack_require__(273);
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var feedData = exports.feedData = function feedData() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+	  var action = arguments[1];
 
-	var FeedReducer = function () {
-	  function FeedReducer() {
-	    _classCallCheck(this, FeedReducer);
+	  switch (action.type) {
+	    case _constants.FEED_ACTIONS.fetchSuccess:
+	      return action.payload.data;
+	    case _constants.FEED_ACTIONS.fetchError:
+	      return console.log('an error occurred: ', action.error);
+	    default:
+	      return state;
 	  }
-
-	  _createClass(FeedReducer, [{
-	    key: 'userFeed',
-	    value: function userFeed() {
-	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-	      var action = arguments[1];
-
-	      switch (action.type) {
-	        case _constants.FEED_ACTIONS.fetchSuccess:
-	          console.log('user feed fetched');
-	          return action.payload.data;
-	        case _constants.FEED_ACTIONS.fetchError:
-	          return console.log('an error occurred: ', action.error);
-	        default:
-	          return state;
-	      }
-	    }
-	  }]);
-
-	  return FeedReducer;
-	}();
-
-	exports.default = new FeedReducer();
+	};
 
 /***/ },
 /* 273 */
@@ -29133,8 +29104,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	exports.userData = undefined;
 
 	var _constants = __webpack_require__(273);
 
@@ -29148,35 +29118,20 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var userData = exports.userData = function userData() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+	  var action = arguments[1];
 
-	var UserReducer = function () {
-	  function UserReducer() {
-	    _classCallCheck(this, UserReducer);
+	  switch (action.type) {
+	    case _constants.REQUEST_CURRENT_USER:
+	      return state;
+	    // return update(state, {
+	    //   currentUser: { $set: SessionUtils.getCurrentUser() }
+	    // });
+	    default:
+	      return state;
 	  }
-
-	  _createClass(UserReducer, [{
-	    key: 'users',
-	    value: function users() {
-	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-	      var action = arguments[1];
-
-	      switch (action.type) {
-	        case _constants.REQUEST_CURRENT_USER:
-	          return state;
-	        // return update(state, {
-	        //   currentUser: { $set: SessionUtils.getCurrentUser() }
-	        // });
-	        default:
-	          return state;
-	      }
-	    }
-	  }]);
-
-	  return UserReducer;
-	}();
-
-	exports.default = new UserReducer();
+	};
 
 /***/ },
 /* 275 */
@@ -29345,8 +29300,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	exports.configData = undefined;
 
 	var _constants = __webpack_require__(273);
 
@@ -29355,8 +29309,6 @@
 	var _reactAddonsUpdate2 = _interopRequireDefault(_reactAddonsUpdate);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var initialState = {
 	  bannerConfig: {
@@ -29392,50 +29344,37 @@
 	  currentUser: null
 	};
 
-	var ConfigReducer = function () {
-	  function ConfigReducer() {
-	    _classCallCheck(this, ConfigReducer);
+	var configData = exports.configData = function configData() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	  var action = arguments[1];
+	  var currentSlideIndex = state.bannerConfig.currentSlideIndex;
+
+
+	  switch (action.type) {
+	    case _constants.BANNER_TOGGLE_NEXT:
+	      var nextSlideIndex = currentSlideIndex + 1;
+	      if (nextSlideIndex > state.bannerConfig.slides.length - 1) nextSlideIndex = 0;
+
+	      return (0, _reactAddonsUpdate2.default)(state, {
+	        bannerConfig: {
+	          currentSlideIndex: { $set: nextSlideIndex }
+	        }
+	      });
+
+	    case _constants.BANNER_TOGGLE_PREV:
+	      var prevSlideIndex = currentSlideIndex - 1;
+	      if (prevSlideIndex < 0) prevSlideIndex = state.bannerConfig.slides.length - 1;
+
+	      return (0, _reactAddonsUpdate2.default)(state, {
+	        bannerConfig: {
+	          currentSlideIndex: { $set: prevSlideIndex }
+	        }
+	      });
+
+	    default:
+	      return state;
 	  }
-
-	  _createClass(ConfigReducer, [{
-	    key: 'config',
-	    value: function config() {
-	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-	      var action = arguments[1];
-	      var currentSlideIndex = state.bannerConfig.currentSlideIndex;
-
-
-	      switch (action.type) {
-	        case _constants.BANNER_TOGGLE_NEXT:
-	          var nextSlideIndex = currentSlideIndex + 1;
-	          if (nextSlideIndex > state.bannerConfig.slides.length - 1) nextSlideIndex = 0;
-
-	          return (0, _reactAddonsUpdate2.default)(state, {
-	            bannerConfig: {
-	              currentSlideIndex: { $set: nextSlideIndex }
-	            }
-	          });
-
-	        case _constants.BANNER_TOGGLE_PREV:
-	          var prevSlideIndex = currentSlideIndex - 1;
-	          if (prevSlideIndex < 0) prevSlideIndex = state.bannerConfig.slides.length - 1;
-
-	          return (0, _reactAddonsUpdate2.default)(state, {
-	            bannerConfig: {
-	              currentSlideIndex: { $set: prevSlideIndex }
-	            }
-	          });
-
-	        default:
-	          return state;
-	      }
-	    }
-	  }]);
-
-	  return ConfigReducer;
-	}();
-
-	exports.default = new ConfigReducer();
+	};
 
 /***/ },
 /* 279 */
@@ -29446,8 +29385,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	exports.searchData = undefined;
 
 	var _constants = __webpack_require__(273);
 
@@ -29457,38 +29395,22 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var searchData = exports.searchData = function searchData() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { suggestions: [] };
+	  var action = arguments[1];
 
-	var SearchReducer = function () {
-	  function SearchReducer() {
-	    _classCallCheck(this, SearchReducer);
+	  switch (action.type) {
+	    case _constants.RECEIVE_SEARCH_SUGGESTIONS:
+	      if (action.payload.success) {
+	        return action.payload.data;
+	      } else {}
+
+	    default:
+	      return state;
 	  }
-
-	  _createClass(SearchReducer, [{
-	    key: 'suggestions',
-	    value: function suggestions() {
-	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { suggestions: [] };
-	      var action = arguments[1];
-
-	      switch (action.type) {
-	        case _constants.RECEIVE_SEARCH_SUGGESTIONS:
-	          if (action.payload.success) {
-	            return action.payload.data;
-	          } else {}
-
-	        default:
-	          return state;
-	      }
-	    }
-	  }]);
-
-	  return SearchReducer;
-	}();
-
-	exports.default = new SearchReducer();
+	};
 
 /***/ },
-<<<<<<< Updated upstream
 /* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -29497,8 +29419,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	exports.momentData = undefined;
 
 	var _constants = __webpack_require__(273);
 
@@ -29512,40 +29433,22 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var momentData = exports.momentData = function momentData() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+	  var action = arguments[1];
 
-	var MomentReducer = function () {
-	  function MomentReducer() {
-	    _classCallCheck(this, MomentReducer);
+	  switch (action.type) {
+	    case _constants.MOMENT_ACTIONS.likeSuccess:
+	      console.log('moment response: ', action.payload.data);
+	      return (0, _reactAddonsUpdate2.default)(state, {
+	        currentUser: { $set: _SessionStorage2.default.getCurrentUser() }
+	      });
+	    default:
+	      return state;
 	  }
-
-	  _createClass(MomentReducer, [{
-	    key: 'moment',
-	    value: function moment() {
-	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-	      var action = arguments[1];
-
-	      switch (action.type) {
-	        case _constants.MOMENT_ACTIONS.likeSuccess:
-	          console.log('moment response: ', action.payload.data);
-	          return (0, _reactAddonsUpdate2.default)(state, {
-	            currentUser: { $set: _SessionStorage2.default.getCurrentUser() }
-	          });
-	        default:
-	          return state;
-	      }
-	    }
-	  }]);
-
-	  return MomentReducer;
-	}();
-
-	exports.default = new MomentReducer();
+	};
 
 /***/ },
-=======
-/* 280 */,
->>>>>>> Stashed changes
 /* 281 */
 /***/ function(module, exports) {
 
@@ -29891,11 +29794,8 @@
 	var _reactRedux = __webpack_require__(179);
 
 	var _FeedActionCreators = __webpack_require__(288);
-<<<<<<< Updated upstream
 
 	var _MomentActionCreators = __webpack_require__(291);
-=======
->>>>>>> Stashed changes
 
 	var _Feed = __webpack_require__(293);
 
@@ -30557,7 +30457,6 @@
 	})(typeof self !== 'undefined' ? self : undefined);
 
 /***/ },
-<<<<<<< Updated upstream
 /* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -30590,17 +30489,18 @@
 	  };
 	};
 
-	var buildRequestParams = exports.buildRequestParams = function buildRequestParams(jsonParams) {
+	var buildRequestParams = exports.buildRequestParams = function buildRequestParams(params) {
 	  var form_data = new FormData();
-	  form_data.append('data', jsonParams);
+	  form_data.append('data', JSON.stringify(params));
 	  return form_data;
 	};
 
 	var likeMoment = exports.likeMoment = function likeMoment(momentId, actorId) {
 	  var actionType = 'like';
-	  var requestData = buildRequestParams(JSON.stringify({
+
+	  var requestData = buildRequestParams({
 	    moment_id: momentId, user_id: actorId
-	  }));
+	  });
 
 	  return function (dispatch) {
 	    triggerlikeMoment();
@@ -30637,10 +30537,6 @@
 	};
 
 /***/ },
-=======
-/* 291 */,
-/* 292 */,
->>>>>>> Stashed changes
 /* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -30656,11 +30552,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-<<<<<<< Updated upstream
 	var _Moment = __webpack_require__(294);
-=======
-	var _FeedItem = __webpack_require__(371);
->>>>>>> Stashed changes
 
 	var _Moment2 = _interopRequireDefault(_Moment);
 
@@ -30700,7 +30592,6 @@
 	exports.default = Feed;
 
 /***/ },
-<<<<<<< Updated upstream
 /* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -30875,11 +30766,6 @@
 
 
 /***/ },
-=======
-/* 294 */,
-/* 295 */,
-/* 296 */,
->>>>>>> Stashed changes
 /* 297 */
 /***/ function(module, exports) {
 
@@ -31480,7 +31366,6 @@
 	  }, {
 	    key: 'handleClick',
 	    value: function handleClick() {
-	      console.log('likeAction: ', this.props);
 	      this.props.likeAction(this.props.momentId, "1");
 	    }
 	  }, {
@@ -31511,7 +31396,6 @@
 	exports.default = LikeTrigger;
 
 /***/ },
-<<<<<<< Updated upstream
 /* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -31599,11 +31483,6 @@
 	exports.default = Icon;
 
 /***/ },
-=======
-/* 308 */,
-/* 309 */,
-/* 310 */,
->>>>>>> Stashed changes
 /* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -42059,177 +41938,6 @@
 
 	// module
 	exports.push([module.id, ".index__shell {\n  position: relative;\n  padding: 0;\n  margin: 0; }\n\n.banner__section {\n  position: relative; }\n\n.feed__section {\n  font-size: 14px; }\n  .feed__section .feed__item__wrap {\n    padding: 0;\n    margin: 0; }\n\n.feed__container {\n  position: relative;\n  text-align: center;\n  padding: 1.5em 3% 0 3%; }\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 371 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	__webpack_require__(372);
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _classnames = __webpack_require__(299);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var _constants = __webpack_require__(273);
-
-	var _ActorCard = __webpack_require__(301);
-
-	var _ActorCard2 = _interopRequireDefault(_ActorCard);
-
-	var _LocationDetailsTrigger = __webpack_require__(304);
-
-	var _LocationDetailsTrigger2 = _interopRequireDefault(_LocationDetailsTrigger);
-
-	var _LikeTrigger = __webpack_require__(307);
-
-	var _LikeTrigger2 = _interopRequireDefault(_LikeTrigger);
-
-	var _CommentTrigger = __webpack_require__(311);
-
-	var _CommentTrigger2 = _interopRequireDefault(_CommentTrigger);
-
-	var _MoreInteractionsTrigger = __webpack_require__(312);
-
-	var _MoreInteractionsTrigger2 = _interopRequireDefault(_MoreInteractionsTrigger);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-	var FeedItem = function FeedItem(props) {
-	  var classes = (0, _classnames2.default)(_defineProperty({
-	    'feed__item__wrap': true
-	  }, props.id, true));
-
-	  var locationInfo = {
-	    latitude: '',
-	    longitude: '',
-	    actor: props.user
-	  };
-
-	  console.log('image_url: ', props.image_url);
-
-	  console.log('image placeholder: ');
-	  return _react2.default.createElement(
-	    'article',
-	    { className: 'component__feed__item' },
-	    _react2.default.createElement(
-	      'figure',
-	      { className: classes },
-	      _react2.default.createElement(
-	        'section',
-	        { className: 'feed_media_object' },
-	        _react2.default.createElement('img', { src: _constants.FEED_IMAGE_PLACEHOLDERS[Math.floor(Math.random() * 4)], alt: '', className: 'feed_img' })
-	      ),
-	      _react2.default.createElement(
-	        'figcaption',
-	        null,
-	        _react2.default.createElement(
-	          'section',
-	          { className: 'item__main' },
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'item__metadata' },
-	            _react2.default.createElement(
-	              'span',
-	              { className: 'timestamp' },
-	              '3m'
-	            ),
-	            '\xB7',
-	            _react2.default.createElement(
-	              'span',
-	              { className: 'nested location' },
-	              _react2.default.createElement(_LocationDetailsTrigger2.default, { metadata: locationInfo })
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'item__content' },
-	            props.desription || "hello! welcome to tilte, the place where we share the most fun experiences!"
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'section',
-	          { className: 'item__interactions' },
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'nested user' },
-	            _react2.default.createElement(_ActorCard2.default, { actor: props.user })
-	          ),
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'nested  like' },
-	            _react2.default.createElement(_LikeTrigger2.default, null)
-	          ),
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'nested  comment' },
-	            _react2.default.createElement(_CommentTrigger2.default, null)
-	          ),
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'nested  more' },
-	            _react2.default.createElement(_MoreInteractionsTrigger2.default, null)
-	          )
-	        )
-	      )
-	    )
-	  );
-	};
-
-	FeedItem.propTypes = {};
-
-	exports.default = FeedItem;
-
-/***/ },
-/* 372 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(373);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(298)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js!./../../node_modules/sass-loader/index.js!./feed_item.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js!./../../node_modules/sass-loader/index.js!./feed_item.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 373 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(297)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".component__feed__item {\n  display: inline-block;\n  width: 25%;\n  padding: 4px;\n  text-align: left;\n  color: #303030; }\n  .component__feed__item .feed__item__wrap {\n    display: inline-block;\n    position: relative;\n    padding: 0;\n    border: 1px solid #efefef;\n    border-radius: 5px; }\n  .component__feed__item .feed_media_object {\n    position: relative; }\n    .component__feed__item .feed_media_object .feed_img {\n      width: 100%; }\n  .component__feed__item .feed_media_object, .component__feed__item .feed_img {\n    border-top-left-radius: 5px;\n    border-top-right-radius: 5px; }\n  .component__feed__item .item__main {\n    padding: 5px;\n    padding-bottom: 0;\n    margin: 0; }\n    .component__feed__item .item__main .item__metadata {\n      margin-bottom: 3px;\n      font-size: 12px;\n      display: inline-block;\n      color: #565656; }\n      .component__feed__item .item__main .item__metadata .timestamp {\n        margin-right: 3px; }\n    .component__feed__item .item__main .item__content {\n      padding-bottom: 3px;\n      border-bottom: 1px solid #efefef; }\n    .component__feed__item .item__main .item__interactions {\n      text-align: right;\n      display: inline-block; }\n      .component__feed__item .item__main .item__interactions .nested.user {\n        display: inline-block; }\n", ""]);
 
 	// exports
 

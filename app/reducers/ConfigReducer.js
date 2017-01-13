@@ -39,8 +39,7 @@ const initialState = {
   currentUser: null,
 }
 
-class ConfigReducer {
-  config(state = initialState, action) {
+export const configData = (state = initialState, action) => {
     let { currentSlideIndex } = state.bannerConfig;
 
     switch (action.type) {
@@ -68,6 +67,4 @@ class ConfigReducer {
         return state;
     }
   }
-}
-
-export default new ConfigReducer();
+  
