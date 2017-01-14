@@ -37,6 +37,7 @@ const Moment = (props) => {
             </span>
             <div className='item__content'>
               { props.desription || "hello! welcome to tilte, the place where we share the most fun experiences!" }
+            }
             </div>
           </section>
 
@@ -47,7 +48,7 @@ const Moment = (props) => {
               </span>
             </span>
             <span className='nested like'>
-              <LikeTrigger momentId={ props.id } likeAction={ props.actions.like }/>
+              <LikeTrigger momentId={ props.id } activeState={ props.is_favorite ? "active" : "default" } likeAction={ props.actions.like }/>
             </span>
             <span className='nested comment'>
               <CommentTrigger />

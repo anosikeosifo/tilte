@@ -10,16 +10,25 @@ class LikeTrigger extends Component {
     super();
 
     this.state = {
-      iconColor: '#c1c1c1',
+      icon: {
+        active: '#ffa600',
+        default: '#c1c1c1',
+      },
+
+      disabled: false,
     }
   }
 
   handleMouseEnter() {
-    this.setState({ iconColor: '#ffa600' });
+    if(!this.state.disabled) {
+      this.setState({ iconColor: '#ffa600' });
+    }
   }
 
   handleMouseLeave() {
-    this.setState({ iconColor: '#c1c1c1' });
+    if(!this.state.disabled) {
+      this.setState({ iconColor: '#c1c1c1' });
+    }
   }
 
   handleClick() {
@@ -27,16 +36,28 @@ class LikeTrigger extends Component {
   }
 
   render() {
-    return(
-      <section className='component__like__triger'
-       onMouseEnter={ this.handleMouseEnter.bind(this) } 
-       onMouseLeave={ this.handleMouseLeave.bind(this) }
-       onClick={ this.handleClick.bind(this) }>
-        <span>
-          <Icon icon={ICON_FAVORITE} color={ this.state.iconColor } />
-        </span>
-      </section>
-    );
+    let triggerDOM = null;
+
+    if (!this.state.disabled) {
+      triggerDOM = (<section className='component__like__triger'
+         onMouseEnter={ this.handleMouseEnter.bind(this) } 
+         onMouseLeave={ this.handleMouseLeave.bind(this) }
+         onClick={ this.handleClick.bind(this) }>
+          <span>
+            <Icon icon={ICON_FAVORITE} color={ this.state.icon[this.props.activeState] } />
+          </span>
+        </section>)
+    } else {
+      triggerDOM = (
+        <section className='component__like__triger'>
+          <span>
+            <Icon icon={ICON_FAVORITE} color={ this.state.icon[this.props.activeState] } />
+          </span>
+        </section>
+      );
+    }
+
+    return triggerDOM;
   }
 }
 

@@ -29012,14 +29012,11 @@
 
 	var _SearchReducer = __webpack_require__(279);
 
-	var _MomentReducer = __webpack_require__(280);
-
 	var rootReducer = (0, _redux.combineReducers)({
 	  userFeed: _FeedReducer.feedData,
 	  users: _UserReducer.userData,
 	  config: _ConfigReducer.configData,
-	  searchSuggestions: _SearchReducer.searchData,
-	  moment: _MomentReducer.momentData
+	  searchSuggestions: _SearchReducer.searchData
 	});
 
 	exports.default = rootReducer;
@@ -29037,18 +29034,52 @@
 
 	var _constants = __webpack_require__(273);
 
+	var _reactAddonsUpdate = __webpack_require__(276);
+
+	var _reactAddonsUpdate2 = _interopRequireDefault(_reactAddonsUpdate);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	var feedState = null;
+
 	var feedData = exports.feedData = function feedData() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 	  var action = arguments[1];
 
+	  feedState = state;
 	  switch (action.type) {
 	    case _constants.FEED_ACTIONS.fetchSuccess:
 	      return action.payload.data;
+
 	    case _constants.FEED_ACTIONS.fetchError:
-	      return console.log('an error occurred: ', action.error);
+	      return "";
+
+	    case _constants.MOMENT_ACTIONS.likeSuccess:
+	      return updateMoment(action);
+
 	    default:
 	      return state;
 	  }
+	};
+
+	var getMoment = function getMoment(id) {
+	  return state.find(function (moment) {
+	    return moment.id == id;
+	  });
+	};
+
+	var getMomentIndex = function getMomentIndex(momentId) {
+	  return feedState.findIndex(function (moment) {
+	    return moment.id == momentId;
+	  });
+	};
+
+	var updateMoment = function updateMoment(action) {
+	  var momentIndex = getMomentIndex(action.payload.data.id);
+
+	  return (0, _reactAddonsUpdate2.default)(feedState, _defineProperty({}, momentIndex, { $set: action.payload.data }));
 	};
 
 /***/ },
@@ -29411,44 +29442,7 @@
 	};
 
 /***/ },
-/* 280 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.momentData = undefined;
-
-	var _constants = __webpack_require__(273);
-
-	var _SessionStorage = __webpack_require__(275);
-
-	var _SessionStorage2 = _interopRequireDefault(_SessionStorage);
-
-	var _reactAddonsUpdate = __webpack_require__(276);
-
-	var _reactAddonsUpdate2 = _interopRequireDefault(_reactAddonsUpdate);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var momentData = exports.momentData = function momentData() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-	  var action = arguments[1];
-
-	  switch (action.type) {
-	    case _constants.MOMENT_ACTIONS.likeSuccess:
-	      console.log('moment response: ', action.payload.data);
-	      return (0, _reactAddonsUpdate2.default)(state, {
-	        currentUser: { $set: _SessionStorage2.default.getCurrentUser() }
-	      });
-	    default:
-	      return state;
-	  }
-	};
-
-/***/ },
+/* 280 */,
 /* 281 */
 /***/ function(module, exports) {
 
@@ -30683,7 +30677,8 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'item__content' },
-	            props.desription || "hello! welcome to tilte, the place where we share the most fun experiences!"
+	            props.desription || "hello! welcome to tilte, the place where we share the most fun experiences!",
+	            '}'
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -30701,7 +30696,7 @@
 	          _react2.default.createElement(
 	            'span',
 	            { className: 'nested like' },
-	            _react2.default.createElement(_LikeTrigger2.default, { momentId: props.id, likeAction: props.actions.like })
+	            _react2.default.createElement(_LikeTrigger2.default, { momentId: props.id, activeState: props.is_favorite ? "active" : "default", likeAction: props.actions.like })
 	          ),
 	          _react2.default.createElement(
 	            'span',
@@ -31348,7 +31343,12 @@
 	    var _this = _possibleConstructorReturn(this, (LikeTrigger.__proto__ || Object.getPrototypeOf(LikeTrigger)).call(this));
 
 	    _this.state = {
-	      iconColor: '#c1c1c1'
+	      icon: {
+	        active: '#ffa600',
+	        default: '#c1c1c1'
+	      },
+
+	      disabled: false
 	    };
 	    return _this;
 	  }
@@ -31356,12 +31356,16 @@
 	  _createClass(LikeTrigger, [{
 	    key: 'handleMouseEnter',
 	    value: function handleMouseEnter() {
-	      this.setState({ iconColor: '#ffa600' });
+	      if (!this.state.disabled) {
+	        this.setState({ iconColor: '#ffa600' });
+	      }
 	    }
 	  }, {
 	    key: 'handleMouseLeave',
 	    value: function handleMouseLeave() {
-	      this.setState({ iconColor: '#c1c1c1' });
+	      if (!this.state.disabled) {
+	        this.setState({ iconColor: '#c1c1c1' });
+	      }
 	    }
 	  }, {
 	    key: 'handleClick',
@@ -31371,18 +31375,34 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(
-	        'section',
-	        { className: 'component__like__triger',
-	          onMouseEnter: this.handleMouseEnter.bind(this),
-	          onMouseLeave: this.handleMouseLeave.bind(this),
-	          onClick: this.handleClick.bind(this) },
-	        _react2.default.createElement(
-	          'span',
-	          null,
-	          _react2.default.createElement(_Icon2.default, { icon: _constants.ICON_FAVORITE, color: this.state.iconColor })
-	        )
-	      );
+	      var triggerDOM = null;
+
+	      if (!this.state.disabled) {
+	        triggerDOM = _react2.default.createElement(
+	          'section',
+	          { className: 'component__like__triger',
+	            onMouseEnter: this.handleMouseEnter.bind(this),
+	            onMouseLeave: this.handleMouseLeave.bind(this),
+	            onClick: this.handleClick.bind(this) },
+	          _react2.default.createElement(
+	            'span',
+	            null,
+	            _react2.default.createElement(_Icon2.default, { icon: _constants.ICON_FAVORITE, color: this.state.icon[this.props.activeState] })
+	          )
+	        );
+	      } else {
+	        triggerDOM = _react2.default.createElement(
+	          'section',
+	          { className: 'component__like__triger' },
+	          _react2.default.createElement(
+	            'span',
+	            null,
+	            _react2.default.createElement(_Icon2.default, { icon: _constants.ICON_FAVORITE, color: this.state.icon[this.props.activeState] })
+	          )
+	        );
+	      }
+
+	      return triggerDOM;
 	    }
 	  }]);
 
