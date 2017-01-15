@@ -48,7 +48,7 @@ const Moment = (props) => {
               </span>
             </span>
             <span className='nested like'>
-              <LikeTrigger momentId={ props.id } activeState={ props.is_favorite ? "active" : "default" } likeAction={ props.actions.like }/>
+              <LikeTrigger momentId={ props.id } isEnabled={ !props.is_favorite } uiState={ props.is_favorite ? "active" : "default" } likeAction={ props.actions.like }/>
             </span>
             <span className='nested comment'>
               <CommentTrigger />
