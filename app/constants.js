@@ -13,9 +13,9 @@ export const RECEIVE_SEARCH_SUGGESTIONS           = 'Receive search suggestions'
 export const FETCH_USER_FEED                      = 'Fetch user feed';
 
 export const FEED_ACTIONS                         = {
-                                                    fetchRequest: 'Fetch user feed',
-                                                    fetchSuccess: 'Fetch user feed succeful',
-                                                    fetchError: 'Fetch user feed failed',
+                                                    fetchFeedRequest: 'Fetch user feed',
+                                                    fetchFeedSuccess: 'Fetch user feed succeful',
+                                                    fetchFeedError: 'Fetch user feed failed',
                                                   };
 
 export const MOMENT_ACTIONS                       = {

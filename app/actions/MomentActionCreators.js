@@ -1,5 +1,6 @@
 import { MOMENT_ACTIONS } from '../constants';
 import { likeMomentAPI } from '../api/MomentAPI';
+import { buildRequestParams } from '../helpers/HttpHelper';
 
 
 const momentActionSuccess = (actionType, payload) => ({
@@ -13,12 +14,6 @@ const momentActionError = (actionType, error) => ({
 const triggerlikeMoment = () => ({
   type: MOMENT_ACTIONS.likeRequest
 });
-
-export const buildRequestParams = (params) => {
-  const form_data = new FormData();
-  form_data.append('data', JSON.stringify(params));
-  return form_data;
-}
 
 export const likeMoment = (momentId, actorId) => {
   const actionType = 'like';

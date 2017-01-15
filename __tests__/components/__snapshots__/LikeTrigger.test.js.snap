@@ -1,0 +1,101 @@
+exports[`LikeTrigger Component When disabled Should not have UI interactions 1`] = `
+<section
+  className="component__like__triger">
+  <svg
+    height="24px"
+    style={
+      Object {
+        "display": "inline-block",
+        "verticalAlign": "middle",
+      }
+    }
+    viewBox="0 0 1024 1024"
+    width="24px">
+    <path
+      d={undefined}
+      style={
+        Object {
+          "fill": undefined,
+        }
+      } />
+  </svg>
+</section>
+`;
+
+exports[`LikeTrigger Component When enabled Should change icon color on click 1`] = `
+<section
+  className="component__like__triger"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}>
+  <svg
+    height="24px"
+    style={
+      Object {
+        "display": "inline-block",
+        "verticalAlign": "middle",
+      }
+    }
+    viewBox="0 0 1024 1024"
+    width="24px">
+    <path
+      d={undefined}
+      style={
+        Object {
+          "fill": undefined,
+        }
+      } />
+  </svg>
+</section>
+`;
+
+exports[`LikeTrigger Component When enabled Should change icon color on hover 1`] = `
+<section
+  className="component__like__triger"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}>
+  <svg
+    height="24px"
+    style={
+      Object {
+        "display": "inline-block",
+        "verticalAlign": "middle",
+      }
+    }
+    viewBox="0 0 1024 1024"
+    width="24px">
+    <path
+      d={undefined}
+      style={
+        Object {
+          "fill": undefined,
+        }
+      } />
+  </svg>
+</section>
+`;
+
+exports[`LikeTrigger Component should match the snapshot for initial state 1`] = `
+<section
+  className="component__like__triger">
+  <svg
+    height="24px"
+    style={
+      Object {
+        "display": "inline-block",
+        "verticalAlign": "middle",
+      }
+    }
+    viewBox="0 0 1024 1024"
+    width="24px">
+    <path
+      d={undefined}
+      style={
+        Object {
+          "fill": undefined,
+        }
+      } />
+  </svg>
+</section>
+`;

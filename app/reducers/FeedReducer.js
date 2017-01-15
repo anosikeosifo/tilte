@@ -2,38 +2,38 @@ import { FEED_ACTIONS, MOMENT_ACTIONS } from '../constants';
 import update from 'react-addons-update';
 
 
-let feedState = null;
+export const initialState = [];
+let currentState;
 
-export const feedData = (state =[], action) => {
-  feedState = state
+export const feedData = (state=initialState, action) => {
+  currentState = state;
+
   switch (action.type) {
-    case FEED_ACTIONS.fetchSuccess:
+    case FEED_ACTIONS.fetchFeedSuccess:
       return action.payload.data;
 
-    case FEED_ACTIONS.fetchError:
+    case FEED_ACTIONS.fetchFeedError:
       return "";
 
     case MOMENT_ACTIONS.likeSuccess:
-      return updateMoment(action);
+      return likeMoment(action);
 
     default:
-      return state;
+      return currentState;
   }
 };
 
-
 const getMoment = (id) => {
-  return state.find((moment) => moment.id == id);
+  return currentState.find((moment) => moment.id == id);
 };
 
 const getMomentIndex = (momentId) => {
-  return feedState.findIndex((moment) => moment.id == momentId);
+  return currentState.findIndex((moment) => moment.id == momentId);
 };
 
-const updateMoment = (action) => {
+const likeMoment = (action) => {
   const momentIndex = getMomentIndex(action.payload.data.id);
-
-  return update(feedState, {
-    [momentIndex]: { $set: action.payload.data }
+  return update(currentState, {
+    [momentIndex]: { $set:  action.payload.data }
   });
 };

@@ -56,9 +56,20 @@
     "test": "jest",
     "start": "node_modules/.bin/webpack-dev-server --progress"
   },
+  
   "jest": {
     "transform": {
       ".*": "<rootDir>/node_modules/babel-jest"
-    }
+    },
+
+    "unmockedModulePathPatterns": [
+      "node_modules/react/",
+      "node_modules/enzyme/"
+    ]
+  },
+
+  "devDependencies": {
+    "enzyme": "^2.7.0",
+    "react-addons-test-utils": "^15.4.2"
   }
 }

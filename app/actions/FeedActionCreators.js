@@ -1,6 +1,6 @@
-import { FEED_ACTIONS } from '../constants';
+  import { FEED_ACTIONS } from '../constants';
 import { fetchUserFeed } from '../api/FeedAPI';
-
+import { buildRequestParams } from '../helpers/HttpHelper';
 
 const feedActionSuccess = (actionType, payload) => ({
   type: FEED_ACTIONS[`${actionType}Success`], success: true, payload 
@@ -11,17 +11,20 @@ const feedActionError = (actionType, error) => ({
 });
 
 const requestUserFeed = () => ({
-  type: FEED_ACTIONS.fetchRequest
+  type: FEED_ACTIONS.fetchFeedRequest
 });
 
-export const loadUserFeed = (actorId = null, actorLocation = null, pageNumber = 1) => {
-  const actionType = 'fetch';
+export const loadUserFeed = (actorId, actorLocation = null, pageNumber = 1) => {
+  const actionType = 'fetchFeed';
+
+  const requestData = buildRequestParams({ 
+    user_id: actorId, location: actorLocation, page: pageNumber 
+  });
 
   return (dispatch) => {
-    const actionType = 'fetch';
     requestUserFeed();
 
-    fetchUserFeed(actorId, actorLocation, pageNumber)
+    fetchUserFeed(requestData)
       .then(payload => dispatch(feedActionSuccess(actionType, payload)))
       .catch(error => dispatch(feedActionError(actionType, error)));
   }
