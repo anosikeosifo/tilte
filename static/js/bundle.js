@@ -29052,10 +29052,10 @@
 	  currentState = state;
 
 	  switch (action.type) {
-	    case _constants.FEED_ACTIONS.fetchSuccess:
+	    case _constants.FEED_ACTIONS.fetchFeedSuccess:
 	      return action.payload.data;
 
-	    case _constants.FEED_ACTIONS.fetchError:
+	    case _constants.FEED_ACTIONS.fetchFeedError:
 	      return "";
 
 	    case _constants.MOMENT_ACTIONS.likeSuccess:
@@ -29144,9 +29144,9 @@
 	var FETCH_USER_FEED = exports.FETCH_USER_FEED = 'Fetch user feed';
 
 	var FEED_ACTIONS = exports.FEED_ACTIONS = {
-	                                                    fetchRequest: 'Fetch user feed',
-	                                                    fetchSuccess: 'Fetch user feed succeful',
-	                                                    fetchError: 'Fetch user feed failed'
+	                                                    fetchFeedRequest: 'Fetch user feed',
+	                                                    fetchFeedSuccess: 'Fetch user feed succeful',
+	                                                    fetchFeedError: 'Fetch user feed failed'
 	};
 
 	var MOMENT_ACTIONS = exports.MOMENT_ACTIONS = {
@@ -29812,7 +29812,7 @@
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
 	    fetchUserFeed: function fetchUserFeed() {
-	      return dispatch((0, _FeedActionCreators.loadUserFeed)());
+	      return dispatch((0, _FeedActionCreators.loadUserFeed)('7'));
 	    },
 	    reportItem: function reportItem(itemId, actorId) {
 	      return dispatch((0, _MomentActionCreators.reportMoment)(itemId, actorId));
@@ -29924,6 +29924,8 @@
 
 	var _FeedAPI = __webpack_require__(288);
 
+	var _HttpHelper = __webpack_require__(370);
+
 	var feedActionSuccess = function feedActionSuccess(actionType, payload) {
 	  return {
 	    type: _constants.FEED_ACTIONS[actionType + 'Success'], success: true, payload: payload
@@ -29938,22 +29940,24 @@
 
 	var requestUserFeed = function requestUserFeed() {
 	  return {
-	    type: _constants.FEED_ACTIONS.fetchRequest
+	    type: _constants.FEED_ACTIONS.fetchFeedRequest
 	  };
 	};
 
-	var loadUserFeed = exports.loadUserFeed = function loadUserFeed() {
-	  var actorId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+	var loadUserFeed = exports.loadUserFeed = function loadUserFeed(actorId) {
 	  var actorLocation = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 	  var pageNumber = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
 
-	  var actionType = 'fetch';
+	  var actionType = 'fetchFeed';
+
+	  var requestData = (0, _HttpHelper.buildRequestParams)({
+	    user_id: actorId, location: actorLocation, page: pageNumber
+	  });
 
 	  return function (dispatch) {
-	    var actionType = 'fetch';
 	    requestUserFeed();
 
-	    (0, _FeedAPI.fetchUserFeed)(actorId, actorLocation, pageNumber).then(function (payload) {
+	    (0, _FeedAPI.fetchUserFeed)(requestData).then(function (payload) {
 	      return dispatch(feedActionSuccess(actionType, payload));
 	    }).catch(function (error) {
 	      return dispatch(feedActionError(actionType, error));
@@ -29976,10 +29980,12 @@
 
 	__webpack_require__(289);
 
-	var fetchUserFeed = exports.fetchUserFeed = function fetchUserFeed(userId, userLocation, pageNumber) {
-	  if (!userId) return fetchWelcomeFeed(userLocation, pageNumber);
-
-	  return fetch(_constants.API_BASE_URL + '/posts').then(function (response) {
+	var fetchUserFeed = exports.fetchUserFeed = function fetchUserFeed(requestData) {
+	  return fetch(_constants.API_BASE_URL + '/users/feed', {
+	    method: 'POST',
+	    body: requestData,
+	    credentials: 'same-origin'
+	  }).then(function (response) {
 	    return response.json();
 	  });
 	};
@@ -30459,11 +30465,13 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.likeMoment = exports.buildRequestParams = undefined;
+	exports.likeMoment = undefined;
 
 	var _constants = __webpack_require__(274);
 
 	var _MomentAPI = __webpack_require__(291);
+
+	var _HttpHelper = __webpack_require__(370);
 
 	var momentActionSuccess = function momentActionSuccess(actionType, payload) {
 	  return {
@@ -30483,16 +30491,10 @@
 	  };
 	};
 
-	var buildRequestParams = exports.buildRequestParams = function buildRequestParams(params) {
-	  var form_data = new FormData();
-	  form_data.append('data', JSON.stringify(params));
-	  return form_data;
-	};
-
 	var likeMoment = exports.likeMoment = function likeMoment(momentId, actorId) {
 	  var actionType = 'like';
 
-	  var requestData = buildRequestParams({
+	  var requestData = (0, _HttpHelper.buildRequestParams)({
 	    moment_id: momentId, user_id: actorId
 	  });
 
@@ -30641,6 +30643,8 @@
 	    longitude: '',
 	    actor: props.user
 	  };
+
+	  console.log('props.is_favorite: ', props.is_favorite);
 
 	  return _react2.default.createElement(
 	    'article',
@@ -31359,14 +31363,15 @@
 	  _createClass(LikeTrigger, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
+	      console.log('icon color state: ', this.props.uiState);
 	      this.setState(Object.assign({}, this.state, {
-	        iconColor: this.getIconColor(this.props.activeState)
+	        iconColor: this.getIconColor(this.props.uiState)
 	      }));
 	    }
 	  }, {
 	    key: 'getIconColor',
-	    value: function getIconColor(interactionState) {
-	      return this.state.color[interactionState];
+	    value: function getIconColor(uiState) {
+	      return this.state.color[uiState];
 	    }
 	  }, {
 	    key: 'handleMouseEnter',
@@ -31389,7 +31394,7 @@
 	  }, {
 	    key: 'handleClick',
 	    value: function handleClick() {
-	      if (this.props.isEnabled) this.props.likeAction(this.props.momentId, "1");
+	      if (this.props.isEnabled) this.props.likeAction(this.props.momentId, "7");
 	    }
 	  }, {
 	    key: 'render',
@@ -31399,7 +31404,7 @@
 	      if (this.props.isEnabled) {
 	        triggerDOM = _react2.default.createElement(
 	          'section',
-	          { className: 'component__like__triger',
+	          { className: 'component__like__triger enabled',
 	            onMouseEnter: this.handleMouseEnter.bind(this),
 	            onMouseLeave: this.handleMouseLeave.bind(this),
 	            onClick: this.handleClick.bind(this) },
@@ -31461,7 +31466,7 @@
 
 
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".component__like__triger.enabled {\n  display: inline-block;\n  cursor: pointer; }\n", ""]);
 
 	// exports
 
@@ -41972,6 +41977,21 @@
 
 	// exports
 
+
+/***/ },
+/* 370 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var buildRequestParams = exports.buildRequestParams = function buildRequestParams(params) {
+	  var form_data = new FormData();
+	  form_data.append('data', JSON.stringify(params));
+	  return form_data;
+	};
 
 /***/ }
 /******/ ]);

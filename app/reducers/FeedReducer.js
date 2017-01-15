@@ -9,10 +9,10 @@ export const feedData = (state=initialState, action) => {
   currentState = state;
 
   switch (action.type) {
-    case FEED_ACTIONS.fetchSuccess:
+    case FEED_ACTIONS.fetchFeedSuccess:
       return action.payload.data;
 
-    case FEED_ACTIONS.fetchError:
+    case FEED_ACTIONS.fetchFeedError:
       return "";
 
     case MOMENT_ACTIONS.likeSuccess:

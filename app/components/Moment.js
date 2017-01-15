@@ -20,6 +20,8 @@ const Moment = (props) => {
     actor: props.user,
   }
 
+  console.log('props.is_favorite: ', props.is_favorite);
+
   return(
     <article className='component__feed__item'>
       <figure className={ classes }>

@@ -15,7 +15,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchUserFeed: () => dispatch(loadUserFeed()),
+  fetchUserFeed: () => dispatch(loadUserFeed('7')),
   reportItem: (itemId, actorId) => dispatch(reportMoment(itemId, actorId)),
   likeItem: (itemId, actorId) => dispatch(likeMoment(itemId, actorId)),
   showItemDetail: (itemId, actorId) => dispatch(showMomentDetail(itemId, actorId)),

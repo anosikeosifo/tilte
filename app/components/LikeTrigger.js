@@ -20,13 +20,14 @@ class LikeTrigger extends Component {
   }
 
   componentWillMount() {
+    console.log('icon color state: ',this.props.uiState);
     this.setState(Object.assign({}, this.state, { 
-      iconColor: this.getIconColor(this.props.activeState)
+      iconColor: this.getIconColor(this.props.uiState)
     }));
   }
 
-  getIconColor(interactionState) {
-    return this.state.color[interactionState];
+  getIconColor(uiState) {
+    return this.state.color[uiState];
   }
 
   handleMouseEnter() {
@@ -46,14 +47,14 @@ class LikeTrigger extends Component {
   }
 
   handleClick() {
-    if(this.props.isEnabled) this.props.likeAction(this.props.momentId, "1");
+    if(this.props.isEnabled) this.props.likeAction(this.props.momentId, "7");
   }
 
   render() {
     let triggerDOM = null;
 
     if (this.props.isEnabled) {
-      triggerDOM = (<section className='component__like__triger'
+      triggerDOM = (<section className='component__like__triger enabled'
          onMouseEnter={ this.handleMouseEnter.bind(this) } 
          onMouseLeave={ this.handleMouseLeave.bind(this) }
          onClick={ this.handleClick.bind(this) }>

@@ -31,7 +31,6 @@ describe('LikeTrigger Component', () => {
 
     it('Should change icon color on hover', () => {
       component.props.onMouseEnter();
-      component.props.onMouseLeave();
       expect(component).toMatchSnapshot();
     });
 
@@ -44,7 +43,7 @@ describe('LikeTrigger Component', () => {
   describe('When disabled', () => {
     it('Should not have UI interactions', () => {
       const component = renderer.create(
-        <LikeTrigger isEnabled={ false } uiState='default'/>
+        <LikeTrigger isEnabled={ false } uiState='active'/>
       ).toJSON();
 
       expect(component.props.onMouseEnter).not.toBeDefined();
