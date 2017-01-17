@@ -4,4 +4,12 @@ import React from 'react';
 import { render } from 'react-dom';
 import App from './containers/App';
 
-render(<App />, document.getElementById('root'));
+const run = () => {
+  render(<App />, document.getElementById('root'));
+};
+
+if(window.addEventListener) {
+  window.addEventListener('DOMContentLoaded', run);
+} else {
+  window.attachEvent('onload', run);
+}
