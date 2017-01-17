@@ -12,7 +12,7 @@ class LikeTrigger extends Component {
 
     this.state = {
       color: {
-        active: '#ffa600',
+        active: '#ff5a5f',
         default: '#c1c1c1',
       },
       iconColor: null,
@@ -20,7 +20,6 @@ class LikeTrigger extends Component {
   }
 
   componentWillMount() {
-    console.log('icon color state: ',this.props.uiState);
     this.setState(Object.assign({}, this.state, { 
       iconColor: this.getIconColor(this.props.uiState)
     }));

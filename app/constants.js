@@ -23,16 +23,16 @@ export const MOMENT_ACTIONS                       = {
                                                     likeSuccess: 'Moment like action succeful',
                                                     likError: 'Moment like action failed.',
                                                   };
+export const ASSETS_BASE_URL                      = 'http://localhost:4200'
 
-export const USER_AVATAR_PLACEHOLDER              = 'http://localhost:8080/images/avatar_small.png';
+export const USER_AVATAR_PLACEHOLDER              = `${ ASSETS_BASE_URL }/images/avatar_small.png`;
 export const FEED_IMAGE_PLACEHOLDERS              = [
-                                                    'http://localhost:8080/images/feed1.jpg',
-                                                    'http://localhost:8080/images/feed2.jpg',
-                                                    'http://localhost:8080/images/feed3.jpg',
-                                                    'http://localhost:8080/images/feed4.jpg',
+                                                    `${ ASSETS_BASE_URL }/images/feed1.jpg`,
+                                                    `${ ASSETS_BASE_URL }/images/feed2.jpg`,
+                                                    `${ ASSETS_BASE_URL }/images/feed3.jpg`,
+                                                    `${ ASSETS_BASE_URL }/images/feed4.jpg`,
                                                   ];
 
-export const LIKE_DEFAULT_IMG_URL                 = 'http://localhost:8080/images/avatar_small.png';
 export const API_BASE_URL                         = 'http://localhost:3000/api';
 
 export const ICON_FAVORITE                        = 'M516 792c204-184 338-306 338-430 0-86-64-148-150-148-66 0-130 42-152 100h-80c-22-58-86-100-152-100-86 0-150 62-150 148 0 124 134 246 338 430l4 4zM704 128c132 0 234 102 234 234 0 162-144 292-364 492l-62 56-62-54c-220-200-364-332-364-494 0-132 102-234 234-234 74 0 146 36 192 90 46-54 118-90 192-90z'
