@@ -33,6 +33,6 @@ export const FEED_IMAGE_PLACEHOLDERS              = [
                                                     `${ ASSETS_BASE_URL }/images/feed4.jpg`,
                                                   ];
 
-export const API_BASE_URL                         = 'http://tilte-api.herokuapp.com/api';
+export const API_BASE_URL                         = 'https://tilte-api.herokuapp.com/api';
 export const ICON_FAVORITE                        = 'M516 792c204-184 338-306 338-430 0-86-64-148-150-148-66 0-130 42-152 100h-80c-22-58-86-100-152-100-86 0-150 62-150 148 0 124 134 246 338 430l4 4zM704 128c132 0 234 102 234 234 0 162-144 292-364 492l-62 56-62-54c-220-200-364-332-364-494 0-132 102-234 234-234 74 0 146 36 192 90 46-54 118-90 192-90z';
 
