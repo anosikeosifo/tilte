@@ -23,7 +23,7 @@ export const MOMENT_ACTIONS                       = {
                                                     likeSuccess: 'Moment like action succeful',
                                                     likError: 'Moment like action failed.',
                                                   };
-export const ASSETS_BASE_URL                      = 'http://localhost:4200'
+export const ASSETS_BASE_URL                      = 'https://localhost:4200'
 
 export const USER_AVATAR_PLACEHOLDER              = `${ ASSETS_BASE_URL }/images/avatar_small.png`;
 export const FEED_IMAGE_PLACEHOLDERS              = [
