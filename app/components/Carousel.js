@@ -1,4 +1,4 @@
-import '../styles/carousel.scss';
+require('../styles/carousel.scss');
 
 import React, { Component, PropTypes } from 'react';
 import BannerHelper from '../helpers/BannerHelper';

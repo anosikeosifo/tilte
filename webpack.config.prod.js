@@ -23,7 +23,7 @@ const config = {
       {
         test: /\.scss$/,
         exclude: './node_modules/',
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader!sass-loader?sourceMap=true"),
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader!sass-loader"),
       },
       {
         test: /\.json$/,
@@ -41,7 +41,7 @@ const config = {
   },
 
   plugins: [
-      new ExtractTextPlugin('/css/main.css'),
+      new ExtractTextPlugin(__dirname + '/build/css/main.css'),
       new DedupePlugin(),
       new webpack.DefinePlugin({
         'process.env': {

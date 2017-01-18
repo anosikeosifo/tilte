@@ -1,5 +1,5 @@
-import '../styles/layout.scss';
-import '../styles/home.scss';
+require('../styles/layout.scss');
+require('../styles/home.scss');
 
 
 import React, { Component, PropTypes } from 'react';

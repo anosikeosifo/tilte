@@ -1,4 +1,4 @@
-import '../styles/moment.scss';
+require('../styles/moment.scss');
 
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
