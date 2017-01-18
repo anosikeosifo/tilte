@@ -11,5 +11,5 @@ app.use(serve('./build'));
 const server = app.listen(port, function () {
  let host = server.address().address;
  let port = server.address().port;
- console.log('listening at http://%s:%s', host, port);
+ console.log('listening at http://%s:%s', '0.0.0.0', port);
 });

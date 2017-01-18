@@ -1,4 +1,5 @@
 import '../styles/moment.scss';
+
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import { FEED_IMAGE_PLACEHOLDERS, USER_AVATAR_PLACEHOLDER } from '../constants';

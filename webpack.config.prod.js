@@ -15,10 +15,6 @@ const config = {
   },
 
   module: {
-    preLoaders: [
-        { test: /\.js$/, exclude: './node_modules/', loader: 'jshint-loader' }
-    ],
-
     loaders: [{
         test: /\.jsx?$/,
         exclude: './node_modules/',
@@ -27,7 +23,7 @@ const config = {
       {
         test: /\.scss$/,
         exclude: './node_modules/',
-        loader: ExtractTextPlugin.extract("style-loader!css-loader!postcss-loader!sass-loader"),
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader!sass-loader?sourceMap=true"),
       },
       {
         test: /\.json$/,

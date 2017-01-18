@@ -1,4 +1,4 @@
-require('../styles/banner_search.scss');
+import '../styles/banner_search.scss';
 
 import React, { Component, PropTypes } from 'react';
 import { loadSuggestions } from '../actions/SearchActionCreators';

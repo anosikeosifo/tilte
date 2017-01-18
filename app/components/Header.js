@@ -1,4 +1,4 @@
-require('../styles/header');
+import '../styles/header';
 
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
