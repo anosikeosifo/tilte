@@ -1,5 +1,5 @@
 import { RECEIVE_SEARCH_SUGGESTIONS } from '../constants';
-import update from 'react-addons-update';
+import update from 'immutability-helper';
 
 export const searchData = (state = { suggestions: [] }, action) => {
   switch (action.type) {

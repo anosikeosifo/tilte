@@ -8,60 +8,89 @@ import LocationDetailsTrigger from './LocationDetailsTrigger';
 import LikeTrigger from './LikeTrigger';
 import CommentTrigger from './CommentTrigger';
 import MoreInteractionsTrigger from './MoreInteractionsTrigger';
+import update from 'immutability-helper';
 
-const Moment = (props) => {
-  const classes = classNames({
-    'feed__item__wrap': true,
-    [props.id]: true,
-  });
-
-  const locationInfo = {
-    latitude: '',
-    longitude: '',
-    actor: props.user,
+class Moment extends Component {
+  componentWillMount() {
+    this.setState(Object.assign({}, this.state, { 
+      cardInteractionActive: false
+    }));
   }
 
-  return(
-    <article className='component__feed__item'>
-      <figure className={ classes }>
-        <section className='feed_media_object'>
-          <img src={ FEED_IMAGE_PLACEHOLDERS[Math.floor(Math.random() * 4)] } alt='' className='feed_img'/>
-        </section>
-        <figcaption>
-          <section className='item__main'>
-            <span className='item__metadata'>
-              <span className='timestamp'>3m</span>
-              &middot;
-              <span className='nested location'>
-                <LocationDetailsTrigger metadata={ locationInfo } />
-              </span>
-            </span>
-            <div className='item__content'>
-              { props.desription || "hello! welcome to tilte, the place where we share the most fun experiences!" }
-            }
-            </div>
-          </section>
+  handleMouseEnter() {
+    this.setState(update(this.state, { 
+      cardInteractionActive: { $set: true }
+    }));
+  }
 
-          <section className='item__interactions'>
-            <span className='nested user'>
-              <span className='user__image__wrap'>
-                <img className='image' src={ props.user.avatarUrl || USER_AVATAR_PLACEHOLDER }/>
-              </span>
-            </span>
-            <span className='nested like'>
-              <LikeTrigger momentId={ props.id } isEnabled={ !props.is_favorite } uiState={ props.is_favorite ? "active" : "default" } likeAction={ props.actions.like }/>
-            </span>
-            <span className='nested comment'>
-              <CommentTrigger />
-            </span>
-            <span className='nested  more'>
-              <MoreInteractionsTrigger />
-            </span>
+  handleMouseLeave() {
+    this.setState(update(this.state, { 
+      cardInteractionActive: { $set: false }
+    }));
+  }
+
+  handleClick() {
+
+  }
+
+  render() {
+    const locationInfo = {
+      latitude: '',
+      longitude: '',
+      actor: this.props.user,
+    };
+
+    const classes = classNames({
+      'moment__wrap': true,
+      [this.props.id]: true,
+      'hover__active': this.state.cardInteractionActive
+    });
+
+    return(
+      <article className='component__moment'>
+        <figure className={ classes } 
+          onMouseEnter={ this.handleMouseEnter.bind(this) }
+          onMouseLeave={ this.handleMouseLeave.bind(this) }
+          onClick={ this.handleClick.bind(this) }>
+
+          <section className='moment_media_object'>
+            <img src={ FEED_IMAGE_PLACEHOLDERS[0] } alt='' className='feed_img'/>
           </section>
-        </figcaption>
-      </figure>
-    </article>
-  );
+          <figcaption>
+            <section className='item__main'>
+              <span className='item__metadata'>
+                <span className='timestamp'>3m</span>
+                &middot;
+                <span className='nested location'>
+                  <LocationDetailsTrigger metadata={ locationInfo } />
+                </span>
+              </span>
+              <div className='item__content'>
+                { this.props.desription || "hello! welcome to tilte, the place where we share the most fun experiences!" }
+              </div>
+            </section>
+
+            <section className='item__interactions'>
+              <span className='nested user'>
+                <ActorCard actor={ this.props.user }/>
+              </span>
+              <div className='action__group'>
+                <span className='nested like'>
+                  <LikeTrigger momentId={ this.props.id } isEnabled={ !this.props.is_favorite } uiState={ this.props.is_favorite ? "active" : "default" } likeAction={ this.props.actions.like }/>
+                </span>
+                <span className='nested comment'>
+                  <CommentTrigger />
+                </span>
+                <span className='nested  more'>
+                  <MoreInteractionsTrigger />
+                </span>
+              </div>
+            </section>
+          </figcaption>
+        </figure>
+      </article>
+    );
+  }
 }
 
 Moment.propTypes = {
