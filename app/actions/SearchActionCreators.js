@@ -1,19 +1,19 @@
-import constants from '../constants';
+import { REQUEST_SEARCH_SUGGESTIONS, FETCH_SEARCH_SUGGESTIONS_SUCCESS, FETCH_SEARCH_SUGGESTIONS_ERROR } from '../constants';
 import { fetchSuggestions } from '../api/SearchAPI';
 
 const requestSuggestions = () => ({
-  type: constants.FETCH_SEARCH_SUGGESTIONS,
+  type: REQUEST_SEARCH_SUGGESTIONS,
 });
 
 const loadSuggestionsSuccess = (payload) => ({
-   type: constants.RECEIVE_SEARCH_SUGGESTIONS_SUCCESS, success: true, payload,
+   type: FETCH_SEARCH_SUGGESTIONS_SUCCESS, success: true, payload,
 });
 
 const loadSuggestionsError = (error) => ({
-  type: constants.RECEIVE_SEARCH_SUGGESTIONS_ERROR, success: false, error,
+  type: FETCH_SEARCH_SUGGESTIONS_SUCCESS, success: false, error,
 });
 
-export const loadSuggestions = () => {
+export const loadSuggestions = (text) => {
   return (dispatch) => {
     requestSuggestions();
 

@@ -28643,8 +28643,9 @@
 	var FETCH_CONFIG_DATA_SUCCESS = exports.FETCH_CONFIG_DATA_SUCCESS = 'Config data received';
 	var FETCH_CONFIG_DATA_ERROR = exports.FETCH_CONFIG_DATA_ERROR = 'Config data receipt failed';
 	var FETCH_APP_DATA = exports.FETCH_APP_DATA = 'Fetch app data';
-	var FETCH_SEARCH_SUGGESTIONS = exports.FETCH_SEARCH_SUGGESTIONS = 'Fetch search suggestions';
-	var RECEIVE_SEARCH_SUGGESTIONS = exports.RECEIVE_SEARCH_SUGGESTIONS = 'Receive search suggestions';
+	var REQUEST_SEARCH_SUGGESTIONS = exports.REQUEST_SEARCH_SUGGESTIONS = 'Fetch search suggestions';
+	var FETCH_SEARCH_SUGGESTIONS_SUCCESS = exports.FETCH_SEARCH_SUGGESTIONS_SUCCESS = 'Fetch search suggestions';
+	var FETCH_SEARCH_SUGGESTIONS_ERROR = exports.FETCH_SEARCH_SUGGESTIONS_ERROR = 'Receive search suggestions';
 	var FETCH_USER_FEED = exports.FETCH_USER_FEED = 'Fetch user feed';
 
 	var FEED_ACTIONS = exports.FEED_ACTIONS = {
@@ -39960,31 +39961,27 @@
 
 	var _constants = __webpack_require__(273);
 
-	var _constants2 = _interopRequireDefault(_constants);
-
 	var _SearchAPI = __webpack_require__(351);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var requestSuggestions = function requestSuggestions() {
 	  return {
-	    type: _constants2.default.FETCH_SEARCH_SUGGESTIONS
+	    type: _constants.REQUEST_SEARCH_SUGGESTIONS
 	  };
 	};
 
 	var loadSuggestionsSuccess = function loadSuggestionsSuccess(payload) {
 	  return {
-	    type: _constants2.default.RECEIVE_SEARCH_SUGGESTIONS_SUCCESS, success: true, payload: payload
+	    type: _constants.FETCH_SEARCH_SUGGESTIONS_SUCCESS, success: true, payload: payload
 	  };
 	};
 
 	var loadSuggestionsError = function loadSuggestionsError(error) {
 	  return {
-	    type: _constants2.default.RECEIVE_SEARCH_SUGGESTIONS_ERROR, success: false, error: error
+	    type: _constants.FETCH_SEARCH_SUGGESTIONS_SUCCESS, success: false, error: error
 	  };
 	};
 
-	var loadSuggestions = exports.loadSuggestions = function loadSuggestions() {
+	var loadSuggestions = exports.loadSuggestions = function loadSuggestions(text) {
 	  return function (dispatch) {
 	    requestSuggestions();
 
