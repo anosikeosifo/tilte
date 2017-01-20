@@ -1,5 +1,5 @@
 import { FEED_ACTIONS, MOMENT_ACTIONS } from '../constants';
-import update from 'react-addons-update';
+import update from 'immutability-helper';
 
 
 export const initialState = [];

@@ -4,7 +4,7 @@ import React, { Component, PropTypes } from 'react';
 import { ICON_FAVORITE } from 'constants';
 import classNames from 'classnames';
 import Icon from './Icon';
-import update from 'react-addons-update';
+import update from 'immutability-helper';
 
 class LikeTrigger extends Component {
   constructor() {
@@ -54,9 +54,9 @@ class LikeTrigger extends Component {
 
     if (this.props.isEnabled) {
       triggerDOM = (<section className='component__like__triger enabled'
-         onMouseEnter={ this.handleMouseEnter.bind(this) } 
-         onMouseLeave={ this.handleMouseLeave.bind(this) }
-         onClick={ this.handleClick.bind(this) }>
+        onMouseEnter={ this.handleMouseEnter.bind(this) } 
+        onMouseLeave={ this.handleMouseLeave.bind(this) }
+        onClick={ this.handleClick.bind(this) }>
           <Icon icon={ICON_FAVORITE} color={ this.state.iconColor } />
         </section>)
     } else {

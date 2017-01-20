@@ -1,6 +1,6 @@
 import { REQUEST_CURRENT_USER } from '../constants';
 import SessionUtils from '../utils/SessionStorage';
-import update from 'react-addons-update';
+import update from 'immutability-helper';
 
 export const userData = (state = [], action) => {
   switch (action.type) {

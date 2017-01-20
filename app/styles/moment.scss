@@ -1,19 +1,27 @@
-.component__feed__item {
+.component__moment {
 	display: inline-block;
   width: 25%;
 	padding: 4px;
   text-align: left;
   color: #303030;
 
-  .feed__item__wrap {
+  .moment__wrap {
     display: inline-block;
     position: relative;
     padding: 0;
     border: 1px solid #efefef;
     border-radius: 5px;
+    margin: 0;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+
+    &.hover__active {
+      border-color: #ff5a5f;
+      box-shadow: 0px 0px 8px 2px #888888
+    }
   }
 
-  .feed_media_object {
+  .moment_media_object {
     position: relative;
 
     .feed_img {
@@ -21,7 +29,7 @@
     }
   }
 
-  .feed_media_object, .feed_img {
+  .moment_media_object, .feed_img {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
   }
@@ -49,8 +57,8 @@
   }
 
   .item__interactions {
-    text-align: right;
-    display: inline-block;
+    display: inline-flex;
+    justify-content: space-between;
     width: 100%;
     padding: 3px 5px;
 
@@ -61,6 +69,7 @@
     }
 
     .nested.user {
+      text-align: left;
       .image {
         width: 24px;
         border-radius: 50%;
