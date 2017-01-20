@@ -8,8 +8,9 @@ export const FETCH_CONFIG_DATA                    = 'Fetch config data';
 export const FETCH_CONFIG_DATA_SUCCESS            = 'Config data received';
 export const FETCH_CONFIG_DATA_ERROR              = 'Config data receipt failed';
 export const FETCH_APP_DATA                       = 'Fetch app data';
-export const FETCH_SEARCH_SUGGESTIONS             = 'Fetch search suggestions';
-export const RECEIVE_SEARCH_SUGGESTIONS           = 'Receive search suggestions';
+export const REQUEST_SEARCH_SUGGESTIONS           = 'Fetch search suggestions';
+export const FETCH_SEARCH_SUGGESTIONS_SUCCESS     = 'Fetch search suggestions';
+export const FETCH_SEARCH_SUGGESTIONS_ERROR       = 'Receive search suggestions';
 export const FETCH_USER_FEED                      = 'Fetch user feed';
 
 export const FEED_ACTIONS                         = {
