@@ -41,7 +41,7 @@ const config = {
   },
 
   plugins: [
-      new ExtractTextPlugin(__dirname + '/build/css/main.css'),
+      new ExtractTextPlugin('../css/main.css'),
       new DedupePlugin(),
       new webpack.DefinePlugin({
         'process.env': {

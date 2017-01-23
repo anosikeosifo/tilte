@@ -62,9 +62,9 @@
   ],
   "scripts": {
     "test": "jest",
-    "staging": "NODE_ENV=production webpack --progress --config webpack.config.prod.js && NODE_ENV=production node server.js",
+    "staging": "webpack --progress --config webpack.config.prod.js && node server.js",
     "dev": "webpack-dev-server --progress --colors --watch",
-    "start": "NODE_ENV=production webpack --progress --config webpack.config.prod.js && NODE_ENV=production node server.js"
+    "start": "webpack --progress --config webpack.config.prod.js && node server.js"
   },
   "jest": {
     "transform": {
