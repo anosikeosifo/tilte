@@ -1,4 +1,4 @@
-import '../styles/actor_card.scss';
+require('../styles/actor_card.scss');
 
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';

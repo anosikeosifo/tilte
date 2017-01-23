@@ -1,4 +1,4 @@
-import '../styles/like_trigger.scss';
+require('../styles/like_trigger.scss');
 
 import React, { Component, PropTypes } from 'react';
 import { ICON_FAVORITE } from 'constants';

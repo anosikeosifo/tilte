@@ -6,55 +6,45 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const sassLoaders = [
-    'css-loader',
-    'postcss-loader',
-    `sass-loader?indentedSyntax=sass&includePaths[]=${ path.resolve(__dirname, './assets/styles') }`,
-];
-
 const config = {
   // devtool: 'eval-source-map',
   entry: __dirname + "/app/index",
   output: {
-      path: __dirname + "/build/js",
-      filename: "bundle.js"
+    path: __dirname + "/build/js",
+    filename: "bundle.js"
   },
 
   module: {
-      preLoaders: [
-          { test: /\.js$/, exclude: './node_modules/', loader: 'jshint-loader' }
-      ],
-
-      loaders: [{
-          test: /\.jsx?$/,
-          exclude: './node_modules/',
-          loader: 'babel',
-        },
-        {
-          test: /\.scss$/,
-          exclude: './node_modules/',
-          loader: ExtractTextPlugin.extract("style-loader!css-loader!postcss-loader!sass-loader"),
-        },
-        {
-          test: /\.json$/,
-          exclude: '/node_modules/',
-          loader: "json"
-        },
-        {
-          test: /\.(jpe?g|png|gif|svg)$/i,
-          loaders: [
-            'file?hash=sha512&digest=hex&name=[hash].[ext]',
-            'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-          ]
-        }
-      ]
+    loaders: [{
+        test: /\.jsx?$/,
+        exclude: './node_modules/',
+        loader: 'babel',
+      },
+      {
+        test: /\.scss$/,
+        exclude: './node_modules/',
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader!sass-loader"),
+      },
+      {
+        test: /\.json$/,
+        exclude: '/node_modules/',
+        loader: "json"
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loaders: [
+          'file?hash=sha512&digest=hex&name=[hash].[ext]',
+          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+        ]
+      }
+    ]
   },
 
   plugins: [
-      new ExtractTextPlugin('/css/  main.css'),
+      new ExtractTextPlugin('../css/main.css'),
       new DedupePlugin(),
       new webpack.DefinePlugin({
-        'process.env':{
+        'process.env': {
           'NODE_ENV': JSON.stringify('production')
         }
       }),
@@ -84,10 +74,10 @@ const config = {
   },
 
   devServer: {
-      contentBase: './build',
-      colors: true,
-      historyApiFallback: true,
-      inline: true
+    contentBase: './build',
+    colors: true,
+    historyApiFallback: true,
+    inline: true
   },
 }
 

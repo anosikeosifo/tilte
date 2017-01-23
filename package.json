@@ -34,8 +34,6 @@
     "history": "4.5.1",
     "image-webpack-loader": "^3.1.0",
     "jest-cli": "18.1.0",
-    "jshint": "2.9.4",
-    "jshint-loader": "0.8.3",
     "koa": "2.0.0-alpha.3",
     "koa-convert": "^1.2.0",
     "koa-static": "^2.0.0",
@@ -64,9 +62,9 @@
   ],
   "scripts": {
     "test": "jest",
-    "start": "NODE_ENV=production webpack --progress --config webpack.config.prod.js && NODE_ENV=production node server.js",
+    "staging": "webpack --progress --config webpack.config.prod.js && node server.js",
     "dev": "webpack-dev-server --progress --colors --watch",
-    "build": "webpack --progress --colors --watch"
+    "start": "webpack --progress --config webpack.config.prod.js && node server.js"
   },
   "jest": {
     "transform": {
@@ -79,6 +77,8 @@
   },
   "devDependencies": {
     "enzyme": "^2.7.0",
-    "react-addons-test-utils": "^15.4.2"
+    "react-addons-test-utils": "^15.4.2",
+    "jshint": "2.9.4",
+    "jshint-loader": "0.8.3"
   }
 }
