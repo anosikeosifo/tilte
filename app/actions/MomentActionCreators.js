@@ -1,5 +1,5 @@
 import { MOMENT_ACTIONS } from '../constants';
-import { likeMomentAPI } from '../api/MomentAPI';
+import { likeMomentAPI, fetchMomentAPI } from '../api/MomentAPI';
 import { buildRequestParams } from '../helpers/HttpHelper';
 
 
@@ -26,6 +26,26 @@ export const likeMoment = (momentId, actorId) => {
     triggerlikeMoment();
 
     likeMomentAPI(requestData)
+      .then(payload => dispatch(momentActionSuccess(actionType, payload)))
+      .catch(error => dispatch(momentActionError(actionType, error)));
+  }
+};
+
+const triggerFetchMomentDetails = (dispatch) => ({
+  type: MOMENT_ACTIONS.fetchDetails
+});
+
+export const fetchMomentDetails = (dispatch) => {
+  const actionType = 'fetchDetails';
+
+  const requestData = buildRequestParams({ 
+    moment_id: momentId, user_id: actorId 
+  });
+  
+  return (dispatch) =>  {
+    triggerFetchMomentDetails();
+
+    fetchMomentAPI(requestData)
       .then(payload => dispatch(momentActionSuccess(actionType, payload)))
       .catch(error => dispatch(momentActionError(actionType, error)));
   }

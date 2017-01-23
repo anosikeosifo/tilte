@@ -9,3 +9,11 @@ export const likeMomentAPI = (requestData) => {
   })
   .then(response => response.json());
 };
+
+export const fetchMomentAPI = (requestData) => {
+  return fetch(`${ API_BASE_URL }/posts/${ requestData }`, {
+    method: 'GET',
+    credentials: 'same-origin',
+  })
+  .then(response => response.json());
+};

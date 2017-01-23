@@ -21082,6 +21082,14 @@
 
 	var _HomeContainer2 = _interopRequireDefault(_HomeContainer);
 
+	var _Error = __webpack_require__(371);
+
+	var _Error2 = _interopRequireDefault(_Error);
+
+	var _MomentDetails = __webpack_require__(372);
+
+	var _MomentDetails2 = _interopRequireDefault(_MomentDetails);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21110,8 +21118,10 @@
 	          { history: _reactRouter.browserHistory },
 	          _react2.default.createElement(
 	            _reactRouter.Route,
-	            { component: _TilteAppContainer2.default },
-	            _react2.default.createElement(_reactRouter.Route, { path: '/', component: _HomeContainer2.default })
+	            { path: '/', component: _TilteAppContainer2.default },
+	            _react2.default.createElement(_reactRouter.IndexRoute, { component: _HomeContainer2.default }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '/moment/:id', component: _MomentDetails2.default }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '*', component: _Error2.default })
 	          )
 	        )
 	      );
@@ -28650,27 +28660,35 @@
 
 	var FEED_ACTIONS = exports.FEED_ACTIONS = {
 	                                                      fetchFeedRequest: 'Fetch user feed',
-	                                                      fetchFeedSuccess: 'Fetch user feed succeful',
+	                                                      fetchFeedSuccess: 'Fetch user feed successful',
 	                                                      fetchFeedError: 'Fetch user feed failed'
 	};
 
 	var MOMENT_ACTIONS = exports.MOMENT_ACTIONS = {
 	                                                      likeRequest: 'Moment like action triggered',
 	                                                      likeSuccess: 'Moment like action succeful',
-	                                                      likError: 'Moment like action failed.'
+	                                                      likError: 'Moment like action failed.',
+	                                                      fetchDetailsRequest: 'Moment details requested',
+	                                                      fetchDetailsSuccess: 'Moment details fetch successful',
+	                                                      fetchDetailsError: 'Moment details failed to fetch'
 	};
 
-	var ASSETS_BASE_URL = exports.ASSETS_BASE_URL =  false ? 'https://tilteui.herokuapp.com' : 'http://localhost:8080';
+	var ASSETS_BASE_URL = exports.ASSETS_BASE_URL =  false ? 'https://tilteui.herokuapp.com' : 'http://localhost:9000';
 
 	var USER_AVATAR_PLACEHOLDER = exports.USER_AVATAR_PLACEHOLDER = ASSETS_BASE_URL + '/images/hamburg.jpg';
 
 	var FEED_IMAGE_PLACEHOLDERS = exports.FEED_IMAGE_PLACEHOLDERS = [ASSETS_BASE_URL + '/images/feed1.jpg', ASSETS_BASE_URL + '/images/feed2.jpg', ASSETS_BASE_URL + '/images/feed3.jpg', ASSETS_BASE_URL + '/images/feed4.jpg'];
 
-	var API_BASE_URL = exports.API_BASE_URL =  false ? 'https://tilte-api.herokuapp.com/api' : 'http://localhost:3000/api';
+	var API_BASE_URL = exports.API_BASE_URL =  false ? 'https://tilte-api.herokuapp.com/api' : 'http://localhost:4040/api';
+
 	var ICON_FAVORITE = exports.ICON_FAVORITE = 'M516 792c204-184 338-306 338-430 0-86-64-148-150-148-66 0-130 42-152 100h-80c-22-58-86-100-152-100-86 0-150 62-150 148 0 124 134 246 338 430l4 4zM704 128c132 0 234 102 234 234 0 162-144 292-364 492l-62 56-62-54c-220-200-364-332-364-494 0-132 102-234 234-234 74 0 146 36 192 90 46-54 118-90 192-90z';
+<<<<<<< 24013775a59ed552fa8e5890d760f7bbde3ca3b2
 <<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
 <<<<<<< Updated upstream
 =======
+=======
+
+>>>>>>> T-006:
 	var ICON_SEARCH = exports.ICON_SEARCH = 'M621.668 653.668c-44.476 31.692-98.895 50.332-157.668 50.332-150.221 0-272-121.779-272-272s121.779-272 272-272c150.221 0 272 121.779 272 272 0 58.773-18.641 113.192-50.332 157.668l178.714 178.714c17.606 17.606 17.46 45.778-0.006 63.244l-0.75 0.75c-17.421 17.421-45.781 17.469-63.244 0.006l-178.714-178.714zM464 640c114.875 0 208-93.125 208-208s-93.125-208-208-208c-114.875 0-208 93.125-208 208s93.125 208 208 208v0z';
 >>>>>>> T-006 Implement ActionCard UI
 
@@ -30157,7 +30175,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.likeMoment = undefined;
+	exports.fetchMomentDetails = exports.likeMoment = undefined;
 
 	var _constants = __webpack_require__(273);
 
@@ -30209,6 +30227,30 @@
 	  };
 	};
 
+	var triggerFetchMomentDetails = function triggerFetchMomentDetails(dispatch) {
+	  return {
+	    type: _constants.MOMENT_ACTIONS.fetchDetails
+	  };
+	};
+
+	var fetchMomentDetails = exports.fetchMomentDetails = function fetchMomentDetails(dispatch) {
+	  var actionType = 'fetchDetails';
+
+	  var requestData = (0, _HttpHelper.buildRequestParams)({
+	    moment_id: momentId, user_id: actorId
+	  });
+
+	  return function (dispatch) {
+	    triggerFetchMomentDetails();
+
+	    (0, _MomentAPI.fetchMomentAPI)(requestData).then(function (payload) {
+	      return dispatch(momentActionSuccess(actionType, payload));
+	    }).catch(function (error) {
+	      return dispatch(momentActionError(actionType, error));
+	    });
+	  };
+	};
+
 /***/ },
 /* 291 */
 /***/ function(module, exports, __webpack_require__) {
@@ -30218,7 +30260,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.likeMomentAPI = undefined;
+	exports.fetchMomentAPI = exports.likeMomentAPI = undefined;
 
 	var _constants = __webpack_require__(273);
 
@@ -30226,6 +30268,15 @@
 	  return fetch(_constants.API_BASE_URL + '/posts/favorite', {
 	    method: 'POST',
 	    body: requestData,
+	    credentials: 'same-origin'
+	  }).then(function (response) {
+	    return response.json();
+	  });
+	};
+
+	var fetchMomentAPI = exports.fetchMomentAPI = function fetchMomentAPI(requestData) {
+	  return fetch(_constants.API_BASE_URL + '/posts/' + requestData, {
+	    method: 'GET',
 	    credentials: 'same-origin'
 	  }).then(function (response) {
 	    return response.json();
@@ -30376,6 +30427,8 @@
 
 	var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
 
+	var _reactRouter = __webpack_require__(217);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -30445,72 +30498,78 @@
 	        'moment__wrap': true
 	      }, _defineProperty(_classNames, this.props.id, true), _defineProperty(_classNames, 'hover__active', this.state.cardInteractionActive), _classNames));
 
+	      var momentDetailsURL = '/moment/' + this.props.id;
+
 	      return _react2.default.createElement(
 	        'article',
 	        { className: 'component__moment' },
 	        _react2.default.createElement(
-	          'figure',
-	          { className: classes,
-	            onMouseEnter: this.handleMouseEnter.bind(this),
-	            onMouseLeave: this.handleMouseLeave.bind(this),
-	            onClick: this.handleClick.bind(this) },
+	          _reactRouter.Link,
+	          { to: momentDetailsURL },
 	          _react2.default.createElement(
-	            'section',
-	            { className: 'moment_media_object' },
-	            _react2.default.createElement('img', { src: _constants.FEED_IMAGE_PLACEHOLDERS[0], alt: '', className: 'feed_img' })
-	          ),
-	          _react2.default.createElement(
-	            'figcaption',
-	            null,
+	            'figure',
+	            { className: classes,
+	              onMouseEnter: this.handleMouseEnter.bind(this),
+	              onMouseLeave: this.handleMouseLeave.bind(this),
+	              onClick: this.handleClick.bind(this) },
 	            _react2.default.createElement(
 	              'section',
-	              { className: 'item__main' },
+	              { className: 'moment_media_object' },
+	              _react2.default.createElement('img', { src: _constants.FEED_IMAGE_PLACEHOLDERS[0], alt: '', className: 'feed_img' })
+	            ),
+	            _react2.default.createElement(
+	              'figcaption',
+	              null,
 	              _react2.default.createElement(
-	                'span',
-	                { className: 'item__metadata' },
+	                'section',
+	                { className: 'item__main' },
 	                _react2.default.createElement(
 	                  'span',
-	                  { className: 'timestamp' },
-	                  '3m'
+	                  { className: 'item__metadata' },
+	                  _react2.default.createElement(
+	                    'span',
+	                    { className: 'timestamp' },
+	                    '3m'
+	                  ),
+	                  '\xB7',
+	                  _react2.default.createElement(
+	                    'span',
+	                    { className: 'nested location' },
+	                    _react2.default.createElement(_LocationDetailsTrigger2.default, { metadata: locationInfo })
+	                  )
 	                ),
-	                '\xB7',
 	                _react2.default.createElement(
-	                  'span',
-	                  { className: 'nested location' },
-	                  _react2.default.createElement(_LocationDetailsTrigger2.default, { metadata: locationInfo })
+	                  'div',
+	                  { className: 'item__content' },
+	                  this.props.desription || "hello! welcome to tilte, the place where we share the most fun experiences!"
 	                )
 	              ),
 	              _react2.default.createElement(
-	                'div',
-	                { className: 'item__content' },
-	                this.props.desription || "hello! welcome to tilte, the place where we share the most fun experiences!"
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'section',
-	              { className: 'item__interactions' },
-	              _react2.default.createElement(
-	                'span',
-	                { className: 'nested user' },
-	                _react2.default.createElement(_ActorCard2.default, { actor: this.props.user })
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'action__group' },
+	                'section',
+	                { className: 'item__interactions' },
 	                _react2.default.createElement(
 	                  'span',
-	                  { className: 'nested like' },
-	                  _react2.default.createElement(_LikeTrigger2.default, { momentId: this.props.id, isEnabled: !this.props.is_favorite, uiState: this.props.is_favorite ? "active" : "default", likeAction: this.props.actions.like })
+	                  { className: 'nested user' },
+	                  _react2.default.createElement(_ActorCard2.default, { actor: this.props.user })
 	                ),
 	                _react2.default.createElement(
-	                  'span',
-	                  { className: 'nested comment' },
-	                  _react2.default.createElement(_CommentTrigger2.default, null)
-	                ),
-	                _react2.default.createElement(
-	                  'span',
-	                  { className: 'nested  more' },
-	                  _react2.default.createElement(_MoreInteractionsTrigger2.default, null)
+	                  'div',
+	                  { className: 'action__group' },
+	                  _react2.default.createElement(
+	                    'span',
+	                    { className: 'nested like' },
+	                    _react2.default.createElement(_LikeTrigger2.default, { momentId: this.props.id, isEnabled: !this.props.is_favorite, uiState: this.props.is_favorite ? "active" : "default", likeAction: this.props.actions.like })
+	                  ),
+	                  _react2.default.createElement(
+	                    'span',
+	                    { className: 'nested comment' },
+	                    _react2.default.createElement(_CommentTrigger2.default, null)
+	                  ),
+	                  _react2.default.createElement(
+	                    'span',
+	                    { className: 'nested  more' },
+	                    _react2.default.createElement(_MoreInteractionsTrigger2.default, null)
+	                  )
 	                )
 	              )
 	            )
@@ -42637,6 +42696,7 @@
 
 	module.exports = PooledClass;
 
+<<<<<<< 24013775a59ed552fa8e5890d760f7bbde3ca3b2
 <<<<<<< Updated upstream
 =======
 /***/ },
@@ -42645,6 +42705,45 @@
 /* 373 */,
 /* 374 */,
 /* 375 */
+=======
+/***/ },
+/* 371 */
+>>>>>>> T-006:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+<<<<<<< 24013775a59ed552fa8e5890d760f7bbde3ca3b2
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _reactRedux = __webpack_require__(179);
+=======
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(32);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Error404 = function Error404(props) {
+	  return _react2.default.createElement(
+	    'h2',
+	    null,
+	    'This page doesnt exist'
+	  );
+	};
+
+	exports.default = Error404;
+
+/***/ },
+/* 372 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42654,14 +42753,21 @@
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _reactRedux = __webpack_require__(179);
+>>>>>>> T-006:
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
+<<<<<<< 24013775a59ed552fa8e5890d760f7bbde3ca3b2
 	var _ConfigActionCreators = __webpack_require__(281);
+=======
+	var _reactDom = __webpack_require__(32);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _MomentActionCreators = __webpack_require__(290);
+>>>>>>> T-006:
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42671,6 +42777,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+<<<<<<< 24013775a59ed552fa8e5890d760f7bbde3ca3b2
 	var mapStateToProps = function mapStateToProps(state) {
 	  return {
 	    appData: state.appData
@@ -42698,10 +42805,29 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.props.getAppData();
+=======
+	__webpack_require__(373);
+
+	var MomentDetils = function (_Component) {
+	  _inherits(MomentDetils, _Component);
+
+	  function MomentDetils() {
+	    _classCallCheck(this, MomentDetils);
+
+	    return _possibleConstructorReturn(this, (MomentDetils.__proto__ || Object.getPrototypeOf(MomentDetils)).apply(this, arguments));
+	  }
+
+	  _createClass(MomentDetils, [{
+	    key: 'willComponentMount',
+	    value: function willComponentMount() {
+	      // fetchMomentDetails()
+	      console.log('inside moment details: ', this.props);
+>>>>>>> T-006:
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+<<<<<<< 24013775a59ed552fa8e5890d760f7bbde3ca3b2
 	      var appData = this.props.children && _react2.default.cloneElement(this.props.children, {
 	        appData: this.props.appData
 	      });
@@ -42723,5 +42849,62 @@
 
 >>>>>>> Stashed changes
 >>>>>>> T-007
+=======
+	      return _react2.default.createElement(
+	        'section',
+	        { className: 'component__moment__detail' },
+	        _react2.default.createElement('div', { className: 'moment__content' })
+	      );
+	    }
+	  }]);
+
+	  return MomentDetils;
+	}(_react.Component);
+
+	MomentDetils.propTypes = {};
+
+	exports.default = MomentDetils;
+
+/***/ },
+/* 373 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(374);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(300)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./moment_details.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./moment_details.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 374 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(299)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".component__moment__detail {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  background-color: #fff; }\n", ""]);
+
+	// exports
+
+
+>>>>>>> T-006:
 /***/ }
 /******/ ])));

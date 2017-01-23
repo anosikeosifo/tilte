@@ -64,7 +64,7 @@
     "test": "jest",
     "staging": "webpack --progress --config webpack.config.prod.js && node server.js",
     "dev": "webpack-dev-server --progress --colors --watch",
-    "start": "npm run dev && webpack --watch"
+    "start": "npm run dev | webpack --watch"
   },
   "jest": {
     "transform": {
