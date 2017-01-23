@@ -64,7 +64,8 @@ const config = {
     contentBase: './static',
     colors: true,
     historyApiFallback: true,
-    inline: true
+    inline: true,
+    port: '9000'
   },
 }
 
