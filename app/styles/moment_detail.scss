@@ -1,0 +1,41 @@
+.component__moment__detail {
+  width: 1200px;
+  margin: 1em auto;
+
+  .moment__detail__wrap {
+    width: 45%;
+    border: 1px solid #dcdede;
+    
+    .moment_details {
+      margin: 0;
+      width: 100%;
+
+      .feed_img {
+        width: 100%;
+      }
+
+      .item__main {
+        padding: 10px;
+      }
+
+      .item__metadata {
+        margin-bottom: 3px;
+        font-size: 12px;
+        display: inline-block;
+        color: #565656;
+
+        .timestamp, .location {
+          display: inline-block;
+        }
+
+        .timestamp {
+          margin-right: 3px;
+        }
+
+        .location {
+          margin-left: 3px;
+        }
+      }
+    }
+  }
+}

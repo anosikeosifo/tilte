@@ -1,4 +1,4 @@
-require('../styles/location_details_trigger.scss');
+// require('../styles/location_details_trigger.scss');
 
 
 import React, { Component, PropTypes } from 'react';

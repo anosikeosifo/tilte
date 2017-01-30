@@ -67,18 +67,18 @@
     "start": "npm run dev | webpack --watch"
   },
   "jest": {
-    "transform": {
-      ".*": "<rootDir>/node_modules/babel-jest"
-    },
+    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+
     "unmockedModulePathPatterns": [
-      "node_modules/react/",
-      "node_modules/enzyme/"
+      "react",
+      "enzyme",
+      "jasmine-enzyme"
     ]
   },
   "devDependencies": {
-    "enzyme": "^2.7.0",
-    "react-addons-test-utils": "^15.4.2",
+    "enzyme": "^2.7.1",
     "jshint": "2.9.4",
-    "jshint-loader": "0.8.3"
+    "jshint-loader": "0.8.3",
+    "react-addons-test-utils": "^15.4.2"
   }
 }

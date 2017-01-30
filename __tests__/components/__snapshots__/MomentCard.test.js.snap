@@ -1,0 +1,104 @@
+exports[`MomentCard Component should matched expected initial state 1`] = `
+<article
+  className="component__moment">
+  <a
+    onClick={[Function]}
+    style={Object {}}>
+    <figure
+      className="10 moment__wrap"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}>
+      <section
+        className="moment_media_object">
+        <img
+          alt=""
+          className="feed_img"
+          src="http://localhost:9000/images/feed1.jpg" />
+      </section>
+      <figcaption>
+        <section
+          className="item__main">
+          <span
+            className="item__metadata">
+            <span
+              className="timestamp">
+              3m
+            </span>
+            ·
+            <span
+              className="nested location">
+              <section
+                className="component__location_details_trigger">
+                Lagos, Nigeria
+              </section>
+            </span>
+          </span>
+          <div
+            className="item__content">
+            hello! welcome to tilte, the place where we share the most fun experiences!
+          </div>
+        </section>
+        <section
+          className="item__interactions">
+          <span
+            className="nested user">
+            <section
+              className="component__actor__card">
+              <span
+                className="user__image__wrap">
+                <img
+                  className="image"
+                  src="http://localhost:9000/images/hamburg.jpg" />
+              </span>
+              <span
+                className="user__name__wrap" />
+            </section>
+          </span>
+          <div
+            className="action__group">
+            <span
+              className="nested like">
+              <section
+                className="component__like__triger enabled"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}>
+                <svg
+                  className="icon"
+                  height="24px"
+                  style={
+                    Object {
+                      "display": "inline-block",
+                      "verticalAlign": "middle",
+                    }
+                  }
+                  viewBox="0 0 1024 1024"
+                  width="24px">
+                  <path
+                    d={undefined}
+                    style={
+                      Object {
+                        "fill": "#c1c1c1",
+                      }
+                    } />
+                </svg>
+              </section>
+            </span>
+            <span
+              className="nested comment">
+              <section
+                className="component__comment__triger" />
+            </span>
+            <span
+              className="nested  more">
+              <section
+                className="component__more__interactions" />
+            </span>
+          </div>
+        </section>
+      </figcaption>
+    </figure>
+  </a>
+</article>
+`;

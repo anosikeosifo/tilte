@@ -1,6 +1,6 @@
 import { MOMENT_ACTIONS } from '../constants';
 import { likeMomentAPI, fetchMomentAPI } from '../api/MomentAPI';
-import { buildRequestParams } from '../helpers/HttpHelper';
+import { buildPostParams, buildUrlQueryParams } from '../helpers/HttpHelper';
 
 
 const momentActionSuccess = (actionType, payload) => ({
@@ -18,11 +18,11 @@ const triggerlikeMoment = () => ({
 export const likeMoment = (momentId, actorId) => {
   const actionType = 'like';
 
-  const requestData = buildRequestParams({ 
+  const requestData = buildPostParams({ 
     moment_id: momentId, user_id: actorId 
   });
   
-  return (dispatch) =>  {
+  return (dispatch) => {
     triggerlikeMoment();
 
     likeMomentAPI(requestData)
@@ -35,18 +35,18 @@ const triggerFetchMomentDetails = (dispatch) => ({
   type: MOMENT_ACTIONS.fetchDetails
 });
 
-export const fetchMomentDetails = (dispatch) => {
+export const fetchMomentDetails = (momentId, actorId) => {
   const actionType = 'fetchDetails';
 
-  const requestData = buildRequestParams({ 
-    moment_id: momentId, user_id: actorId 
+  const requestData = buildUrlQueryParams({ 
+    id: momentId, user_id: actorId 
   });
   
-  return (dispatch) =>  {
+  return (dispatch) => {
     triggerFetchMomentDetails();
 
-    fetchMomentAPI(requestData)
+    fetchMomentAPI(momentId)
       .then(payload => dispatch(momentActionSuccess(actionType, payload)))
-      .catch(error => dispatch(momentActionError(actionType, error)));
+      // .catch(error => dispatch(momentActionError(actionType, error)));
   }
 };

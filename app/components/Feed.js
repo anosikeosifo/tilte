@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import FeedItem from './Moment';
+import FeedItem from './MomentCard';
 import Masonry from 'react-masonry-component';
 
 let masonryOptions = {

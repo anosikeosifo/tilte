@@ -9,7 +9,7 @@ import { likeMoment } from '../../app/actions/MomentActionCreators';
 describe('LikeTrigger Component', () => {
   it('should match the snapshot for initial state', () => {
     const tree = renderer.create(
-      <LikeTrigger/>
+      <LikeTrigger isEnabled={ false } uiState='default'/>
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -17,7 +17,7 @@ describe('LikeTrigger Component', () => {
 
   it('should contain an icon ', () => {
     const tree = renderer.create(
-      <LikeTrigger/>
+      <LikeTrigger uiState='default'/>
     ).toJSON();
 
     const icon = tree.children.filter(child => child.type === 'svg')[0];
@@ -27,16 +27,27 @@ describe('LikeTrigger Component', () => {
   describe('When enabled', () => {
     const component = renderer.create(
       <LikeTrigger isEnabled={ true } uiState='default' likeAction={ likeMoment }/>
-    ).toJSON();
+    );
 
-    it('Should change icon color on hover', () => {
-      component.props.onMouseEnter();
-      expect(component).toMatchSnapshot();
+    let tree = component.toJSON();
+
+    it('Should change icon color on hover active', () => {
+      tree.props.onMouseEnter();
+      const treeDuringHover = component.toJSON();
+      expect(treeDuringHover).toMatchSnapshot();
+    });
+
+     it('Should undo icon color change after hover', () => {
+      tree.props.onMouseEnter();
+      tree.props.onMouseLeave();
+      const treeAfterHover = component.toJSON();
+      expect(treeAfterHover).toMatchSnapshot();
     });
 
     it('Should change icon color on click', () => {
-      component.props.onClick();
-      expect(component).toMatchSnapshot();
+      tree.props.onClick();
+      const treeAfterClick = component.toJSON();
+      expect(treeAfterClick).toMatchSnapshot();
     });
   });
 

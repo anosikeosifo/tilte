@@ -7,13 +7,19 @@ import { Link } from 'react-router';
 
 
 class ActorCard extends Component {
+  handleClick() {
+
+  }
+
   render() {
     return(
-      <section className='component__actor__card'>
+      <section className='component__actor__card' onClick={ this.handleClick.bind(this)}>
         <span className='user__image__wrap'>
           <img className='image' src={ this.props.actor.avatarUrl || USER_AVATAR_PLACEHOLDER }/>
         </span>
-        <span className='user__name__wrap'>{ this.props.actor.fullname }</span>
+        if(this.props.showDetails){
+          <span className='user__name__wrap'>{ this.props.actor.fullname }</span>
+        }
       </section>
     );
   }
@@ -24,6 +30,11 @@ ActorCard.propTypes = {
   actionTimeStamp: PropTypes.string,
   actionLocation: PropTypes.string,
   actionType: PropTypes.string,
+  showDetails: PropTypes.bool,
+}
+
+ActorCard.defaultProps = {
+  showDetails: true
 }
 
 export default ActorCard;

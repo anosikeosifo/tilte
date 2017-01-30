@@ -2,6 +2,7 @@ exports[`LikeTrigger Component When disabled Should not have UI interactions 1`]
 <section
   className="component__like__triger">
   <svg
+    className="icon"
     height="24px"
     style={
       Object {
@@ -15,7 +16,7 @@ exports[`LikeTrigger Component When disabled Should not have UI interactions 1`]
       d={undefined}
       style={
         Object {
-          "fill": undefined,
+          "fill": "#ff5a5f",
         }
       } />
   </svg>
@@ -24,11 +25,12 @@ exports[`LikeTrigger Component When disabled Should not have UI interactions 1`]
 
 exports[`LikeTrigger Component When enabled Should change icon color on click 1`] = `
 <section
-  className="component__like__triger"
+  className="component__like__triger enabled"
   onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}>
   <svg
+    className="icon"
     height="24px"
     style={
       Object {
@@ -42,20 +44,21 @@ exports[`LikeTrigger Component When enabled Should change icon color on click 1`
       d={undefined}
       style={
         Object {
-          "fill": undefined,
+          "fill": "#c1c1c1",
         }
       } />
   </svg>
 </section>
 `;
 
-exports[`LikeTrigger Component When enabled Should change icon color on hover 1`] = `
+exports[`LikeTrigger Component When enabled Should change icon color on hover active 1`] = `
 <section
-  className="component__like__triger"
+  className="component__like__triger enabled"
   onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}>
   <svg
+    className="icon"
     height="24px"
     style={
       Object {
@@ -69,7 +72,35 @@ exports[`LikeTrigger Component When enabled Should change icon color on hover 1`
       d={undefined}
       style={
         Object {
-          "fill": undefined,
+          "fill": "#ff5a5f",
+        }
+      } />
+  </svg>
+</section>
+`;
+
+exports[`LikeTrigger Component When enabled Should undo icon color change after hover 1`] = `
+<section
+  className="component__like__triger enabled"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}>
+  <svg
+    className="icon"
+    height="24px"
+    style={
+      Object {
+        "display": "inline-block",
+        "verticalAlign": "middle",
+      }
+    }
+    viewBox="0 0 1024 1024"
+    width="24px">
+    <path
+      d={undefined}
+      style={
+        Object {
+          "fill": "#c1c1c1",
         }
       } />
   </svg>
@@ -80,6 +111,7 @@ exports[`LikeTrigger Component should match the snapshot for initial state 1`] =
 <section
   className="component__like__triger">
   <svg
+    className="icon"
     height="24px"
     style={
       Object {
@@ -93,7 +125,7 @@ exports[`LikeTrigger Component should match the snapshot for initial state 1`] =
       d={undefined}
       style={
         Object {
-          "fill": undefined,
+          "fill": "#c1c1c1",
         }
       } />
   </svg>

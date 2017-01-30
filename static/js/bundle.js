@@ -81,7 +81,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(366);
+	__webpack_require__(365);
 
 	var run = function run() {
 	  (0, _reactDom.render)(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
@@ -478,15 +478,7 @@
 
 /***/ },
 /* 5 */
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< Updated upstream
-[371, 6],
-=======
-[370, 6],
->>>>>>> Stashed changes
-=======
-[370, 6],
->>>>>>> T-006 Implement ActionCard UI
+[375, 6],
 /* 6 */
 /***/ function(module, exports) {
 
@@ -6372,15 +6364,7 @@
 
 /***/ },
 /* 50 */
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< Updated upstream
-[371, 35],
-=======
-[370, 35],
->>>>>>> Stashed changes
-=======
-[370, 35],
->>>>>>> T-006 Implement ActionCard UI
+[375, 35],
 /* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -21070,25 +21054,21 @@
 
 	var _TilteStore2 = _interopRequireDefault(_TilteStore);
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-	var _TilteAppContainer = __webpack_require__(375);
-=======
-	var _TilteAppContainer = __webpack_require__(280);
->>>>>>> T-006 Implement ActionCard UI
+	var _TilteAppContainer = __webpack_require__(281);
 
 	var _TilteAppContainer2 = _interopRequireDefault(_TilteAppContainer);
 
-	var _HomeContainer = __webpack_require__(283);
+	var _HomeContainer = __webpack_require__(284);
 
 	var _HomeContainer2 = _interopRequireDefault(_HomeContainer);
 
-	var _Error = __webpack_require__(371);
+	var _Error = __webpack_require__(369);
 
 	var _Error2 = _interopRequireDefault(_Error);
 
-	var _MomentDetails = __webpack_require__(372);
+	var _FeedItemContainer = __webpack_require__(370);
 
-	var _MomentDetails2 = _interopRequireDefault(_MomentDetails);
+	var _FeedItemContainer2 = _interopRequireDefault(_FeedItemContainer);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21120,7 +21100,7 @@
 	            _reactRouter.Route,
 	            { path: '/', component: _TilteAppContainer2.default },
 	            _react2.default.createElement(_reactRouter.IndexRoute, { component: _HomeContainer2.default }),
-	            _react2.default.createElement(_reactRouter.Route, { path: '/moment/:id', component: _MomentDetails2.default }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '/feed/:id', component: _FeedItemContainer2.default }),
 	            _react2.default.createElement(_reactRouter.Route, { path: '*', component: _Error2.default })
 	          )
 	        )
@@ -21829,10 +21809,6 @@
 	};
 
 	module.exports = invariant;
-<<<<<<< HEAD
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
-=======
->>>>>>> T-007
 
 /***/ },
 /* 187 */
@@ -28514,7 +28490,7 @@
 
 	var _RootReducer2 = _interopRequireDefault(_RootReducer);
 
-	var _reduxThunk = __webpack_require__(279);
+	var _reduxThunk = __webpack_require__(280);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
@@ -28538,25 +28514,20 @@
 
 	var _FeedReducer = __webpack_require__(272);
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var _UserReducer = __webpack_require__(276);
-=======
 	var _UserReducer = __webpack_require__(275);
->>>>>>> T-007
-=======
-	var _UserReducer = __webpack_require__(275);
->>>>>>> T-006 Implement ActionCard UI
 
 	var _ConfigReducer = __webpack_require__(277);
 
 	var _SearchReducer = __webpack_require__(278);
 
+	var _MomentReducer = __webpack_require__(279);
+
 	var rootReducer = (0, _redux.combineReducers)({
 	  userFeed: _FeedReducer.feedData,
 	  users: _UserReducer.userData,
 	  config: _ConfigReducer.configData,
-	  searchSuggestions: _SearchReducer.searchData
+	  searchSuggestions: _SearchReducer.searchData,
+	  moment: _MomentReducer.momentData
 	});
 
 	exports.default = rootReducer;
@@ -28574,15 +28545,7 @@
 
 	var _constants = __webpack_require__(273);
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var _reactAddonsUpdate = __webpack_require__(274);
-=======
-	var _reactAddonsUpdate = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-addons-update\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
->>>>>>> T-007
-=======
 	var _immutabilityHelper = __webpack_require__(274);
->>>>>>> T-006 Implement ActionCard UI
 
 	var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
 
@@ -28608,7 +28571,6 @@
 
 	    case _constants.MOMENT_ACTIONS.likeSuccess:
 	      return likeMoment(action);
-
 	    default:
 	      return currentState;
 	  }
@@ -28631,13 +28593,11 @@
 	  return (0, _immutabilityHelper2.default)(currentState, _defineProperty({}, momentIndex, { $set: action.payload.data }));
 	};
 
+	var fetchMomentDetails = function fetchMomentDetails(action) {};
+
 /***/ },
 /* 273 */
-<<<<<<< HEAD
-/***/ function(module, exports) {
-=======
 /***/ function(module, exports, __webpack_require__) {
->>>>>>> T-007
 
 	'use strict';
 
@@ -28673,24 +28633,17 @@
 	                                                      fetchDetailsError: 'Moment details failed to fetch'
 	};
 
-	var ASSETS_BASE_URL = exports.ASSETS_BASE_URL =  false ? 'https://tilteui.herokuapp.com' : 'http://localhost:9000';
+	var ASSETS_BASE_URL = exports.ASSETS_BASE_URL =  false ? 'https://tilteui.herokuapp.com' : 'http://localhost:1600';
 
 	var USER_AVATAR_PLACEHOLDER = exports.USER_AVATAR_PLACEHOLDER = ASSETS_BASE_URL + '/images/hamburg.jpg';
 
 	var FEED_IMAGE_PLACEHOLDERS = exports.FEED_IMAGE_PLACEHOLDERS = [ASSETS_BASE_URL + '/images/feed1.jpg', ASSETS_BASE_URL + '/images/feed2.jpg', ASSETS_BASE_URL + '/images/feed3.jpg', ASSETS_BASE_URL + '/images/feed4.jpg'];
 
-	var API_BASE_URL = exports.API_BASE_URL =  false ? 'https://tilte-api.herokuapp.com/api' : 'http://localhost:4040/api';
+	var API_BASE_URL = exports.API_BASE_URL =  false ? 'https://tilte-api.herokuapp.com/api' : 'http://localhost:1601/api';
 
 	var ICON_FAVORITE = exports.ICON_FAVORITE = 'M516 792c204-184 338-306 338-430 0-86-64-148-150-148-66 0-130 42-152 100h-80c-22-58-86-100-152-100-86 0-150 62-150 148 0 124 134 246 338 430l4 4zM704 128c132 0 234 102 234 234 0 162-144 292-364 492l-62 56-62-54c-220-200-364-332-364-494 0-132 102-234 234-234 74 0 146 36 192 90 46-54 118-90 192-90z';
-<<<<<<< 24013775a59ed552fa8e5890d760f7bbde3ca3b2
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< Updated upstream
-=======
-=======
 
->>>>>>> T-006:
 	var ICON_SEARCH = exports.ICON_SEARCH = 'M621.668 653.668c-44.476 31.692-98.895 50.332-157.668 50.332-150.221 0-272-121.779-272-272s121.779-272 272-272c150.221 0 272 121.779 272 272 0 58.773-18.641 113.192-50.332 157.668l178.714 178.714c17.606 17.606 17.46 45.778-0.006 63.244l-0.75 0.75c-17.421 17.421-45.781 17.469-63.244 0.006l-178.714-178.714zM464 640c114.875 0 208-93.125 208-208s-93.125-208-208-208c-114.875 0-208 93.125-208 208s93.125 208 208 208v0z';
->>>>>>> T-006 Implement ActionCard UI
 
 /***/ },
 /* 274 */
@@ -28698,34 +28651,7 @@
 
 	'use strict';
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-	module.exports = __webpack_require__(275);
-<<<<<<< HEAD
-
-/***/ },
-=======
-=======
->>>>>>> Stashed changes
-
-/***/ },
-/* 274 */,
->>>>>>> T-007
-/* 275 */
-/***/ function(module, exports, __webpack_require__) {
-
-<<<<<<< Updated upstream
-	/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 */
-=======
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
->>>>>>> T-006 Implement ActionCard UI
 
 	var invariant = __webpack_require__(186);
 
@@ -28866,11 +28792,6 @@
 /* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> Stashed changes
->>>>>>> T-007
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -28880,27 +28801,11 @@
 
 	var _constants = __webpack_require__(273);
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var _SessionStorage = __webpack_require__(277);
-
-	var _SessionStorage2 = _interopRequireDefault(_SessionStorage);
-
-	var _reactAddonsUpdate = __webpack_require__(274);
-=======
-	var _SessionStorage = __webpack_require__(276);
-
-	var _SessionStorage2 = _interopRequireDefault(_SessionStorage);
-
-	var _reactAddonsUpdate = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-addons-update\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
->>>>>>> T-007
-=======
 	var _SessionStorage = __webpack_require__(276);
 
 	var _SessionStorage2 = _interopRequireDefault(_SessionStorage);
 
 	var _immutabilityHelper = __webpack_require__(274);
->>>>>>> T-006 Implement ActionCard UI
 
 	var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
 
@@ -28922,15 +28827,7 @@
 	};
 
 /***/ },
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-/* 277 */
-=======
 /* 276 */
->>>>>>> T-007
-=======
-/* 276 */
->>>>>>> T-006 Implement ActionCard UI
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28961,15 +28858,7 @@
 	exports.default = SessionStorage;
 
 /***/ },
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-/* 278 */
-=======
 /* 277 */
->>>>>>> T-007
-=======
-/* 277 */
->>>>>>> T-006 Implement ActionCard UI
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28981,15 +28870,7 @@
 
 	var _constants = __webpack_require__(273);
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var _reactAddonsUpdate = __webpack_require__(274);
-=======
-	var _reactAddonsUpdate = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-addons-update\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
->>>>>>> T-007
-=======
 	var _immutabilityHelper = __webpack_require__(274);
->>>>>>> T-006 Implement ActionCard UI
 
 	var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
 
@@ -29074,15 +28955,7 @@
 
 	var _constants = __webpack_require__(273);
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var _reactAddonsUpdate = __webpack_require__(274);
-=======
-	var _reactAddonsUpdate = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-addons-update\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
->>>>>>> T-007
-=======
 	var _immutabilityHelper = __webpack_require__(274);
->>>>>>> T-006 Implement ActionCard UI
 
 	var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
 
@@ -29105,6 +28978,42 @@
 
 /***/ },
 /* 279 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.momentData = undefined;
+
+	var _constants = __webpack_require__(273);
+
+	var _immutabilityHelper = __webpack_require__(274);
+
+	var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var momentData = exports.momentData = function momentData() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case _constants.MOMENT_ACTIONS.fetchDetailsSuccess:
+	      return fetchMomentDetails(action);
+
+	    default:
+	      return state;
+	  }
+	};
+
+	var fetchMomentDetails = function fetchMomentDetails(action) {
+	  return action.payload.data;
+	};
+
+/***/ },
+/* 280 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -29132,12 +29041,7 @@
 	exports['default'] = thunk;
 
 /***/ },
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-/* 280 */,
 /* 281 */
-=======
-/* 280 */
->>>>>>> T-006 Implement ActionCard UI
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29145,8 +29049,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-=======
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -29156,7 +29058,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _ConfigActionCreators = __webpack_require__(281);
+	var _ConfigActionCreators = __webpack_require__(282);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29217,7 +29119,7 @@
 	exports.default = AppContainer;
 
 /***/ },
-/* 281 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29225,12 +29127,11 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
->>>>>>> T-006 Implement ActionCard UI
 	exports.fetchConfigData = exports.updateCategoryPreference = undefined;
 
 	var _constants = __webpack_require__(273);
 
-	var _ConfigAPI = __webpack_require__(282);
+	var _ConfigAPI = __webpack_require__(283);
 
 	var updateCategoryPreference = exports.updateCategoryPreference = function updateCategoryPreference() {
 	  return {
@@ -29265,7 +29166,7 @@
 	};
 
 /***/ },
-/* 282 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29284,7 +29185,7 @@
 	};
 
 /***/ },
-/* 283 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29301,31 +29202,31 @@
 
 	var _reactRedux = __webpack_require__(179);
 
-	var _ConfigActionCreators = __webpack_require__(281);
+	var _ConfigActionCreators = __webpack_require__(282);
 
-	var _SlideActionCreators = __webpack_require__(284);
+	var _SlideActionCreators = __webpack_require__(285);
 
-	var _FeedContainer = __webpack_require__(285);
+	var _FeedContainer = __webpack_require__(286);
 
 	var _FeedContainer2 = _interopRequireDefault(_FeedContainer);
 
-	var _Header = __webpack_require__(337);
+	var _Header = __webpack_require__(336);
 
 	var _Header2 = _interopRequireDefault(_Header);
 
-	var _Carousel = __webpack_require__(342);
+	var _Carousel = __webpack_require__(341);
 
 	var _Carousel2 = _interopRequireDefault(_Carousel);
 
-	var _BannerSearch = __webpack_require__(349);
+	var _BannerSearch = __webpack_require__(348);
 
 	var _BannerSearch2 = _interopRequireDefault(_BannerSearch);
 
-	var _Feed = __webpack_require__(292);
+	var _Feed = __webpack_require__(293);
 
 	var _Feed2 = _interopRequireDefault(_Feed);
 
-	var _Footer = __webpack_require__(365);
+	var _Footer = __webpack_require__(364);
 
 	var _Footer2 = _interopRequireDefault(_Footer);
 
@@ -29337,8 +29238,8 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(366);
-	__webpack_require__(368);
+	__webpack_require__(365);
+	__webpack_require__(367);
 
 	var mapStateToProps = function mapStateToProps(state) {
 	  return {
@@ -29414,7 +29315,7 @@
 	exports.default = ConnectedHomeContainer;
 
 /***/ },
-/* 284 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29439,7 +29340,7 @@
 	};
 
 /***/ },
-/* 285 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29456,11 +29357,11 @@
 
 	var _reactRedux = __webpack_require__(179);
 
-	var _FeedActionCreators = __webpack_require__(286);
+	var _FeedActionCreators = __webpack_require__(287);
 
-	var _MomentActionCreators = __webpack_require__(290);
+	var _MomentActionCreators = __webpack_require__(291);
 
-	var _Feed = __webpack_require__(292);
+	var _Feed = __webpack_require__(293);
 
 	var _Feed2 = _interopRequireDefault(_Feed);
 
@@ -29579,7 +29480,7 @@
 	exports.default = ConnectedFeedContainer;
 
 /***/ },
-/* 286 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29591,17 +29492,9 @@
 
 	var _constants = __webpack_require__(273);
 
-	var _FeedAPI = __webpack_require__(287);
+	var _FeedAPI = __webpack_require__(288);
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
 	var _HttpHelper = __webpack_require__(290);
-=======
-	var _HttpHelper = __webpack_require__(289);
->>>>>>> T-007
-=======
-	var _HttpHelper = __webpack_require__(289);
->>>>>>> T-006 Implement ActionCard UI
 
 	var feedActionSuccess = function feedActionSuccess(actionType, payload) {
 	  return {
@@ -29627,7 +29520,7 @@
 
 	  var actionType = 'fetchFeed';
 
-	  var requestData = (0, _HttpHelper.buildRequestParams)({
+	  var requestData = (0, _HttpHelper.buildPostParams)({
 	    user_id: actorId, location: actorLocation, page: pageNumber
 	  });
 
@@ -29643,7 +29536,7 @@
 	};
 
 /***/ },
-/* 287 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29655,7 +29548,7 @@
 
 	var _constants = __webpack_require__(273);
 
-	__webpack_require__(288);
+	__webpack_require__(289);
 
 	var fetchUserFeed = exports.fetchUserFeed = function fetchUserFeed(requestData) {
 	  return fetch(_constants.API_BASE_URL + '/users/feed', {
@@ -29674,7 +29567,7 @@
 	};
 
 /***/ },
-/* 288 */
+/* 289 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30134,8 +30027,7 @@
 	})(typeof self !== 'undefined' ? self : undefined);
 
 /***/ },
-/* 289 */
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
+/* 290 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30143,31 +30035,22 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var buildRequestParams = exports.buildRequestParams = function buildRequestParams(params) {
+	var buildPostParams = exports.buildPostParams = function buildPostParams(paramsObject) {
 	  var form_data = new FormData();
-	  form_data.append('data', JSON.stringify(params));
+	  form_data.append('data', JSON.stringify(paramsObject));
 	  return form_data;
 	};
 
-/***/ },
-/* 290 */
-=======
->>>>>>> T-006 Implement ActionCard UI
-/***/ function(module, exports) {
+	var buildUrlQueryParams = exports.buildUrlQueryParams = function buildUrlQueryParams(paramsObject) {
+	  var params = Object.keys(paramsObject).map(function (key) {
+	    return key + '=' + encodeURIComponent(paramsObject[key]);
+	  }).join('&');
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var buildRequestParams = exports.buildRequestParams = function buildRequestParams(params) {
-	  var form_data = new FormData();
-	  form_data.append('data', JSON.stringify(params));
-	  return form_data;
+	  return '?' + params;
 	};
 
 /***/ },
-/* 290 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30179,17 +30062,9 @@
 
 	var _constants = __webpack_require__(273);
 
-	var _MomentAPI = __webpack_require__(291);
+	var _MomentAPI = __webpack_require__(292);
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
 	var _HttpHelper = __webpack_require__(290);
-=======
-	var _HttpHelper = __webpack_require__(289);
->>>>>>> T-007
-=======
-	var _HttpHelper = __webpack_require__(289);
->>>>>>> T-006 Implement ActionCard UI
 
 	var momentActionSuccess = function momentActionSuccess(actionType, payload) {
 	  return {
@@ -30212,7 +30087,7 @@
 	var likeMoment = exports.likeMoment = function likeMoment(momentId, actorId) {
 	  var actionType = 'like';
 
-	  var requestData = (0, _HttpHelper.buildRequestParams)({
+	  var requestData = (0, _HttpHelper.buildPostParams)({
 	    moment_id: momentId, user_id: actorId
 	  });
 
@@ -30233,26 +30108,25 @@
 	  };
 	};
 
-	var fetchMomentDetails = exports.fetchMomentDetails = function fetchMomentDetails(dispatch) {
+	var fetchMomentDetails = exports.fetchMomentDetails = function fetchMomentDetails(momentId, actorId) {
 	  var actionType = 'fetchDetails';
 
-	  var requestData = (0, _HttpHelper.buildRequestParams)({
-	    moment_id: momentId, user_id: actorId
+	  var requestData = (0, _HttpHelper.buildUrlQueryParams)({
+	    id: momentId, user_id: actorId
 	  });
 
 	  return function (dispatch) {
 	    triggerFetchMomentDetails();
 
-	    (0, _MomentAPI.fetchMomentAPI)(requestData).then(function (payload) {
+	    (0, _MomentAPI.fetchMomentAPI)(momentId).then(function (payload) {
 	      return dispatch(momentActionSuccess(actionType, payload));
-	    }).catch(function (error) {
-	      return dispatch(momentActionError(actionType, error));
 	    });
+	    // .catch(error => dispatch(momentActionError(actionType, error)));
 	  };
 	};
 
 /***/ },
-/* 291 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30284,7 +30158,7 @@
 	};
 
 /***/ },
-/* 292 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30299,11 +30173,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Moment = __webpack_require__(293);
+	var _MomentCard = __webpack_require__(294);
 
-	var _Moment2 = _interopRequireDefault(_Moment);
+	var _MomentCard2 = _interopRequireDefault(_MomentCard);
 
-	var _reactMasonryComponent = __webpack_require__(312);
+	var _reactMasonryComponent = __webpack_require__(311);
 
 	var _reactMasonryComponent2 = _interopRequireDefault(_reactMasonryComponent);
 
@@ -30315,7 +30189,7 @@
 
 	var Feed = function Feed(props) {
 	  var feedItems = props.data.map(function (item) {
-	    return _react2.default.createElement(_Moment2.default, _extends({ key: item.id, actions: props.actions }, item));
+	    return _react2.default.createElement(_MomentCard2.default, _extends({ key: item.id, actions: props.actions }, item));
 	  });
 
 	  return _react2.default.createElement(
@@ -30339,7 +30213,7 @@
 	exports.default = Feed;
 
 /***/ },
-/* 293 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30348,78 +30222,35 @@
 	  value: true
 	});
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	__webpack_require__(295);
-=======
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
->>>>>>> T-006 Implement ActionCard UI
 
-=======
->>>>>>> T-007
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var _classnames = __webpack_require__(299);
-=======
-	var _classnames = __webpack_require__(294);
->>>>>>> T-007
-=======
-	var _classnames = __webpack_require__(294);
->>>>>>> T-006 Implement ActionCard UI
+	var _classnames = __webpack_require__(295);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	var _constants = __webpack_require__(273);
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var _ActorCard = __webpack_require__(301);
-=======
-	var _ActorCard = __webpack_require__(296);
->>>>>>> T-006 Implement ActionCard UI
+	var _ActorCard = __webpack_require__(297);
 
 	var _ActorCard2 = _interopRequireDefault(_ActorCard);
 
-	var _LocationDetailsTrigger = __webpack_require__(301);
+	var _LocationDetailsTrigger = __webpack_require__(302);
 
 	var _LocationDetailsTrigger2 = _interopRequireDefault(_LocationDetailsTrigger);
 
-	var _LikeTrigger = __webpack_require__(304);
+	var _LikeTrigger = __webpack_require__(303);
 
 	var _LikeTrigger2 = _interopRequireDefault(_LikeTrigger);
 
-	var _CommentTrigger = __webpack_require__(308);
+	var _CommentTrigger = __webpack_require__(307);
 
 	var _CommentTrigger2 = _interopRequireDefault(_CommentTrigger);
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-	var _MoreInteractionsTrigger = __webpack_require__(312);
-=======
-	var _ActorCard = __webpack_require__(296);
-
-	var _ActorCard2 = _interopRequireDefault(_ActorCard);
-
-	var _LocationDetailsTrigger = __webpack_require__(301);
-
-	var _LocationDetailsTrigger2 = _interopRequireDefault(_LocationDetailsTrigger);
-
-	var _LikeTrigger = __webpack_require__(304);
-
-	var _LikeTrigger2 = _interopRequireDefault(_LikeTrigger);
-
-	var _CommentTrigger = __webpack_require__(308);
-
-	var _CommentTrigger2 = _interopRequireDefault(_CommentTrigger);
-
-	var _MoreInteractionsTrigger = __webpack_require__(309);
->>>>>>> T-007
-=======
-	var _MoreInteractionsTrigger = __webpack_require__(309);
->>>>>>> T-006 Implement ActionCard UI
+	var _MoreInteractionsTrigger = __webpack_require__(308);
 
 	var _MoreInteractionsTrigger2 = _interopRequireDefault(_MoreInteractionsTrigger);
 
@@ -30433,22 +30264,13 @@
 
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-	__webpack_require__(310);
-
-	var Moment = function Moment(props) {
-	  var classes = (0, _classnames2.default)(_defineProperty({
-	    'feed__item__wrap': true
-	  }, props.id, true));
-=======
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
->>>>>>> T-006 Implement ActionCard UI
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(310);
+	__webpack_require__(309);
 
 	var Moment = function (_Component) {
 	  _inherits(Moment, _Component);
@@ -30498,7 +30320,7 @@
 	        'moment__wrap': true
 	      }, _defineProperty(_classNames, this.props.id, true), _defineProperty(_classNames, 'hover__active', this.state.cardInteractionActive), _classNames));
 
-	      var momentDetailsURL = '/moment/' + this.props.id;
+	      var momentDetailsURL = '/feed/' + this.props.id;
 
 	      return _react2.default.createElement(
 	        'article',
@@ -30589,7 +30411,7 @@
 	exports.default = Moment;
 
 /***/ },
-/* 294 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -30635,7 +30457,7 @@
 
 		if (typeof module !== 'undefined' && module.exports) {
 			module.exports = classNames;
-		} else if ("function" === 'function' && _typeof(__webpack_require__(295)) === 'object' && __webpack_require__(295)) {
+		} else if ("function" === 'function' && _typeof(__webpack_require__(296)) === 'object' && __webpack_require__(296)) {
 			// register as 'classnames', consistent with npm package name
 			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
 				return classNames;
@@ -30646,7 +30468,7 @@
 	})();
 
 /***/ },
-/* 295 */
+/* 296 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
@@ -30654,7 +30476,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
-/* 296 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30669,7 +30491,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _classnames = __webpack_require__(294);
+	var _classnames = __webpack_require__(295);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -30685,7 +30507,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(297);
+	__webpack_require__(298);
 
 	var ActorCard = function (_Component) {
 	  _inherits(ActorCard, _Component);
@@ -30697,16 +30519,20 @@
 	  }
 
 	  _createClass(ActorCard, [{
+	    key: 'handleClick',
+	    value: function handleClick() {}
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'section',
-	        { className: 'component__actor__card' },
+	        { className: 'component__actor__card', onClick: this.handleClick.bind(this) },
 	        _react2.default.createElement(
 	          'span',
 	          { className: 'user__image__wrap' },
 	          _react2.default.createElement('img', { className: 'image', src: this.props.actor.avatarUrl || _constants.USER_AVATAR_PLACEHOLDER })
 	        ),
+	        'if(this.props.showDetails)',
 	        _react2.default.createElement(
 	          'span',
 	          { className: 'user__name__wrap' },
@@ -30723,167 +30549,34 @@
 	  actor: _react.PropTypes.object.isRequired,
 	  actionTimeStamp: _react.PropTypes.string,
 	  actionLocation: _react.PropTypes.string,
-	  actionType: _react.PropTypes.string
+	  actionType: _react.PropTypes.string,
+	  showDetails: _react.PropTypes.bool
+	};
+
+	ActorCard.defaultProps = {
+	  showDetails: true
 	};
 
 	exports.default = ActorCard;
 
 /***/ },
-/* 297 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
-
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-	/*!
-	  Copyright (c) 2016 Jed Watson.
-	  Licensed under the MIT License (MIT), see
-	  http://jedwatson.github.io/classnames
-	*/
-	/* global define */
-
-	(function () {
-		'use strict';
-
-		var hasOwn = {}.hasOwnProperty;
-
-		function classNames() {
-			var classes = [];
-
-			for (var i = 0; i < arguments.length; i++) {
-				var arg = arguments[i];
-				if (!arg) continue;
-
-				var argType = typeof arg === 'undefined' ? 'undefined' : _typeof(arg);
-
-				if (argType === 'string' || argType === 'number') {
-					classes.push(arg);
-				} else if (Array.isArray(arg)) {
-					classes.push(classNames.apply(null, arg));
-				} else if (argType === 'object') {
-					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
-							classes.push(key);
-						}
-					}
-				}
-			}
-
-			return classes.join(' ');
-		}
-
-		if (typeof module !== 'undefined' && module.exports) {
-			module.exports = classNames;
-		} else if ("function" === 'function' && _typeof(__webpack_require__(295)) === 'object' && __webpack_require__(295)) {
-			// register as 'classnames', consistent with npm package name
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
-				return classNames;
-			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		} else {
-			window.classNames = classNames;
-		}
-	})();
-
-/***/ },
-/* 295 */
-/***/ function(module, exports) {
-
-	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
-
-	/* WEBPACK VAR INJECTION */}.call(exports, {}))
-
-/***/ },
-/* 296 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _classnames = __webpack_require__(294);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var _constants = __webpack_require__(273);
-
-	var _reactRouter = __webpack_require__(217);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	__webpack_require__(297);
-
-	var ActorCard = function ActorCard(props) {
-	  // const actorName = `${ props.actor.firstname } ${ props.actor.lastname }`;
-	  var topInterest = 'Sports';
-	  return _react2.default.createElement(
-	    'section',
-	    { className: 'component__actor__card' },
-	    _react2.default.createElement(
-	      'span',
-	      { className: 'user__image__wrap' },
-	      _react2.default.createElement('img', { className: 'image', src: props.actor.avatarUrl || _constants.USER_AVATAR_PLACEHOLDER })
-	    )
-	  );
-	};
-
-	ActorCard.propTypes = {
-	  actor: _react.PropTypes.object.isRequired,
-	  actionTimeStamp: _react.PropTypes.string,
-	  actionLocation: _react.PropTypes.string,
-	  actionType: _react.PropTypes.string
-	};
-
-	exports.default = ActorCard;
-
-/***/ },
-/* 297 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var content = __webpack_require__(296);
+	var content = __webpack_require__(299);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(298)(content, {});
-=======
-	var content = __webpack_require__(298);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(300)(content, {});
->>>>>>> T-007
-=======
-	var content = __webpack_require__(298);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(300)(content, {});
->>>>>>> T-006 Implement ActionCard UI
+	var update = __webpack_require__(301)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< Updated upstream
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./moment.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./moment.scss");
-=======
 			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./actor_card.scss", function() {
 				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./actor_card.scss");
->>>>>>> Stashed changes
-=======
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./actor_card.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./actor_card.scss");
->>>>>>> T-006 Implement ActionCard UI
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -30893,47 +30586,21 @@
 	}
 
 /***/ },
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-/* 296 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(297)();
-=======
-/* 298 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(299)();
->>>>>>> T-007
-=======
-/* 298 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(299)();
->>>>>>> T-006 Implement ActionCard UI
+	exports = module.exports = __webpack_require__(300)();
 	// imports
 
 
 	// module
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-	exports.push([module.id, ".component__actor__card {\n  display: inline-block;\n  border-color: #333;\n  margin: 5px;\n  font-size: 13px; }\n  .component__actor__card .user__image__wrap {\n    display: inline-block;\n    width: 2em;\n    height: 2em;\n    border-radius: 50%;\n    border: 1px solid #ccc;\n    vertical-align: middle;\n    margin-right: 5px; }\n    .component__actor__card .user__image__wrap .image {\n      width: 2em; }\n  .component__actor__card .other__details {\n    vertical-align: middle;\n    display: inline-block; }\n    .component__actor__card .other__details .actor__name {\n      display: block;\n      color: #565656; }\n    .component__actor__card .other__details .top__interest {\n      font-size: 12px; }\n      .component__actor__card .other__details .top__interest .link {\n        text-decoration: none;\n        color: #565656; }\n        .component__actor__card .other__details .top__interest .link:hover {\n          color: #2e5580; }\n", ""]);
-=======
 	exports.push([module.id, ".component__actor__card {\n  display: inline-block;\n  border-color: #333;\n  font-size: 13px;\n  cursor: pointer; }\n  .component__actor__card .user__image__wrap {\n    display: inline-block;\n    width: 2em;\n    height: 2em;\n    border-radius: 50%;\n    border: 1px solid #ccc;\n    vertical-align: middle;\n    margin-right: 5px; }\n    .component__actor__card .user__image__wrap .image {\n      width: 2em; }\n  .component__actor__card .other__details {\n    vertical-align: middle;\n    display: inline-block; }\n    .component__actor__card .other__details .actor__name {\n      display: block;\n      color: #565656; }\n    .component__actor__card .other__details .top__interest {\n      font-size: 12px; }\n      .component__actor__card .other__details .top__interest .link {\n        text-decoration: none;\n        color: #565656; }\n        .component__actor__card .other__details .top__interest .link:hover {\n          color: #2e5580; }\n", ""]);
->>>>>>> T-006 Implement ActionCard UI
 
 	// exports
 
 
 /***/ },
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-/* 297 */
-=======
-/* 299 */
->>>>>>> T-007
-=======
-/* 299 */
->>>>>>> T-006 Implement ActionCard UI
+/* 300 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -30988,15 +30655,7 @@
 	};
 
 /***/ },
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-/* 298 */
-=======
-/* 300 */
->>>>>>> T-007
-=======
-/* 300 */
->>>>>>> T-006 Implement ActionCard UI
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -31248,186 +30907,15 @@
 
 
 /***/ },
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-/* 299 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
-
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-	/*!
-	  Copyright (c) 2016 Jed Watson.
-	  Licensed under the MIT License (MIT), see
-	  http://jedwatson.github.io/classnames
-	*/
-	/* global define */
-
-	(function () {
-		'use strict';
-
-		var hasOwn = {}.hasOwnProperty;
-
-		function classNames() {
-			var classes = [];
-
-			for (var i = 0; i < arguments.length; i++) {
-				var arg = arguments[i];
-				if (!arg) continue;
-
-				var argType = typeof arg === 'undefined' ? 'undefined' : _typeof(arg);
-
-				if (argType === 'string' || argType === 'number') {
-					classes.push(arg);
-				} else if (Array.isArray(arg)) {
-					classes.push(classNames.apply(null, arg));
-				} else if (argType === 'object') {
-					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
-							classes.push(key);
-						}
-					}
-				}
-			}
-
-			return classes.join(' ');
-		}
-
-		if (typeof module !== 'undefined' && module.exports) {
-			module.exports = classNames;
-		} else if ("function" === 'function' && _typeof(__webpack_require__(300)) === 'object' && __webpack_require__(300)) {
-			// register as 'classnames', consistent with npm package name
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
-				return classNames;
-			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		} else {
-			window.classNames = classNames;
-		}
-	})();
-
-/***/ },
-/* 300 */
-/***/ function(module, exports) {
-
-	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
-
-	/* WEBPACK VAR INJECTION */}.call(exports, {}))
-
-/***/ },
-=======
->>>>>>> T-006 Implement ActionCard UI
-/* 301 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-	__webpack_require__(302);
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _classnames = __webpack_require__(299);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var _constants = __webpack_require__(273);
-
-	var _reactRouter = __webpack_require__(217);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var ActorCard = function ActorCard(props) {
-	  // const actorName = `${ props.actor.firstname } ${ props.actor.lastname }`;
-	  var topInterest = 'Sports';
-	  return _react2.default.createElement(
-	    'section',
-	    { className: 'component__actor__card' },
-	    _react2.default.createElement(
-	      'span',
-	      { className: 'user__image__wrap' },
-	      _react2.default.createElement('img', { className: 'image', src: props.actor.avatarUrl || _constants.USER_AVATAR_PLACEHOLDER })
-	    )
-	  );
-	};
-
-	ActorCard.propTypes = {
-	  actor: _react.PropTypes.object.isRequired,
-	  actionTimeStamp: _react.PropTypes.string,
-	  actionLocation: _react.PropTypes.string,
-	  actionType: _react.PropTypes.string
-	};
-
-	exports.default = ActorCard;
-
-/***/ },
 /* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(303);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(298)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js!./../../node_modules/sass-loader/index.js!./actor_card.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js!./../../node_modules/sass-loader/index.js!./actor_card.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 303 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(297)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".component__actor__card {\n  display: inline-block;\n  border-color: #333;\n  margin: 5px;\n  font-size: 13px; }\n  .component__actor__card .user__image__wrap {\n    display: inline-block;\n    width: 2em;\n    height: 2em;\n    border-radius: 50%;\n    border: 1px solid #ccc;\n    vertical-align: middle;\n    margin-right: 5px; }\n    .component__actor__card .user__image__wrap .image {\n      width: 2em; }\n  .component__actor__card .other__details {\n    vertical-align: middle;\n    display: inline-block; }\n    .component__actor__card .other__details .actor__name {\n      display: block;\n      color: #565656; }\n    .component__actor__card .other__details .top__interest {\n      font-size: 12px; }\n      .component__actor__card .other__details .top__interest .link {\n        text-decoration: none;\n        color: #565656; }\n        .component__actor__card .other__details .top__interest .link:hover {\n          color: #2e5580; }\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 304 */
-/***/ function(module, exports, __webpack_require__) {
-
-=======
-/* 301 */
-/***/ function(module, exports, __webpack_require__) {
-
->>>>>>> T-007
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
-<<<<<<< HEAD
-	__webpack_require__(305);
-
-=======
->>>>>>> T-007
-=======
->>>>>>> T-006 Implement ActionCard UI
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -31438,7 +30926,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(302);
+	// require('../styles/location_details_trigger.scss');
+
 
 	var LocationDetailsTrigger = function LocationDetailsTrigger(props) {
 
@@ -31456,96 +30945,7 @@
 	exports.default = LocationDetailsTrigger;
 
 /***/ },
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-/* 305 */
-=======
-/* 302 */
->>>>>>> T-007
-=======
-/* 302 */
->>>>>>> T-006 Implement ActionCard UI
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var content = __webpack_require__(306);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(298)(content, {});
-=======
-	var content = __webpack_require__(303);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(300)(content, {});
->>>>>>> T-007
-=======
-	var content = __webpack_require__(303);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(300)(content, {});
->>>>>>> T-006 Implement ActionCard UI
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-<<<<<<< Updated upstream
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./actor_card.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./actor_card.scss");
-=======
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./location_details_trigger.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./location_details_trigger.scss");
->>>>>>> Stashed changes
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-/* 306 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(297)();
-=======
 /* 303 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(299)();
->>>>>>> T-007
-=======
-/* 303 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(299)();
->>>>>>> T-006 Implement ActionCard UI
-	// imports
-
-
-	// module
-	exports.push([module.id, ".component__location_details_trigger {\n  display: inline-block;\n  margin-left: 3px; }\n", ""]);
-
-	// exports
-
-
-/***/ },
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-/* 307 */
-=======
-/* 304 */
->>>>>>> T-007
-=======
-/* 304 */
->>>>>>> T-006 Implement ActionCard UI
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31556,49 +30956,21 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	__webpack_require__(308);
-
-=======
->>>>>>> T-007
-=======
->>>>>>> T-006 Implement ActionCard UI
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
 	var _constants = __webpack_require__(273);
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var _classnames = __webpack_require__(299);
-=======
-	var _classnames = __webpack_require__(294);
->>>>>>> T-006 Implement ActionCard UI
+	var _classnames = __webpack_require__(295);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _Icon = __webpack_require__(305);
+	var _Icon = __webpack_require__(304);
 
 	var _Icon2 = _interopRequireDefault(_Icon);
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-	var _reactAddonsUpdate = __webpack_require__(274);
-=======
-	var _classnames = __webpack_require__(294);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var _Icon = __webpack_require__(305);
-
-	var _Icon2 = _interopRequireDefault(_Icon);
-
-	var _reactAddonsUpdate = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-addons-update\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
->>>>>>> T-007
-=======
 	var _immutabilityHelper = __webpack_require__(274);
->>>>>>> T-006 Implement ActionCard UI
 
 	var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
 
@@ -31610,7 +30982,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(306);
+	__webpack_require__(305);
 
 	var LikeTrigger = function (_Component) {
 	  _inherits(LikeTrigger, _Component);
@@ -31701,55 +31073,7 @@
 	exports.default = LikeTrigger;
 
 /***/ },
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-/* 308 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(309);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(298)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js!./../../node_modules/sass-loader/index.js!./like_trigger.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js!./../../node_modules/sass-loader/index.js!./like_trigger.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 309 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(297)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".component__like__triger.enabled {\n  display: inline-block;\n  cursor: pointer; }\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 310 */
-=======
-/* 305 */
->>>>>>> T-007
-=======
-/* 305 */
->>>>>>> T-006 Implement ActionCard UI
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31796,39 +31120,23 @@
 	exports.default = Icon;
 
 /***/ },
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-/* 311 */
-=======
-=======
->>>>>>> T-006 Implement ActionCard UI
-/* 306 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(307);
+	var content = __webpack_require__(306);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(300)(content, {});
+	var update = __webpack_require__(301)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< Updated upstream
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./location_details_trigger.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./location_details_trigger.scss");
-=======
 			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./like_trigger.scss", function() {
 				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./like_trigger.scss");
->>>>>>> Stashed changes
-=======
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./like_trigger.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./like_trigger.scss");
->>>>>>> T-006 Implement ActionCard UI
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -31838,10 +31146,10 @@
 	}
 
 /***/ },
-/* 307 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(299)();
+	exports = module.exports = __webpack_require__(300)();
 	// imports
 
 
@@ -31852,11 +31160,7 @@
 
 
 /***/ },
-/* 308 */
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
->>>>>>> T-007
-=======
->>>>>>> T-006 Implement ActionCard UI
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31882,15 +31186,7 @@
 	exports.default = CommentTrigger;
 
 /***/ },
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-/* 312 */
-=======
-/* 309 */
->>>>>>> T-007
-=======
-/* 309 */
->>>>>>> T-006 Implement ActionCard UI
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31899,49 +31195,7 @@
 	  value: true
 	});
 
-<<<<<<< Updated upstream
-	  _createClass(LikeTrigger, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      this.setState(Object.assign({}, this.state, {
-	        iconColor: this.getIconColor(this.props.uiState)
-	      }));
-	    }
-	  }, {
-	    key: 'getIconColor',
-	    value: function getIconColor(uiState) {
-	      return this.state.color[uiState];
-	    }
-	  }, {
-	    key: 'handleMouseEnter',
-	    value: function handleMouseEnter() {
-	      if (this.props.isEnabled) {
-	        this.setState((0, _reactAddonsUpdate2.default)(this.state, {
-	          iconColor: { $set: this.getIconColor("active") }
-	        }));
-	      }
-	    }
-	  }, {
-	    key: 'handleMouseLeave',
-	    value: function handleMouseLeave() {
-	      if (this.props.isEnabled) {
-	        this.setState((0, _reactAddonsUpdate2.default)(this.state, {
-	          iconColor: { $set: this.getIconColor("default") }
-	        }));
-	      }
-	    }
-	  }, {
-	    key: 'handleClick',
-	    value: function handleClick() {
-	      if (this.props.isEnabled) this.props.likeAction(this.props.momentId, "7");
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var triggerDOM = null;
-=======
 	var _react = __webpack_require__(1);
->>>>>>> Stashed changes
 
 	var _react2 = _interopRequireDefault(_react);
 
@@ -31958,39 +31212,23 @@
 	exports.default = MoreInteractionsTrigger;
 
 /***/ },
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-/* 313 */
-=======
-=======
->>>>>>> T-006 Implement ActionCard UI
-/* 310 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(311);
+	var content = __webpack_require__(310);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(300)(content, {});
+	var update = __webpack_require__(301)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< Updated upstream
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./like_trigger.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./like_trigger.scss");
-=======
 			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./moment.scss", function() {
 				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./moment.scss");
->>>>>>> Stashed changes
-=======
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./moment.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./moment.scss");
->>>>>>> T-006 Implement ActionCard UI
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -32000,40 +31238,32 @@
 	}
 
 /***/ },
-/* 311 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(299)();
+	exports = module.exports = __webpack_require__(300)();
 	// imports
 
 
 	// module
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-	exports.push([module.id, ".component__feed__item {\n  display: inline-block;\n  width: 25%;\n  padding: 4px;\n  text-align: left;\n  color: #303030; }\n  .component__feed__item .feed__item__wrap {\n    display: inline-block;\n    position: relative;\n    padding: 0;\n    border: 1px solid #efefef;\n    border-radius: 5px; }\n  .component__feed__item .feed_media_object {\n    position: relative; }\n    .component__feed__item .feed_media_object .feed_img {\n      width: 100%; }\n  .component__feed__item .feed_media_object, .component__feed__item .feed_img {\n    border-top-left-radius: 5px;\n    border-top-right-radius: 5px; }\n  .component__feed__item .item__main {\n    padding: 5px;\n    padding-bottom: 0;\n    margin: 0; }\n    .component__feed__item .item__main .item__metadata {\n      margin-bottom: 3px;\n      font-size: 12px;\n      display: inline-block;\n      color: #565656; }\n      .component__feed__item .item__main .item__metadata .timestamp {\n        margin-right: 3px; }\n    .component__feed__item .item__main .item__content {\n      padding-bottom: 3px;\n      border-bottom: 1px solid #efefef; }\n  .component__feed__item .item__interactions {\n    text-align: right;\n    display: inline-block;\n    width: 100%;\n    padding: 3px 5px; }\n    .component__feed__item .item__interactions .nested {\n      vertical-align: middle;\n      height: 24px;\n      display: inline-block; }\n    .component__feed__item .item__interactions .nested.user .image {\n      width: 24px;\n      border-radius: 50%;\n      border: 1px solid #ccc; }\n", ""]);
-=======
-	exports.push([module.id, ".component__moment {\n  display: inline-block;\n  width: 25%;\n  padding: 4px;\n  text-align: left;\n  color: #303030; }\n  .component__moment .moment__wrap {\n    display: inline-block;\n    position: relative;\n    padding: 0;\n    border: 1px solid #efefef;\n    border-radius: 5px;\n    margin: 0;\n    transition: all 0.3s ease-in;\n    cursor: pointer; }\n    .component__moment .moment__wrap.hover__active {\n      border-color: #ff5a5f;\n      box-shadow: 0px 0px 8px 2px #888888; }\n  .component__moment .moment_media_object {\n    position: relative; }\n    .component__moment .moment_media_object .feed_img {\n      width: 100%; }\n  .component__moment .moment_media_object, .component__moment .feed_img {\n    border-top-left-radius: 5px;\n    border-top-right-radius: 5px; }\n  .component__moment .item__main {\n    padding: 5px;\n    padding-bottom: 0;\n    margin: 0; }\n    .component__moment .item__main .item__metadata {\n      margin-bottom: 3px;\n      font-size: 12px;\n      display: inline-block;\n      color: #565656; }\n      .component__moment .item__main .item__metadata .timestamp {\n        margin-right: 3px; }\n    .component__moment .item__main .item__content {\n      padding-bottom: 3px;\n      border-bottom: 1px solid #efefef; }\n  .component__moment .item__interactions {\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between;\n    width: 100%;\n    padding: 3px 5px; }\n    .component__moment .item__interactions .nested {\n      vertical-align: middle;\n      height: 24px;\n      display: inline-block; }\n    .component__moment .item__interactions .nested.user {\n      text-align: left; }\n      .component__moment .item__interactions .nested.user .image {\n        width: 24px;\n        border-radius: 50%;\n        border: 1px solid #ccc; }\n", ""]);
->>>>>>> T-006 Implement ActionCard UI
+	exports.push([module.id, ".component__moment {\n  display: inline-block;\n  width: 25%;\n  padding: 4px;\n  text-align: left; }\n  .component__moment .moment__wrap {\n    display: inline-block;\n    position: relative;\n    padding: 0;\n    border: 1px solid #efefef;\n    border-radius: 5px;\n    margin: 0;\n    transition: all 0.3s ease-in;\n    cursor: pointer;\n    color: #303030; }\n    .component__moment .moment__wrap.hover__active {\n      border-color: #ff5a5f;\n      box-shadow: 0px 0px 8px 2px #888888; }\n  .component__moment .moment_media_object {\n    position: relative; }\n    .component__moment .moment_media_object .feed_img {\n      width: 100%; }\n  .component__moment .moment_media_object, .component__moment .feed_img {\n    border-top-left-radius: 5px;\n    border-top-right-radius: 5px; }\n  .component__moment .item__main {\n    padding: 5px;\n    padding-bottom: 0;\n    margin: 0; }\n    .component__moment .item__main .item__metadata {\n      margin-bottom: 3px;\n      font-size: 12px;\n      display: inline-block;\n      color: #565656; }\n      .component__moment .item__main .item__metadata .timestamp {\n        margin-right: 3px; }\n    .component__moment .item__main .item__content {\n      padding-bottom: 3px;\n      border-bottom: 1px solid #efefef; }\n  .component__moment .item__interactions {\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between;\n    width: 100%;\n    padding: 3px 5px; }\n    .component__moment .item__interactions .nested {\n      vertical-align: middle;\n      height: 24px;\n      display: inline-block; }\n    .component__moment .item__interactions .nested.user {\n      text-align: left; }\n      .component__moment .item__interactions .nested.user .image {\n        width: 24px;\n        border-radius: 50%;\n        border: 1px solid #ccc; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 312 */
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
->>>>>>> T-007
-=======
->>>>>>> T-006 Implement ActionCard UI
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var isBrowser = typeof window !== 'undefined';
-	var Masonry = isBrowser ? window.Masonry || __webpack_require__(313) : null;
-	var imagesloaded = isBrowser ? __webpack_require__(320) : null;
-	var assign = __webpack_require__(321);
-	var elementResizeDetectorMaker = __webpack_require__(322);
-	var debounce = __webpack_require__(335);
-	var omit = __webpack_require__(336);
+	var Masonry = isBrowser ? window.Masonry || __webpack_require__(312) : null;
+	var imagesloaded = isBrowser ? __webpack_require__(319) : null;
+	var assign = __webpack_require__(320);
+	var elementResizeDetectorMaker = __webpack_require__(321);
+	var debounce = __webpack_require__(334);
+	var omit = __webpack_require__(335);
 	var React = __webpack_require__(1);
 	var refName = 'masonryContainer';
 
@@ -32309,7 +31539,7 @@
 	module.exports.default = MasonryComponent;
 
 /***/ },
-/* 313 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -32329,7 +31559,7 @@
 	  /* jshint strict: false */ /*globals define, module, require */
 	  if (true) {
 	    // AMD
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(314), __webpack_require__(316)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(313), __webpack_require__(315)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  } else if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) == 'object' && module.exports) {
 	    // CommonJS
 	    module.exports = factory(require('outlayer'), require('get-size'));
@@ -32511,7 +31741,7 @@
 	});
 
 /***/ },
-/* 314 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -32531,7 +31761,7 @@
 
 	  if (true) {
 	    // AMD - RequireJS
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(315), __webpack_require__(316), __webpack_require__(317), __webpack_require__(319)], __WEBPACK_AMD_DEFINE_RESULT__ = function (EvEmitter, getSize, utils, Item) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(314), __webpack_require__(315), __webpack_require__(316), __webpack_require__(318)], __WEBPACK_AMD_DEFINE_RESULT__ = function (EvEmitter, getSize, utils, Item) {
 	      return factory(window, EvEmitter, getSize, utils, Item);
 	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  } else if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) == 'object' && module.exports) {
@@ -33428,7 +32658,7 @@
 	});
 
 /***/ },
-/* 315 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -33544,7 +32774,7 @@
 	});
 
 /***/ },
-/* 316 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -33744,7 +32974,7 @@
 	});
 
 /***/ },
-/* 317 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -33764,7 +32994,7 @@
 
 	  if (true) {
 	    // AMD
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(318)], __WEBPACK_AMD_DEFINE_RESULT__ = function (matchesSelector) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(317)], __WEBPACK_AMD_DEFINE_RESULT__ = function (matchesSelector) {
 	      return factory(window, matchesSelector);
 	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  } else if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) == 'object' && module.exports) {
@@ -33976,7 +33206,7 @@
 	});
 
 /***/ },
-/* 318 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -34037,7 +33267,7 @@
 	});
 
 /***/ },
-/* 319 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -34053,7 +33283,7 @@
 	  /* jshint strict: false */ /* globals define, module, require */
 	  if (true) {
 	    // AMD - RequireJS
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(315), __webpack_require__(316)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(314), __webpack_require__(315)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  } else if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) == 'object' && module.exports) {
 	    // CommonJS - Browserify, Webpack
 	    module.exports = factory(require('ev-emitter'), require('get-size'));
@@ -34579,7 +33809,7 @@
 	});
 
 /***/ },
-/* 320 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -34600,7 +33830,7 @@
 
 	  if (true) {
 	    // AMD
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(315)], __WEBPACK_AMD_DEFINE_RESULT__ = function (EvEmitter) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(314)], __WEBPACK_AMD_DEFINE_RESULT__ = function (EvEmitter) {
 	      return factory(window, EvEmitter);
 	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  } else if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) == 'object' && module.exports) {
@@ -34949,7 +34179,7 @@
 	});
 
 /***/ },
-/* 321 */
+/* 320 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -35584,24 +34814,24 @@
 	module.exports = assign;
 
 /***/ },
-/* 322 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var forEach = __webpack_require__(323).forEach;
-	var elementUtilsMaker = __webpack_require__(324);
-	var listenerHandlerMaker = __webpack_require__(325);
-	var idGeneratorMaker = __webpack_require__(326);
-	var idHandlerMaker = __webpack_require__(327);
-	var reporterMaker = __webpack_require__(328);
-	var browserDetector = __webpack_require__(329);
-	var batchProcessorMaker = __webpack_require__(330);
-	var stateHandler = __webpack_require__(332);
+	var forEach = __webpack_require__(322).forEach;
+	var elementUtilsMaker = __webpack_require__(323);
+	var listenerHandlerMaker = __webpack_require__(324);
+	var idGeneratorMaker = __webpack_require__(325);
+	var idHandlerMaker = __webpack_require__(326);
+	var reporterMaker = __webpack_require__(327);
+	var browserDetector = __webpack_require__(328);
+	var batchProcessorMaker = __webpack_require__(329);
+	var stateHandler = __webpack_require__(331);
 
 	//Detection strategies.
-	var objectStrategyMaker = __webpack_require__(333);
-	var scrollStrategyMaker = __webpack_require__(334);
+	var objectStrategyMaker = __webpack_require__(332);
+	var scrollStrategyMaker = __webpack_require__(333);
 
 	function isCollection(obj) {
 	    return Array.isArray(obj) || obj.length !== undefined;
@@ -35912,7 +35142,7 @@
 	}
 
 /***/ },
-/* 323 */
+/* 322 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -35936,7 +35166,7 @@
 	};
 
 /***/ },
-/* 324 */
+/* 323 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -35993,7 +35223,7 @@
 	};
 
 /***/ },
-/* 325 */
+/* 324 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -36060,7 +35290,7 @@
 	};
 
 /***/ },
-/* 326 */
+/* 325 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -36083,7 +35313,7 @@
 	};
 
 /***/ },
-/* 327 */
+/* 326 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -36135,7 +35365,7 @@
 	};
 
 /***/ },
-/* 328 */
+/* 327 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -36185,7 +35415,7 @@
 	};
 
 /***/ },
-/* 329 */
+/* 328 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -36228,12 +35458,12 @@
 	};
 
 /***/ },
-/* 330 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var utils = __webpack_require__(331);
+	var utils = __webpack_require__(330);
 
 	module.exports = function batchProcessorMaker(options) {
 	    options = options || {};
@@ -36373,7 +35603,7 @@
 	}
 
 /***/ },
-/* 331 */
+/* 330 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -36393,7 +35623,7 @@
 	}
 
 /***/ },
-/* 332 */
+/* 331 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -36420,7 +35650,7 @@
 	};
 
 /***/ },
-/* 333 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36430,7 +35660,7 @@
 
 	"use strict";
 
-	var browserDetector = __webpack_require__(329);
+	var browserDetector = __webpack_require__(328);
 
 	module.exports = function (options) {
 	    options = options || {};
@@ -36639,7 +35869,7 @@
 	};
 
 /***/ },
-/* 334 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36649,7 +35879,7 @@
 
 	"use strict";
 
-	var forEach = __webpack_require__(323).forEach;
+	var forEach = __webpack_require__(322).forEach;
 
 	module.exports = function (options) {
 	    options = options || {};
@@ -37264,7 +36494,7 @@
 	};
 
 /***/ },
-/* 335 */
+/* 334 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -37647,7 +36877,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 336 */
+/* 335 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -39130,7 +38360,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 337 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39145,25 +38375,17 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var _classnames = __webpack_require__(299);
-=======
-	var _classnames = __webpack_require__(294);
->>>>>>> T-007
-=======
-	var _classnames = __webpack_require__(294);
->>>>>>> T-006 Implement ActionCard UI
+	var _classnames = __webpack_require__(295);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	var _reactRouter = __webpack_require__(217);
 
-	var _HeaderProfile = __webpack_require__(338);
+	var _HeaderProfile = __webpack_require__(337);
 
 	var _HeaderProfile2 = _interopRequireDefault(_HeaderProfile);
 
-	var _CategoryNavbar = __webpack_require__(339);
+	var _CategoryNavbar = __webpack_require__(338);
 
 	var _CategoryNavbar2 = _interopRequireDefault(_CategoryNavbar);
 
@@ -39175,7 +38397,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(340);
+	__webpack_require__(339);
 
 	//TODO:: get the root url from: this.props.appDefaults.rootUrl
 	var Header = function (_Component) {
@@ -39246,7 +38468,7 @@
 	exports.default = Header;
 
 /***/ },
-/* 338 */
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39276,7 +38498,7 @@
 	exports.default = HeaderProfile;
 
 /***/ },
-/* 339 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39330,24 +38552,16 @@
 	exports.default = CategoryNavbar;
 
 /***/ },
-/* 340 */
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(341);
+	var content = __webpack_require__(340);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var update = __webpack_require__(298)(content, {});
-=======
-	var update = __webpack_require__(300)(content, {});
->>>>>>> T-007
-=======
-	var update = __webpack_require__(300)(content, {});
->>>>>>> T-006 Implement ActionCard UI
+	var update = __webpack_require__(301)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -39364,18 +38578,10 @@
 	}
 
 /***/ },
-/* 341 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	exports = module.exports = __webpack_require__(297)();
-=======
-	exports = module.exports = __webpack_require__(299)();
->>>>>>> T-007
-=======
-	exports = module.exports = __webpack_require__(299)();
->>>>>>> T-006 Implement ActionCard UI
+	exports = module.exports = __webpack_require__(300)();
 	// imports
 
 
@@ -39386,7 +38592,7 @@
 
 
 /***/ },
-/* 342 */
+/* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39401,11 +38607,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _BannerHelper = __webpack_require__(343);
+	var _BannerHelper = __webpack_require__(342);
 
 	var _BannerHelper2 = _interopRequireDefault(_BannerHelper);
 
-	var _SlideContainer = __webpack_require__(345);
+	var _SlideContainer = __webpack_require__(344);
 
 	var _SlideContainer2 = _interopRequireDefault(_SlideContainer);
 
@@ -39417,7 +38623,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(347);
+	__webpack_require__(346);
 
 	var Carousel = function (_Component) {
 	  _inherits(Carousel, _Component);
@@ -39469,7 +38675,7 @@
 	exports.default = Carousel;
 
 /***/ },
-/* 343 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39480,7 +38686,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _DOMHelper = __webpack_require__(344);
+	var _DOMHelper = __webpack_require__(343);
 
 	var _DOMHelper2 = _interopRequireDefault(_DOMHelper);
 
@@ -39583,7 +38789,7 @@
 	exports.default = new BannerHelper();
 
 /***/ },
-/* 344 */
+/* 343 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39658,7 +38864,7 @@
 	exports.default = DOMHelper;
 
 /***/ },
-/* 345 */
+/* 344 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39673,7 +38879,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Slide = __webpack_require__(346);
+	var _Slide = __webpack_require__(345);
 
 	var _Slide2 = _interopRequireDefault(_Slide);
 
@@ -39735,7 +38941,7 @@
 	exports.default = SlideContainer;
 
 /***/ },
-/* 346 */
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39750,15 +38956,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var _classnames = __webpack_require__(299);
-=======
-	var _classnames = __webpack_require__(294);
->>>>>>> T-007
-=======
-	var _classnames = __webpack_require__(294);
->>>>>>> T-006 Implement ActionCard UI
+	var _classnames = __webpack_require__(295);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -39834,24 +39032,16 @@
 	exports.default = Slide;
 
 /***/ },
-/* 347 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(348);
+	var content = __webpack_require__(347);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var update = __webpack_require__(298)(content, {});
-=======
-	var update = __webpack_require__(300)(content, {});
->>>>>>> T-007
-=======
-	var update = __webpack_require__(300)(content, {});
->>>>>>> T-006 Implement ActionCard UI
+	var update = __webpack_require__(301)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -39868,18 +39058,10 @@
 	}
 
 /***/ },
-/* 348 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	exports = module.exports = __webpack_require__(297)();
-=======
-	exports = module.exports = __webpack_require__(299)();
->>>>>>> T-007
-=======
-	exports = module.exports = __webpack_require__(299)();
->>>>>>> T-006 Implement ActionCard UI
+	exports = module.exports = __webpack_require__(300)();
 	// imports
 
 
@@ -39890,7 +39072,7 @@
 
 
 /***/ },
-/* 349 */
+/* 348 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39905,17 +39087,17 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _SearchActionCreators = __webpack_require__(350);
+	var _SearchActionCreators = __webpack_require__(349);
 
 	var _reactRedux = __webpack_require__(179);
 
-	var _reactSelect = __webpack_require__(352);
+	var _reactSelect = __webpack_require__(351);
 
 	var _reactSelect2 = _interopRequireDefault(_reactSelect);
 
 	var _constants = __webpack_require__(273);
 
-	var _Icon = __webpack_require__(305);
+	var _Icon = __webpack_require__(304);
 
 	var _Icon2 = _interopRequireDefault(_Icon);
 
@@ -39927,7 +39109,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(363);
+	__webpack_require__(362);
 
 	var mapStateToProps = function mapStateToProps(state) {
 	  return {
@@ -40008,7 +39190,7 @@
 	exports.default = BannerSearchContainer;
 
 /***/ },
-/* 350 */
+/* 349 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40020,7 +39202,7 @@
 
 	var _constants = __webpack_require__(273);
 
-	var _SearchAPI = __webpack_require__(351);
+	var _SearchAPI = __webpack_require__(350);
 
 	var requestSuggestions = function requestSuggestions() {
 	  return {
@@ -40049,7 +39231,7 @@
 	};
 
 /***/ },
-/* 351 */
+/* 350 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40061,7 +39243,7 @@
 
 	var _constants = __webpack_require__(273);
 
-	__webpack_require__(288);
+	__webpack_require__(289);
 
 	var fetchSuggestions = exports.fetchSuggestions = function fetchSuggestions(searchText) {
 	  //TODO:: Make request to elastic search endpoint.
@@ -40071,7 +39253,7 @@
 	};
 
 /***/ },
-/* 352 */
+/* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -40124,51 +39306,43 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _reactInputAutosize = __webpack_require__(353);
+	var _reactInputAutosize = __webpack_require__(352);
 
 	var _reactInputAutosize2 = _interopRequireDefault(_reactInputAutosize);
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var _classnames = __webpack_require__(299);
-=======
-	var _classnames = __webpack_require__(294);
->>>>>>> T-007
-=======
-	var _classnames = __webpack_require__(294);
->>>>>>> T-006 Implement ActionCard UI
+	var _classnames = __webpack_require__(295);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _utilsDefaultArrowRenderer = __webpack_require__(354);
+	var _utilsDefaultArrowRenderer = __webpack_require__(353);
 
 	var _utilsDefaultArrowRenderer2 = _interopRequireDefault(_utilsDefaultArrowRenderer);
 
-	var _utilsDefaultFilterOptions = __webpack_require__(355);
+	var _utilsDefaultFilterOptions = __webpack_require__(354);
 
 	var _utilsDefaultFilterOptions2 = _interopRequireDefault(_utilsDefaultFilterOptions);
 
-	var _utilsDefaultMenuRenderer = __webpack_require__(357);
+	var _utilsDefaultMenuRenderer = __webpack_require__(356);
 
 	var _utilsDefaultMenuRenderer2 = _interopRequireDefault(_utilsDefaultMenuRenderer);
 
-	var _Async = __webpack_require__(358);
+	var _Async = __webpack_require__(357);
 
 	var _Async2 = _interopRequireDefault(_Async);
 
-	var _AsyncCreatable = __webpack_require__(359);
+	var _AsyncCreatable = __webpack_require__(358);
 
 	var _AsyncCreatable2 = _interopRequireDefault(_AsyncCreatable);
 
-	var _Creatable = __webpack_require__(360);
+	var _Creatable = __webpack_require__(359);
 
 	var _Creatable2 = _interopRequireDefault(_Creatable);
 
-	var _Option = __webpack_require__(361);
+	var _Option = __webpack_require__(360);
 
 	var _Option2 = _interopRequireDefault(_Option);
 
-	var _Value = __webpack_require__(362);
+	var _Value = __webpack_require__(361);
 
 	var _Value2 = _interopRequireDefault(_Value);
 
@@ -41225,7 +40399,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 353 */
+/* 352 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41353,7 +40527,7 @@
 	module.exports = AutosizeInput;
 
 /***/ },
-/* 354 */
+/* 353 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41384,7 +40558,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 355 */
+/* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41393,7 +40567,7 @@
 		return obj && obj.__esModule ? obj : { 'default': obj };
 	}
 
-	var _stripDiacritics = __webpack_require__(356);
+	var _stripDiacritics = __webpack_require__(355);
 
 	var _stripDiacritics2 = _interopRequireDefault(_stripDiacritics);
 
@@ -41433,7 +40607,7 @@
 	module.exports = filterOptions;
 
 /***/ },
-/* 356 */
+/* 355 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41448,7 +40622,7 @@
 	};
 
 /***/ },
-/* 357 */
+/* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41457,15 +40631,7 @@
 		return obj && obj.__esModule ? obj : { 'default': obj };
 	}
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var _classnames = __webpack_require__(299);
-=======
-	var _classnames = __webpack_require__(294);
->>>>>>> T-007
-=======
-	var _classnames = __webpack_require__(294);
->>>>>>> T-006 Implement ActionCard UI
+	var _classnames = __webpack_require__(295);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -41520,7 +40686,7 @@
 	module.exports = menuRenderer;
 
 /***/ },
-/* 358 */
+/* 357 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41599,11 +40765,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Select = __webpack_require__(352);
+	var _Select = __webpack_require__(351);
 
 	var _Select2 = _interopRequireDefault(_Select);
 
-	var _utilsStripDiacritics = __webpack_require__(356);
+	var _utilsStripDiacritics = __webpack_require__(355);
 
 	var _utilsStripDiacritics2 = _interopRequireDefault(_utilsStripDiacritics);
 
@@ -41780,7 +40946,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 359 */
+/* 358 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41803,7 +40969,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Select = __webpack_require__(352);
+	var _Select = __webpack_require__(351);
 
 	var _Select2 = _interopRequireDefault(_Select);
 
@@ -41829,7 +40995,7 @@
 	module.exports = AsyncCreatable;
 
 /***/ },
-/* 360 */
+/* 359 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41858,15 +41024,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Select = __webpack_require__(352);
+	var _Select = __webpack_require__(351);
 
 	var _Select2 = _interopRequireDefault(_Select);
 
-	var _utilsDefaultFilterOptions = __webpack_require__(355);
+	var _utilsDefaultFilterOptions = __webpack_require__(354);
 
 	var _utilsDefaultFilterOptions2 = _interopRequireDefault(_utilsDefaultFilterOptions);
 
-	var _utilsDefaultMenuRenderer = __webpack_require__(357);
+	var _utilsDefaultMenuRenderer = __webpack_require__(356);
 
 	var _utilsDefaultMenuRenderer2 = _interopRequireDefault(_utilsDefaultMenuRenderer);
 
@@ -42132,7 +41298,7 @@
 	module.exports = Creatable;
 
 /***/ },
-/* 361 */
+/* 360 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42145,15 +41311,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var _classnames = __webpack_require__(299);
-=======
-	var _classnames = __webpack_require__(294);
->>>>>>> T-007
-=======
-	var _classnames = __webpack_require__(294);
->>>>>>> T-006 Implement ActionCard UI
+	var _classnames = __webpack_require__(295);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -42250,7 +41408,7 @@
 	module.exports = Option;
 
 /***/ },
-/* 362 */
+/* 361 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42263,15 +41421,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var _classnames = __webpack_require__(299);
-=======
-	var _classnames = __webpack_require__(294);
->>>>>>> T-007
-=======
-	var _classnames = __webpack_require__(294);
->>>>>>> T-006 Implement ActionCard UI
+	var _classnames = __webpack_require__(295);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -42354,24 +41504,16 @@
 	module.exports = Value;
 
 /***/ },
-/* 363 */
+/* 362 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(364);
+	var content = __webpack_require__(363);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var update = __webpack_require__(298)(content, {});
-=======
-	var update = __webpack_require__(300)(content, {});
->>>>>>> T-007
-=======
-	var update = __webpack_require__(300)(content, {});
->>>>>>> T-006 Implement ActionCard UI
+	var update = __webpack_require__(301)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -42388,18 +41530,10 @@
 	}
 
 /***/ },
-/* 364 */
+/* 363 */
 /***/ function(module, exports, __webpack_require__) {
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	exports = module.exports = __webpack_require__(297)();
-=======
-	exports = module.exports = __webpack_require__(299)();
->>>>>>> T-007
-=======
-	exports = module.exports = __webpack_require__(299)();
->>>>>>> T-006 Implement ActionCard UI
+	exports = module.exports = __webpack_require__(300)();
 	// imports
 
 
@@ -42410,7 +41544,7 @@
 
 
 /***/ },
-/* 365 */
+/* 364 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42459,24 +41593,16 @@
 	exports.default = Footer;
 
 /***/ },
-/* 366 */
+/* 365 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(367);
+	var content = __webpack_require__(366);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var update = __webpack_require__(298)(content, {});
-=======
-	var update = __webpack_require__(300)(content, {});
->>>>>>> T-007
-=======
-	var update = __webpack_require__(300)(content, {});
->>>>>>> T-006 Implement ActionCard UI
+	var update = __webpack_require__(301)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -42493,18 +41619,10 @@
 	}
 
 /***/ },
-/* 367 */
+/* 366 */
 /***/ function(module, exports, __webpack_require__) {
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	exports = module.exports = __webpack_require__(297)();
-=======
-	exports = module.exports = __webpack_require__(299)();
->>>>>>> T-007
-=======
-	exports = module.exports = __webpack_require__(299)();
->>>>>>> T-006 Implement ActionCard UI
+	exports = module.exports = __webpack_require__(300)();
 	// imports
 
 
@@ -42515,24 +41633,16 @@
 
 
 /***/ },
-/* 368 */
+/* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(369);
+	var content = __webpack_require__(368);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	var update = __webpack_require__(298)(content, {});
-=======
-	var update = __webpack_require__(300)(content, {});
->>>>>>> T-007
-=======
-	var update = __webpack_require__(300)(content, {});
->>>>>>> T-006 Implement ActionCard UI
+	var update = __webpack_require__(301)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -42549,18 +41659,10 @@
 	}
 
 /***/ },
-/* 369 */
+/* 368 */
 /***/ function(module, exports, __webpack_require__) {
 
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< HEAD
-	exports = module.exports = __webpack_require__(297)();
-=======
-	exports = module.exports = __webpack_require__(299)();
->>>>>>> T-007
-=======
-	exports = module.exports = __webpack_require__(299)();
->>>>>>> T-006 Implement ActionCard UI
+	exports = module.exports = __webpack_require__(300)();
 	// imports
 
 
@@ -42570,18 +41672,386 @@
 	// exports
 
 
-<<<<<<< HEAD
-=======
 /***/ },
-<<<<<<< 3fdadec5bea31757b0fa7748dff1235366206eca
-<<<<<<< Updated upstream
+/* 369 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(32);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Error404 = function Error404(props) {
+	  return _react2.default.createElement(
+	    'h2',
+	    null,
+	    'This page doesnt exist'
+	  );
+	};
+
+	exports.default = Error404;
+
+/***/ },
+/* 370 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(179);
+
+	var _MomentActionCreators = __webpack_require__(291);
+
+	var _FeedItem = __webpack_require__(371);
+
+	var _FeedItem2 = _interopRequireDefault(_FeedItem);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    momentData: state.moment
+	  };
+	};
+
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	  return {
+	    loadMomentDetails: function loadMomentDetails(momentId, actorId) {
+	      return dispatch((0, _MomentActionCreators.fetchMomentDetails)(momentId, actorId));
+	    }
+	  };
+	};
+
+	var FeedItemContainer = function (_Component) {
+	  _inherits(FeedItemContainer, _Component);
+
+	  function FeedItemContainer() {
+	    _classCallCheck(this, FeedItemContainer);
+
+	    return _possibleConstructorReturn(this, (FeedItemContainer.__proto__ || Object.getPrototypeOf(FeedItemContainer)).apply(this, arguments));
+	  }
+
+	  _createClass(FeedItemContainer, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.props.loadMomentDetails(this.props.params.id, '7');
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'feeditem__container' },
+	        _react2.default.createElement(_FeedItem2.default, { data: this.props.momentData })
+	      );
+	    }
+	  }]);
+
+	  return FeedItemContainer;
+	}(_react.Component);
+
+	var ConnectedItemContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(FeedItemContainer);
+	exports.default = ConnectedItemContainer;
+
+/***/ },
 /* 371 */
-=======
-/* 370 */
->>>>>>> Stashed changes
-=======
-/* 370 */
->>>>>>> T-006 Implement ActionCard UI
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(32);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _MomentActionCreators = __webpack_require__(291);
+
+	var _MomentDetail = __webpack_require__(372);
+
+	var _MomentDetail2 = _interopRequireDefault(_MomentDetail);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	__webpack_require__(373);
+
+	var FeedItem = function (_Component) {
+	  _inherits(FeedItem, _Component);
+
+	  function FeedItem() {
+	    _classCallCheck(this, FeedItem);
+
+	    return _possibleConstructorReturn(this, (FeedItem.__proto__ || Object.getPrototypeOf(FeedItem)).apply(this, arguments));
+	  }
+
+	  _createClass(FeedItem, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'section',
+	        { className: 'component__feed_item' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'item__content' },
+	          _react2.default.createElement(_MomentDetail2.default, this.props.data)
+	        ),
+	        _react2.default.createElement('div', { className: 'map__view' })
+	      );
+	    }
+	  }]);
+
+	  return FeedItem;
+	}(_react.Component);
+
+	FeedItem.propTypes = {};
+
+	exports.default = FeedItem;
+
+/***/ },
+/* 372 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(32);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _MomentActionCreators = __webpack_require__(291);
+
+	var _constants = __webpack_require__(273);
+
+	var _ActorCard = __webpack_require__(297);
+
+	var _ActorCard2 = _interopRequireDefault(_ActorCard);
+
+	var _LocationDetailsTrigger = __webpack_require__(302);
+
+	var _LocationDetailsTrigger2 = _interopRequireDefault(_LocationDetailsTrigger);
+
+	var _LikeTrigger = __webpack_require__(303);
+
+	var _LikeTrigger2 = _interopRequireDefault(_LikeTrigger);
+
+	var _CommentTrigger = __webpack_require__(307);
+
+	var _CommentTrigger2 = _interopRequireDefault(_CommentTrigger);
+
+	var _Comment = __webpack_require__(376);
+
+	var _Comment2 = _interopRequireDefault(_Comment);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	__webpack_require__(379);
+
+	var MomentDetails = function (_Component) {
+	  _inherits(MomentDetails, _Component);
+
+	  function MomentDetails() {
+	    _classCallCheck(this, MomentDetails);
+
+	    return _possibleConstructorReturn(this, (MomentDetails.__proto__ || Object.getPrototypeOf(MomentDetails)).apply(this, arguments));
+	  }
+
+	  _createClass(MomentDetails, [{
+	    key: 'willComponentMount',
+	    value: function willComponentMount() {
+	      // fetchMomentDetails()
+	      console.log('inside moment details: ', this.props);
+	    }
+	  }, {
+	    key: 'buildComments',
+	    value: function buildComments() {
+	      if (this.props.comments) {
+	        return this.props.comments.map(function (comment) {
+	          return _react2.default.createElement(_Comment2.default, _extends({ key: comment.id }, comment));
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      console.log('detail props: ', this.props);
+	      var comments = this.buildComments();
+
+	      return _react2.default.createElement(
+	        'section',
+	        { className: 'component__moment__detail' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'moment__detail__wrap' },
+	          _react2.default.createElement(
+	            'figure',
+	            { className: 'moment_details' },
+	            _react2.default.createElement(
+	              'section',
+	              { className: 'moment_media_object' },
+	              _react2.default.createElement('img', { src: _constants.FEED_IMAGE_PLACEHOLDERS[0], alt: '', className: 'feed_img' })
+	            ),
+	            _react2.default.createElement(
+	              'figcaption',
+	              null,
+	              _react2.default.createElement(
+	                'section',
+	                { className: 'item__main' },
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'item__metadata' },
+	                  _react2.default.createElement(
+	                    'span',
+	                    { className: 'timestamp' },
+	                    '3m'
+	                  ),
+	                  '\xB7',
+	                  _react2.default.createElement(
+	                    'span',
+	                    { className: 'nested location' },
+	                    _react2.default.createElement(_LocationDetailsTrigger2.default, null)
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'item__content' },
+	                  this.props.desription || "hello! welcome to tilte, the place where we share the most fun experiences!"
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'section',
+	                { className: 'comment__section' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'comment__list' },
+	                  comments
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement('div', { className: 'map__view' })
+	      );
+	    }
+	  }]);
+
+	  return MomentDetails;
+	}(_react.Component);
+
+	MomentDetails.propTypes = {
+	  can_repost: _react.PropTypes.bool,
+	  is_favorite: _react.PropTypes.bool,
+	  comments: _react.PropTypes.array,
+	  // comments_count: PropTypes.number.isRequired,
+	  // favorites_count: PropTypes.number.isRequired,
+	  // reposts_count: PropTypes.number.isRequired,
+	  description: _react.PropTypes.string,
+	  image_url: _react.PropTypes.string,
+	  origin_post: _react.PropTypes.object,
+	  created_at: _react.PropTypes.string,
+	  comments: _react.PropTypes.array
+	};
+
+	exports.default = MomentDetails;
+
+/***/ },
+/* 373 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(374);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(301)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./feed_item.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./feed_item.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 374 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(300)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".component__feed__item {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  background-color: #fff; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 375 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
 	/**
@@ -42696,54 +42166,8 @@
 
 	module.exports = PooledClass;
 
-<<<<<<< 24013775a59ed552fa8e5890d760f7bbde3ca3b2
-<<<<<<< Updated upstream
-=======
 /***/ },
-/* 371 */,
-/* 372 */,
-/* 373 */,
-/* 374 */,
-/* 375 */
-=======
-/***/ },
-/* 371 */
->>>>>>> T-006:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-<<<<<<< 24013775a59ed552fa8e5890d760f7bbde3ca3b2
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _reactRedux = __webpack_require__(179);
-=======
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(32);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Error404 = function Error404(props) {
-	  return _react2.default.createElement(
-	    'h2',
-	    null,
-	    'This page doesnt exist'
-	  );
-	};
-
-	exports.default = Error404;
-
-/***/ },
-/* 372 */
+/* 376 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42753,21 +42177,16 @@
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
->>>>>>> T-006:
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-<<<<<<< 24013775a59ed552fa8e5890d760f7bbde3ca3b2
-	var _ConfigActionCreators = __webpack_require__(281);
-=======
 	var _reactDom = __webpack_require__(32);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _MomentActionCreators = __webpack_require__(290);
->>>>>>> T-006:
+	var _constants = __webpack_require__(273);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42777,112 +42196,76 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-<<<<<<< 24013775a59ed552fa8e5890d760f7bbde3ca3b2
-	var mapStateToProps = function mapStateToProps(state) {
-	  return {
-	    appData: state.appData
-	  };
-	};
+	__webpack_require__(377);
 
-	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	  return {
-	    getAppData: function getAppData() {
-	      return dispatch((0, _ConfigActionCreators.fetchConfigData)());
-	    }
-	  };
-	};
+	var Comment = function (_Component) {
+	  _inherits(Comment, _Component);
 
-	var TilteAppContainer = function (_Component) {
-	  _inherits(TilteAppContainer, _Component);
+	  function Comment() {
+	    _classCallCheck(this, Comment);
 
-	  function TilteAppContainer() {
-	    _classCallCheck(this, TilteAppContainer);
-
-	    return _possibleConstructorReturn(this, (TilteAppContainer.__proto__ || Object.getPrototypeOf(TilteAppContainer)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Comment.__proto__ || Object.getPrototypeOf(Comment)).apply(this, arguments));
 	  }
 
-	  _createClass(TilteAppContainer, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.props.getAppData();
-=======
-	__webpack_require__(373);
-
-	var MomentDetils = function (_Component) {
-	  _inherits(MomentDetils, _Component);
-
-	  function MomentDetils() {
-	    _classCallCheck(this, MomentDetils);
-
-	    return _possibleConstructorReturn(this, (MomentDetils.__proto__ || Object.getPrototypeOf(MomentDetils)).apply(this, arguments));
-	  }
-
-	  _createClass(MomentDetils, [{
-	    key: 'willComponentMount',
-	    value: function willComponentMount() {
-	      // fetchMomentDetails()
-	      console.log('inside moment details: ', this.props);
->>>>>>> T-006:
-	    }
-	  }, {
+	  _createClass(Comment, [{
 	    key: 'render',
 	    value: function render() {
-<<<<<<< 24013775a59ed552fa8e5890d760f7bbde3ca3b2
-	      var appData = this.props.children && _react2.default.cloneElement(this.props.children, {
-	        appData: this.props.appData
-	      });
-
-	      return appData;
-	    }
-	  }]);
-
-	  return TilteAppContainer;
-	}(_react.Component);
-
-	var AppContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TilteAppContainer);
-
-	TilteAppContainer.propTypes = {
-	  currentUser: _react.PropTypes.object
-	};
-
-	exports.default = AppContainer;
-
->>>>>>> Stashed changes
->>>>>>> T-007
-=======
 	      return _react2.default.createElement(
 	        'section',
-	        { className: 'component__moment__detail' },
-	        _react2.default.createElement('div', { className: 'moment__content' })
+	        { className: 'component__comment' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'comment__wrap' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'user_avatar__wrap' },
+	            _react2.default.createElement('img', { src: this.props.user_avatar || _constants.USER_AVATAR_PLACEHOLDER, className: 'image' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'text__wrap' },
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'text' },
+	              this.props.text
+	            )
+	          )
+	        )
 	      );
 	    }
 	  }]);
 
-	  return MomentDetils;
+	  return Comment;
 	}(_react.Component);
 
-	MomentDetils.propTypes = {};
+	Comment.propTypes = {
+	  flagged: _react.PropTypes.bool,
+	  removed: _react.PropTypes.bool,
+	  text: _react.PropTypes.string,
+	  user_avatar: _react.PropTypes.string,
+	  user_id: _react.PropTypes.number
+	};
 
-	exports.default = MomentDetils;
+	exports.default = Comment;
 
 /***/ },
-/* 373 */
+/* 377 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(374);
+	var content = __webpack_require__(378);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(300)(content, {});
+	var update = __webpack_require__(301)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./moment_details.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./moment_details.scss");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./comment.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./comment.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -42892,19 +42275,58 @@
 	}
 
 /***/ },
-/* 374 */
+/* 378 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(299)();
+	exports = module.exports = __webpack_require__(300)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".component__moment__detail {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  background-color: #fff; }\n", ""]);
+	exports.push([module.id, ".component__comment {\n  border-top: 1px solid #dcdede;\n  margin-top: .5em; }\n  .component__comment .comment__wrap {\n    position: relative;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between;\n    padding: 10px; }\n    .component__comment .comment__wrap .user_avatar__wrap {\n      display: inline-block;\n      width: 2em;\n      height: 2em;\n      border-radius: 50%;\n      border: 1px solid #ccc;\n      vertical-align: middle;\n      margin-right: 5px;\n      overflow: hidden; }\n      .component__comment .comment__wrap .user_avatar__wrap .image {\n        width: 2em; }\n    .component__comment .comment__wrap .text__wrap {\n      display: inline-block;\n      width: auto; }\n", ""]);
 
 	// exports
 
 
->>>>>>> T-006:
+/***/ },
+/* 379 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(380);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(301)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./moment_detail.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./moment_detail.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 380 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(300)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".component__moment__detail {\n  width: 1200px;\n  margin: 1em auto; }\n  .component__moment__detail .moment__detail__wrap {\n    width: 45%;\n    border: 1px solid #dcdede; }\n    .component__moment__detail .moment__detail__wrap .moment_details {\n      margin: 0;\n      width: 100%; }\n      .component__moment__detail .moment__detail__wrap .moment_details .feed_img {\n        width: 100%; }\n      .component__moment__detail .moment__detail__wrap .moment_details .item__main {\n        padding: 10px; }\n      .component__moment__detail .moment__detail__wrap .moment_details .item__metadata {\n        margin-bottom: 3px;\n        font-size: 12px;\n        display: inline-block;\n        color: #565656; }\n        .component__moment__detail .moment__detail__wrap .moment_details .item__metadata .timestamp, .component__moment__detail .moment__detail__wrap .moment_details .item__metadata .location {\n          display: inline-block; }\n        .component__moment__detail .moment__detail__wrap .moment_details .item__metadata .timestamp {\n          margin-right: 3px; }\n        .component__moment__detail .moment__detail__wrap .moment_details .item__metadata .location {\n          margin-left: 3px; }\n", ""]);
+
+	// exports
+
+
 /***/ }
 /******/ ])));

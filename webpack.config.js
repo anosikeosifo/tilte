@@ -65,7 +65,7 @@ const config = {
     colors: true,
     historyApiFallback: true,
     inline: true,
-    port: '9000'
+    port: '1600'
   },
 }
 

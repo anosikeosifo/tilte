@@ -17,7 +17,6 @@ export const feedData = (state=initialState, action) => {
 
     case MOMENT_ACTIONS.likeSuccess:
       return likeMoment(action);
-
     default:
       return currentState;
   }
@@ -36,4 +35,8 @@ const likeMoment = (action) => {
   return update(currentState, {
     [momentIndex]: { $set:  action.payload.data }
   });
+};
+
+const fetchMomentDetails = (action) => {
+  
 };

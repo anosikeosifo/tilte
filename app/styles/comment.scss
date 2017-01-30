@@ -1,0 +1,31 @@
+.component__comment {
+  border-top: 1px solid #dcdede;
+  margin-top: .5em;
+
+  .comment__wrap {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+    .user_avatar__wrap {
+      display: inline-block;
+      width: 2em;
+      height: 2em;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      vertical-align: middle;
+      margin-right: 5px;
+      overflow: hidden;
+
+      .image {
+        width: 2em;
+      }
+    }
+
+    .text__wrap {
+      display: inline-block;
+      width: auto;
+    }
+  }  
+}

@@ -47,14 +47,14 @@ class Moment extends Component {
       'hover__active': this.state.cardInteractionActive
     });
 
-    const momentDetailsURL = `/moment/${ this.props.id }`;
+    const momentDetailsURL = `/feed/${ this.props.id }`;
 
     return(
       <article className='component__moment'>
         <Link to={ momentDetailsURL }>
-        <figure className={ classes } 
-          onMouseEnter={ this.handleMouseEnter.bind(this) }
-          onMouseLeave={ this.handleMouseLeave.bind(this) }
+          <figure className={ classes } 
+            onMouseEnter={ this.handleMouseEnter.bind(this) }
+            onMouseLeave={ this.handleMouseLeave.bind(this) }
             onClick={ this.handleClick.bind(this) }>
 
             <section className='moment_media_object'>
