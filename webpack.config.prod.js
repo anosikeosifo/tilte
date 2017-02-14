@@ -15,39 +15,38 @@ const config = {
   },
 
   module: {
-    loaders: [{
-        test: /\.jsx?$/,
+    rules: [
+      {
+        test: /\.js$/,
         exclude: './node_modules/',
-        loader: 'babel',
+        use: [
+          { loader: 'jshint-loader' },
+          { loader: 'babel-loader' }
+        ]
       },
       {
         test: /\.scss$/,
         exclude: './node_modules/',
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader!sass-loader"),
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: "css-loader!postcss-loader!sass-loader"
+        })
       },
-      {
-        test: /\.json$/,
-        exclude: '/node_modules/',
-        loader: "json"
-      },
-      {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: [
-          'file?hash=sha512&digest=hex&name=[hash].[ext]',
-          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-        ]
-      }
     ]
   },
 
   plugins: [
-      new ExtractTextPlugin('../css/main.css'),
-      new DedupePlugin(),
+      new ExtractTextPlugin({
+       filename: '../css/main.css',
+       allChunks: true
+      }),
+
       new webpack.DefinePlugin({
         'process.env': {
           'NODE_ENV': JSON.stringify('production')
         }
       }),
+
       new UglifyJsPlugin({
         include: /\.js$/,
         minimize: true,
@@ -56,6 +55,7 @@ const config = {
           warnings: false
         }
       }),
+
       new CopyWebpackPlugin([
         {
           from: __dirname + '/static/index.html',
@@ -69,8 +69,11 @@ const config = {
   ],
 
   resolve: {
-      extensions: ['', '.css', '.js', '.scss'],
-      root: [path.join(__dirname, './app/')]
+    extensions: ['.css', '.js', '.scss'],
+    modules: [
+      path.join(__dirname, './app/'),
+      'node_modules'
+    ]
   },
 
   devServer: {

@@ -1,7 +1,7 @@
 require('../styles/like_trigger.scss');
 
 import React, { Component, PropTypes } from 'react';
-import { ICON_FAVORITE } from 'constants';
+import { ICON_FAVORITE } from '../constants';
 import classNames from 'classnames';
 import Icon from './Icon';
 import update from 'immutability-helper';
@@ -51,7 +51,6 @@ class LikeTrigger extends Component {
 
   render() {
     let triggerDOM = null;
-
     if (this.props.isEnabled) {
       triggerDOM = (<section className='component__like__triger enabled'
         onMouseEnter={ this.handleMouseEnter.bind(this) } 

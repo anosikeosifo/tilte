@@ -1,10 +1,13 @@
 .component__moment__detail {
+  box-sizing: border-box;
   width: 1200px;
   margin: 1em auto;
+  position: relative;
 
   .moment__detail__wrap {
     width: 45%;
     border: 1px solid #dcdede;
+    display: inline-block;
     
     .moment_details {
       margin: 0;
@@ -37,5 +40,17 @@
         }
       }
     }
+  }
+
+  .map__view {
+    display: inline-block;
+    width: 55%;
+    vertical-align: top;
+    height: 40em;
+    margin: 1em 0;
+    border: 1px solid #dcdede;
+    border-left: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
 }

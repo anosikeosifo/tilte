@@ -17,9 +17,7 @@ class ActorCard extends Component {
         <span className='user__image__wrap'>
           <img className='image' src={ this.props.actor.avatarUrl || USER_AVATAR_PLACEHOLDER }/>
         </span>
-        if(this.props.showDetails){
-          <span className='user__name__wrap'>{ this.props.actor.fullname }</span>
-        }
+        <span className='user__name__wrap'>{ this.props.actor.fullname }</span>
       </section>
     );
   }

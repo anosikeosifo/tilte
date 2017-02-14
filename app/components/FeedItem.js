@@ -10,11 +10,7 @@ class FeedItem extends Component {
   render() {
     return(
       <section className='component__feed_item'>
-        <div className='item__content'>
           <MomentDetail { ...this.props.data } />
-        </div>
-        <div className='map__view'>
-        </div>
       </section>
     );
   }
