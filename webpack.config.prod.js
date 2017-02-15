@@ -20,7 +20,6 @@ const config = {
         test: /\.js$/,
         exclude: './node_modules/',
         use: [
-          { loader: 'jshint-loader' },
           { loader: 'babel-loader' }
         ]
       },
