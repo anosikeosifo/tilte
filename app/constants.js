@@ -25,7 +25,13 @@ export const MOMENT_ACTIONS                       = {
                                                       likError: 'Moment like action failed.',
                                                       fetchDetailsRequest: 'Moment details requested',
                                                       fetchDetailsSuccess: 'Moment details fetch successful',
-                                                      fetchDetailsError: 'Moment details failed to fetch'
+                                                      fetchDetailsError: 'Moment details failed to fetch',
+                                                      fetchCommentsRequest: 'Moment comments requested',
+                                                      fetchCommentsSuccess: 'Moment comments fetch successful',
+                                                      fetchCommentsError: 'Moment comments failed to fetch',
+                                                      postCommentRequest: 'Comment is being posted',
+                                                      postCommentSuccess: 'Comment posted successfully',
+                                                      postCommentError: 'Comment could not be posted at this time. Please try again.',
                                                     };
 
 export const ASSETS_BASE_URL                      = (process.env.NODE_ENV === 'production' ? 'https://tilteui.herokuapp.com' : 'http://localhost:1600');
