@@ -9,23 +9,23 @@ import LikeTrigger from './LikeTrigger';
 import CommentTrigger from './CommentTrigger';
 import MoreInteractionsTrigger from './MoreInteractionsTrigger';
 import update from 'immutability-helper';
-import { Link } from 'react-router'; 
+import { Link } from 'react-router';
 
 class Moment extends Component {
   componentWillMount() {
-    this.setState(Object.assign({}, this.state, { 
+    this.setState(Object.assign({}, this.state, {
       cardInteractionActive: false
     }));
   }
 
   handleMouseEnter() {
-    this.setState(update(this.state, { 
+    this.setState(update(this.state, {
       cardInteractionActive: { $set: true }
     }));
   }
 
   handleMouseLeave() {
-    this.setState(update(this.state, { 
+    this.setState(update(this.state, {
       cardInteractionActive: { $set: false }
     }));
   }
@@ -52,7 +52,7 @@ class Moment extends Component {
     return(
       <article className='component__moment'>
         <Link to={ momentDetailsURL }>
-          <figure className={ classes } 
+          <figure className={ classes }
             onMouseEnter={ this.handleMouseEnter.bind(this) }
             onMouseLeave={ this.handleMouseLeave.bind(this) }
             onClick={ this.handleClick.bind(this) }>

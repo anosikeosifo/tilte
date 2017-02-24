@@ -1,7 +1,6 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const path = require('path');
-const DedupePlugin = require("webpack/lib/optimize/DedupePlugin");
 const webpack = require('webpack');
 
 const sassLoaders = [
@@ -20,34 +19,28 @@ const config = {
   },
 
   module: {
-    preLoaders: [
-      { test: /\.js$/, exclude: './node_modules/', loader: 'jshint-loader' }
-    ],
-
-    loaders: [{
-      test: /\.jsx?$/,
-      exclude: './node_modules/',
-      loader: 'babel',
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: './node_modules/',
+        use: [
+          { loader: 'jshint-loader' },
+          { loader: 'babel-loader' }
+        ]
       },
-
       {
         test: /\.scss$/,
         exclude: './node_modules/',
-        loader: sassLoaders.join('!'),
+        use: sassLoaders
       },
-      {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: [
-          'file?hash=sha512&digest=hex&name=[hash].[ext]',
-          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-        ]
-      }
     ]
   },
 
   plugins: [
-    new ExtractTextPlugin('/css/main.css'),
-    new DedupePlugin(),
+    new ExtractTextPlugin({
+     filename: '/css/main.css'
+    }),
+
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('development')
@@ -56,13 +49,15 @@ const config = {
   ],
 
   resolve: {
-    extensions: ['', '.css', '.js', '.scss'],
-    root: [path.join(__dirname, './app/')]
+    extensions: ['.css', '.js', '.scss'],
+    modules: [
+      path.join(__dirname, './app/'),
+      'node_modules'
+    ]
   },
 
   devServer: {
     contentBase: './static',
-    colors: true,
     historyApiFallback: true,
     inline: true,
     port: '1600'

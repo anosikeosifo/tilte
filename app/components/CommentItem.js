@@ -1,13 +1,13 @@
-require('../styles/comment');
+require('../styles/comment_item');
 
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { USER_AVATAR_PLACEHOLDER } from '../constants';
 
-class Comment extends Component {
+class CommentItem extends Component {
   render() {
     return(
-      <section className='component__comment'>
+      <section className='component__comment__item'>
         <div className='comment__wrap'>
           <div className='user_avatar__wrap'>
             <img src={ this.props.user_avatar || USER_AVATAR_PLACEHOLDER } className='image'/>
@@ -21,7 +21,7 @@ class Comment extends Component {
   }
 }
 
-Comment.propTypes = {
+CommentItem.propTypes = {
   flagged: PropTypes.bool,
   removed: PropTypes.bool,
   text: PropTypes.string,
@@ -29,4 +29,4 @@ Comment.propTypes = {
   user_id: PropTypes.number,
 }
 
-export default Comment;
+export default CommentItem;
