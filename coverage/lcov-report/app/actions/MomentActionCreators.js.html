@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for app/actions/MomentActionCreators.js</title>
+    <title>Code coverage report for app/actions/EventActionCreators.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">All files</a> / <a href="index.html">app/actions</a> MomentActionCreators.js
+      <a href="../../index.html">All files</a> / <a href="index.html">app/actions</a> EventActionCreators.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
@@ -145,56 +145,56 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { MOMENT_ACTIONS } from '../constants';
-import { likeMomentAPI, fetchMomentAPI } from '../api/MomentAPI';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { EVENT_ACTIONS } from '../constants';
+import { likeEventAPI, fetchEventAPI } from '../api/EventAPI';
 import { buildRequestParams } from '../helpers/HttpHelper';
 &nbsp;
 &nbsp;
-const momentActionSuccess = <span class="fstat-no" title="function not covered" >(a</span>ctionType, payload) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
-  type: MOMENT_ACTIONS[`${actionType}Success`], success: true, payload 
+const eventActionSuccess = <span class="fstat-no" title="function not covered" >(a</span>ctionType, payload) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
+  type: EVENT_ACTIONS[`${actionType}Success`], success: true, payload 
 });
 &nbsp;
-const momentActionError = <span class="fstat-no" title="function not covered" >(a</span>ctionType, error) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
-  type: MOMENT_ACTIONS[`${actionType}Error`], success: false, error 
+const eventActionError = <span class="fstat-no" title="function not covered" >(a</span>ctionType, error) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
+  type: EVENT_ACTIONS[`${actionType}Error`], success: false, error 
 });
 &nbsp;
-const triggerlikeMoment = <span class="fstat-no" title="function not covered" >()</span> =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
-  type: MOMENT_ACTIONS.likeRequest
+const triggerlikeEvent = <span class="fstat-no" title="function not covered" >()</span> =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
+  type: EVENT_ACTIONS.likeRequest
 });
 &nbsp;
-export const likeMoment = (momentId, actorId) =&gt; {
+export const likeEvent = (eventId, actorId) =&gt; {
   const actionType = 'like';
 &nbsp;
   const requestData = buildRequestParams({ 
-    moment_id: momentId, user_id: actorId 
+    event_id: eventId, user_id: actorId 
   });
   
   return <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt;  {
-<span class="cstat-no" title="statement not covered" >    triggerlikeMoment();</span>
+<span class="cstat-no" title="statement not covered" >    triggerlikeEvent();</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    likeMomentAPI(requestData)</span>
-      .then(<span class="fstat-no" title="function not covered" >pa</span>yload =&gt; <span class="cstat-no" title="statement not covered" >dispatch(momentActionSuccess(actionType, payload)))</span>
-      .catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; <span class="cstat-no" title="statement not covered" >dispatch(momentActionError(actionType, error)))</span>;
+<span class="cstat-no" title="statement not covered" >    likeEventAPI(requestData)</span>
+      .then(<span class="fstat-no" title="function not covered" >pa</span>yload =&gt; <span class="cstat-no" title="statement not covered" >dispatch(eventActionSuccess(actionType, payload)))</span>
+      .catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; <span class="cstat-no" title="statement not covered" >dispatch(eventActionError(actionType, error)))</span>;
   }
 };
 &nbsp;
-const triggerFetchMomentDetails = <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
-  type: MOMENT_ACTIONS.fetchDetails
+const triggerFetchEventDetails = <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
+  type: EVENT_ACTIONS.fetchDetails
 });
 &nbsp;
-export const fetchMomentDetails = <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; {
+export const fetchEventDetails = <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; {
   const actionType = <span class="cstat-no" title="statement not covered" >'fetchDetails';</span>
 &nbsp;
   const requestData = <span class="cstat-no" title="statement not covered" >buildRequestParams({ </span>
-    moment_id: momentId, user_id: actorId 
+    event_id: eventId, user_id: actorId 
   });
   
 <span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt;  {</span>
-<span class="cstat-no" title="statement not covered" >    triggerFetchMomentDetails();</span>
+<span class="cstat-no" title="statement not covered" >    triggerFetchEventDetails();</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    fetchMomentAPI(requestData)</span>
-      .then(<span class="fstat-no" title="function not covered" >pa</span>yload =&gt; <span class="cstat-no" title="statement not covered" >dispatch(momentActionSuccess(actionType, payload)))</span>
-      .catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; <span class="cstat-no" title="statement not covered" >dispatch(momentActionError(actionType, error)))</span>;
+<span class="cstat-no" title="statement not covered" >    fetchEventAPI(requestData)</span>
+      .then(<span class="fstat-no" title="function not covered" >pa</span>yload =&gt; <span class="cstat-no" title="statement not covered" >dispatch(eventActionSuccess(actionType, payload)))</span>
+      .catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; <span class="cstat-no" title="statement not covered" >dispatch(eventActionError(actionType, error)))</span>;
   }
 };</pre></td></tr>
 </table></pre>

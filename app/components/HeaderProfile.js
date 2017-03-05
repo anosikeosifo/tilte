@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 const HeaderProfile = (props) => {
   return(
-    <section className='header__profile'>{ props.user }</section>
+    <section className='header__profile'>{ props.currentUser.fullname }</section>
   );
 }
 

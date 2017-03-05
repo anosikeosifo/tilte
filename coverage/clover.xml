@@ -31,7 +31,7 @@
       </package>
       <package name="app.actions">
         <metrics statements="20" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="12" coveredmethods="1"/>
-        <file name="MomentActionCreators.js" path="/home/osifo/ahead/web/tilte/app/actions/MomentActionCreators.js">
+        <file name="EventActionCreators.js" path="/home/osifo/ahead/web/tilte/app/actions/EventActionCreators.js">
           <metrics statements="20" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="12" coveredmethods="1"/>
           <line num="6" count="1" type="stmt"/>
           <line num="10" count="1" type="stmt"/>
@@ -57,7 +57,7 @@
       </package>
       <package name="app.api">
         <metrics statements="6" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
-        <file name="MomentAPI.js" path="/home/osifo/ahead/web/tilte/app/api/MomentAPI.js">
+        <file name="EventAPI.js" path="/home/osifo/ahead/web/tilte/app/api/EventAPI.js">
           <metrics statements="6" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
           <line num="4" count="1" type="stmt"/>
           <line num="5" count="0" type="stmt"/>

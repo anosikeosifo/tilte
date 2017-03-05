@@ -20,7 +20,7 @@ class LikeTrigger extends Component {
   }
 
   componentWillMount() {
-    this.setState(Object.assign({}, this.state, { 
+    this.setState(Object.assign({}, this.state, {
       iconColor: this.getIconColor(this.props.uiState)
     }));
   }
@@ -31,7 +31,7 @@ class LikeTrigger extends Component {
 
   handleMouseEnter() {
     if(this.props.isEnabled) {
-      this.setState(update(this.state, { 
+      this.setState(update(this.state, {
         iconColor: { $set: this.getIconColor("active") }
       }));
     }
@@ -39,21 +39,23 @@ class LikeTrigger extends Component {
 
   handleMouseLeave() {
     if(this.props.isEnabled) {
-      this.setState(update(this.state, { 
+      this.setState(update(this.state, {
         iconColor: { $set: this.getIconColor("default") }
       }));
     }
   }
 
-  handleClick() {
-    if(this.props.isEnabled) this.props.likeAction(this.props.momentId, "7");
+  handleClick(event) {
+    if(this.props.isEnabled) this.props.likeAction(this.props.eventObjectId, this.props.actor.id);
+    event.preventDefault();
+    event.cancelBubble = true;
   }
 
   render() {
     let triggerDOM = null;
     if (this.props.isEnabled) {
       triggerDOM = (<section className='component__like__triger enabled'
-        onMouseEnter={ this.handleMouseEnter.bind(this) } 
+        onMouseEnter={ this.handleMouseEnter.bind(this) }
         onMouseLeave={ this.handleMouseLeave.bind(this) }
         onClick={ this.handleClick.bind(this) }>
           <Icon icon={ICON_FAVORITE} color={ this.state.iconColor } />

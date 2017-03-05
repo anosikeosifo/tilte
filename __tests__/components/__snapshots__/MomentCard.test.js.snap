@@ -1,16 +1,16 @@
-exports[`MomentCard Component should matched expected initial state 1`] = `
+exports[`EventCard Component should matched expected initial state 1`] = `
 <article
-  className="component__moment">
+  className="component__event">
   <a
     onClick={[Function]}
     style={Object {}}>
     <figure
-      className="10 moment__wrap"
+      className="10 event__wrap"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}>
       <section
-        className="moment_media_object">
+        className="event_media_object">
         <img
           alt=""
           className="feed_img"

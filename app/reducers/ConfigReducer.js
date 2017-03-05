@@ -36,7 +36,7 @@ const initialState = {
     name: 'Borderless',
     logo: `${ ASSETS_BASE_URL }/images/logo.png`,
   },
-  currentUser: null,
+  currentUser: { id: '7', fullname: 'Anosike Osifo', firstname: 'Osifo', lastname: 'Anosike', email: 'social.anosikeosifo@gmail.com' },
 }
 
 export const configData = (state = initialState, action) => {
@@ -67,4 +67,3 @@ export const configData = (state = initialState, action) => {
       return state;
   }
 }
-  

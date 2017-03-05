@@ -3,7 +3,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import LikeTrigger from '../../app/components/LikeTrigger';
 import { mount } from 'enzyme';
-import { likeMoment } from '../../app/actions/MomentActionCreators';
+import { likeEvent } from '../../app/actions/EventActionCreators';
  
 
 describe('LikeTrigger Component', () => {
@@ -26,7 +26,7 @@ describe('LikeTrigger Component', () => {
 
   describe('When enabled', () => {
     const component = renderer.create(
-      <LikeTrigger isEnabled={ true } uiState='default' likeAction={ likeMoment }/>
+      <LikeTrigger isEnabled={ true } uiState='default' likeAction={ likeEvent }/>
     );
 
     let tree = component.toJSON();

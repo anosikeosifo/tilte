@@ -15,7 +15,7 @@ class CommentInput extends Component {
   handleCommentSubmit(event) {
     if(event.key == 'Enter') {
       this.handlePreSubmit(event.target);
-      this.props.submitAction(this.props.momentId, this.props.actor.id, event.target.value.trim());
+      this.props.submitAction(this.props.eventObjectId, this.props.actor.id, event.target.value.trim());
       this.handlePostSubmit(event.target);
 
       event.preventDefault();

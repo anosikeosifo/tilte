@@ -1,12 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { Provider, connect } from 'react-redux';
 import { loadUserFeed } from '../actions/FeedActionCreators';
-import { reportMoment,
-         likeMoment, 
-         showMomentDetail, 
-         fetchSimilarMomentsByTag, 
-         fetchSimilarMomentsByLocation, 
-         fetchSimilarMomentsByUser } from '../actions/MomentActionCreators';
+import { reportEvent,
+         likeEvent,
+         showEventDetail,
+         fetchSimilarEventsByTag,
+         fetchSimilarEventsByLocation,
+         fetchSimilarEventsByUser } from '../actions/EventActionCreators';
 import Feed from '../components/Feed';
 
 
@@ -16,12 +16,12 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchUserFeed: () => dispatch(loadUserFeed('7')),
-  reportItem: (itemId, actorId) => dispatch(reportMoment(itemId, actorId)),
-  likeItem: (itemId, actorId) => dispatch(likeMoment(itemId, actorId)),
-  showItemDetail: (itemId, actorId) => dispatch(showMomentDetail(itemId, actorId)),
-  fetchSimilarItemsByTag: (itemId, actorId) => dispatch(fetchSimilarMomentsByTag(itemId, actorId)),
-  fetchSimilarItemsByLocation: (itemId, actorId) => dispatch(fetchSimilarMomentsByLocation(itemId, actorId)),
-  fetchSimilarItemsByUser: (itemId, actorId) => dispatch(fetchSimilarMomentsByUser(itemId, actorId)),
+  reportItem: (itemId, actorId) => dispatch(reportEvent(itemId, actorId)),
+  likeItem: (itemId, actorId) => dispatch(likeEvent(itemId, actorId)),
+  showItemDetail: (itemId, actorId) => dispatch(showEventDetail(itemId, actorId)),
+  fetchSimilarItemsByTag: (itemId, actorId) => dispatch(fetchSimilarEventsByTag(itemId, actorId)),
+  fetchSimilarItemsByLocation: (itemId, actorId) => dispatch(fetchSimilarEventsByLocation(itemId, actorId)),
+  fetchSimilarItemsByUser: (itemId, actorId) => dispatch(fetchSimilarEventsByUser(itemId, actorId)),
 });
 
 class FeedContainer extends Component {
@@ -70,7 +70,8 @@ class FeedContainer extends Component {
     return(
       <div className='feed__container'>
         <Feed data={ this.props.feedData }
-          actions={ feedActions } />
+          actions={ feedActions }
+          actor={ this.props.currentUser}/>
       </div>
     );
   }

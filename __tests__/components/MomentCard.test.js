@@ -1,28 +1,28 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import MomentCard from '../../app/components/MomentCard';
+import EventCard from '../../app/components/EventCard';
 import { shallow } from 'enzyme';
 
 
-describe('MomentCard Component', () => {
-  const momentId = '10';
+describe('EventCard Component', () => {
+  const eventId = '10';
   const actionProps = { like: () => ({"test": "test"}) };
-  const momentProps = { id: '10', user: { avatarUrl: null } }
+  const eventProps = { id: '10', user: { avatarUrl: null } }
 
-  const momentCardTree = shallow(
-    <MomentCard id={ momentId } actions={actionProps} {...momentProps}/>
+  const eventCardTree = shallow(
+    <EventCard id={ eventId } actions={actionProps} {...eventProps}/>
   );
-  console.log('momentCardTree: ', momentCardTree);
-  // let momentCardTree = component.toJSON();
+  console.log('eventCardTree: ', eventCardTree);
+  // let eventCardTree = component.toJSON();
 
   // it('should matched expected initial state', () => {
-  //   expect(momentCardTree).toMatchSnapshot();
+  //   expect(eventCardTree).toMatchSnapshot();
   // });
 
-  it('should open the moment detail view when clicked', () => {
-    const linkURL = momentCardTree.find('a')
+  it('should open the event detail view when clicked', () => {
+    const linkURL = eventCardTree.find('a')
                       .props.href;
-    const card = momentCardTree.find('.moment__wrap')
+    const card = eventCardTree.find('.event__wrap')
     console.log('card: ', card);
     
     card.props.onClick();

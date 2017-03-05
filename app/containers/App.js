@@ -7,7 +7,7 @@ import TilteStore from '../stores/TilteStore';
 import TilteAppContainer from '../containers/TilteAppContainer';
 import HomeContainer from '../containers/HomeContainer';
 import Error from '../components/Error';
-import MomentDetailContainer from '../containers/MomentDetailContainer';
+import EventDetailContainer from '../containers/EventDetailContainer';
 
 export default class App extends Component {
   render() {
@@ -16,7 +16,7 @@ export default class App extends Component {
         <Router history={ browserHistory }>
             <Route path='/' component={ TilteAppContainer }>
               <IndexRoute component={ HomeContainer }/>
-              <Route path='/feed/:id' component={ MomentDetailContainer }/>
+              <Route path='/events/:id' component={ EventDetailContainer }/>
               <Route path='*' component={ Error }/>
             </Route>
         </Router>

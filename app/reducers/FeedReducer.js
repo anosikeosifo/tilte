@@ -1,4 +1,4 @@
-import { FEED_ACTIONS, MOMENT_ACTIONS } from '../constants';
+import { FEED_ACTIONS, EVENT_ACTIONS } from '../constants';
 import update from 'immutability-helper';
 
 
@@ -15,28 +15,28 @@ export const feedData = (state=initialState, action) => {
     case FEED_ACTIONS.fetchFeedError:
       return "";
 
-    case MOMENT_ACTIONS.likeSuccess:
-      return likeMoment(action);
+    case EVENT_ACTIONS.likeSuccess:
+      return likeEvent(action);
     default:
       return currentState;
   }
 };
 
-const getMoment = (id) => {
-  return currentState.find((moment) => moment.id == id);
+const getEvent = (id) => {
+  return currentState.find((event) => event.id == id);
 };
 
-const getMomentIndex = (momentId) => {
-  return currentState.findIndex((moment) => moment.id == momentId);
+const getEventIndex = (eventId) => {
+  return currentState.findIndex((event) => event.id == eventId);
 };
 
-const likeMoment = (action) => {
-  const momentIndex = getMomentIndex(action.payload.data.id);
+const likeEvent = (action) => {
+  const eventIndex = getEventIndex(action.payload.data.id);
   return update(currentState, {
-    [momentIndex]: { $set:  action.payload.data }
+    [eventIndex]: { $set:  action.payload.data }
   });
 };
 
-const fetchMomentDetails = (action) => {
+const fetchEventDetails = (action) => {
   
 };

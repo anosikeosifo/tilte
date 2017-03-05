@@ -1,4 +1,4 @@
-import { MOMENT_ACTIONS } from '../constants';
+import { EVENT_ACTIONS } from '../constants';
 import update from 'immutability-helper';
 
 
@@ -8,9 +8,9 @@ export const comments = (state=[], action) => {
   let currentState = state;
 
   switch (action.type) {
-    case MOMENT_ACTIONS.fetchCommentsSuccess:
+    case EVENT_ACTIONS.fetchCommentsSuccess:
       return fetchComments(action);
-    case MOMENT_ACTIONS.postCommentSuccess:
+    case EVENT_ACTIONS.postCommentSuccess:
       return postComment(action);
     default:
       return state;
@@ -18,13 +18,13 @@ export const comments = (state=[], action) => {
 }
 
 const fetchComments = (action) => (
-  update(state.moment.comments, {
+  update(state.event.comments, {
     $push: action.payload.data
   })
 );
 
 const postComment = (state, action) => (
-  update(currentState.moment.comments, {
+  update(currentState.event.comments, {
     $push: action.payload.data
   })
 );

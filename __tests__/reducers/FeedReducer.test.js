@@ -7,7 +7,7 @@ describe('FeedReducer', () => {
     expect(initialFeedData).toEqual([]);
   });
 
-  describe('likeMoment', () => {
+  describe('likeEvent', () => {
     //Pending
   });
 });

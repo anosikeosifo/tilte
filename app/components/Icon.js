@@ -8,14 +8,17 @@ const Icon = (props) => {
       verticalAlign: 'middle',
     },
 
-    path: {
-      fill: props.color
+    g: {
+      fill: props.color,
+      scale: props.scaleTo
     }
   }
 
   return(
     <svg  className='icon' style={ styles.svg } height={`${props.size}px`} width={`${props.size}px`} viewBox='0 0 1024 1024'>
-      <path d={ props.icon } style={ styles.path }/>
+      <g fill={ styles.g.fill } transform={ ( props.scaleTo ? `scale(${ styles.g.scale }, ${ styles.g.scale })` : '') }>
+        <path d={ props.icon } />
+      </g>
     </svg>
   );
 };

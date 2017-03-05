@@ -46,7 +46,7 @@ class HomeContainer extends Component {
           <BannerSearch/>
         </section>
 
-        <FeedContainer />
+        <FeedContainer currentUser={ this.props.currentUser }/>
         <Footer/>
       </section>
     );

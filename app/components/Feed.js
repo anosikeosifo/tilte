@@ -1,14 +1,14 @@
 import React, { Component, PropTypes } from 'react';
-import FeedItem from './MomentCard';
+import EventCard from './EventCard';
 import Masonry from 'react-masonry-component';
 
 let masonryOptions = {
   transitionDuration: 0,
 };
 
-const Feed = (props) => { 
+const Feed = (props) => {
   let feedItems = props.data.map((item) => {
-    return <FeedItem key={ item.id } actions={ props.actions} {...item} />
+    return <EventCard key={ item.id } actions={ props.actions} {...item}  actor={ props.actor }/>
   });
 
   return(
