@@ -1,7 +1,7 @@
 .component__event {
 	display: inline-block;
   width: 25%;
-	padding: 4px;
+	padding: 7px;
   text-align: left;
 
   .event__wrap {
@@ -9,7 +9,7 @@
     position: relative;
     padding: 0;
     border: 1px solid #efefef;
-    border-radius: 5px;
+    border-radius: 0;
     margin: 0;
     transition: all 0.3s ease-in;
     cursor: pointer;
@@ -27,11 +27,6 @@
     .feed_img {
       width: 100%;
     }
-  }
-
-  .event_media_object, .feed_img {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
   }
 
   .item__main {

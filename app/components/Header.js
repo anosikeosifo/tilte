@@ -22,12 +22,9 @@ class Header extends Component {
           </section>
 
           <section className={ classNames({ actions: true, tilte__action: true }) }>
-            <Link className='tilte__action_link btn btn-primary' to={ (this.props.loggedInUser == null ? '/new_tilte' : '/login') }>tilte!</Link>
             <HeaderProfile currentUser={ this.props.loggedInUser }/>
+            <Link className='tilte__action_link btn btn-primary' to={ (this.props.loggedInUser == null ? '/new_tilte' : '/login') }>tilte!</Link>
           </section>
-        </nav>
-        <nav className={ classNames({ hidden: !this.props.loggedInUser, navbar: true, category__container: true }) }>
-          <CategoryNavbar user={ this.props.loggedInUser } updatePreference={ this.props.updateCategoryPreference }/>
         </nav>
       </section>
     );

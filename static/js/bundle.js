@@ -17013,7 +17013,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, ".component__comment__input {\n  min-height: 4em;\n  padding: 10px 10px;\n  border-top: 1px solid #dcdede; }\n  .component__comment__input .header__wrap {\n    border-bottom: 1px solid #f1f1f1;\n    padding: 10px 0;\n    margin-bottom: 10px; }\n  .component__comment__input .actor__avatar__wrap, .component__comment__input .actor__avatar {\n    width: 2em;\n    height: 2em;\n    border-radius: 50%; }\n  .component__comment__input .main__wrap {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between; }\n  .component__comment__input .actor__avatar__wrap {\n    border: 1px solid #ccc;\n    display: -ms-inline-flexbox;\n    display: inline-flex; }\n  .component__comment__input .text__input__wrap {\n    position: relative;\n    width: 100%;\n    margin-left: 3px;\n    display: -ms-inline-flexbox;\n    display: inline-flex; }\n    .component__comment__input .text__input__wrap .comment__input__edge {\n      display: block;\n      position: absolute;\n      top: 0;\n      height: 10px;\n      width: 10px;\n      margin: 0;\n      padding: 0; }\n      .component__comment__input .text__input__wrap .comment__input__edge .edge__inner, .component__comment__input .text__input__wrap .comment__input__edge .edge__outer {\n        position: absolute;\n        border-bottom-color: transparent !important;\n        border-left-color: transparent !important; }\n      .component__comment__input .text__input__wrap .comment__input__edge .edge__inner {\n        border: 7px solid #fff;\n        left: 2px;\n        top: 1px;\n        z-index: 1; }\n      .component__comment__input .text__input__wrap .comment__input__edge .edge__outer {\n        border: 5px solid #d5d5d5;\n        left: 0;\n        top: 0; }\n    .component__comment__input .text__input__wrap .comment__input__frame {\n      margin-left: 10px;\n      width: 100%;\n      border: 1px solid #dcdede; }\n    .component__comment__input .text__input__wrap .comment__textarea {\n      height: 100%;\n      width: 100%;\n      resize: none;\n      outline: none;\n      border: none;\n      padding: 8px; }\n      .component__comment__input .text__input__wrap .comment__textarea.is__disabled {\n        opacity: 0.3; }\n      .component__comment__input .text__input__wrap .comment__textarea.is__disabled:after {\n        width: 100%;\n        height: 100%;\n        position: absolute; }\n", ""]);
+exports.push([module.i, ".component__comment__input {\n  min-height: 4em;\n  padding: 15px 15px;\n  border-top: 1px solid #ccc;\n  border-bottom: 1px solid #ccc;\n  margin-bottom: 10px; }\n  .component__comment__input .header__wrap {\n    border-bottom: 1px solid #f1f1f1;\n    margin-bottom: 20px; }\n  .component__comment__input .actor__avatar__wrap, .component__comment__input .actor__avatar {\n    width: 2em;\n    height: 2em;\n    border-radius: 50%; }\n  .component__comment__input .main__wrap {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between; }\n  .component__comment__input .actor__avatar__wrap {\n    border: 1px solid #ccc;\n    display: -ms-inline-flexbox;\n    display: inline-flex; }\n  .component__comment__input .text__input__wrap {\n    position: relative;\n    width: 100%;\n    margin-left: 3px;\n    display: -ms-inline-flexbox;\n    display: inline-flex; }\n    .component__comment__input .text__input__wrap .comment__input__edge {\n      display: block;\n      position: absolute;\n      top: 0;\n      height: 10px;\n      width: 10px;\n      margin: 0;\n      padding: 0; }\n      .component__comment__input .text__input__wrap .comment__input__edge .edge__inner, .component__comment__input .text__input__wrap .comment__input__edge .edge__outer {\n        position: absolute;\n        border-bottom-color: transparent !important;\n        border-left-color: transparent !important; }\n      .component__comment__input .text__input__wrap .comment__input__edge .edge__inner {\n        border: 7px solid #fff;\n        left: 2px;\n        top: 1px;\n        z-index: 1; }\n      .component__comment__input .text__input__wrap .comment__input__edge .edge__outer {\n        border: 5px solid #d5d5d5;\n        left: 0;\n        top: 0; }\n    .component__comment__input .text__input__wrap .comment__input__frame {\n      margin-left: 10px;\n      width: 100%;\n      border: 1px solid #dcdede; }\n    .component__comment__input .text__input__wrap .comment__textarea {\n      height: 100%;\n      width: 100%;\n      resize: none;\n      outline: none;\n      border: none;\n      padding: 8px; }\n      .component__comment__input .text__input__wrap .comment__textarea.is__disabled {\n        opacity: 0.3; }\n      .component__comment__input .text__input__wrap .comment__textarea.is__disabled:after {\n        width: 100%;\n        height: 100%;\n        position: absolute; }\n", ""]);
 
 // exports
 
@@ -17027,7 +17027,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, ".component__comment__item {\n  border-top: 1px solid #dcdede;\n  margin-top: .5em; }\n  .component__comment__item .comment__wrap {\n    position: relative;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between;\n    padding: 10px; }\n    .component__comment__item .comment__wrap .user_avatar__wrap {\n      display: inline-block;\n      width: 2em;\n      height: 2em;\n      border-radius: 50%;\n      border: 1px solid #ccc;\n      vertical-align: middle;\n      margin-right: 10px; }\n      .component__comment__item .comment__wrap .user_avatar__wrap .image {\n        width: 2em;\n        border-radius: 50%; }\n    .component__comment__item .comment__wrap .text__wrap {\n      display: inline-block;\n      width: 100%; }\n", ""]);
+exports.push([module.i, ".component__comment__item .comment__wrap {\n  position: relative;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  padding: 10px; }\n  .component__comment__item .comment__wrap .user_avatar__wrap {\n    display: inline-block;\n    width: 2em;\n    height: 2em;\n    border-radius: 50%;\n    border: 1px solid #ccc;\n    vertical-align: middle;\n    margin-right: 10px; }\n    .component__comment__item .comment__wrap .user_avatar__wrap .image {\n      width: 2em;\n      border-radius: 50%; }\n  .component__comment__item .comment__wrap .text__wrap {\n    display: inline-block;\n    width: 100%;\n    border-bottom: 1px solid #dcdede;\n    padding-bottom: .9em; }\n", ""]);
 
 // exports
 
@@ -17041,26 +17041,13 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, ".component__event {\n  display: inline-block;\n  width: 25%;\n  padding: 4px;\n  text-align: left; }\n  .component__event .event__wrap {\n    display: inline-block;\n    position: relative;\n    padding: 0;\n    border: 1px solid #efefef;\n    border-radius: 5px;\n    margin: 0;\n    transition: all 0.3s ease-in;\n    cursor: pointer;\n    color: #303030; }\n    .component__event .event__wrap.hover__active {\n      border-color: #ff5a5f;\n      box-shadow: 0px 0px 8px 2px #888888; }\n  .component__event .event_media_object {\n    position: relative; }\n    .component__event .event_media_object .feed_img {\n      width: 100%; }\n  .component__event .event_media_object, .component__event .feed_img {\n    border-top-left-radius: 5px;\n    border-top-right-radius: 5px; }\n  .component__event .item__main {\n    padding: 5px;\n    padding-bottom: 0;\n    margin: 0; }\n    .component__event .item__main .item__metadata {\n      margin-bottom: 3px;\n      font-size: 12px;\n      display: inline-block;\n      color: #565656; }\n      .component__event .item__main .item__metadata .timestamp {\n        margin-right: 3px; }\n    .component__event .item__main .item__content {\n      padding-bottom: 3px;\n      border-bottom: 1px solid #efefef; }\n  .component__event .item__interactions {\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between;\n    width: 100%;\n    padding: 3px 5px; }\n    .component__event .item__interactions .nested {\n      vertical-align: middle;\n      height: 24px;\n      display: inline-block; }\n    .component__event .item__interactions .nested.user {\n      text-align: left; }\n      .component__event .item__interactions .nested.user .image {\n        width: 24px;\n        border-radius: 50%;\n        border: 1px solid #ccc; }\n", ""]);
+exports.push([module.i, ".component__event {\n  display: inline-block;\n  width: 25%;\n  padding: 7px;\n  text-align: left; }\n  .component__event .event__wrap {\n    display: inline-block;\n    position: relative;\n    padding: 0;\n    border: 1px solid #efefef;\n    border-radius: 0;\n    margin: 0;\n    transition: all 0.3s ease-in;\n    cursor: pointer;\n    color: #303030; }\n    .component__event .event__wrap.hover__active {\n      border-color: #ff5a5f;\n      box-shadow: 0px 0px 8px 2px #888888; }\n  .component__event .event_media_object {\n    position: relative; }\n    .component__event .event_media_object .feed_img {\n      width: 100%; }\n  .component__event .item__main {\n    padding: 5px;\n    padding-bottom: 0;\n    margin: 0; }\n    .component__event .item__main .item__metadata {\n      margin-bottom: 3px;\n      font-size: 12px;\n      display: inline-block;\n      color: #565656; }\n      .component__event .item__main .item__metadata .timestamp {\n        margin-right: 3px; }\n    .component__event .item__main .item__content {\n      padding-bottom: 3px;\n      border-bottom: 1px solid #efefef; }\n  .component__event .item__interactions {\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between;\n    width: 100%;\n    padding: 3px 5px; }\n    .component__event .item__interactions .nested {\n      vertical-align: middle;\n      height: 24px;\n      display: inline-block; }\n    .component__event .item__interactions .nested.user {\n      text-align: left; }\n      .component__event .item__interactions .nested.user .image {\n        width: 24px;\n        border-radius: 50%;\n        border: 1px solid #ccc; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 158 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(9)();
-// imports
-
-
-// module
-exports.push([module.i, ".component__event__detail {\n  box-sizing: border-box;\n  width: 1200px;\n  margin: 1em auto;\n  position: relative; }\n  .component__event__detail .event__detail__wrap {\n    width: 45%;\n    border: 1px solid #dcdede;\n    display: inline-block; }\n    .component__event__detail .event__detail__wrap .event_details {\n      margin: 0;\n      width: 100%; }\n      .component__event__detail .event__detail__wrap .event_details .feed_img {\n        width: 100%; }\n      .component__event__detail .event__detail__wrap .event_details .item__main {\n        padding: 10px; }\n      .component__event__detail .event__detail__wrap .event_details .item__metadata {\n        margin-bottom: 3px;\n        font-size: 12px;\n        display: inline-block;\n        color: #565656; }\n        .component__event__detail .event__detail__wrap .event_details .item__metadata .timestamp, .component__event__detail .event__detail__wrap .event_details .item__metadata .location {\n          display: inline-block; }\n        .component__event__detail .event__detail__wrap .event_details .item__metadata .timestamp {\n          margin-right: 3px; }\n        .component__event__detail .event__detail__wrap .event_details .item__metadata .location {\n          margin-left: 3px; }\n  .component__event__detail .map__view {\n    display: inline-block;\n    width: 55%;\n    vertical-align: top;\n    height: 40em;\n    margin: 1em 0;\n    border: 1px solid #dcdede;\n    border-left: none;\n    border-top-right-radius: 5px;\n    border-bottom-right-radius: 5px; }\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 158 */,
 /* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17069,7 +17056,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, ".component__eventdetail__header {\n  width: 100%;\n  height: 12em;\n  background-color: #ccc; }\n  .component__eventdetail__header .container__wrap {\n    padding: 2em 5em;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between; }\n    .component__eventdetail__header .container__wrap .event__action__wrap {\n      vertical-align: middle; }\n", ""]);
+exports.push([module.i, ".component__eventdetail__header {\n  width: 100%;\n  height: 18em;\n  background-color: #ccc;\n  padding-top: 5em; }\n  .component__eventdetail__header .container__wrap {\n    padding: 2em 5em;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between; }\n    .component__eventdetail__header .container__wrap .event__action__wrap {\n      vertical-align: middle; }\n", ""]);
 
 // exports
 
@@ -17083,7 +17070,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, ".header {\n  border-top: 3px solid #ff5a5f;\n  background-color: transparent;\n  z-index: 10;\n  position: fixed;\n  width: 100%; }\n\n.navbar {\n  padding: 10px 20px;\n  color: #fff; }\n  .navbar.navigation__container {\n    height: 2em;\n    padding-top: 1em; }\n    .navbar.navigation__container .app__info {\n      display: inline-block;\n      width: 10em; }\n      .navbar.navigation__container .app__info * {\n        vertical-align: middle; }\n      .navbar.navigation__container .app__info .app__name {\n        font-size: 20px;\n        font-weight: bold;\n        margin-left: 10px; }\n    .navbar.navigation__container .actions {\n      float: right;\n      display: inline-block; }\n      .navbar.navigation__container .actions .tilte__action_link {\n        margin-right: 1em;\n        font-size: 16px;\n        padding: 6px 19px; }\n  .navbar.category__container {\n    height: 1.5em; }\n", ""]);
+exports.push([module.i, ".header {\n  border-top: 3px solid #ff5a5f;\n  border-bottom: 1px solid #ccc;\n  background-color: transparent;\n  z-index: 10;\n  position: fixed;\n  width: 100%; }\n\n.default__layout .header .navbar {\n  color: #ccc;\n  background-color: #fff;\n  position: relative; }\n\n.navbar {\n  padding: 8px 20px;\n  color: #fff; }\n  .navbar.navigation__container {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between; }\n    .navbar.navigation__container .app__info {\n      display: inline-block;\n      width: 10em; }\n      .navbar.navigation__container .app__info * {\n        vertical-align: middle; }\n      .navbar.navigation__container .app__info .app__name {\n        font-size: 20px;\n        font-weight: bold;\n        margin-left: 10px; }\n    .navbar.navigation__container .actions {\n      display: inline-block; }\n      .navbar.navigation__container .actions .header__profile {\n        display: inline-block; }\n      .navbar.navigation__container .actions .tilte__action_link {\n        margin-right: 1em;\n        font-size: 16px;\n        padding: 6px 19px; }\n  .navbar.category__container {\n    height: 1.5em; }\n", ""]);
 
 // exports
 
@@ -17097,7 +17084,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, ".index__shell {\n  position: relative;\n  padding: 0;\n  margin: 0; }\n\n.banner__section {\n  position: relative; }\n\n.feed__section {\n  font-size: 14px; }\n  .feed__section .feed__item__wrap {\n    padding: 0;\n    margin: 0; }\n\n.feed__container {\n  position: relative;\n  text-align: center;\n  padding: 1.5em 3% 0 3%; }\n", ""]);
+exports.push([module.i, ".index__shell {\n  position: relative;\n  padding: 0;\n  margin: 0; }\n\n.banner__section {\n  position: relative; }\n\n.feed__section {\n  font-size: 14px; }\n  .feed__section .feed__item__wrap {\n    padding: 0;\n    margin: 0; }\n\n.feed__container {\n  position: relative;\n  text-align: center;\n  padding-top: 35px;\n  width: 1080px;\n  margin: 1em auto; }\n", ""]);
 
 // exports
 
@@ -17765,12 +17752,12 @@ var CommentInput = function (_Component) {
           _react2.default.createElement(
             'span',
             null,
-            'comments'
+            'Comments'
           ),
           _react2.default.createElement(
             'span',
             { className: 'comment__count' },
-            this.props.commentCount ? '&middot; ' + this.props.commentCount : ''
+            this.props.commentCount ? ' . ' + this.props.commentCount : ''
           )
         ),
         _react2.default.createElement(
@@ -18387,7 +18374,7 @@ var _CommentInput2 = _interopRequireDefault(_CommentInput);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-__webpack_require__(384);
+__webpack_require__(392);
 
 var EventDetailBody = function EventDetailBody(props) {
   return _react2.default.createElement(
@@ -18396,55 +18383,34 @@ var EventDetailBody = function EventDetailBody(props) {
     _react2.default.createElement(
       'div',
       { className: 'event__detail__wrap' },
+      _react2.default.createElement('section', { className: 'event_media_object' }),
+      _react2.default.createElement('section', { className: 'event_detail__sidebar' }),
       _react2.default.createElement(
-        'figure',
-        { className: 'event_details' },
-        _react2.default.createElement('section', { className: 'event_media_object' }),
+        'section',
+        { className: 'event__details__main' },
         _react2.default.createElement(
-          'figcaption',
-          null,
+          'div',
+          { className: 'event__info' },
+          props.eventObject.description || "hello! welcome to tilte, the place where we share the most fun experiences!"
+        ),
+        _react2.default.createElement('div', { className: 'creator__info' }),
+        _react2.default.createElement(
+          'section',
+          { className: 'comment__section' },
           _react2.default.createElement(
-            'section',
-            { className: 'item__main' },
-            _react2.default.createElement(
-              'span',
-              { className: 'item__metadata' },
-              _react2.default.createElement(
-                'span',
-                { className: 'timestamp' },
-                '3m'
-              ),
-              '\xB7',
-              _react2.default.createElement(
-                'span',
-                { className: 'nested location' },
-                _react2.default.createElement(_LocationDetailsTrigger2.default, null)
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'item__content' },
-              props.eventObject.description || "hello! welcome to tilte, the place where we share the most fun experiences!"
-            )
+            'div',
+            { className: 'comment__input' },
+            _react2.default.createElement(_CommentInput2.default, { eventId: props.eventObject.id, actor: props.eventObject.user, commentCount: props.eventObject.comments_count, submitAction: props.actionCallbacks.makeComment })
           ),
           _react2.default.createElement(
-            'section',
-            { className: 'comment__section' },
-            _react2.default.createElement(
-              'div',
-              { className: 'comment__input' },
-              _react2.default.createElement(_CommentInput2.default, { eventId: props.eventObject.id, actor: props.eventObject.user, commentCount: props.eventObject.comments_count, submitAction: props.actionCallbacks.makeComment })
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'comment__list' },
-              _react2.default.createElement(_CommentList2.default, { comments: props.eventObject.comments })
-            )
+            'div',
+            { className: 'comment__list' },
+            _react2.default.createElement(_CommentList2.default, { comments: props.eventObject.comments })
           )
         )
-      )
-    ),
-    _react2.default.createElement('div', { className: 'map__view' })
+      ),
+      _react2.default.createElement('div', { className: 'map__section' })
+    )
   );
 };
 
@@ -18684,18 +18650,13 @@ var Header = function (_Component) {
           _react2.default.createElement(
             'section',
             { className: (0, _classnames2.default)({ actions: true, tilte__action: true }) },
+            _react2.default.createElement(_HeaderProfile2.default, { currentUser: this.props.loggedInUser }),
             _react2.default.createElement(
               _reactRouter.Link,
               { className: 'tilte__action_link btn btn-primary', to: this.props.loggedInUser == null ? '/new_tilte' : '/login' },
               'tilte!'
-            ),
-            _react2.default.createElement(_HeaderProfile2.default, { currentUser: this.props.loggedInUser })
+            )
           )
-        ),
-        _react2.default.createElement(
-          'nav',
-          { className: (0, _classnames2.default)({ hidden: !this.props.loggedInUser, navbar: true, category__container: true }) },
-          _react2.default.createElement(_CategoryNavbar2.default, { user: this.props.loggedInUser, updatePreference: this.props.updateCategoryPreference })
         )
       );
     }
@@ -19078,6 +19039,10 @@ var _EventDetailBody = __webpack_require__(182);
 
 var _EventDetailBody2 = _interopRequireDefault(_EventDetailBody);
 
+var _DefaultLayout = __webpack_require__(394);
+
+var _DefaultLayout2 = _interopRequireDefault(_DefaultLayout);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19088,7 +19053,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    currentUser: state.config.currentUser,
+    appConfig: state.config,
     eventObject: state.event
   };
 };
@@ -19128,9 +19093,9 @@ var EventDetailContainer = function (_Component) {
   _createClass(EventDetailContainer, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      this.props.fetchDetails(this.props.params.id, this.props.currentUser.id);
-      this.props.loadComments(this.props.params.id, this.props.currentUser.id);
-      this.props.showMapView(this.props.params.id, this.props.currentUser.id);
+      this.props.fetchDetails(this.props.params.id, this.props.appConfig.currentUser.id);
+      this.props.loadComments(this.props.params.id, this.props.appConfig.currentUser.id);
+      this.props.showMapView(this.props.params.id, this.props.appConfig.currentUser.id);
     }
   }, {
     key: 'postComment',
@@ -19155,13 +19120,17 @@ var EventDetailContainer = function (_Component) {
           makeComment = _props.makeComment,
           showMapView = _props.showMapView,
           eventObject = _props.eventObject,
-          currentUser = _props.currentUser;
+          appConfig = _props.appConfig;
 
       return _react2.default.createElement(
-        'section',
-        { className: 'event__detail__container' },
-        _react2.default.createElement(_EventDetailHeader2.default, { eventObject: eventObject, actor: currentUser, userActions: [{ title: "Register Now", value: registerNow }, { title: "Save for later", value: saveForLater }] }),
-        _react2.default.createElement(_EventDetailBody2.default, { actor: currentUser, actionCallbacks: { makeComment: makeComment, showMapView: showMapView }, eventObject: eventObject })
+        _DefaultLayout2.default,
+        { currentUser: appConfig.currentUser, appDetails: appConfig.appDetails },
+        _react2.default.createElement(
+          'section',
+          { className: 'event__detail__container' },
+          _react2.default.createElement(_EventDetailHeader2.default, { eventObject: eventObject, actor: appConfig.currentUser, userActions: [{ title: "Register Now", value: registerNow }, { title: "Save for later", value: saveForLater }] }),
+          _react2.default.createElement(_EventDetailBody2.default, { actor: appConfig.currentUser, actionCallbacks: { makeComment: makeComment, showMapView: showMapView }, eventObject: eventObject })
+        )
       );
     }
   }, {
@@ -44086,32 +44055,7 @@ if(false) {
 }
 
 /***/ }),
-/* 384 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(158);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// add the styles to the DOM
-var update = __webpack_require__(11)(content, {});
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/lib/loader.js!./event_detail.scss", function() {
-			var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/lib/loader.js!./event_detail.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
+/* 384 */,
 /* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -44271,6 +44215,84 @@ if (window.addEventListener) {
 } else {
   window.attachEvent('onload', run);
 }
+
+/***/ }),
+/* 391 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(9)();
+// imports
+
+
+// module
+exports.push([module.i, ".component__event__detail__body {\n  box-sizing: border-box;\n  width: 100%;\n  position: relative; }\n  .component__event__detail__body .event__detail__wrap {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between; }\n    .component__event__detail__body .event__detail__wrap .event_detail__sidebar {\n      display: inline-block;\n      width: 20%;\n      background-color: #f6f6f6; }\n    .component__event__detail__body .event__detail__wrap .event__details__main {\n      display: inline-block;\n      padding: 2em 0;\n      border-left: 1px solid #dadada;\n      border-right: 1px solid #dadada;\n      width: 40%; }\n    .component__event__detail__body .event__detail__wrap .map__section {\n      display: inline-block;\n      width: 40%;\n      vertical-align: top;\n      background-color: #cee2f3; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 392 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(391);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(11)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/lib/loader.js!./event_detail_body.scss", function() {
+			var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/lib/loader.js!./event_detail_body.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 393 */,
+/* 394 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Header = __webpack_require__(185);
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _Footer = __webpack_require__(184);
+
+var _Footer2 = _interopRequireDefault(_Footer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var DefaultLayout = function DefaultLayout(props) {
+  return _react2.default.createElement(
+    'div',
+    { className: 'default__layout' },
+    _react2.default.createElement(_Header2.default, { loggedInUser: props.currentUser, appDetails: props.appDetails }),
+    props.children,
+    _react2.default.createElement(_Footer2.default, null)
+  );
+};
+
+exports.default = DefaultLayout;
 
 /***/ })
 /******/ ]);

@@ -1,4 +1,4 @@
-require('../styles/event_detail');
+require('../styles/event_detail_body');
 
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
@@ -15,36 +15,28 @@ const EventDetailBody = (props) => {
   return (
     <section className='component__event__detail__body'>
       <div className='event__detail__wrap'>
-        <figure className='event_details'>
-          <section className='event_media_object'>
+        <section className='event_media_object'>
+        </section>
+        <section className='event_detail__sidebar'>
+        </section>
+        <section className='event__details__main'>
+          <div className='event__info'>
+            { props.eventObject.description || "hello! welcome to tilte, the place where we share the most fun experiences!" }
+          </div>
+          <div className='creator__info'>
+
+          </div>
+          <section className='comment__section'>
+           <div className='comment__input'>
+             <CommentInput eventId={ props.eventObject.id } actor={ props.eventObject.user } commentCount={ props.eventObject.comments_count } submitAction={ props.actionCallbacks.makeComment }/>
+           </div>
+           <div className='comment__list'>
+             <CommentList comments={ props.eventObject.comments }/>
+           </div>
           </section>
-
-          <figcaption>
-            <section className='item__main'>
-              <span className='item__metadata'>
-                <span className='timestamp'>3m</span>
-                &middot;
-                <span className='nested location'>
-                  <LocationDetailsTrigger/>
-                </span>
-              </span>
-              <div className='item__content'>
-                { props.eventObject.description || "hello! welcome to tilte, the place where we share the most fun experiences!" }
-              </div>
-            </section>
-             <section className='comment__section'>
-              <div className='comment__input'>
-                <CommentInput eventId={ props.eventObject.id } actor={ props.eventObject.user } commentCount={ props.eventObject.comments_count } submitAction={ props.actionCallbacks.makeComment }/>
-              </div>
-              <div className='comment__list'>
-                <CommentList comments={ props.eventObject.comments }/>
-              </div>
-            </section>
-          </figcaption>
-        </figure>
-      </div>
-
-      <div className='map__view'>
+        </section>
+        <div className='map__section'>
+        </div>
       </div>
     </section>
   );

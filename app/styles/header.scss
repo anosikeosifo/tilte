@@ -1,18 +1,26 @@
 .header {
   border-top: 3px solid #ff5a5f;
+  border-bottom: 1px solid #ccc;
   background-color: transparent;;
   z-index: 10;
   position: fixed;
   width: 100%;
 }
+.default__layout .header {
+  .navbar {
+    color: #ccc;
+    background-color: #fff;
+    position: relative;
+  }
+}
 
 .navbar {
-  padding: 10px 20px;
+  padding: 8px 20px;
   color: #fff;
 
   &.navigation__container {
-    height: 2em;
-    padding-top: 1em;
+    display: flex;
+    justify-content: space-between;
     .app__info {
       display: inline-block;
       * {
@@ -28,8 +36,11 @@
     }
 
     .actions {
-      float: right;
       display: inline-block;
+
+      .header__profile {
+        display: inline-block;
+      }
 
       .tilte__action_link {
         margin-right: 1em;

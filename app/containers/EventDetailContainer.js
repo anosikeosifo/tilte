@@ -3,9 +3,10 @@ import { postComment, fetchComments, fetchEventDetails, loadMapView, registerFor
 import { connect } from 'react-redux';
 import EventDetailHeader from '../components/EventDetailHeader';
 import EventDetailBody from '../components/EventDetailBody';
+import DefaultLayout from '../layouts/DefaultLayout';
 
 const mapStateToProps = (state) => ({
-  currentUser: state.config.currentUser,
+  appConfig: state.config,
   eventObject: state.event,
 });
 
@@ -20,9 +21,9 @@ const mapDispatchToProps = (dispatch) => ({
 
 class EventDetailContainer extends Component {
   componentWillMount() {
-    this.props.fetchDetails(this.props.params.id, this.props.currentUser.id);
-    this.props.loadComments(this.props.params.id, this.props.currentUser.id);
-    this.props.showMapView(this.props.params.id, this.props.currentUser.id);
+    this.props.fetchDetails(this.props.params.id, this.props.appConfig.currentUser.id);
+    this.props.loadComments(this.props.params.id, this.props.appConfig.currentUser.id);
+    this.props.showMapView(this.props.params.id, this.props.appConfig.currentUser.id);
   }
 
   postComment(content, actorId) {
@@ -36,16 +37,17 @@ class EventDetailContainer extends Component {
   }
 
   renderComponentElements() {
-    const { register: registerNow, saveForLater, makeComment, showMapView, eventObject , currentUser } = this.props
+    const { register: registerNow, saveForLater, makeComment, showMapView, eventObject , appConfig } = this.props
     return(
-      <section className='event__detail__container'>
-        <EventDetailHeader eventObject={ eventObject } actor={ currentUser } userActions={[
-          { title: "Register Now", value: registerNow },
-          { title: "Save for later", value: saveForLater },
-        ]}/>
-        <EventDetailBody actor={ currentUser } actionCallbacks = { { makeComment, showMapView } } eventObject={ eventObject } />
-      </section>
-
+      <DefaultLayout currentUser={ appConfig.currentUser } appDetails={ appConfig.appDetails }>
+        <section className='event__detail__container'>
+          <EventDetailHeader eventObject={ eventObject } actor={ appConfig.currentUser } userActions={[
+            { title: "Register Now", value: registerNow },
+            { title: "Save for later", value: saveForLater },
+          ]}/>
+          <EventDetailBody actor={ appConfig.currentUser } actionCallbacks = { { makeComment, showMapView } } eventObject={ eventObject } />
+        </section>
+      </DefaultLayout>
     );
   }
 

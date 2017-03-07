@@ -1,0 +1,32 @@
+.component__event__detail__body {
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+
+  .event__detail__wrap {
+    display: flex;
+    justify-content: space-between;
+
+    .event_detail__sidebar {
+      display: inline-block;
+      width: 20%;
+      background-color: #f6f6f6;
+    }
+
+    .event__details__main {
+      display: inline-block;
+      padding: 2em 0;
+      border-left: 1px solid #dadada;
+      border-right: 1px solid #dadada;
+      width: 40%;
+    }
+
+    .map__section {
+
+      display: inline-block;
+      width: 40%;
+      vertical-align: top;
+      background-color: #cee2f3;
+    }
+  }
+}

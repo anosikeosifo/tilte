@@ -40,7 +40,7 @@ class CommentInput extends Component {
     return(
       <section className='component__comment__input'>
         <div className='header__wrap'>
-          <span>comments</span><span className='comment__count'>{ this.props.commentCount ? `&middot; ${ this.props.commentCount }`: '' }</span>
+          <span>Comments</span><span className='comment__count'>{ this.props.commentCount ? ` . ${ this.props.commentCount }`: '' }</span>
         </div>
         <div className='main__wrap'>
           <div className='actor__avatar__wrap'>
