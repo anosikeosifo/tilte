@@ -69,7 +69,7 @@ class EventCard extends Component {
             </section>
             <figcaption>
               <section className='item__main'>
-                <div className='group__left'>
+                <div className='group__left item__metadata'>
                   <span className='nested location'>
                     { 'Lagos, Nigeria' || this.props.location.name }
                   </span>

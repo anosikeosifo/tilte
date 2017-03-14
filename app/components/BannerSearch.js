@@ -33,6 +33,7 @@ class BannerSearch extends Component {
 
     return(
       <section className='bannersearch'>
+        <div className='search__trigger_text'>Discover.  Amazing.  Experiences.</div>
         <div className='search__wrap'>
           <div className='search__input inline__block'>
             <span onClick={ this.handleFocusTrigger.bind(this) } className='logo inline__block'><Icon icon={ICON_SEARCH} color={ iconColor } size={ 36 }/></span>

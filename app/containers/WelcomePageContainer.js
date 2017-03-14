@@ -42,8 +42,10 @@ class WelcomePageContainer extends Component {
   render() {
     return(
       <div className='container__welcomepage'>
-        <BoardCategory categoryName={ DATA_GROUPS.FEATURED_EVENTS } dataset={ this.props.trendingEvents } />
-        <BoardCategory categoryName={ DATA_GROUPS.TRENDING_MOMENTS } dataset={ this.props.trendingMoments } />
+        {/*
+          <BoardCategory categoryName={ DATA_GROUPS.FEATURED_EVENTS } dataset={ this.props.trendingEvents } />
+          <BoardCategory categoryName={ DATA_GROUPS.TRENDING_MOMENTS } dataset={ this.props.trendingMoments } />
+        */}
         <EventBoard dataset={ this.props.featuredEvents }/>
       </div>
     );
