@@ -1,0 +1,50 @@
+.component__board__category.with__content {
+  height: 460px;
+  margin-bottom: 1.5em;
+
+  .name {
+    font-size: 1.3em;
+    margin-bottom: .5em;
+  }
+
+  .data__container__wrap {
+    width: 100%;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    .scroll__control {
+      display: inline-block;
+      height: 50px;
+      width: 14px;
+      background-color: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: 46%;
+      z-index: 15;
+      cursor: pointer;
+
+      &.left { left: 1px; }
+      &.right { right: 1px; }
+    }
+
+    &.has__content {
+      padding-top: 5px;
+      border-top: 1px solid #dcdede;
+    }
+  }
+
+  .scrollable_area {
+    overflow-y: hidden;
+    position: relative;
+    width: 1080px;
+    overflow-x: hidden;
+  }
+
+  .content__wrap {
+    position: relative;
+    height: 460px;
+    display: block;
+    white-space: nowrap;
+  }
+}

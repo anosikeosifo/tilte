@@ -40,7 +40,19 @@ export const EVENT_ACTIONS                       = {
                                                       eventRegistrationError: 'Event registration failed.',
                                                       saveEventRequest: 'Save event requested',
                                                       saveEventSuccess: 'Event saved successfully',
-                                                      saveEventError: 'Event failed to save.'
+                                                      saveEventError: 'Event failed to save.',
+                                                      fetchFeaturedRequest: 'Featured events requested',
+                                                      fetchFeaturedSuccess: 'Featured events fetched successfully.',
+                                                      fetchFeaturedError: 'Featured events could not be loaded',
+                                                      fetchTrendingRequest: 'Trending events requested',
+                                                      fetchTrendingSuccess: 'Trending events fetched successfully.',
+                                                      fetchTrendingError: 'Trending events could not be fetched.',
+                                                    };
+
+export const MOMENT_ACTIONS                       = {
+                                                      fetchTopMomentsRequest: 'Fetching top moments.',
+                                                      fetchTopMomentsSuccess: 'Top moments fetched successfully.',
+                                                      fetchTopMomentsError: 'Top moments could not be fetched at this time.',
                                                     };
 
 export const ASSETS_BASE_URL                      = (process.env.NODE_ENV === 'production' ? 'https://tilteui.herokuapp.com' : 'http://localhost:1600');
@@ -61,3 +73,14 @@ export const ICON_FAVORITE                        = 'M516 792c204-184 338-306 33
 export const ICON_SEARCH                          = 'M621.668 653.668c-44.476 31.692-98.895 50.332-157.668 50.332-150.221 0-272-121.779-272-272s121.779-272 272-272c150.221 0 272 121.779 272 272 0 58.773-18.641 113.192-50.332 157.668l178.714 178.714c17.606 17.606 17.46 45.778-0.006 63.244l-0.75 0.75c-17.421 17.421-45.781 17.469-63.244 0.006l-178.714-178.714zM464 640c114.875 0 208-93.125 208-208s-93.125-208-208-208c-114.875 0-208 93.125-208 208s93.125 208 208 208v0z';
 
 export const ICON_LOCATION                        = 'M512 0c-212.062 0-384 171.938-384 384s384 640 384 640 384-427.938 384-640-171.938-384-384-384zM512 640c-141.376 0-256-114.624-256-256s114.624-256 256-256 256 114.624 256 256-114.624 256-256 256z';
+export const ICON_SCROLL_LEFT                     = 'M512 0c-212.062 0-384 171.938-384 384s384 640 384 640 384-427.938 384-640-171.938-384-384-384zM512 640c-141.376 0-256-114.624-256-256s114.624-256 256-256 256 114.624 256 256-114.624 256-256 256z';
+export const ICON_SCROLL_RIGHT                    = 'M512 0c-212.062 0-384 171.938-384 384s384 640 384 640 384-427.938 384-640-171.938-384-384-384zM512 640c-141.376 0-256-114.624-256-256s114.624-256 256-256 256 114.624 256 256-114.624 256-256 256z';
+
+export const DATA_GROUPS                          = {
+                                                      FEATURED_EVENTS: 'Featured events',
+                                                      TRENDING_MOMENTS: 'Trending moments'
+                                                    };
+
+export const CURRENCY_SYMBOLS                     = {
+                                                      nigeria: '\u20a6',
+                                                    };

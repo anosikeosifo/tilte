@@ -4,13 +4,15 @@ import { userData }  from './UserReducer';
 import { configData } from './ConfigReducer';
 import { searchData } from './SearchReducer';
 import { eventData } from './EventReducer';
+import { momentData } from './MomentReducer';
 
 const rootReducer = combineReducers({
   userFeed: feedData,
   users: userData,
   config: configData,
-  searchSuggestions: searchData,
-  event: eventData,
+  searchData: searchData,
+  eventData: eventData,
+  momentData: momentData
 });
 
 export default rootReducer;

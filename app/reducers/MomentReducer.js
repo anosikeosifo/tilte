@@ -1,20 +1,19 @@
-import { EVENT_ACTIONS } from '../constants';
+import { MOMENT_ACTIONS } from '../constants';
 import update from 'immutability-helper';
 
 let currentState;
 
-export const eventData = (state=null, action) => {
+export const momentData = (state=null, action) => {
   currentState = state;
 
   switch (action.type) {
-    case EVENT_ACTIONS.fetchDetailsSuccess:
+    case MOMENT_ACTIONS.fetchDetailsSuccess:
       return fetchEventDetails(action);
-    case EVENT_ACTIONS.fetchFeaturedSuccess:
-      console.log('currentState: ', currentState);
-      const newstate = fetchFeaturedEvents(action);
-      console.log('new state: ', newstate);
+    case MOMENT_ACTIONS.postCommentSuccess:
+      console.log('old state: ', currentState);
+      const newstate = addComment(action);
       return newstate;
-    case EVENT_ACTIONS.fetchCommentsSuccess:
+    case MOMENT_ACTIONS.fetchCommentsSuccess:
       return fetchComments(action);
     default:
       return currentState;
@@ -29,7 +28,7 @@ const getCommentIndex = (commentId) => {
   return currentState.findIndex((comment) => comment.id == commentId);
 };
 
-const fetchEventDetails = (action) => (action.payload.data);
+const fetchMomentDetails = (action) => (action.payload.data);
 
 const fetchComments = (action) => {
   return update(currentState, {
@@ -38,14 +37,6 @@ const fetchComments = (action) => {
     }
   });
 };
-
-const fetchFeaturedEvents = (action) => {
-  return update(currentState, {
-    $set: {
-      featuredEvents: action.payload.data
-    }
-  });
-}
 
 const addComment = (action) => {
   console.log('currentState: ', currentState);

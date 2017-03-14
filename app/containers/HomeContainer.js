@@ -1,16 +1,13 @@
 require('../styles/layout.scss');
-require('../styles/home.scss');
-
 
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { fetchConfigData, updateCategoryPreference } from '../actions/ConfigActionCreators';
 import { togglePrevious, toggleNext } from '../actions/SlideActionCreators';
-import FeedContainer from './FeedContainer';
+import WelcomePageContainer from './WelcomePageContainer';
 import Header from '../components/Header';
 import Carousel from '../components/Carousel';
 import BannerSearch from '../components/BannerSearch';
-import Feed from '../components//Feed';
 import Footer from '../components/Footer';
 
 const mapStateToProps = (state) => ({
@@ -42,11 +39,10 @@ class HomeContainer extends Component {
           toggleNext={ this.props.toggleNextBanner }
           autoToggle={ this.props.autoToggleBanner }
           bannerConfig={ this.props.bannerConfig } />
-
           <BannerSearch/>
         </section>
 
-        <FeedContainer currentUser={ this.props.currentUser }/>
+        <WelcomePageContainer currentUser={ this.props.currentUser }/>
         <Footer/>
       </section>
     );

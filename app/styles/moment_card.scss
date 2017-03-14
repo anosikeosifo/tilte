@@ -1,57 +1,42 @@
-.component__eventcard {
+.component__momentcard {
 	display: inline-block;
-	margin-right: 15px;
+  width: 25%;
+	padding: 7px;
   text-align: left;
 
   .event__wrap {
     display: inline-block;
     position: relative;
     padding: 0;
+    border: 1px solid #efefef;
     border-radius: 0;
     margin: 0;
+    transition: all 0.3s ease-in;
     cursor: pointer;
     color: #303030;
+
+    &.hover__active {
+      border-color: #ff5a5f;
+      box-shadow: 0px 0px 8px 2px #888888
+    }
   }
 
   .event_media_object {
     position: relative;
 
-		.event__img__wrap {
-			height: 360px;
-			width: 255px;
-			overflow: hidden;
-
-			.event__img {
-	      height: 100%;
-				object-fit: cover;
-	    }
-		}
+    .feed_img {
+      width: 100%;
+    }
   }
-	.description__wrap {
-		padding: 10px;
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		height: 4em;
-		background-color: rgba(0,0,0,0.5);
-		color: #fff;
-		opacity: 0;
-		transition: opacity 0.3s ease-in;
-	}
 
-	.event__wrap.hover__active .description__wrap{
-		transition: opacity 0.3s ease-in;
-		opacity: 1
-	}
   .item__main {
-    padding: 5px 0;
+    padding: 5px;
     padding-bottom: 0;
     margin: 0;
 
     .item__metadata {
       margin-bottom: 3px;
-      font-size: 11px;
+      font-size: 12px;
       display: inline-block;
       color: #565656;
 

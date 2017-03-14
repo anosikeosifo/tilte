@@ -1,20 +1,20 @@
-import { EVENT_ACTIONS } from '../constants';
-import { fetchEventDetailsAPI, fetchTrendingEventsAPI, fetchFeaturedEventsAPI,loadMapAPI, eventRegistrationAPI, saveEventAPI } from '../api/EventAPI';
+import { EVENT_ACTIONS, MOMENT_ACTIONS } from '../constants';
+import { likeMomentAPI, fetchMomentAPI, fetchCommentsAPI, postCommentAPI ,loadMapAPI, fetchTopMomentsAPI } from '../api/MomentAPI';
 import { buildPostParams, buildUrlQueryParams } from '../helpers/HttpHelper';
 
-const eventActionSuccess = (actionType, payload) => ({
+const momentActionSuccess = (actionType, payload) => ({
   type: EVENT_ACTIONS[`${actionType}Success`], success: true, payload
 });
 
-const eventActionError = (actionType, error) => ({
+const momentActionError = (actionType, error) => ({
   type: EVENT_ACTIONS[`${actionType}Error`], success: false, error
 });
 
-const triggerlikeEvent = () => ({
+const triggerlikeMoment = () => ({
   type: EVENT_ACTIONS.likeRequest
 });
 
-const triggerFetchEventDetails = () => ({
+const triggerFetchMomentDetails = () => ({
   type: EVENT_ACTIONS.fetchDetails
 });
 
@@ -26,52 +26,40 @@ const triggerPostComment = () => ({
   type: EVENT_ACTIONS.postCommentRequest
 });
 
-const triggerLoadMap = () => ({
-  type: EVENT_ACTIONS.loadMapRequest
+const triggerSaveMoment = () => ({
+  type: EVENT_ACTIONS.saveMomentRequest
 });
 
-const triggerEventRegistration = () => ({
-  type: EVENT_ACTIONS.eventRegistrationRequest
+const triggerFetchTopMoments = () => ({
+  type: MOMENT_ACTIONS.fetchTopMomentsRequest
 });
 
-const triggerSaveEvent = () => ({
-  type: EVENT_ACTIONS.saveEventRequest
-});
-
-const triggerFetchFeatured = () =>({
-  type: EVENT_ACTIONS.fetchFeaturedRequest
-});
-
-const triggerFetchTrending = () =>({
-  type: EVENT_ACTIONS.ftriggerFetchTrendingRequest
-});
-
-export const likeEvent = (eventId, actorId) => {
+export const likeMoment = (eventId, actorId) => {
   const actionType = 'like';
   const requestParams = buildPostParams({
     event_id: eventId, user_id: actorId
   });
 
   return (dispatch) => {
-    triggerlikeEvent();
+    triggerlikeMoment();
 
-    likeEventAPI(requestParams)
+    likeMomentAPI(requestParams)
       .then(payload => dispatch(eventActionSuccess(actionType, payload)))
       .catch(error => dispatch(eventActionError(actionType, error)));
   }
 };
 
-export const fetchEventDetails = (eventId, actorId) => {
+export const fetchMomentDetails = (eventId, actorId) => {
   const actionType = 'fetchDetails';
   const requestParams = buildUrlQueryParams({
     id: eventId, user_id: actorId
   });
 
   return (dispatch) => {
-    triggerFetchEventDetails();
+    triggerFetchMomentDetails();
 
     //this should take requestParams as arg
-    fetchEventDetailsAPI(eventId)
+    fetchMomentAPI(eventId)
       .then(payload => dispatch(eventActionSuccess(actionType, payload)))
       // .catch(error => dispatch(eventActionError(actionType, error)));
   }
@@ -124,56 +112,28 @@ export const loadMapView = (eventId, actorId, longitude=null, latitude=null) => 
   };
 }
 
-export const registerForEvent = (eventId, actorId, longitude=null, latitude=null) => {
-  const actionType = 'eventRegistration';
-  const requestParams = buildPostParams({
-    event_id: eventId,
-    user_id: actorId,
-    longitude,
-    latitude,
-  });
-
-  return (dispatch) => {
-    triggerEventRegistration();
-    eventRegistrationAPI(requestParams)
-      .then(payload => dispatch(eventActionSuccess(actionType, payload)))
-      // .catch(error => dispatch(eventActionError(error)));
-  };
-}
-
-export const saveEvent = (eventId, actorId) => {
-  const actionType = 'saveEvent';
+export const saveMoment = (eventId, actorId) => {
+  const actionType = 'saveMoment';
   const requestParams = buildPostParams({
     event_id: eventId,
     user_id: actorId,
   });
 
   return (dispatch) => {
-    triggerSaveEvent();
-    saveEventAPI(requestParams)
+    triggerSaveMoment();
+    saveMomentAPI(requestParams)
       .then(payload => dispatch(eventActionSuccess(actionType, payload)))
       // .catch(error => dispatch(eventActionError(error)));
   };
 }
 
-export const fetchTrendingEvents = (userId) => {
-  const actionType = 'fetchTrending';
-  const requestParams = buildPostParams({ user_id: userId });
+export const fetchTopMoments = (userId) => {
+  const actionType = 'fetchTopPosts';
+  const requestParams = buildPostParams({ userId });
 
   return (dispatch) => {
-    triggerFetchTrending();
-    fetchTrendingEventsAPI(requestParams)
-      .then(payload => dispatch(eventActionSuccess(actionType, payload)))
-      // .catch(error => dispatch(eventActionError(error)));
-  };
-}
-
-export const fetchFeaturedEvents = () => {
-  const actionType = 'fetchFeatured';
-
-  return (dispatch) => {
-    triggerFetchFeatured();
-    fetchFeaturedEventsAPI()
+    triggerFetchTopMoments();
+    fetchTopMomentsAPI(requestParams)
       .then(payload => dispatch(eventActionSuccess(actionType, payload)))
       // .catch(error => dispatch(eventActionError(error)));
   };
