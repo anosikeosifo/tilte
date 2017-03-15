@@ -9,7 +9,7 @@ import { fetchTopMoments } from '../actions/MomentActionCreators';
 import BoardCategory from '../components/BoardCategory';
 import EventBoard from '../components/EventBoard';
 import { DATA_GROUPS } from '../constants';
-
+import BannerSearch from '../components/BannerSearch';
 
 const mapStateToProps = (state) => {
   console.log('stateeee: ', state);
@@ -42,6 +42,7 @@ class WelcomePageContainer extends Component {
   render() {
     return(
       <div className='container__welcomepage'>
+        <BannerSearch/>
         {/*
           <BoardCategory categoryName={ DATA_GROUPS.FEATURED_EVENTS } dataset={ this.props.trendingEvents } />
           <BoardCategory categoryName={ DATA_GROUPS.TRENDING_MOMENTS } dataset={ this.props.trendingMoments } />

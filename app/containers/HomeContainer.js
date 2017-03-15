@@ -7,7 +7,6 @@ import { togglePrevious, toggleNext } from '../actions/SlideActionCreators';
 import WelcomePageContainer from './WelcomePageContainer';
 import Header from '../components/Header';
 import Carousel from '../components/Carousel';
-import BannerSearch from '../components/BannerSearch';
 import Footer from '../components/Footer';
 
 const mapStateToProps = (state) => ({
@@ -39,7 +38,6 @@ class HomeContainer extends Component {
           toggleNext={ this.props.toggleNextBanner }
           autoToggle={ this.props.autoToggleBanner }
           bannerConfig={ this.props.bannerConfig } />
-          <BannerSearch/>
         </section>
 
         <WelcomePageContainer currentUser={ this.props.currentUser }/>

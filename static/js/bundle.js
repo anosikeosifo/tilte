@@ -16869,7 +16869,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, ".bannersearch {\n  position: absolute;\n  top: 18em;\n  border-top-left-radius: 4px;\n  border-top-right-radius: 4px;\n  margin: 0 auto;\n  left: 12.5%;\n  right: 12.5%;\n  padding: 25px;\n  background-color: rgba(255, 255, 255, 0.97);\n  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);\n  z-index: 50; }\n  .bannersearch .search__trigger_text {\n    text-align: center;\n    font-size: 2.5em;\n    color: #ff5a5f;\n    font-family: 'open_sanslight', 'sans-serif';\n    margin-bottom: .25em; }\n  .bannersearch .search__wrap {\n    width: 100%;\n    position: relative;\n    border: 1px solid #ececec;\n    margin-bottom: .5em; }\n    .bannersearch .search__wrap .search__input {\n      width: 85%;\n      padding: 0;\n      border-top-left-radius: 4px;\n      border-bottom-left-radius: 4px;\n      background-color: #fff;\n      margin-right: 0; }\n      .bannersearch .search__wrap .search__input * {\n        vertical-align: middle; }\n      .bannersearch .search__wrap .search__input.in__focus {\n        border: 1px solid #ff6166; }\n      .bannersearch .search__wrap .search__input .logo {\n        width: 7%;\n        margin: 0;\n        height: 3em;\n        border-top-left-radius: 4px;\n        border-bottom-left-radius: 4px;\n        text-align: center; }\n        .bannersearch .search__wrap .search__input .logo .icon {\n          height: 3em; }\n      .bannersearch .search__wrap .search__input .search__text {\n        margin: 0;\n        padding: 0 8px;\n        width: 93%;\n        line-height: 2em;\n        outline: none;\n        border: none;\n        font-size: 20px;\n        color: #2b2b2b; }\n    .bannersearch .search__wrap .search__trigger {\n      display: inline-block;\n      width: 15%;\n      height: 3em;\n      border-top-left-radius: 0;\n      border-bottom-left-radius: 0;\n      vertical-align: top;\n      font-size: 16px; }\n", ""]);
+exports.push([module.i, ".bannersearch {\n  display: inline-block;\n  margin: 0 auto;\n  width: 1080px;\n  padding: 25px 60px;\n  margin-top: -90px;\n  margin-bottom: 50px;\n  background-color: #fff;\n  border-top-left-radius: 4px;\n  border-top-right-radius: 4px;\n  background-color: rgba(255, 255, 255, 0.99);\n  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);\n  z-index: 50; }\n  .bannersearch .search__trigger_text {\n    text-align: center;\n    font-size: 2.5em;\n    color: #ff5a5f;\n    font-family: 'open_sanslight', 'sans-serif';\n    margin-bottom: .25em; }\n  .bannersearch .search__wrap {\n    width: 100%;\n    position: relative;\n    border: 1px solid #ececec;\n    margin-bottom: .5em; }\n    .bannersearch .search__wrap .search__input {\n      width: 85%;\n      padding: 0;\n      border-top-left-radius: 4px;\n      border-bottom-left-radius: 4px;\n      background-color: #fff;\n      margin-right: 0; }\n      .bannersearch .search__wrap .search__input * {\n        vertical-align: middle; }\n      .bannersearch .search__wrap .search__input.in__focus {\n        border: 1px solid #ff6166; }\n      .bannersearch .search__wrap .search__input .logo {\n        width: 7%;\n        margin: 0;\n        height: 3em;\n        border-top-left-radius: 4px;\n        border-bottom-left-radius: 4px;\n        text-align: center; }\n        .bannersearch .search__wrap .search__input .logo .icon {\n          height: 3em; }\n      .bannersearch .search__wrap .search__input .search__text {\n        margin: 0;\n        padding: 0 8px;\n        width: 93%;\n        line-height: 2em;\n        outline: none;\n        border: none;\n        font-size: 20px;\n        color: #2b2b2b; }\n    .bannersearch .search__wrap .search__trigger {\n      display: inline-block;\n      width: 15%;\n      height: 3em;\n      border-top-left-radius: 0;\n      border-bottom-left-radius: 0;\n      vertical-align: top;\n      font-size: 16px; }\n", ""]);
 
 // exports
 
@@ -16897,7 +16897,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, ".carousel {\n  margin: 0;\n  position: relative; }\n  .carousel .slide__container {\n    position: relative;\n    height: 24.5em;\n    width: 100%; }\n    .carousel .slide__container .slide__overlay {\n      position: absolute;\n      top: 0;\n      right: 0;\n      bottom: 0;\n      left: 0;\n      background-color: rgba(0, 0, 0, 0.4); }\n    .carousel .slide__container .slide {\n      position: absolute;\n      top: 0;\n      left: 0;\n      right: 0;\n      bottom: 0;\n      opacity: 0;\n      transition: opacity 0.8s ease-in; }\n      .carousel .slide__container .slide.slide__active {\n        opacity: 1;\n        transition: opacity 0.8s ease-in; }\n      .carousel .slide__container .slide .banner__widget {\n        position: absolute;\n        right: 1em;\n        bottom: 1em; }\n  .carousel .toggle {\n    display: inline-block;\n    cursor: pointer;\n    position: absolute;\n    top: 48%;\n    padding: 5px;\n    background-color: rgba(255, 255, 255, 0.5);\n    border-radius: 50%;\n    z-index: 10;\n    height: 30px;\n    width: 30px; }\n    .carousel .toggle:hover {\n      background-color: rgba(255, 255, 255, 0.8); }\n    .carousel .toggle.toggle__prev {\n      left: 1.3em; }\n    .carousel .toggle.toggle__next {\n      right: 1.3em; }\n", ""]);
+exports.push([module.i, ".carousel {\n  margin: 0;\n  position: relative; }\n  .carousel .slide__container {\n    position: relative;\n    height: 23em;\n    width: 100%; }\n    .carousel .slide__container .slide__overlay {\n      position: absolute;\n      top: 0;\n      right: 0;\n      bottom: 0;\n      left: 0;\n      background-color: rgba(0, 0, 0, 0.4); }\n    .carousel .slide__container .slide {\n      position: absolute;\n      top: 0;\n      left: 0;\n      right: 0;\n      bottom: 0;\n      opacity: 0;\n      transition: opacity 0.8s ease-in; }\n      .carousel .slide__container .slide.slide__active {\n        opacity: 1;\n        transition: opacity 0.8s ease-in; }\n      .carousel .slide__container .slide .banner__widget {\n        position: absolute;\n        right: 1em;\n        bottom: 1em; }\n  .carousel .toggle {\n    display: inline-block;\n    cursor: pointer;\n    position: absolute;\n    top: 48%;\n    padding: 5px;\n    background-color: rgba(255, 255, 255, 0.5);\n    border-radius: 50%;\n    z-index: 10;\n    height: 30px;\n    width: 30px; }\n    .carousel .toggle:hover {\n      background-color: rgba(255, 255, 255, 0.8); }\n    .carousel .toggle.toggle__prev {\n      left: 1.3em; }\n    .carousel .toggle.toggle__next {\n      right: 1.3em; }\n", ""]);
 
 // exports
 
@@ -17051,7 +17051,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, ".index__shell {\n  position: relative;\n  padding: 0;\n  margin: 0; }\n\n.banner__section {\n  position: relative; }\n\n.feed__section {\n  font-size: 14px; }\n  .feed__section .feed__item__wrap {\n    padding: 0;\n    margin: 0; }\n\n.container__welcomepage {\n  position: relative;\n  padding-top: 65px;\n  width: 1080px;\n  margin: 1em auto; }\n", ""]);
+exports.push([module.i, ".index__shell {\n  position: relative;\n  padding: 0;\n  margin: 0; }\n\n.banner__section {\n  position: relative;\n  text-align: center; }\n\n.feed__section {\n  font-size: 14px; }\n  .feed__section .feed__item__wrap {\n    padding: 0;\n    margin: 0; }\n\n.container__welcomepage {\n  position: relative;\n  width: 1080px;\n  margin: 1em auto; }\n", ""]);
 
 // exports
 
@@ -19008,10 +19008,6 @@ var _Carousel = __webpack_require__(176);
 
 var _Carousel2 = _interopRequireDefault(_Carousel);
 
-var _BannerSearch = __webpack_require__(175);
-
-var _BannerSearch2 = _interopRequireDefault(_BannerSearch);
-
 var _Footer = __webpack_require__(93);
 
 var _Footer2 = _interopRequireDefault(_Footer);
@@ -19084,8 +19080,7 @@ var HomeContainer = function (_Component) {
           _react2.default.createElement(_Carousel2.default, { togglePrevious: this.props.togglePreviousBanner,
             toggleNext: this.props.toggleNextBanner,
             autoToggle: this.props.autoToggleBanner,
-            bannerConfig: this.props.bannerConfig }),
-          _react2.default.createElement(_BannerSearch2.default, null)
+            bannerConfig: this.props.bannerConfig })
         ),
         _react2.default.createElement(_WelcomePageContainer2.default, { currentUser: this.props.currentUser }),
         _react2.default.createElement(_Footer2.default, null)
@@ -19211,6 +19206,10 @@ var _EventBoard2 = _interopRequireDefault(_EventBoard);
 
 var _constants = __webpack_require__(4);
 
+var _BannerSearch = __webpack_require__(175);
+
+var _BannerSearch2 = _interopRequireDefault(_BannerSearch);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19277,6 +19276,7 @@ var WelcomePageContainer = function (_Component) {
       return _react2.default.createElement(
         'div',
         { className: 'container__welcomepage' },
+        _react2.default.createElement(_BannerSearch2.default, null),
         _react2.default.createElement(_EventBoard2.default, { dataset: this.props.featuredEvents })
       );
     }
