@@ -2,9 +2,9 @@
   display: inline-block;
   margin: 0 auto;
   width: 1080px;
-  padding: 25px 60px;
+  padding: 13px 60px;
   margin-top: -90px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   background-color: #fff;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
@@ -13,7 +13,7 @@
   z-index: 50;
 
   .search__trigger_text {
-    text-align: center;
+    text-align: left;
     font-size: 2.5em;
     color: #ff5a5f;
     font-family: 'open_sanslight', 'sans-serif';
@@ -22,7 +22,7 @@
   .search__wrap {
     width: 100%;
     position: relative;
-    border: 1px solid #ececec;
+    border: 1px solid #eaeaea;
     margin-bottom: .5em;
 
     .search__input {

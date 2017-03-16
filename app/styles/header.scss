@@ -1,10 +1,20 @@
 .header {
   border-top: 3px solid #ff5a5f;
-  border-bottom: 1px solid #ccc;
-  background-color: transparent;;
-  z-index: 10;
+  // background-color: transparent;;
+  background-color: transparent;
+  z-index: 100;
   position: fixed;
   width: 100%;
+  height: 4.5em;
+  padding: 7px 0;
+  color: #fff;
+  transition: background-color .2s ease-in;
+
+  &.opaque {
+    background-color: #fff;
+    color: #444;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  }
 }
 .default__layout .header {
   .navbar {
@@ -14,10 +24,12 @@
   }
 }
 
-.navbar {
-  padding: 8px 20px;
-  color: #fff;
+.pull__right {
+  width: 10em;
+}
 
+.navbar {
+  padding: 5px 20px;
   &.navigation__container {
     display: flex;
     justify-content: space-between;
@@ -30,7 +42,6 @@
 
       .app__name {
         font-size: 20px;
-        font-weight: bold;
         margin-left: 10px;
       }
     }

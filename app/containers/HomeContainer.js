@@ -8,6 +8,7 @@ import WelcomePageContainer from './WelcomePageContainer';
 import Header from '../components/Header';
 import Carousel from '../components/Carousel';
 import Footer from '../components/Footer';
+import classNames from 'classnames';
 
 const mapStateToProps = (state) => ({
   bannerConfig: state.config.bannerConfig,
@@ -32,7 +33,7 @@ class HomeContainer extends Component {
     return(
       <section className='index__shell'>
         <Header loggedInUser={ this.props.currentUser }
-                appDetails={ this.props.appDetails } />
+                appDetails={ this.props.appDetails } usage={ this.constructor.name.toLowerCase() }/>
         <section className='banner__section'>
           <Carousel togglePrevious={ this.props.togglePreviousBanner }
           toggleNext={ this.props.toggleNextBanner }

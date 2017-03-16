@@ -1,4 +1,4 @@
-import { BANNER_TOGGLE_NEXT, BANNER_TOGGLE_PREV, ASSETS_BASE_URL } from '../constants';
+import { BANNER_TOGGLE_NEXT, BANNER_TOGGLE_PREV, ASSETS_BASE_URL, USER_AVATAR_PLACEHOLDER } from '../constants';
 import update from 'immutability-helper';
 
 const initialState = {
@@ -36,7 +36,14 @@ const initialState = {
     name: 'Borderless',
     logo: `${ ASSETS_BASE_URL }/images/logo.png`,
   },
-  currentUser: { id: '7', fullname: 'Anosike Osifo', firstname: 'Osifo', lastname: 'Anosike', email: 'social.anosikeosifo@gmail.com' },
+
+  currentUser: { id: '7',
+    fullname: 'Anosike Osifo',
+    firstname: 'Osifo',
+    lastname: 'Anosike',
+    email: 'social.anosikeosifo@gmail.com',
+    avatarUrl: USER_AVATAR_PLACEHOLDER
+  },
 }
 
 export const configData = (state = initialState, action) => {

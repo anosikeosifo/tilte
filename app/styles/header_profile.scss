@@ -1,0 +1,19 @@
+.component__header__profile {
+  width: 2.3em;
+  vertical-align: middle;
+  display: inline-block;
+
+  .profile__image__wrap {
+    border: 1px solid #555;
+    border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
+    height: 2.3em;
+    width: 2.3em;
+
+    .image {
+      height: 2.3em;
+      width: 2.3em;
+    }
+  }
+}
