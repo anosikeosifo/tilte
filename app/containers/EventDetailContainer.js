@@ -39,11 +39,17 @@ class EventDetailContainer extends Component {
     return(
       <DefaultLayout currentUser={ appConfig.currentUser } appDetails={ appConfig.appDetails }>
         <section className='event__detail__container'>
-          <EventDetailHeader eventObject={ eventObject } actor={ appConfig.currentUser } userActions={[
-            { title: "Register Now", value: registerNow },
-            { title: "Save for later", value: saveForLater },
-          ]}/>
-          <EventDetailBody actor={ appConfig.currentUser } actionCallbacks = { { makeComment, showMapView } } eventObject={ eventObject } />
+          <EventDetailHeader />
+          <EventDetailBody
+            actor={ appConfig.currentUser }
+            actionCallbacks = { { makeComment, showMapView } }
+            eventObject={ eventObject }
+            eventObject={ eventObject }
+            userActions={[
+              { title: "Register Now", value: registerNow },
+              { title: "Save for later", value: saveForLater },
+            ]}
+          />
         </section>
       </DefaultLayout>
     );

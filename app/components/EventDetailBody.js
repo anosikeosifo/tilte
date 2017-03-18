@@ -10,6 +10,9 @@ import LikeTrigger from './LikeTrigger';
 import CommentTrigger from './CommentTrigger';
 import CommentList from './CommentList';
 import CommentInput from './CommentInput';
+import EventDateFormatter from './EventDateFormatter';
+import LocationMarker from './LocationMarker';
+import EventActions from './EventActions';
 
 const EventDetailBody = (props) => {
   return (
@@ -20,19 +23,34 @@ const EventDetailBody = (props) => {
         <section className='event_detail__sidebar'>
         </section>
         <section className='event__details__main'>
-          <div className='event__info'>
-            { props.eventObject.description || "hello! welcome to tilte, the place where we share the most fun experiences!" }
-          </div>
-          <div className='creator__info'>
+          <div className='details__header'>
+            <section className='event__information__wrap'>
+              <span className='event__name'>{ props.eventObject.name }</span>
+              <div className='location__info'>
+                <span className='event__location'>{ "Oniru Beach, Lagos State, Nigeria" || props.eventObject.location.name }</span>
+                <LocationMarker latitude={ "6.4367" || props.eventObject.location.latitude} longitude={ "3.4192" || props.eventObject.location.longitude } action={ props.showMapAction }/>
+              </div>
+              <div className='event__date__wrap'>
 
+              </div>
+            </section>
+            <section className='event__action__wrap'>
+              <EventActions eventId={ props.eventObject.id } actionsSet={ props.userActions } actor={ props.actor }/>
+            </section>
           </div>
-          <section className='comment__section'>
-           <div className='comment__input'>
-             { /* <CommentInput eventId={ props.eventObject.id } actor={ props.eventObject.user } commentCount={ props.eventObject.comments_count } submitAction={ props.actionCallbacks.makeComment }/> */}
-           </div>
-           <div className='comment__list'>
-             { /*<CommentList comments={ props.eventObject.comments }/> */}
-           </div>
+          <section className='details__body'>
+            <div className='event__description'>
+              <p>{ props.eventObject.description || "hello! welcome to tilte, the place where we share the most fun experiences!" }</p>
+            </div>
+
+            <div className='creator__info'>
+
+            </div>
+            <section className='attendees__section'>
+              <div className='attendees__list'>
+                { /*<CommentList comments={ props.eventObject.comments }/> */}
+              </div>
+            </section>
           </section>
         </section>
         <div className='map__section'>

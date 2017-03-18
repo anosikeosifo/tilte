@@ -17061,7 +17061,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, ".component__event__detail__body {\n  box-sizing: border-box;\n  width: 100%;\n  position: relative; }\n  .component__event__detail__body .event__detail__wrap {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between;\n    min-height: 550px; }\n    .component__event__detail__body .event__detail__wrap .event_detail__sidebar {\n      display: inline-block;\n      width: 20%;\n      background-color: #f6f6f6; }\n    .component__event__detail__body .event__detail__wrap .event__details__main {\n      display: inline-block;\n      padding: 2em 0;\n      border-left: 1px solid #dadada;\n      border-right: 1px solid #dadada;\n      width: 40%; }\n    .component__event__detail__body .event__detail__wrap .map__section {\n      display: inline-block;\n      width: 40%;\n      vertical-align: top;\n      background-color: #cee2f3; }\n", ""]);
+exports.push([module.i, ".component__event__detail__body {\n  box-sizing: border-box;\n  width: 100%;\n  position: relative; }\n  .component__event__detail__body .event__detail__wrap {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between;\n    min-height: 850px; }\n    .component__event__detail__body .event__detail__wrap .event_detail__sidebar {\n      display: inline-block;\n      width: 19%;\n      background-color: #f6f6f6; }\n    .component__event__detail__body .event__detail__wrap .event__details__main {\n      display: inline-block;\n      padding: 2em 0;\n      border-left: 1px solid #dadada;\n      border-right: 1px solid #dadada;\n      width: 41%;\n      margin-top: -60px;\n      background-color: #fff;\n      border-top-left-radius: 5px;\n      border-top-right-radius: 5px; }\n    .component__event__detail__body .event__detail__wrap .map__section {\n      display: inline-block;\n      width: 40%;\n      vertical-align: top;\n      background-color: #cee2f3; }\n", ""]);
 
 // exports
 
@@ -17075,7 +17075,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, ".component__eventdetail__header {\n  width: 100%;\n  height: 18em;\n  background-color: #ccc;\n  padding-top: 5em; }\n  .component__eventdetail__header .container__wrap {\n    padding: 2em 5em;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between; }\n    .component__eventdetail__header .container__wrap .event__action__wrap {\n      vertical-align: middle; }\n", ""]);
+exports.push([module.i, ".component__eventdetail__header {\n  width: 100%;\n  height: 20em;\n  background-color: #ccc;\n  padding-top: 5em; }\n  .component__eventdetail__header .container__wrap {\n    padding: 2em 5em;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between; }\n    .component__eventdetail__header .container__wrap .event__action__wrap {\n      vertical-align: middle; }\n", ""]);
 
 // exports
 
@@ -18346,6 +18346,18 @@ var _CommentInput = __webpack_require__(177);
 
 var _CommentInput2 = _interopRequireDefault(_CommentInput);
 
+var _EventDateFormatter = __webpack_require__(183);
+
+var _EventDateFormatter2 = _interopRequireDefault(_EventDateFormatter);
+
+var _LocationMarker = __webpack_require__(187);
+
+var _LocationMarker2 = _interopRequireDefault(_LocationMarker);
+
+var _EventActions = __webpack_require__(181);
+
+var _EventActions2 = _interopRequireDefault(_EventActions);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 __webpack_require__(366);
@@ -18364,15 +18376,51 @@ var EventDetailBody = function EventDetailBody(props) {
         { className: 'event__details__main' },
         _react2.default.createElement(
           'div',
-          { className: 'event__info' },
-          props.eventObject.description || "hello! welcome to tilte, the place where we share the most fun experiences!"
+          { className: 'details__header' },
+          _react2.default.createElement(
+            'section',
+            { className: 'event__information__wrap' },
+            _react2.default.createElement(
+              'span',
+              { className: 'event__name' },
+              props.eventObject.name
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'location__info' },
+              _react2.default.createElement(
+                'span',
+                { className: 'event__location' },
+                "Oniru Beach, Lagos State, Nigeria" || props.eventObject.location.name
+              ),
+              _react2.default.createElement(_LocationMarker2.default, { latitude: "6.4367" || props.eventObject.location.latitude, longitude: "3.4192" || props.eventObject.location.longitude, action: props.showMapAction })
+            ),
+            _react2.default.createElement('div', { className: 'event__date__wrap' })
+          ),
+          _react2.default.createElement(
+            'section',
+            { className: 'event__action__wrap' },
+            _react2.default.createElement(_EventActions2.default, { eventId: props.eventObject.id, actionsSet: props.userActions, actor: props.actor })
+          )
         ),
-        _react2.default.createElement('div', { className: 'creator__info' }),
         _react2.default.createElement(
           'section',
-          { className: 'comment__section' },
-          _react2.default.createElement('div', { className: 'comment__input' }),
-          _react2.default.createElement('div', { className: 'comment__list' })
+          { className: 'details__body' },
+          _react2.default.createElement(
+            'div',
+            { className: 'event__description' },
+            _react2.default.createElement(
+              'p',
+              null,
+              props.eventObject.description || "hello! welcome to tilte, the place where we share the most fun experiences!"
+            )
+          ),
+          _react2.default.createElement('div', { className: 'creator__info' }),
+          _react2.default.createElement(
+            'section',
+            { className: 'attendees__section' },
+            _react2.default.createElement('div', { className: 'attendees__list' })
+          )
         )
       ),
       _react2.default.createElement('div', { className: 'map__section' })
@@ -18415,18 +18463,6 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _EventDateFormatter = __webpack_require__(183);
-
-var _EventDateFormatter2 = _interopRequireDefault(_EventDateFormatter);
-
-var _LocationMarker = __webpack_require__(187);
-
-var _LocationMarker2 = _interopRequireDefault(_LocationMarker);
-
-var _EventActions = __webpack_require__(181);
-
-var _EventActions2 = _interopRequireDefault(_EventActions);
-
 var _constants = __webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -18444,35 +18480,7 @@ var EventDetailHeader = function EventDetailHeader(props) {
     'section',
     { className: 'component__eventdetail__header',
       style: headerStyle },
-    _react2.default.createElement(
-      'div',
-      { className: 'container__wrap' },
-      _react2.default.createElement(
-        'section',
-        { className: 'event__information__wrap' },
-        _react2.default.createElement(
-          'span',
-          { className: 'event__name' },
-          props.eventObject.name
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'location__info' },
-          _react2.default.createElement(
-            'span',
-            { className: 'event__location' },
-            "Oniru Beach, Lagos State, Nigeria" || props.eventObject.location.name
-          ),
-          _react2.default.createElement(_LocationMarker2.default, { latitude: "6.4367" || props.eventObject.location.latitude, longitude: "3.4192" || props.eventObject.location.longitude, action: props.showMapAction })
-        ),
-        _react2.default.createElement('div', { className: 'event__date__wrap' })
-      ),
-      _react2.default.createElement(
-        'section',
-        { className: 'event__action__wrap' },
-        _react2.default.createElement(_EventActions2.default, { eventId: props.eventObject.id, actionsSet: props.userActions, actor: props.actor })
-      )
-    )
+    _react2.default.createElement('div', { className: 'container__wrap' })
   );
 };
 
@@ -19066,8 +19074,14 @@ var EventDetailContainer = function (_Component) {
         _react2.default.createElement(
           'section',
           { className: 'event__detail__container' },
-          _react2.default.createElement(_EventDetailHeader2.default, { eventObject: eventObject, actor: appConfig.currentUser, userActions: [{ title: "Register Now", value: registerNow }, { title: "Save for later", value: saveForLater }] }),
-          _react2.default.createElement(_EventDetailBody2.default, { actor: appConfig.currentUser, actionCallbacks: { makeComment: makeComment, showMapView: showMapView }, eventObject: eventObject })
+          _react2.default.createElement(_EventDetailHeader2.default, null),
+          _react2.default.createElement(_EventDetailBody2.default, {
+            actor: appConfig.currentUser,
+            actionCallbacks: { makeComment: makeComment, showMapView: showMapView },
+            eventObject: eventObject,
+            eventObject: eventObject,
+            userActions: [{ title: "Register Now", value: registerNow }, { title: "Save for later", value: saveForLater }]
+          })
         )
       );
     }
