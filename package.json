@@ -65,8 +65,8 @@
   "scripts": {
     "test": "jest",
     "staging": "webpack --progress --config webpack.config.prod.js && node server.js",
-    "dev": "webpack-dev-server --progress --colors --watch",
-    "start": "npm run dev | webpack -w"
+    "dev": "webpack-dev-server --progress --colors --watch |  webpack -w",
+    "start": "npm run staging"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
