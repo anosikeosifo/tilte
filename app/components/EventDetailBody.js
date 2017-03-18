@@ -28,10 +28,10 @@ const EventDetailBody = (props) => {
           </div>
           <section className='comment__section'>
            <div className='comment__input'>
-             <CommentInput eventId={ props.eventObject.id } actor={ props.eventObject.user } commentCount={ props.eventObject.comments_count } submitAction={ props.actionCallbacks.makeComment }/>
+             { /* <CommentInput eventId={ props.eventObject.id } actor={ props.eventObject.user } commentCount={ props.eventObject.comments_count } submitAction={ props.actionCallbacks.makeComment }/> */}
            </div>
            <div className='comment__list'>
-             <CommentList comments={ props.eventObject.comments }/>
+             { /*<CommentList comments={ props.eventObject.comments }/> */}
            </div>
           </section>
         </section>

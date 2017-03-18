@@ -5,63 +5,106 @@
   z-index: 100;
   position: fixed;
   width: 100%;
-  height: 4.5em;
-  padding: 7px 0;
+  height: 3.5em;
   color: #fff;
-  transition: background-color .2s ease-in;
+  transition: background-color .3s ease-in;
+
+  .search__container {
+    display: inline-block;;
+    opacity: 0;
+    transition: opacity .3s ease-in;
+
+    .search__text { padding-left: 0;}
+
+    .search__input .logo {
+      width: auto;
+    }
+    .search__input, .search__text {
+      background-color: transparent;
+    }
+  }
 
   &.opaque {
     background-color: #fff;
     color: #444;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-  }
-}
-.default__layout .header {
-  .navbar {
-    color: #ccc;
-    background-color: #fff;
-    position: relative;
-  }
-}
 
-.pull__right {
-  width: 10em;
-}
+    .search__container {
+      opacity: 1;
+      transition: opacity .2s ease-in;
+      margin-left: .7em;
+    }
 
-.navbar {
-  padding: 5px 20px;
-  &.navigation__container {
-    display: flex;
-    justify-content: space-between;
     .app__info {
-      display: inline-block;
-      * {
-        vertical-align: middle;
-      }
-      width: 10em;
+      border-right: 1px solid #ccc;
 
-      .app__name {
-        font-size: 20px;
-        margin-left: 10px;
-      }
-    }
-
-    .actions {
-      display: inline-block;
-
-      .header__profile {
-        display: inline-block;
-      }
-
-      .tilte__action_link {
-        margin-right: 1em;
-        font-size: 16px;
-        padding: 6px 19px;
+      .app__name  {
+        display: none;
       }
     }
   }
 
-  &.category__container {
-    height: 1.5em;
+  .default__layout .header {
+    .navbar {
+      color: #ccc;
+      background-color: #fff;
+      position: relative;
+    }
+  }
+
+  .pull__left {
+    width: 100%;
+  }
+
+  .pull__right {
+    width: 10em;
+  }
+
+  .search__container {
+    position: relative;
+    width: 60%;
+
+    .search__wrap {
+      border: none;
+    }
+  }
+
+  .navbar {
+    padding: 5px 20px;
+    &.navigation__container {
+      display: flex;
+      justify-content: space-between;
+      .app__info {
+        display: inline-block;
+        padding-right: 1em;
+
+        * {
+          vertical-align: middle;
+        }
+
+        .app__name {
+          font-size: 20px;
+          margin-left: 10px;
+        }
+      }
+
+      .actions {
+        display: inline-block;
+
+        .header__profile {
+          display: inline-block;
+        }
+
+        .tilte__action_link {
+          margin-right: 1em;
+          font-size: 16px;
+          padding: 6px 19px;
+        }
+      }
+    }
+
+    &.category__container {
+      height: 1.5em;
+    }
   }
 }

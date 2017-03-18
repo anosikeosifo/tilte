@@ -6,6 +6,7 @@
   .event__detail__wrap {
     display: flex;
     justify-content: space-between;
+    min-height: 550px;
 
     .event_detail__sidebar {
       display: inline-block;

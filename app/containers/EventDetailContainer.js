@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { postComment, fetchComments, fetchEventDetails, loadMapView, registerForEvent, saveEvent } from '../actions/EventActionCreators';
+import { postComment, fetchEventDetails, loadMapView, registerForEvent, saveEvent } from '../actions/EventActionCreators';
 import { connect } from 'react-redux';
 import EventDetailHeader from '../components/EventDetailHeader';
 import EventDetailBody from '../components/EventDetailBody';
@@ -7,13 +7,12 @@ import DefaultLayout from '../layouts/DefaultLayout';
 
 const mapStateToProps = (state) => ({
   appConfig: state.config,
-  eventObject: state.event,
+  eventObject: state.eventData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchDetails: (eventId, actorId) => dispatch(fetchEventDetails(eventId, actorId)),
   makeComment: (eventId, actorId, content) => dispatch(postComment(eventId, actorId, content)),
-  loadComments: (eventId, actorId) => dispatch(fetchComments(eventId, actorId)),
   showMapView: (eventId, actorId, longitude, latitude) => dispatch(loadMapView(eventId, actorId, longitude, latitude)),
   register: (eventId, actorId) => dispatch(registerForEvent(eventId, actorId)),
   saveForLater: (eventId, actorId) => dispatch(saveEvent(eventId, actorId)),
@@ -22,7 +21,6 @@ const mapDispatchToProps = (dispatch) => ({
 class EventDetailContainer extends Component {
   componentWillMount() {
     this.props.fetchDetails(this.props.params.id, this.props.appConfig.currentUser.id);
-    this.props.loadComments(this.props.params.id, this.props.appConfig.currentUser.id);
     this.props.showMapView(this.props.params.id, this.props.appConfig.currentUser.id);
   }
 
@@ -52,7 +50,6 @@ class EventDetailContainer extends Component {
   }
 
   render() {
-    console.log('props: ', this.props)
     if (this.props.eventObject) {
       return this.renderComponentElements();
     } else {

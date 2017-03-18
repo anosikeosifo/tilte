@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { Link } from 'react-router';
 import HeaderProfile from './HeaderProfile';
 import CategoryNavbar from './CategoryNavbar';
+import TextSearch from './TextSearch';
 
 //TODO:: get the root url from: this.props.appDefaults.rootUrl
 class Header extends Component {
@@ -14,11 +15,9 @@ class Header extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
-  }
-
-  componentWillUnmount() {
-
+    if(this.props.usage == 'homecontainer') {
+      window.addEventListener('scroll', this.handleScroll);
+    }
   }
 
   handleTilteAction() {
@@ -26,10 +25,10 @@ class Header extends Component {
   }
 
   handleScroll(event) {
-    if(event.srcElement.body.scrollTop >= 230) {
-      this.appHeader.classList.add('opaque');
+    if(event.srcElement.body.scrollTop >= 350) {
+      this.appHeader && this.appHeader.classList.add('opaque');
     } else {
-      this.appHeader.classList.remove('opaque');
+      this.appHeader && this.appHeader.classList.remove('opaque');
     }
   }
 
@@ -37,14 +36,20 @@ class Header extends Component {
     const uiClasses = classNames({
       'header': true,
       'opaque': this.props.usage != 'homecontainer',
-    })
+    });
+
     return(
       <section className={ uiClasses } ref={ (ref) => this.appHeader = ref }>
         <nav className='navbar navigation__container'>
-          <section className='app__info'>
-            <span className='app__logo inline__block'><img width='40' src={ this.props.appDetails.logo } alt={ this.props.appDetails.name }/></span>
-            <span className='app__name inline__block'>{ this.props.appDetails.name }</span>
-          </section>
+          <div className='pull__left'>
+            <section className='app__info'>
+              <span className='app__logo inline__block'><img width='40' src={ this.props.appDetails.logo } alt={ this.props.appDetails.name }/></span>
+              <span className='app__name inline__block'>{ this.props.appDetails.name }</span>
+            </section>
+            <div className='search__container'>
+              <TextSearch/>
+            </div>
+          </div>
 
           <div className='pull__right'>
             <section className={ classNames({ actions: true, tilte__action: true }) }>
