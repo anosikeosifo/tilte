@@ -16,7 +16,6 @@
 
     .event__details__main {
       display: inline-block;
-      padding: 2em 0;
       border-left: 1px solid #dadada;
       border-right: 1px solid #dadada;
       width: 41%;
@@ -24,6 +23,45 @@
       background-color: #fff;
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
+
+      .details__header__wrap {
+        padding: .5em 1em;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+
+        .details__header {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: .5em;
+          
+          .event__information__wrap {
+            width: 70%;
+          }
+
+          .event__action__wrap {
+            width: auto;
+          }
+
+          .event__date__wrap {
+            margin-bottom: 1.5em;
+            font-size: 1.3em;
+          }
+          .event__name {
+            font-size: 2em;
+            font-weight: bold;
+            margin-top: 1.3em;
+          }
+
+          .event__location_text {
+            vertical-align: middle;
+          }
+
+        }
+
+        .details__header_nav {
+          height: 3em;
+          border-top: 1px solid #dcdede;
+        }
+      }
     }
 
     .map__section {

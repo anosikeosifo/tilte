@@ -67,3 +67,10 @@ body {
 .inline__block {
   display: inline-block;
 }
+
+.middot {
+  display: inline-block !important;
+  vertical-align: middle;
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+}

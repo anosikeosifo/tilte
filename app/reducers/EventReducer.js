@@ -29,7 +29,7 @@ const getCommentIndex = (commentId) => {
   return currentState.findIndex((comment) => comment.id == commentId);
 };
 
-const fetchEventDetails = (action) => (action.payload.data);
+const fetchEventDetails = (action) => (action.payload.data[0]);
 
 const fetchComments = (action) => {
   return update(currentState, {

@@ -13,8 +13,10 @@ import CommentInput from './CommentInput';
 import EventDateFormatter from './EventDateFormatter';
 import LocationMarker from './LocationMarker';
 import EventActions from './EventActions';
+import { getEventShortDate } from '../helpers/DateHelper';
 
 const EventDetailBody = (props) => {
+  console.log('event object: ', props.eventObject);
   return (
     <section className='component__event__detail__body'>
       <div className='event__detail__wrap'>
@@ -23,20 +25,25 @@ const EventDetailBody = (props) => {
         <section className='event_detail__sidebar'>
         </section>
         <section className='event__details__main'>
-          <div className='details__header'>
-            <section className='event__information__wrap'>
-              <span className='event__name'>{ props.eventObject.name }</span>
-              <div className='location__info'>
-                <span className='event__location'>{ "Oniru Beach, Lagos State, Nigeria" || props.eventObject.location.name }</span>
-                <LocationMarker latitude={ "6.4367" || props.eventObject.location.latitude} longitude={ "3.4192" || props.eventObject.location.longitude } action={ props.showMapAction }/>
-              </div>
-              <div className='event__date__wrap'>
-
-              </div>
-            </section>
-            <section className='event__action__wrap'>
-              <EventActions eventId={ props.eventObject.id } actionsSet={ props.userActions } actor={ props.actor }/>
-            </section>
+          <div className='details__header__wrap'>
+            <div className='details__header'>
+              <section className='event__information__wrap'>
+                <div className='event__date__wrap'>
+                  <span className='date__value'>{ getEventShortDate(props.eventObject.start_time, props.eventObject.end_time) }</span>
+                </div>
+                <span className='event__name'>{ props.eventObject.title }</span>
+                <div className='location__info'>
+                  <span className='event__location_text'>{ "Oniru Beach, Lagos State, Nigeria" || props.eventObject.location.name }</span>
+                  <span className='middot'>&middot;</span>
+                  <LocationMarker latitude={ "6.4367" || props.eventObject.location.latitude} longitude={ "3.4192" || props.eventObject.location.longitude } action={ props.showMapAction } size={ 16 }/>
+                </div>
+              </section>
+              <section className='event__action__wrap'>
+                <EventActions eventId={ props.eventObject.id } actionsSet={ props.userActions } actor={ props.actor }/>
+              </section>
+            </div>
+            <div className='details__header_nav'>
+            </div>
           </div>
           <section className='details__body'>
             <div className='event__description'>

@@ -50,7 +50,7 @@ class LocationMarker extends Component {
         onMouseEnter={ this.handleMouseEnter.bind(this) }
         onMouseLeave={ this.handleMouseLeave.bind(this) }
         onClick={ this.handleClick.bind(this) }>
-        <Icon icon={ICON_LOCATION} color={ this.state.iconColor } />
+        <Icon icon={ICON_LOCATION} color={ this.state.iconColor } size={ this.props.size }/>
       </section>
     );
   }
@@ -59,6 +59,10 @@ class LocationMarker extends Component {
 LocationMarker.propTypes = {
   latitude: PropTypes.string.isRequired,
   longitude: PropTypes.string.isRequired,
+  size: PropTypes.integer,
 }
 
+LocationMarker.defaultProps = {
+  size: 16
+}
 export default LocationMarker;
