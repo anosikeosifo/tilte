@@ -63,15 +63,15 @@ export const likeEvent = (eventId, actorId) => {
 
 export const fetchEventDetails = (eventId, actorId) => {
   const actionType = 'fetchDetails';
-  const requestParams = buildUrlQueryParams({
-    id: eventId, user_id: actorId
+  const requestParams = buildPostParams({
+    event_id: eventId, user_id: actorId
   });
 
   return (dispatch) => {
     triggerFetchEventDetails();
 
     //this should take requestParams as arg
-    fetchEventDetailsAPI(eventId)
+    fetchEventDetailsAPI(requestParams)
       .then(payload => dispatch(eventActionSuccess(actionType, payload)))
       // .catch(error => dispatch(eventActionError(actionType, error)));
   }
@@ -126,6 +126,7 @@ export const loadMapView = (eventId, actorId, longitude=null, latitude=null) => 
 
 export const registerForEvent = (eventId, actorId, longitude=null, latitude=null) => {
   const actionType = 'eventRegistration';
+  console.log('actionType')
   const requestParams = buildPostParams({
     event_id: eventId,
     user_id: actorId,

@@ -1,0 +1,23 @@
+.component__event__organizer {
+
+  .organizer__details_wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .left_section {
+    width: 30%;
+
+    .organizer__avatar__wrap {
+      border-radius: 50%;
+      border: 1px solid #dcdede;
+      overflow: hidden;
+      width: 70px;
+
+      .avatar {
+        width: 70px;
+      }
+    }
+  }
+
+}

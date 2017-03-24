@@ -59,7 +59,7 @@ class LocationMarker extends Component {
 LocationMarker.propTypes = {
   latitude: PropTypes.string.isRequired,
   longitude: PropTypes.string.isRequired,
-  size: PropTypes.integer,
+  size: PropTypes.number,
 }
 
 LocationMarker.defaultProps = {

@@ -25,14 +25,14 @@
       border-top-right-radius: 5px;
 
       .details__header__wrap {
-        padding: .5em 1em;
-        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+        padding: .5em 1em 0 1em;
+        border-bottom: 1px solid #dcdede;
 
         .details__header {
           display: flex;
           justify-content: space-between;
           margin-bottom: .5em;
-          
+
           .event__information__wrap {
             width: 70%;
           }
@@ -46,8 +46,7 @@
             font-size: 1.3em;
           }
           .event__name {
-            font-size: 2em;
-            font-weight: bold;
+            font-size: 1.6em;
             margin-top: 1.3em;
           }
 
@@ -58,14 +57,66 @@
         }
 
         .details__header_nav {
-          height: 3em;
-          border-top: 1px solid #dcdede;
+          height: 2.5em;
+          // border-top: 1px solid #dcdede;
+
+          .nav__list {
+            text-align: right;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            .item {
+              display: inline-block;
+              margin-right: 1em;
+              font-size: .95em;
+              height: 2.5em;
+
+              &.active {
+                border-bottom: 3px solid #395A5F;
+              }
+
+              &:last-of-type {
+                margin-right: 0;
+              }
+
+              .trigger {
+                color: #444;
+                text-decoration: none;
+                height: 100%;
+                display: inline-block;
+                background-color: #fff;
+                border: none;
+                outline: none;
+                padding: 0;
+
+                &:hover {
+                  color: #395A5F;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .details__body {
+        padding: 2em 1em 0;
+
+        .section__wrap {
+          margin-bottom: 3em;
+        }
+        
+        .section__header {
+          padding-bottom: 5px;
+          border-bottom: 1px solid #dcdede;
+          margin-bottom: 10px;
+          font-weight: bold;
+          font-size: 1.2em;
         }
       }
     }
 
     .map__section {
-
       display: inline-block;
       width: 40%;
       vertical-align: top;

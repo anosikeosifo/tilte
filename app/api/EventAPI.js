@@ -1,9 +1,10 @@
 import { API_BASE_URL } from '../constants';
 
 export const fetchEventDetailsAPI = (requestData) => {
-  return fetch(`${ API_BASE_URL }/events/${ requestData }`, {
-    method: 'GET',
+  return fetch(`${ API_BASE_URL }/events/view`, {
+    method: 'POST',
     credentials: 'same-origin',
+    body: requestData
   })
   .then(response => response.json());
 };
@@ -27,12 +28,17 @@ export const loadMapAPI = (requestData) => {
   return Promise.resolve({success: true, data: 'Maps not yet implementated'})
 };
 
-export const eventRegistrationAPI = (requestData) => {
-  return Promise.resolve({success: true, data: 'Registration not yet implementated'});
+export const eventRegistrationAPI = (requestParams) => {
+  return fetch(`${ API_BASE_URL }/events/register`, {
+    method: 'POST',
+    body: requestParams,
+    credentials: 'same-origin',
+  })
+  .then(response => response.json());
 };
 
-export const saveEventAPI = (requestData) => {
-  return Promise.resolve({success: true, data: 'Saving events has not been implementated'});
+export const saveEventAPI = (requestParams) => {
+  return Promise.resolve({success: true, data: 'Registration not yet implementated'});
 };
 
 export const fetchTrendingEventsAPI = () => {

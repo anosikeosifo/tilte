@@ -13,10 +13,11 @@ import CommentInput from './CommentInput';
 import EventDateFormatter from './EventDateFormatter';
 import LocationMarker from './LocationMarker';
 import EventActions from './EventActions';
+import EventDescription from './EventDescription';
+import EventOrganizer from './EventOrganizer';
 import { getEventShortDate } from '../helpers/DateHelper';
 
 const EventDetailBody = (props) => {
-  console.log('event object: ', props.eventObject);
   return (
     <section className='component__event__detail__body'>
       <div className='event__detail__wrap'>
@@ -39,20 +40,26 @@ const EventDetailBody = (props) => {
                 </div>
               </section>
               <section className='event__action__wrap'>
-                <EventActions eventId={ props.eventObject.id } actionsSet={ props.userActions } actor={ props.actor }/>
+                <EventActions eventId={ props.eventObject.id } is_registered={ props.eventObject.has_registered } actionsSet={ props.userActions } actor={ props.actor }/>
               </section>
             </div>
             <div className='details__header_nav'>
+              <ul className='nav__list'>
+                <li className='item active'><button className='trigger' data-tab-header='description'><span>Description</span></button></li>
+                <li className='item'><button className='trigger' data-tab-header='organizer'><span>Organizer</span></button></li>
+                <li className='item'><button className='trigger' data-tab-header='whosgoing'><span>{ "Who's going" }</span></button></li>
+              </ul>
             </div>
           </div>
           <section className='details__body'>
-            <div className='event__description'>
-              <p>{ props.eventObject.description || "hello! welcome to tilte, the place where we share the most fun experiences!" }</p>
+            <div className='section__wrap'>
+              <EventDescription eventObject={ props.eventObject }/>
             </div>
 
-            <div className='creator__info'>
-
+            <div className='section__wrap'>
+              <EventOrganizer event={ props.eventObject } />
             </div>
+
             <section className='attendees__section'>
               <div className='attendees__list'>
                 { /*<CommentList comments={ props.eventObject.comments }/> */}

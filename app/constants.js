@@ -59,6 +59,7 @@ export const ASSETS_BASE_URL                      = (process.env.NODE_ENV === 'p
 
 export const USER_AVATAR_PLACEHOLDER              = `${ ASSETS_BASE_URL }/images/hamburg.jpg`;
 
+export const ORGANIZER_AVATAR_PLACEHOLDER         = `${ ASSETS_BASE_URL }/images/hamburg.jpg`;
 export const FEED_IMAGE_PLACEHOLDERS              = [
                                                       `${ ASSETS_BASE_URL }/images/feed1.jpg`,
                                                       `${ ASSETS_BASE_URL }/images/feed2.jpg`,

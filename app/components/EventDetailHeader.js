@@ -22,7 +22,6 @@ const EventDetailHeader = (props) => {
 EventDetailHeader.propTypes = {
   eventObject: PropTypes.object.isRequired,
   actor: PropTypes.object,
-  userActions: PropTypes.array.isRequired,
 }
 
 export default EventDetailHeader;

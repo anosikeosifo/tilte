@@ -24,6 +24,7 @@
     "babel-preset-env": "^1.1.8",
     "babel-preset-es2015": "6.22.0",
     "babel-preset-react": "6.23.0",
+    "bootstrap.native": "^2.0.8",
     "caniuse-api": "^1.5.3",
     "caniuse-db": "^1.0.30000623",
     "classnames": "2.2.5",
