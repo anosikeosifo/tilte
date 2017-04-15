@@ -46,7 +46,7 @@ return Promise.resolve({success: true, data: 'trending events has not been imple
 };
 
 export const fetchFeaturedEventsAPI = () => {
-  return fetch(`${ API_BASE_URL }/event_categories/home`, {
+  return fetch(`${ API_BASE_URL }/events/featured`, {
     method: 'GET',
     credentials: 'same-origin',
   })

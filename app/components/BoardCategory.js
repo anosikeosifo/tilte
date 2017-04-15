@@ -26,14 +26,16 @@ class BoardCategory extends Component {
 
   componentDidMount() {
     const containerWrap = this.boardContentWrap.querySelectorAll('.component__eventcard');
-    this.firstElement = containerWrap.item(0).getBoundingClientRect();
+    this.firstElement = containerWrap.item(0);
     this.lastElement = containerWrap.item(containerWrap.length - 1);
   }
 
   handleScrollLeft(event) {
     this.scrollLeftControl = event.target.closest('.scroll__control');
     const scrollDimension = this.boardContentWrap.style.transform.match(/translateX\(-?(\d+)%\)/);
-    const containerCanScrollLeft = this.firstElement.left > this.boardContentWrap.getBoundingClientRect().left;
+    console.log('firstElement left: ', this.firstElement.getBoundingClientRect().left);
+    console.log('boardContentScrollArea left: ', this.boardContentScrollArea.getBoundingClientRect().left);
+    const containerCanScrollLeft = this.firstElement.getBoundingClientRect().left < this.boardContentScrollArea.getBoundingClientRect().left;
 
     if (containerCanScrollLeft) {
       this.scrollContainer(parseInt(scrollDimension[1]) - 25);
@@ -54,7 +56,7 @@ class BoardCategory extends Component {
 
   handleConainerTransition(event) {
     const containerCanScrollRight = (this.lastElement.getBoundingClientRect().right - this.boardContentScrollArea.getBoundingClientRect().right) > 15;
-    const containerCanScrollLeft = this.firstElement.left > this.boardContentWrap.getBoundingClientRect().left;
+    const containerCanScrollLeft = this.firstElement.getBoundingClientRect().left < this.boardContentScrollArea.getBoundingClientRect().left;
 
     if(event.propertyName == 'transform' && event.target.classList.contains('content__wrap')) {
       if(this.scrollRightControl && !containerCanScrollRight) this.scrollRightControl.classList.add('hidden');
