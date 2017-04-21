@@ -1,12 +1,8 @@
 import { API_BASE_URL } from '../constants';
+import { makePostRequest } from '../helpers/HttpHelper';
 
 export const fetchEventDetailsAPI = (requestData) => {
-  return fetch(`${ API_BASE_URL }/events/view`, {
-    method: 'POST',
-    credentials: 'same-origin',
-    body: requestData
-  })
-  .then(response => response.json());
+  return makePostRequest(`${ API_BASE_URL }/events/show`, requestData);
 };
 
 export const fetchCommentsAPI = (requestData) => {

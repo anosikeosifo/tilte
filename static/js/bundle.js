@@ -12070,17 +12070,32 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var buildPostParams = exports.buildPostParams = function buildPostParams(paramsObject) {
-  var form_data = new FormData();
-  form_data.append('data', JSON.stringify(paramsObject));
-  return form_data;
+  // const form_data = new FormData();
+  // form_data.append('data', JSON.stringify(paramsObject));
+  return JSON.stringify(paramsObject);
 };
 
 var buildUrlQueryParams = exports.buildUrlQueryParams = function buildUrlQueryParams(paramsObject) {
   var params = Object.keys(paramsObject).map(function (key) {
-    return key + '=' + encodeURIComponent(paramsObject[key]);
+    return key + "=" + encodeURIComponent(paramsObject[key]);
   }).join('&');
 
-  return '?' + params;
+  return "?" + params;
+};
+
+var makePostRequest = exports.makePostRequest = function makePostRequest(requestURL, requestData) {
+  var header = new Headers({
+    "Content-Type": "application/json"
+  });
+
+  return fetch(requestURL, {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: header,
+    body: requestData
+  }).then(function (response) {
+    return response.json();
+  });
 };
 
 /***/ }),
@@ -17660,14 +17675,10 @@ exports.fetchFeaturedEventsAPI = exports.fetchTrendingEventsAPI = exports.saveEv
 
 var _constants = __webpack_require__(4);
 
+var _HttpHelper = __webpack_require__(98);
+
 var fetchEventDetailsAPI = exports.fetchEventDetailsAPI = function fetchEventDetailsAPI(requestData) {
-  return fetch(_constants.API_BASE_URL + '/events/view', {
-    method: 'POST',
-    credentials: 'same-origin',
-    body: requestData
-  }).then(function (response) {
-    return response.json();
-  });
+  return (0, _HttpHelper.makePostRequest)(_constants.API_BASE_URL + '/events/show', requestData);
 };
 
 var fetchCommentsAPI = exports.fetchCommentsAPI = function fetchCommentsAPI(requestData) {
