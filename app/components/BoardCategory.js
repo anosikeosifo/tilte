@@ -33,8 +33,6 @@ class BoardCategory extends Component {
   handleScrollLeft(event) {
     this.scrollLeftControl = event.target.closest('.scroll__control');
     const scrollDimension = this.boardContentWrap.style.transform.match(/translateX\(-?(\d+)%\)/);
-    console.log('firstElement left: ', this.firstElement.getBoundingClientRect().left);
-    console.log('boardContentScrollArea left: ', this.boardContentScrollArea.getBoundingClientRect().left);
     const containerCanScrollLeft = this.firstElement.getBoundingClientRect().left < this.boardContentScrollArea.getBoundingClientRect().left;
 
     if (containerCanScrollLeft) {

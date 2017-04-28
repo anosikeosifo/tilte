@@ -1,11 +1,5 @@
 export const convertEpochToString = (epochValue) => {
-  console.log('epoch: ', epochValue);
   const dateVal = new Date(parseInt(epochValue)* 1000);
-  console.log('year', dateVal.getFullYear());
-  console.log('month', dateVal.getMonth() + 1);
-  console.log('day', dateVal.getDay());
-  console.log('hours', dateVal.getHours());
-  console.log('mins', dateVal.getMinutes());
   return dateVal.toDateString();
 }
 
@@ -46,6 +40,5 @@ const getDay = (date) => {
 
 const getMonth = (date) => {
   let monthString = date.toDateString().match(/\w{3}\s(\w+)\s\d+\s\d+/)
-  console.log('monthString: ', monthString[1])
   return monthString[1];
 }

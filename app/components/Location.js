@@ -1,11 +1,11 @@
-require('../styles/location_marker.scss');
+require('../styles/location.scss');
 
 import React, { Component, PropTypes } from 'react';
 import { ICON_LOCATION } from '../constants'
 import Icon from './Icon';
 import update from 'immutability-helper';
 
-class LocationMarker extends Component {
+class Location extends Component {
   constructor() {
     super();
 
@@ -50,19 +50,22 @@ class LocationMarker extends Component {
         onMouseEnter={ this.handleMouseEnter.bind(this) }
         onMouseLeave={ this.handleMouseLeave.bind(this) }
         onClick={ this.handleClick.bind(this) }>
+        <span className='location__string'>Lagos, Nigeria</span>
+        <span className='separator middot'>&middot;</span>
         <Icon icon={ICON_LOCATION} color={ this.state.iconColor } size={ this.props.size }/>
       </section>
     );
   }
 }
 
-LocationMarker.propTypes = {
+Location.propTypes = {
   latitude: PropTypes.string.isRequired,
   longitude: PropTypes.string.isRequired,
   size: PropTypes.number,
+
 }
 
-LocationMarker.defaultProps = {
+Location.defaultProps = {
   size: 16
 }
-export default LocationMarker;
+export default Location;

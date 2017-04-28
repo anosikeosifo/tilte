@@ -1,7 +1,7 @@
 @import '/lib/css/bootstrap.min.css';
 
 @font-face {
-  font-family: 'open_sans';
+  font-family: 'open-sans';
   src: url('/lib/fonts/OpenSans-Regular-webfont.eot');
   src: url('/lib/fonts/OpenSans-Regular-webfont.ttf'),
         url('/lib/fonts/OpenSans-Regular-webfont.weff'),
@@ -9,12 +9,12 @@
 }
 
 @font-face {
-    font-family: 'open_sanslight';
+    font-family: 'open-sans-light';
     src: url('/lib/fonts/OpenSans-Light-webfont.eot');
     src: url('/lib/fonts/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'),
          url('/lib/fonts/OpenSans-Light-webfont.woff') format('woff'),
          url('/lib/fonts/OpenSans-Light-webfont.ttf') format('truetype'),
-         url('/lib/fonts/OpenSans-Light-webfont.svg#open_sanslight.svg') format('svg');
+         url('/lib/fonts/OpenSans-Light-webfont.svg#open-sanslight.svg') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,10 +24,7 @@ body {
   padding: 0;
   margin: 0;
   color: #444;
-
-  * {
-    font-family: 'open_sans', 'sans-serif';
-  }
+  font-family: 'open-sans', 'sans-serif';
 }
 
 
@@ -242,4 +239,41 @@ body {
 }
 .btn-group-justified > .btn-group .dropdown-menu {
   left: auto;
+}
+
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: bold;
+  line-height: 1.43;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btn-primary {
+  border-color: #ff5a5f;
+  background-color: #ff5a5f;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  border-color: #ed6165;
+  background-color: #ed6165;
+}
+btn-medium {
+
+}
+
+.separator.middot {
+  margin: 0 5px;
 }

@@ -11,13 +11,15 @@ import CommentTrigger from './CommentTrigger';
 import CommentList from './CommentList';
 import CommentInput from './CommentInput';
 import EventDateFormatter from './EventDateFormatter';
-import LocationMarker from './LocationMarker';
+import Location from './Location';
 import EventActions from './EventActions';
 import EventDescription from './EventDescription';
 import EventOrganizer from './EventOrganizer';
 import { getEventShortDate } from '../helpers/DateHelper';
 
 const EventDetailBody = (props) => {
+  console.log('event object props: ', props);
+
   return (
     <section className='component__event__detail__body'>
       <div className='event__detail__wrap'>
@@ -34,13 +36,11 @@ const EventDetailBody = (props) => {
                 </div>
                 <span className='event__name'>{ props.eventObject.title }</span>
                 <div className='location__info'>
-                  <span className='event__location_text'>{ "Oniru Beach, Lagos State, Nigeria" || props.eventObject.location.name }</span>
-                  <span className='middot'>&middot;</span>
-                  <LocationMarker latitude={ "6.4367" || props.eventObject.location.latitude} longitude={ "3.4192" || props.eventObject.location.longitude } action={ props.showMapAction } size={ 16 }/>
+                  <Location latitude={ "6.4367" || props.eventObject.location.latitude} longitude={ "3.4192" || props.eventObject.location.longitude } action={ props.showMapAction } size={ 16 }/>
                 </div>
               </section>
               <section className='event__action__wrap'>
-                <EventActions eventId={ props.eventObject.id } is_registered={ props.eventObject.has_registered } actionsSet={ props.userActions } actor={ props.actor }/>
+                <EventActions eventId={ props.eventObject.id } isAttending={ props.eventObject.isAttending } actionsSet={ props.userActions } actor={ props.actor }/>
               </section>
             </div>
             <div className='details__header_nav'>

@@ -24,7 +24,7 @@ class EventActions extends Component {
   }
 
   renderComponent() {
-    if(this.props.is_registered)
+    if(this.props.isAttending)
       return (<span>Registered!</span>);
     else {
       return this.buildActionUI();
@@ -47,6 +47,11 @@ class EventActions extends Component {
 EventActions.propTypes = {
   actor: PropTypes.object,
   actionsSet: PropTypes.array.isRequired,
+  isAttending: PropTypes.bool.isRequired
+}
+
+EventActions.defaultProps = {
+  isAttending: false
 }
 
 export default EventActions;

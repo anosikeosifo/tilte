@@ -126,7 +126,6 @@ export const loadMapView = (eventId, actorId, longitude=null, latitude=null) => 
 
 export const registerForEvent = (eventId, actorId, longitude=null, latitude=null) => {
   const actionType = 'eventRegistration';
-  console.log('actionType')
   const requestParams = buildPostParams({
     event_id: eventId,
     user_id: actorId,
@@ -169,8 +168,13 @@ export const fetchTrendingEvents = (userId) => {
   };
 }
 
-export const fetchFeaturedEvents = () => {
+export const fetchFeaturedEvents = (actorId, locationLat, locationLong) => {
   const actionType = 'fetchFeatured';
+  const requestParams = buildPostParams({
+    user_id: actorId,
+    longitude: locationLong,
+    latitude: locationLat,
+  });
 
   return (dispatch) => {
     triggerFetchFeatured();

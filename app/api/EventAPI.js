@@ -24,13 +24,8 @@ export const loadMapAPI = (requestData) => {
   return Promise.resolve({success: true, data: 'Maps not yet implementated'})
 };
 
-export const eventRegistrationAPI = (requestParams) => {
-  return fetch(`${ API_BASE_URL }/events/register`, {
-    method: 'POST',
-    body: requestParams,
-    credentials: 'same-origin',
-  })
-  .then(response => response.json());
+export const eventRegistrationAPI = (requestData) => {
+  return makePostRequest(`${ API_BASE_URL }/events/register`, requestData);
 };
 
 export const saveEventAPI = (requestParams) => {
@@ -41,10 +36,6 @@ export const fetchTrendingEventsAPI = () => {
 return Promise.resolve({success: true, data: 'trending events has not been implementated'});
 };
 
-export const fetchFeaturedEventsAPI = () => {
-  return fetch(`${ API_BASE_URL }/events/featured`, {
-    method: 'GET',
-    credentials: 'same-origin',
-  })
-  .then(response => response.json());
+export const fetchFeaturedEventsAPI = (requestData) => {
+  return makePostRequest(`${ API_BASE_URL }/events/featured`, requestData);
 };

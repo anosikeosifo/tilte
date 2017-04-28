@@ -1,0 +1,15 @@
+.component__attendee {
+  display: inline-block;
+  
+  .attendee__wrap {
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    overflow: hidden;
+
+    .avatar: {
+      width: 4em;
+      height: 4em;
+    }
+  }
+}

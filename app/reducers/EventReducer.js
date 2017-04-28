@@ -3,11 +3,12 @@ import update from 'immutability-helper';
 
 let currentEventState;
 
-export const eventData = (state=null, action) => {
+export const eventData = (state={}, action) => {
   currentEventState = state;
 
   switch (action.type) {
     case EVENT_ACTIONS.fetchDetailsSuccess:
+    console.log('event detail success')
       return fetchEventDetails(action);
     case EVENT_ACTIONS.fetchFeaturedSuccess:
       console.log('currentEventState: ', currentEventState);
@@ -16,7 +17,9 @@ export const eventData = (state=null, action) => {
     case EVENT_ACTIONS.fetchCommentsSuccess:
       return fetchComments(action);
     case EVENT_ACTIONS.eventRegistrationSuccess:
-      return registerForEvent(action);
+    const eventData = registerForEvent(action);
+    console.log('Registration success: ', eventData);
+    return eventData;
     default:
       return currentEventState;
   }
@@ -30,7 +33,13 @@ const getCommentIndex = (commentId) => {
   return currentEventState.findIndex((comment) => comment.id == commentId);
 };
 
-const fetchEventDetails = (action) => (action.payload.data[0]);
+const fetchEventDetails = (action) => {
+  return update(currentEventState, {
+    $set: {
+      eventDetail: action.payload.data
+    }
+  });
+};
 
 const fetchComments = (action) => {
   return update(currentEventState, {
@@ -70,8 +79,11 @@ const hideComment = (state, action) => (
 );
 
 const registerForEvent = (action) => {
+  console.log('currentEventState: ', currentEventState);
   return update(currentEventState, {
-    $merge: { has_registered: true }
+    eventDetail: {
+      isAttending: { $set: true }
+    }
   });
   // return action.payload.data[0];
 }

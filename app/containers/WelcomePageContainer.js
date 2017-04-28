@@ -12,11 +12,10 @@ import { DATA_GROUPS } from '../constants';
 import Banner from '../components/Banner';
 
 const mapStateToProps = (state) => {
-  console.log('stateeee: ', state);
   return({
     trendingMoments: state.momentData ? state.momentData.trendingMoments : [],
-    trendingEvents: state.eventData ? state.eventData.trendingEvents: [],
-    featuredEvents: state.eventData ? state.eventData.featuredEvents: [],
+    trendingEvents: state.eventData ? state.eventData.trendingEvents : [],
+    featuredEvents: state.eventData ? state.eventData.featuredEvents : [],
   });
 };
 

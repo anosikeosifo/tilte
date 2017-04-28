@@ -7,7 +7,7 @@ import DefaultLayout from '../layouts/DefaultLayout';
 
 const mapStateToProps = (state) => ({
   appConfig: state.config,
-  eventObject: state.eventData,
+  eventObject: state.eventData.eventDetail,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -19,7 +19,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class EventDetailContainer extends Component {
-  componentWillMount() {
+  componentDidMount() {
+    console.log('about to mount: ', this.props);
     this.props.fetchDetails(this.props.params.id, this.props.appConfig.currentUser.id);
     this.props.showMapView(this.props.params.id, this.props.appConfig.currentUser.id);
   }

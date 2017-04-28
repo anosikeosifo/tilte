@@ -27,6 +27,7 @@ Icon.propTypes = {
   icon: PropTypes.string.isRequired,
   color: PropTypes.string,
   size: PropTypes.number,
+  scaleTo: PropTypes.string,
 };
 
 Icon.defaultProps = {

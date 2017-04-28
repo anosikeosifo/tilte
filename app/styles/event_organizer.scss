@@ -1,23 +1,40 @@
 .component__event__organizer {
+  font-family: 'open-sans-light', 'sans-serif';
+  color: #444;
 
   .organizer__details_wrap {
     display: flex;
     justify-content: space-between;
   }
 
-  .left_section {
-    width: 30%;
+  .left__section {
+    width: 18%;
 
     .organizer__avatar__wrap {
       border-radius: 50%;
       border: 1px solid #dcdede;
       overflow: hidden;
-      width: 70px;
+      width: 66px;
 
       .avatar {
-        width: 70px;
+        width: 66px;
       }
     }
   }
 
+  .right__section {
+    width: 100%;
+    margin-top: 10px;
+
+    .orgainizer__main__details {
+      display: inline-flex;
+      justify-content: space-between;
+      font-size: 1.2em;
+      width: 100%;
+
+      .user__data .username {
+        display: block;
+      }
+    }
+  }
 }
