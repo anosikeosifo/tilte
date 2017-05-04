@@ -8,18 +8,17 @@ export const eventData = (state={}, action) => {
 
   switch (action.type) {
     case EVENT_ACTIONS.fetchDetailsSuccess:
-    console.log('event detail success')
       return fetchEventDetails(action);
     case EVENT_ACTIONS.fetchFeaturedSuccess:
-      console.log('currentEventState: ', currentEventState);
-      const newstate = fetchFeaturedEvents(action);
-      return newstate;
+      return fetchFeaturedEvents(action);
     case EVENT_ACTIONS.fetchCommentsSuccess:
       return fetchComments(action);
     case EVENT_ACTIONS.eventRegistrationSuccess:
-    const eventData = registerForEvent(action);
-    console.log('Registration success: ', eventData);
-    return eventData;
+      return registerForEvent(action);
+    case EVENT_ACTIONS.followOrganizerSuccess:
+      return followOrganizer(action);
+    case EVENT_ACTIONS.unfollowOrganizerSuccess:
+      return unfollowOrganizer(action);
     default:
       return currentEventState;
   }
@@ -79,7 +78,6 @@ const hideComment = (state, action) => (
 );
 
 const registerForEvent = (action) => {
-  console.log('currentEventState: ', currentEventState);
   return update(currentEventState, {
     eventDetail: {
       isAttending: { $set: true }
@@ -87,3 +85,13 @@ const registerForEvent = (action) => {
   });
   // return action.payload.data[0];
 }
+
+const followOrganizer = (action) => {
+  return update(currentEventState, {
+    eventDetail: {
+      organizer: {
+        canBeFollowed: { $set: false }
+      }
+    }
+  });
+};

@@ -1,6 +1,26 @@
-import React, { Component } from 'react';
+import '../styles/user_stats';
 
-class UserMetadata extends  Component {
+import React, { PropTypes, Component } from 'react';
+import { ICON_FOLLOWERS, ICON_FOLLOWING, ICON_HOSTED, ICON_MOMENT, ICON_TICKET } from '../constants';
+import Icon from './Icon';
+
+class UserStats extends Component {
+  constructor() {
+    super();
+
+    this.legend = {
+      followerCount: { title: 'Followers', icon: ICON_FOLLOWERS, iconData: { size: 42 } },
+      followingCount: { title: 'Following', icon: ICON_FOLLOWING, iconData: { size: 42 } },
+      attendedEventsCount: { title: 'Attended', icon: ICON_TICKET, iconData: { viewBox: 1148 } },
+      hostedEventsCount: { title: 'Hosted', icon: ICON_HOSTED },
+      momentCount: { title: 'Moments', icon: ICON_MOMENT, iconData: { viewBox: 1124}},
+    };
+  }
+
+  componentDidMount() {
+    this.props.actionCallbacks.fetchStats(this.props.organizer.id)
+  }
+
   handleScrollLeft(event) {
     this.scrollLeftControl = event.target.closest('.scroll__control');
     const scrollDimension = this.boardContentWrap.style.transform.match(/translateX\(-?(\d+)%\)/);
@@ -42,26 +62,44 @@ class UserMetadata extends  Component {
   }
 
   render() {
-    const metadataItems = Object.keys(this.props.metadata).map((key) => {
-      return(<li>{`${ data[key] } ${ key }`}</li>)
-    });
+    if (this.props.stats) {
+      return this.renderComponent();
+    } else {
+      return this.renderLoadState();
+    }
+  }
+
+  renderLoadState() {
+    return(
+      <span>Loading...</span>
+    )
+  }
+
+  renderComponent() {
+    const metadataItems = Object.keys(this.props.stats).map((key) => (
+        <div className='stats_item' key={ key }>
+          <div className='item__icon__wrap'>
+            <Icon icon={ this.legend[key].icon } size={36} scaleTo={6} {...this.legend[key].iconData} />
+          </div>
+          <div className='item__text__wrap'>
+            <span className='item__value'>{ this.props.stats[key] }</span>
+            <span className='item__title'>{ this.legend[key].title }</span>
+          </div>
+        </div>
+      ));
 
     return(
-      <section className='component__user_metadata'>
+      <section className='component__user__stats'>
         <div className='data__container__wrap'>
-          <span className='scroll__control left' onClick={ this.handleScrollLeft }><Icon icon={ ICON_SCROLL_LEFT } color='#444' size=12 /></span>
-
-          <div className='scrollable_area' ref={ (ref) => this.scrollArea = ref }>
-            <div className='data__list' ref={ (ref) => dataListWrap = ref } onTransitionEnd={ this.handleConainerTransition } style={ this.state.scrolledBy }>
-            { metadataItems }
-            </div>
-          </div>
-
-          <span className='scroll__control right' onClick={ this.handleScrollRight }><Icon icon={ ICON_SCROLL_RIGHT } color='#444' size=12 /></span>
+          { metadataItems }
         </div>
       </section>
     );
   }
 }
 
-export default UserMetadata
+UserStats.propTypes = {
+  stats: PropTypes.object
+};
+
+export default UserStats

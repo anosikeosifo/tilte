@@ -1,6 +1,7 @@
 import { EVENT_ACTIONS } from '../constants';
 import { fetchEventDetailsAPI, fetchTrendingEventsAPI, fetchFeaturedEventsAPI,loadMapAPI, eventRegistrationAPI, saveEventAPI } from '../api/EventAPI';
 import { buildPostParams, buildUrlQueryParams } from '../helpers/HttpHelper';
+import { followUserAPI, unfollowUserAPI } from '../api/UserAPI';
 
 const eventActionSuccess = (actionType, payload) => ({
   type: EVENT_ACTIONS[`${actionType}Success`], success: true, payload
@@ -43,7 +44,15 @@ const triggerFetchFeatured = () =>({
 });
 
 const triggerFetchTrending = () =>({
-  type: EVENT_ACTIONS.ftriggerFetchTrendingRequest
+  type: EVENT_ACTIONS.triggerFetchTrendingRequest
+});
+
+const triggerFollowOrganizer = () => ({
+  type: EVENT_ACTIONS.followOrganizerRequest
+});
+
+const triggerUnfollowUser = () => ({
+  type: EVENT_ACTIONS.unfollowOrganizerRequest
 });
 
 export const likeEvent = (eventId, actorId) => {
@@ -58,7 +67,29 @@ export const likeEvent = (eventId, actorId) => {
     likeEventAPI(requestParams)
       .then(payload => dispatch(eventActionSuccess(actionType, payload)))
       .catch(error => dispatch(eventActionError(actionType, error)));
-  }
+  };
+};
+
+const followOrganizer = (requestData) => {
+  const actionType = 'followOrganizer';
+
+  return (dispatch) => {
+    triggerFollowOrganizer();
+    followUserAPI(requestData)
+      .then(payload => dispatch(eventActionSuccess(actionType, payload)))
+      // .catch(error => dispatch(userActionError(actionType, error)));
+  };
+};
+
+const unfollowOrganizer = (requestData) => {
+  const actionType = 'unfollowOrganizer';
+
+  return (dispatch) => {
+    triggerUnfollowOrganizer();
+    unfollowUserAPI(requestData)
+      .then(payload => dispatch(eventActionSuccess(actionType, payload)))
+      // .catch(error => dispatch(userActionError(actionType, error)));
+  };
 };
 
 export const fetchEventDetails = (eventId, actorId) => {
@@ -74,7 +105,7 @@ export const fetchEventDetails = (eventId, actorId) => {
     fetchEventDetailsAPI(requestParams)
       .then(payload => dispatch(eventActionSuccess(actionType, payload)))
       // .catch(error => dispatch(eventActionError(actionType, error)));
-  }
+  };
 };
 
 export const fetchComments = (eventId, actorId) => {
@@ -89,7 +120,7 @@ export const fetchComments = (eventId, actorId) => {
       .then(payload => eventActionSuccess(actionType, payload))
       .catch(error => eventActionError(actionType, error));
   };
-}
+};
 
 export const postComment = (eventId, actorId, content) => {
   const actionType = 'postComment';
@@ -139,7 +170,7 @@ export const registerForEvent = (eventId, actorId, longitude=null, latitude=null
       .then(payload => dispatch(eventActionSuccess(actionType, payload)))
       // .catch(error => dispatch(eventActionError(error)));
   };
-}
+};
 
 export const saveEvent = (eventId, actorId) => {
   const actionType = 'saveEvent';
@@ -154,7 +185,7 @@ export const saveEvent = (eventId, actorId) => {
       .then(payload => dispatch(eventActionSuccess(actionType, payload)))
       // .catch(error => dispatch(eventActionError(error)));
   };
-}
+};
 
 export const fetchTrendingEvents = (userId) => {
   const actionType = 'fetchTrending';
@@ -166,7 +197,7 @@ export const fetchTrendingEvents = (userId) => {
       .then(payload => dispatch(eventActionSuccess(actionType, payload)))
       // .catch(error => dispatch(eventActionError(error)));
   };
-}
+};
 
 export const fetchFeaturedEvents = (actorId, locationLat, locationLong) => {
   const actionType = 'fetchFeatured';
@@ -182,4 +213,12 @@ export const fetchFeaturedEvents = (actorId, locationLat, locationLong) => {
       .then(payload => dispatch(eventActionSuccess(actionType, payload)))
       // .catch(error => dispatch(eventActionError(error)));
   };
-}
+};
+
+export const followOrganizerAction = (actionType, organizerId, actorId) => {
+  const requestData = buildPostParams({
+    actorId, organizerId
+  });
+
+  return (actionType.toLowerCase() == 'follow') ? followOrganizer(requestData) : unfollowOrganizer(requestData);
+};

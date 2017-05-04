@@ -1,15 +1,33 @@
-import { REQUEST_CURRENT_USER } from '../constants';
+import { USER_ACTIONS } from '../constants';
 import SessionUtils from '../utils/SessionStorage';
 import update from 'immutability-helper';
 
-export const userData = (state = [], action) => {
+let userState;
+
+export const userData = (state = {}, action) => {
+  userState = state;
+
   switch (action.type) {
-    case REQUEST_CURRENT_USER:
-      return state;
-      // return update(state, {
-      //   currentUser: { $set: SessionUtils.getCurrentUser() }
-      // });
+    case USER_ACTIONS.fetchUserStatsSuccess:
+      return loadUserStats(action);
+    case USER_ACTIONS.followUserSuccess:
+      return updateFollowedUser(action);
     default:
       return state;
   }
 }
+
+const loadUserStats = (action) => {
+  return update(userState, {
+    stats: {
+      $set: action.payload.data
+    }
+  });
+}
+
+const updateFollowedUser = (action) => {
+  console.log('userState: ', userState);
+  return update(userState, {
+    isFollowing: { $set: true }
+  });
+};

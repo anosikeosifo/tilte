@@ -26,3 +26,16 @@ export const makePostRequest = (requestURL, requestData) => {
   })
   .then(response => response.json());
 }
+
+export const makeGetRequest = (requestURL, requestData) => {
+  const header = new Headers({
+    "Content-Type": "application/json"
+  });
+
+  return fetch(`${ requestURL }${ requestData }`, {
+    method: 'GET',
+    credentials: 'same-origin',
+    headers: header,
+  })
+  .then(response => response.json());
+}

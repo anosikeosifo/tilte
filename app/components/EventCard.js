@@ -90,7 +90,7 @@ class EventCard extends Component {
 }
 
 EventCard.propTypes = {
-  actions: PropTypes.object.isRequired,
+  actions: PropTypes.object,
 }
 
 export default EventCard;

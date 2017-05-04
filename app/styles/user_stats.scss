@@ -1,0 +1,31 @@
+.component__user__stats {
+
+  .stats_item {
+    display: inline-block;
+    margin-right: 15px;
+    cursor: pointer;
+    color: #555;
+    &:hover {
+      color: #ff5a5f;
+    }
+
+    .item__icon__wrap {
+      text-align: center;
+    }
+
+    .item__text__wrap {
+      font-size: 12px;
+      font-family: 'open-sans';
+      text-align: center;
+
+      color: #555;
+      .item__value {
+        margin-right: 3px;
+      }
+
+      &:hover {
+        color: #ff5a5f;
+      }
+    }
+  }
+}

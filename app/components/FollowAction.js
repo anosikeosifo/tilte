@@ -11,13 +11,15 @@ class FollowAction extends Component {
   constructor() {
     super();
     this.state = {
-      iconColor: '#fff'
+      iconColor: '#ff5a5f'
     };
   }
+
   componentWillMount() {
     this.setState(update(this.state, {
-      actionText: { $set: this.props.isFollowing ? 'Following' : 'Follow' },
-      showIcon: { $set: !this.props.isFollowing }
+      action: { $set: this.props.user.canBeFollowed ? 'Follow' : 'unfollow' },
+      actionText: { $set: this.props.user.canBeFollowed ? 'Follow' : 'Following' },
+      showIcon: { $set: this.props.user.canBeFollowed }
     }));
   }
 
@@ -33,7 +35,8 @@ class FollowAction extends Component {
 
   handleMouseLeave() {
     this.setState(update(this.state, {
-      actionText: { $set: this.setButtonText(false) }
+      actionText: { $set: this.setButtonText(false) },
+      showIcon: { $set: this.props.user.canBeFollowed }
     }));
   }
 
@@ -42,7 +45,9 @@ class FollowAction extends Component {
   }
 
   handleClick() {
-    if(this.props.isEnabled) this.props.locationMapAction(this.props.eventObjectId, this.props.currentUser.id);
+    //note the follow action could either be follow or unfollow
+    //TODO:: Replace 7 with the logged in user id
+    if(this.props.isEnabled) this.props.actionCallback(this.state.action, this.props.user.id, '7');
   }
 
   render() {
@@ -52,7 +57,7 @@ class FollowAction extends Component {
     });
 
     return (
-      <button className={`component__follow__action btn btn-primary btn-${ this.props.size }`}
+      <button className={`component__follow__action btn btn-primary-bordered btn-${ this.props.size }`}
         onMouseOver={ this.props.isFollowing ? this.handleMouseOver.bind(this) : '' }
         onMouseLeave={ this.props.isFollowing ? this.handleMouseLeave.bind(this) : '' }
         onClick={ this.handleClick.bind(this) }>
@@ -73,7 +78,8 @@ FollowAction.propTypes = {
 }
 
 FollowAction.defaultProps = {
-  size: 'medium'
+  size: 'medium',
+  isEnabled: true,
 }
 
 export default FollowAction;

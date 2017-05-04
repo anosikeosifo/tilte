@@ -1,5 +1,5 @@
 import { API_BASE_URL } from '../constants';
-import { makePostRequest } from '../helpers/HttpHelper';
+import { makePostRequest, makeGetRequest } from '../helpers/HttpHelper';
 
 export const fetchEventDetailsAPI = (requestData) => {
   return makePostRequest(`${ API_BASE_URL }/events/show`, requestData);
@@ -29,7 +29,7 @@ export const eventRegistrationAPI = (requestData) => {
 };
 
 export const saveEventAPI = (requestParams) => {
-  return Promise.resolve({success: true, data: 'Registration not yet implementated'});
+  return Promise.resolve({success: true, data: 'Event creation not yet implementated'});
 };
 
 export const fetchTrendingEventsAPI = () => {

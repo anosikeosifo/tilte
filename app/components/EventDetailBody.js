@@ -15,11 +15,10 @@ import Location from './Location';
 import EventActions from './EventActions';
 import EventDescription from './EventDescription';
 import EventOrganizer from './EventOrganizer';
+import Attendance from './Attendance';
 import { getEventShortDate } from '../helpers/DateHelper';
 
 const EventDetailBody = (props) => {
-  console.log('event object props: ', props);
-
   return (
     <section className='component__event__detail__body'>
       <div className='event__detail__wrap'>
@@ -32,7 +31,7 @@ const EventDetailBody = (props) => {
             <div className='details__header'>
               <section className='event__information__wrap'>
                 <div className='event__date__wrap'>
-                  <span className='date__value'>{ getEventShortDate(props.eventObject.start_time, props.eventObject.end_time) }</span>
+                  <span className='date__value'>{ getEventShortDate(props.eventObject.startTime, props.eventObject.endTime) }</span>
                 </div>
                 <span className='event__name'>{ props.eventObject.title }</span>
                 <div className='location__info'>
@@ -57,12 +56,12 @@ const EventDetailBody = (props) => {
             </div>
 
             <div className='section__wrap'>
-              <EventOrganizer event={ props.eventObject } />
+              <EventOrganizer event={ props.eventObject } stats={ props.organizerStats } actionCallbacks={{ fetchStats: props.actionCallbacks.fetchOrganizerStats, followAction: props.actionCallbacks.followOrganizer }}  />
             </div>
 
             <section className='attendees__section'>
               <div className='attendees__list'>
-                { /*<CommentList comments={ props.eventObject.comments }/> */}
+                <Attendance comments={ props.eventObject.comments }/>
               </div>
             </section>
           </section>
