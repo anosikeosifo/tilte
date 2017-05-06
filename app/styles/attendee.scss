@@ -1,13 +1,19 @@
 .component__attendee {
   display: inline-block;
-  
+  cursor: pointer;
+
   .attendee__wrap {
     width: 4em;
     height: 4em;
     border-radius: 50%;
     overflow: hidden;
+    border: 2px solid #fff;
 
-    .avatar: {
+    &:hover {
+      border-color: #dcdede;
+    }
+
+    .avatar {
       width: 4em;
       height: 4em;
     }

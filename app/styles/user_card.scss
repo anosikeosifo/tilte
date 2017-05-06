@@ -1,8 +1,8 @@
-.component__event__organizer {
+.component__usercard {
   font-family: 'open-sans-light', 'sans-serif';
   color: #444;
 
-  .organizer__details_wrap {
+  .user__details_wrap {
     display: flex;
     justify-content: space-between;
   }
@@ -10,15 +10,17 @@
   .left__section {
     width: 18%;
     margin-top: 10px;
-    
-    .organizer__avatar__wrap {
+
+    .user__avatar__wrap {
       border-radius: 50%;
       border: 1px solid #dcdede;
       overflow: hidden;
       width: 66px;
+      height: 66px;
 
       .avatar {
         width: 66px;
+        height: 66px;
       }
     }
   }
@@ -27,7 +29,11 @@
     width: 100%;
     margin-top: 10px;
 
-    .orgainizer__main__details {
+    .component__location__marker {
+      font-size: 14px;
+    }
+
+    .user__main__details {
       display: inline-flex;
       justify-content: space-between;
       font-size: 1.2em;
@@ -39,8 +45,8 @@
     }
   }
 
-  .organizer__meta__data {
-    border-top: 1px solid #dcdede;
+  .user__stats {
+    border-top: 1px solid #e6e6e6;
     margin-top: 5px;
     padding-top: 5px;
   }

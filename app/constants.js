@@ -47,15 +47,15 @@ export const EVENT_ACTIONS                       = {
                                                       fetchTrendingRequest: 'Trending events requested',
                                                       fetchTrendingSuccess: 'Trending events fetched successfully.',
                                                       fetchTrendingError: 'Trending events could not be fetched.',
-                                                      followOrganizerRequest: 'Follow organizer triggered',
-                                                      followOrganizerSuccess: 'Follow organizer successful',
-                                                      followOrganizerError: 'Could not follow organizer, please retry',
-                                                      unfollowOrganizerRequest: 'Unfollow organizer triggered',
-                                                      unfollowOrganizerSuccess: 'Unfollow organizer successful',
-                                                      unfollowOrganizerError: 'Could not unfollow organizer, please retry',
                                                     };
 
 export const USER_ACTIONS                        = {
+                                                      getFollowStatusRequest: 'User following status requested',
+                                                      getFollowStatusSuccess: 'User following status request successful',
+                                                      getFollowStatusError: 'User following status request failed',
+                                                      fetchUserDetailsRequest: 'User details requested.',
+                                                      fetchUserDetailsSuccess: 'User details fethed sucessfully.',
+                                                      fetchUserDetailsError: 'User details could not be fetched.',
                                                       fetchUserStatsRequest: 'User stats requested.',
                                                       fetchUserStatsSuccess: 'User stats fethed sucessfully.',
                                                       fetchUserStatsError: 'User stats could not be fetched.',

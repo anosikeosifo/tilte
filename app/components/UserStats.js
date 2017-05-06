@@ -17,8 +17,10 @@ class UserStats extends Component {
     };
   }
 
-  componentDidMount() {
-    this.props.actionCallbacks.fetchStats(this.props.organizer.id)
+  shouldComponentUpdate(nextProps, nextState) {
+    if (!this.props.user && nextProps.user) return true;
+    if (this.props.user && (nextProps.user.stats != this.props.user.stats)) return true;
+    return false;
   }
 
   handleScrollLeft(event) {
@@ -62,7 +64,7 @@ class UserStats extends Component {
   }
 
   render() {
-    if (this.props.stats) {
+    if (this.props.user) {
       return this.renderComponent();
     } else {
       return this.renderLoadState();
@@ -76,13 +78,14 @@ class UserStats extends Component {
   }
 
   renderComponent() {
-    const metadataItems = Object.keys(this.props.stats).map((key) => (
+    console.log('stats: ', this.props.user.stats);
+    const metadataItems = Object.keys(this.props.user.stats).map((key) => (
         <div className='stats_item' key={ key }>
           <div className='item__icon__wrap'>
             <Icon icon={ this.legend[key].icon } size={36} scaleTo={6} {...this.legend[key].iconData} />
           </div>
           <div className='item__text__wrap'>
-            <span className='item__value'>{ this.props.stats[key] }</span>
+            <span className='item__value'>{ this.props.user.stats[key] }</span>
             <span className='item__title'>{ this.legend[key].title }</span>
           </div>
         </div>
@@ -99,7 +102,7 @@ class UserStats extends Component {
 }
 
 UserStats.propTypes = {
-  stats: PropTypes.object
+  user: PropTypes.object
 };
 
 export default UserStats

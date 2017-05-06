@@ -14,7 +14,7 @@ import EventDateFormatter from './EventDateFormatter';
 import Location from './Location';
 import EventActions from './EventActions';
 import EventDescription from './EventDescription';
-import EventOrganizer from './EventOrganizer';
+import UserCardContainer from '../containers/UserCardContainer';
 import Attendance from './Attendance';
 import { getEventShortDate } from '../helpers/DateHelper';
 
@@ -56,13 +56,21 @@ const EventDetailBody = (props) => {
             </div>
 
             <div className='section__wrap'>
-              <EventOrganizer event={ props.eventObject } stats={ props.organizerStats } actionCallbacks={{ fetchStats: props.actionCallbacks.fetchOrganizerStats, followAction: props.actionCallbacks.followOrganizer }}  />
+              <section className='section__header'>
+                <span>Meet the Organizer</span>
+              </section>
+              <section className='section__body'>
+                <UserCardContainer actor={ props.actor } user={ props.eventObject.organizer } />
+              </section>
             </div>
 
             <section className='attendees__section'>
-              <div className='attendees__list'>
-                <Attendance comments={ props.eventObject.comments }/>
-              </div>
+              <section className='section__header'>
+                <span>{ "Who's going" }</span>
+              </section>
+              <section className='section__body'>
+                <Attendance actor={ props.actor } attendees={ props.eventObject.attendees }/>
+              </section>
             </section>
           </section>
         </section>

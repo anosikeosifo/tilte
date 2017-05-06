@@ -1,6 +1,6 @@
 import { buildPostParams, buildUrlQueryParams } from '../helpers/HttpHelper';
 import { USER_ACTIONS } from '../constants';
-import { fetchUserStatsAPI, followUserAPI, unfollowUserAPI } from '../api/UserAPI';
+import { fetchUserStatsAPI, followUserAPI, unfollowUserAPI, getFollowStatusAPI, fetchUserDetailsAPI } from '../api/UserAPI';
 
 // const USER_FOLLOW_ACTIONS = {
 //   follow: 'followUser',
@@ -21,8 +21,8 @@ export const getCurrentUser = () => {
   };
 }
 
-const triggerFetchUserStats = () =>({
-  type: USER_ACTIONS.fetchUserStatsRequest
+const triggerFetchUserDetails = () =>({
+  type: USER_ACTIONS.fetchUserDetailsRequest
 });
 
 const triggerFollowUser = () => ({
@@ -32,6 +32,25 @@ const triggerFollowUser = () => ({
 const triggerUnfollowUser = () => ({
   type: USER_ACTIONS.unfollowUserRequest
 });
+
+const triggerGetFollowStatus = () => ({
+  type: USER_ACTIONS.getFollowStatusRequest
+})
+
+export const fetchUserDetails = (userId, actorId) => {
+  const actionType = 'fetchUserDetails';
+
+  const requestParams = buildPostParams({
+    actorId, userId
+  });
+
+  return (dispatch) => {
+    triggerFetchUserDetails();
+    fetchUserDetailsAPI(requestParams)
+      .then(payload => dispatch(userActionSuccess(actionType, payload)))
+      // .catch(error => dispatch(userActionError(actionType, error)));
+  }
+}
 
 export const fetchUserStats = (userId, actorId) => {
   const actionType = 'fetchUserStats';
@@ -69,11 +88,24 @@ const unfollowUserTrigger = (requestData) => {
   }
 }
 
-
-export const followActionTrigger = (actionType, userId, actorId) => {
+export const followAction = (actionType, userId, actorId) => {
   const requestData = buildPostParams({
     actorId, userId
   });
 
   return (actionType.toLowerCase() == 'follow') ? followUserTrigger(requestData) : unfollowUserTrigger(requestData);
 }
+
+export const fetchFollowStatus = (userId, actorId) => {
+  const actionType = 'getFollowStatus';
+
+  const requestData = buildUrlQueryParams({
+    actorId, userId
+  });
+
+  return (dispatch) => {
+    triggerGetFollowStatus();
+    getFollowStatusAPI(requestData)
+      .then(payload => dispatch(userActionSuccess(actionType, payload)))
+  }
+};

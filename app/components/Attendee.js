@@ -1,4 +1,7 @@
+require('../styles/attendee');
+
 import React, { Component, ReactDOM, PropTypes } from 'react';
+import { USER_AVATAR_PLACEHOLDER } from '../constants';
 
 class Attendee extends Component {
   handleMouseHover() {
@@ -14,7 +17,7 @@ class Attendee extends Component {
       <section className='component__attendee'>
         <div className='attendee__wrap'>
           <div className='avatar__wrap' onMouseOver={this.handleMouseHover.bind(this)} onMouseOut={this.handleMouseOut.bind(this)}>
-            <img src={ props.attendee.avatarUrl } className='avatar'/>
+            <img src={ USER_AVATAR_PLACEHOLDER || this.props.user.avatarUrl } className='avatar'/>
           </div>
         </div>
       </section>
@@ -23,7 +26,7 @@ class Attendee extends Component {
 }
 
 Attendee.propTypes = {
-  user: propTypes.object.isRequired
+  user: PropTypes.object.isRequired
 }
 
 export default Attendee;

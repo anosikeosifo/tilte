@@ -16,9 +16,9 @@ export const eventData = (state={}, action) => {
     case EVENT_ACTIONS.eventRegistrationSuccess:
       return registerForEvent(action);
     case EVENT_ACTIONS.followOrganizerSuccess:
-      return followOrganizer(action);
+      return followOrganizerAction(action, true);
     case EVENT_ACTIONS.unfollowOrganizerSuccess:
-      return unfollowOrganizer(action);
+      return followOrganizerAction(action, false);
     default:
       return currentEventState;
   }
@@ -78,20 +78,12 @@ const hideComment = (state, action) => (
 );
 
 const registerForEvent = (action) => {
+  console.log('currentEventState: ', currentEventState);
+  console.log('action: ', action);
   return update(currentEventState, {
     eventDetail: {
       isAttending: { $set: true }
     }
   });
   // return action.payload.data[0];
-}
-
-const followOrganizer = (action) => {
-  return update(currentEventState, {
-    eventDetail: {
-      organizer: {
-        canBeFollowed: { $set: false }
-      }
-    }
-  });
 };

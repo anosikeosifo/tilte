@@ -51,14 +51,14 @@ const triggerFollowOrganizer = () => ({
   type: EVENT_ACTIONS.followOrganizerRequest
 });
 
-const triggerUnfollowUser = () => ({
+const triggerUnfollowOrganizer = () => ({
   type: EVENT_ACTIONS.unfollowOrganizerRequest
 });
 
 export const likeEvent = (eventId, actorId) => {
   const actionType = 'like';
   const requestParams = buildPostParams({
-    event_id: eventId, user_id: actorId
+    eventId, actorId
   });
 
   return (dispatch) => {
@@ -95,7 +95,7 @@ const unfollowOrganizer = (requestData) => {
 export const fetchEventDetails = (eventId, actorId) => {
   const actionType = 'fetchDetails';
   const requestParams = buildPostParams({
-    event_id: eventId, user_id: actorId
+    eventId, actorId
   });
 
   return (dispatch) => {
@@ -125,8 +125,8 @@ export const fetchComments = (eventId, actorId) => {
 export const postComment = (eventId, actorId, content) => {
   const actionType = 'postComment';
   const requestParams = buildPostParams({
-    event_id: eventId,
-    user_id: actorId,
+    eventId,
+    actorId,
     text: content,
   });
 
@@ -141,8 +141,8 @@ export const postComment = (eventId, actorId, content) => {
 export const loadMapView = (eventId, actorId, longitude=null, latitude=null) => {
   const actionType = 'loadMap';
   const requestParams = buildPostParams({
-    event_id: eventId,
-    user_id: actorId,
+    eventId,
+    actorId,
     longitude,
     latitude,
   });
@@ -158,8 +158,8 @@ export const loadMapView = (eventId, actorId, longitude=null, latitude=null) => 
 export const registerForEvent = (eventId, actorId, longitude=null, latitude=null) => {
   const actionType = 'eventRegistration';
   const requestParams = buildPostParams({
-    event_id: eventId,
-    user_id: actorId,
+    eventId,
+    actorId,
     longitude,
     latitude,
   });
@@ -175,8 +175,8 @@ export const registerForEvent = (eventId, actorId, longitude=null, latitude=null
 export const saveEvent = (eventId, actorId) => {
   const actionType = 'saveEvent';
   const requestParams = buildPostParams({
-    event_id: eventId,
-    user_id: actorId,
+    eventId,
+    actorId,
   });
 
   return (dispatch) => {
@@ -202,7 +202,7 @@ export const fetchTrendingEvents = (userId) => {
 export const fetchFeaturedEvents = (actorId, locationLat, locationLong) => {
   const actionType = 'fetchFeatured';
   const requestParams = buildPostParams({
-    user_id: actorId,
+    actorId,
     longitude: locationLong,
     latitude: locationLat,
   });
@@ -213,12 +213,4 @@ export const fetchFeaturedEvents = (actorId, locationLat, locationLong) => {
       .then(payload => dispatch(eventActionSuccess(actionType, payload)))
       // .catch(error => dispatch(eventActionError(error)));
   };
-};
-
-export const followOrganizerAction = (actionType, organizerId, actorId) => {
-  const requestData = buildPostParams({
-    actorId, organizerId
-  });
-
-  return (actionType.toLowerCase() == 'follow') ? followOrganizer(requestData) : unfollowOrganizer(requestData);
 };
