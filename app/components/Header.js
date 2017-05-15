@@ -25,7 +25,7 @@ class Header extends Component {
   }
 
   handleScroll(event) {
-    if(event.srcElement.body.scrollTop >= 350) {
+    if(event.target.body.scrollTop >= 250) {
       this.appHeader && this.appHeader.classList.add('opaque');
     } else {
       this.appHeader && this.appHeader.classList.remove('opaque');
@@ -36,6 +36,7 @@ class Header extends Component {
     const uiClasses = classNames({
       'header': true,
       'opaque': this.props.usage != 'homecontainer',
+      'layout': this.props.usage.toLowerCase() == 'layout',
     });
 
     return(

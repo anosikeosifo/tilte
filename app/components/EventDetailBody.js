@@ -17,68 +17,91 @@ import EventDescription from './EventDescription';
 import UserCardContainer from '../containers/UserCardContainer';
 import Attendance from './Attendance';
 import { getEventShortDate } from '../helpers/DateHelper';
+import EventDetailTabHeader from './EventDetailTabHeader';
+import animatedScrollTo from 'animated-scrollto';
 
-const EventDetailBody = (props) => {
-  return (
-    <section className='component__event__detail__body'>
-      <div className='event__detail__wrap'>
-        <section className='event_media_object'>
-        </section>
-        <section className='event_detail__sidebar'>
-        </section>
-        <section className='event__details__main'>
-          <div className='details__header__wrap'>
-            <div className='details__header'>
-              <section className='event__information__wrap'>
-                <div className='event__date__wrap'>
-                  <span className='date__value'>{ getEventShortDate(props.eventObject.startTime, props.eventObject.endTime) }</span>
-                </div>
-                <span className='event__name'>{ props.eventObject.title }</span>
-                <div className='location__info'>
-                  <Location latitude={ "6.4367" || props.eventObject.location.latitude} longitude={ "3.4192" || props.eventObject.location.longitude } action={ props.showMapAction } size={ 16 }/>
-                </div>
-              </section>
-              <section className='event__action__wrap'>
-                <EventActions eventId={ props.eventObject.id } isAttending={ props.eventObject.isAttending } actionsSet={ props.userActions } actor={ props.actor }/>
-              </section>
-            </div>
-            <div className='details__header_nav'>
-              <ul className='nav__list'>
-                <li className='item active'><button className='trigger' data-tab-header='description'><span>Description</span></button></li>
-                <li className='item'><button className='trigger' data-tab-header='organizer'><span>Organizer</span></button></li>
-                <li className='item'><button className='trigger' data-tab-header='whosgoing'><span>{ "Who's going" }</span></button></li>
-              </ul>
-            </div>
-          </div>
-          <section className='details__body'>
-            <div className='section__wrap'>
-              <EventDescription eventObject={ props.eventObject }/>
-            </div>
 
-            <div className='section__wrap'>
-              <section className='section__header'>
-                <span>Meet the Organizer</span>
-              </section>
-              <section className='section__body'>
-                <UserCardContainer actor={ props.actor } user={ props.eventObject.organizer } />
-              </section>
-            </div>
+class EventDetailBody extends Component {
+  setActiveTab(tabHeaderItem) {
+    //TODO:this implementation should be iproved to use state
+    this.tabHeader.querySelector('.item.active').classList.remove('active');
+    tabHeaderItem.classList.add('active');
+  }
 
-            <section className='attendees__section'>
-              <section className='section__header'>
-                <span>{ "Who's going" }</span>
-              </section>
-              <section className='section__body'>
-                <Attendance actor={ props.actor } attendees={ props.eventObject.attendees }/>
-              </section>
-            </section>
+  handleTabClick(event) {
+    if (!event.target.dataset.tab) return;
+    const trigger = event.target;
+
+    this.setActiveTab(trigger);
+    animatedScrollTo(
+        document.body,
+        this[`${ trigger.dataset.tab }Section`].offsetTop + 155,
+        500
+    );
+  }
+
+  render() {
+    return (
+      <section className='component__event__detail__body'>
+        <div className='event__detail__wrap'>
+          <section className={ `eventdetail__sidebar__wrap ${ this.props.scrollState.header }` }>
           </section>
-        </section>
-        <div className='map__section'>
+          <section className={ `event__detail__main ${ this.props.scrollState.header }` }>
+            <div className='main__wrap'>
+              <div className={ `details__header__wrap ${ this.props.scrollState.header }` }>
+                <div className='details__header'>
+                  <section className='event__information__wrap'>
+                    <div className='event__date__wrap'>
+                      <span className='date__value'>{ getEventShortDate(this.props.eventObject.startTime, this.props.eventObject.endTime) }</span>
+                    </div>
+                    <span className='event__name'>{ this.props.eventObject.title }</span>
+                    <div className='location__info'>
+                      <Location latitude={ "6.4367" || this.props.eventObject.location.latitude} longitude={ "3.4192" || this.props.eventObject.location.longitude } action={ this.props.showMapAction } size={ 16 }/>
+                    </div>
+                  </section>
+                  <section className='event__action__wrap'>
+                    <EventActions eventId={ this.props.eventObject.id } isAttending={ this.props.eventObject.isAttending } actionsSet={ this.props.userActions } actor={ this.props.actor }/>
+                  </section>
+                </div>
+                <div className='details__header_nav'>
+                  <ul className='nav__list' ref={ (ref) => this.tabHeader = ref } onClick={ this.handleTabClick.bind(this) }>
+                    <li className='item active' data-tab='description'>Description</li>
+                    <li className='item' data-tab='organizer'>Organizer</li>
+                    <li className='item' data-tab='going'>{ "Who's going" }</li>
+                  </ul>
+                </div>
+              </div>
+              <section className='details__body' ref={ (ref) => this.detailMainBody = ref }>
+                <div className='body__content'>
+                  <div className='section__wrap' ref={ (ref) => this.descriptionSection = ref }>
+                    <EventDescription eventObject={ this.props.eventObject }/>
+                  </div>
+
+                  <div className='section__wrap' ref={ (ref) => this.organizerSection = ref }>
+                    <section className='section__header'>
+                      <span>Meet the Organizer</span>
+                    </section>
+                    <section className='section__body'>
+                      <UserCardContainer actor={ this.props.actor } user={ this.props.eventObject.organizer } />
+                    </section>
+                  </div>
+
+                  <div className='section__wrap' ref={ (ref) => this.goingSection = ref }>
+                    <section className='section__header'>
+                      <span>{ "Who's going" }</span>
+                    </section>
+                    <section className='section__body'>
+                      <Attendance actor={ this.props.actor } attendees={ this.props.eventObject.attendees }/>
+                    </section>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </section>
         </div>
-      </div>
-    </section>
-  );
+      </section>
+    );
+  }
 }
 
 EventDetailBody.propTypes = {

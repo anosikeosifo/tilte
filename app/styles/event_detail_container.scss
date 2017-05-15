@@ -1,0 +1,22 @@
+.event__detail__container {
+  .detail__view {
+    width: 66%;
+  }
+
+  .map__view {
+    width: 34%;
+    position: fixed;
+    display: block;
+    top: 4em;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    border-left: 1px solid #ccc;
+  }
+
+  +.app__footer {
+    border-top: 1px solid #dcdede;
+    margin-right: 488px;
+    height: 5em;
+  }
+}

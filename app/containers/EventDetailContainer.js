@@ -1,3 +1,5 @@
+require('../styles/event_detail_container');
+
 import React, { Component, PropTypes } from 'react';
 import { postComment, fetchEventDetails, loadMapView, registerForEvent, saveEvent } from '../actions/EventActionCreators';
 import { fetchUserStats } from '../actions/UserActionCreators';
@@ -5,6 +7,9 @@ import { connect } from 'react-redux';
 import EventDetailHeader from '../components/EventDetailHeader';
 import EventDetailBody from '../components/EventDetailBody';
 import DefaultLayout from '../layouts/DefaultLayout';
+import EventMapViewContainer from './EventMapViewContainer';
+import update from 'immutability-helper';
+
 
 const mapStateToProps = (state) => ({
   appConfig: state.config,
@@ -20,9 +25,37 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class EventDetailContainer extends Component {
+  constructor() {
+    super();
+    this.state = {
+      scrollState: {
+        header: '',
+        sideBar: '',
+      }
+    };
+  }
+
   componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll.bind(this));
     this.props.fetchDetails(this.props.params.id, this.props.appConfig.currentUser.id);
     this.props.showMapView(this.props.params.id, this.props.appConfig.currentUser.id);
+  }
+
+  handleScroll(event) {
+    if(event.target.body.scrollTop >= 323) {
+      this.updateScrollState(true);
+    } else {
+      this.updateScrollState(false);
+    }
+    this.lastScrollTop = event.target.body.scrollTop;
+  }
+
+  updateScrollState(isFixed) {
+    this.setState(update(this.state, {
+      scrollState: {
+        header: { $set: isFixed ? 'fixed' : '' },
+      }
+    }));
   }
 
   postComment(content, actorId) {
@@ -40,15 +73,20 @@ class EventDetailContainer extends Component {
     return(
       <DefaultLayout currentUser={ appConfig.currentUser } appDetails={ appConfig.appDetails }>
         <section className='event__detail__container'>
-          <EventDetailHeader eventObject={ this.props.eventObject } />
-          <EventDetailBody
-            actor={ appConfig.currentUser }
-            actionCallbacks = { { makeComment, showMapView } }
-            eventObject={ eventObject }
-            userActions={[
-              { title: "Register Now", key: 'registerNow', value: registerNow },
-            ]}
-          />
+          <div className='detail__view'>
+            <EventDetailHeader eventObject={ this.props.eventObject } />
+            <EventDetailBody
+              actor={ appConfig.currentUser }
+              scrollState={ this.state.scrollState }
+              actionCallbacks = { { makeComment, showMapView } }
+              eventObject={ eventObject }
+              userActions={[
+                { title: "Register Now", key: 'registerNow', value: registerNow },
+              ]} />
+          </div>
+          <div className='map__view'>
+            <EventMapViewContainer eventObject={ this.props.eventObject } actor={ appConfig.currentUser }/>
+          </div>
         </section>
       </DefaultLayout>
     );

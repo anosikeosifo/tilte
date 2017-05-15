@@ -13,9 +13,7 @@ const renderEmptyNotice = (props) => {
 
 const renderList = (props) => {
   let attendeeList = props.attendees.map((attendee) => (
-    <div className='item'>
-      <Attendee user={ attendee }/>
-    </div>
+    <Attendee user={ attendee } key={ attendee.id }/>
   ));
 
   return (
@@ -26,8 +24,6 @@ const renderList = (props) => {
 };
 
 const Attendance = (props) => {
-  console.log('this.attendees :', props.attendees);
-
   const renderComponentDOM = props.attendees.length ? renderList : renderEmptyNotice;
   return(
     <section className='component__attendance'>
