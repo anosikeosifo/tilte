@@ -15,7 +15,7 @@ class EventDetailHeader extends Component {
 
     this.BANNER_TOGGLE_STATE_DIMENSIONS = {
       false: '8.5em',
-      true: '27em',
+      true: '37em',
     };
   }
 

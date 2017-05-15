@@ -42,12 +42,11 @@ class EventDetailContainer extends Component {
   }
 
   handleScroll(event) {
-    if(event.target.body.scrollTop >= 323) {
+    if(event.target.body.scrollTop >= 461) {
       this.updateScrollState(true);
     } else {
       this.updateScrollState(false);
     }
-    this.lastScrollTop = event.target.body.scrollTop;
   }
 
   updateScrollState(isFixed) {
