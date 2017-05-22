@@ -1,27 +1,48 @@
 import { Provider, connect } from 'react-redux';
 import React, { PropTypes, Component } from 'react';
-import { fetchConfigData } from '../actions/ConfigActionCreators';
+import { fetchConfigData, setActiveModal } from '../actions/ConfigActionCreators';
+import { checkLoggedInStatus } from '../actions/OAuthActionCreators';
+import ModalConductor from './ModalConductor';
+import classNames from 'classnames';
 
 const mapStateToProps = (state) => ({
-  appData: state.appData
+  configData: state.configData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getAppData: () => dispatch(fetchConfigData())
+  getLoggedInStatus: () => dispatch(checkLoggedInStatus()),
+  getConfigData: () => dispatch(fetchConfigData()),
+  setCurrentModal: (modalName) => dispatch(setActiveModal(modalName))
 });
 
 
 class TilteAppContainer extends Component {
-  componentDidMount() {
-    this.props.getAppData();
+  componentWillMount() {
+    this.props.getLoggedInStatus();
+    this.props.getConfigData();
+  }
+
+  componentDidUpdate() {
+    document.body.style = this.props.configData.currentModal ? 'overflow:hidden' : ''
   }
 
   render() {
-    let appData = this.props.children && React.cloneElement(this.props.children, {
-      appData: this.props.appData,
+    let configData = this.props.children && React.cloneElement(this.props.children, {
+      configData: this.props.configData,
+      setCurrentModal: this.props.setCurrentModal,
     });
 
-    return appData;
+    let layoutClass = classNames({
+      'app__root': true,
+      'active__modal': this.props.configData.currentModal,
+    });
+
+    return(
+      <div className={ layoutClass }>
+        <ModalConductor currentModal={ this.props.configData ? this.props.configData.currentModal : null } />
+        { configData }
+      </div>
+    );
   }
 }
 

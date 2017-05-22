@@ -1,0 +1,26 @@
+.component__header__auth {
+  font-family: 'open-sans', 'sans-serif';
+  height: 50px;
+
+  .auth__links__wrap {
+    width: 100px;
+    display: inline-flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+
+    .trigger {
+      vertical-align: middle;
+      display: inline-block;
+      padding-bottom: 3px;
+      cursor: pointer;
+      color: #ff5a5f;
+      font-weight: 600;
+      font-family: 'open-sans', 'sans-serif';
+
+      &:hover {
+        border-bottom: 1px solid #ff5a5f;
+      }
+    }
+  }
+}

@@ -31,7 +31,7 @@ const UserCard = (props) => {
           </section>
 
           <section className='user__stats'>
-            <UserStats user={ props.userDetails }   />
+            <UserStats user={ props.userDetails } />
           </section>
         </div>
       </div>

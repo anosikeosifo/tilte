@@ -9,7 +9,7 @@ import { momentData } from './MomentReducer';
 const rootReducer = combineReducers({
   userFeed: feedData,
   userData: userData,
-  config: configData,
+  configData: configData,
   searchData: searchData,
   eventData: eventData,
   momentData: momentData

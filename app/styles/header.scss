@@ -1,4 +1,4 @@
-.header {
+.component__header {
   border-top: 3px solid #ff5a5f;
   // background-color: transparent;;
   background-color: transparent;
@@ -21,6 +21,13 @@
     }
     .search__input, .search__text {
       background-color: transparent;
+    }
+  }
+
+  &:not(.opaque) .trigger {
+    color: #fff !important;
+    &:hover {
+      border-bottom: 1px solid #fff;
     }
   }
 

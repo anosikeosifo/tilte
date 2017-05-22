@@ -30,6 +30,7 @@
     "classnames": "2.2.5",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "0.26.1",
+    "dotenv": "^4.0.0",
     "es6-promise": "4.0.5",
     "extract-text-webpack-plugin": "2.0.0-rc.3",
     "history": "4.5.1",

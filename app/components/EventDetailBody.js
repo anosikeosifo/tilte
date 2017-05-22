@@ -35,7 +35,7 @@ class EventDetailBody extends Component {
     this.setActiveTab(trigger);
     animatedScrollTo(
         document.body,
-        this[`${ trigger.dataset.tab }Section`].offsetTop + 155,
+        this[`${ trigger.dataset.tab }Section`].offsetTop + 210,
         500
     );
   }

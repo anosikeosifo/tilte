@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 class UserCardContainer extends Component {
   componentDidMount() {
-    this.props.getUserDetails(this.props.user.id, this.props.actor.id)
+    this.props.getUserDetails(this.props.user.id, (this.props.actor && this.props.actor.id))
   }
 
   render() {
@@ -27,7 +27,7 @@ class UserCardContainer extends Component {
       <div className='follow__action__container'>
         <UserCard
           user={ this.props.user }
-          actorId={ this.props.actor.id }
+          actorId={ this.props.actor && this.props.actor.id }
           userDetails={ this.props.userDetails }
           callbacks={ { followAction, getFollowers, getFollowing } } />
       </div>

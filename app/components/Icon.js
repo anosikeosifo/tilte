@@ -8,7 +8,7 @@ const buildSVGPaths = (iconsPaths) => {
   });
 };
 
-const Icon = (props) => {
+const Icon = (props) => {  
   let svgPathData;
   const styles = {
     svg: {

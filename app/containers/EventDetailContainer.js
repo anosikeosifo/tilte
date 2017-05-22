@@ -12,7 +12,7 @@ import update from 'immutability-helper';
 
 
 const mapStateToProps = (state) => ({
-  appConfig: state.config,
+  appConfig: state.configData,
   eventObject: state.eventData.eventDetail,
 });
 
@@ -37,8 +37,8 @@ class EventDetailContainer extends Component {
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll.bind(this));
-    this.props.fetchDetails(this.props.params.id, this.props.appConfig.currentUser.id);
-    this.props.showMapView(this.props.params.id, this.props.appConfig.currentUser.id);
+    this.props.fetchDetails(this.props.params.id, (this.props.appConfig.currentUser && this.props.appConfig.currentUser.id));
+    this.props.showMapView(this.props.params.id, (this.props.appConfig.currentUser && this.props.appConfig.currentUser.id));
   }
 
   handleScroll(event) {
@@ -68,9 +68,10 @@ class EventDetailContainer extends Component {
   }
 
   renderComponentElements() {
-    const { register: registerNow, saveForLater, makeComment, showMapView, eventObject, appConfig } = this.props
+    const { register: registerNow, saveForLater, makeComment, showMapView, eventObject, appConfig, setCurrentModal } = this.props
+
     return(
-      <DefaultLayout currentUser={ appConfig.currentUser } appDetails={ appConfig.appDetails }>
+      <DefaultLayout currentUser={ appConfig.currentUser } setCurrentModal={ setCurrentModal } appDetails={ appConfig.appDetails }>
         <section className='event__detail__container'>
           <div className='detail__view'>
             <EventDetailHeader eventObject={ this.props.eventObject } />

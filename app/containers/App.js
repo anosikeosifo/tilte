@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 import { Router, Route, Link, IndexRoute } from 'react-router';
 import TilteStore from '../stores/TilteStore';
 import TilteAppContainer from '../containers/TilteAppContainer';
-import HomeContainer from '../containers/HomeContainer';
+import Home from '../components/Home';
 import Error from '../components/Error';
 import EventDetailContainer from '../containers/EventDetailContainer';
 
@@ -15,7 +15,7 @@ export default class App extends Component {
       <Provider store={ TilteStore }>
         <Router history={ browserHistory }>
             <Route path='/' component={ TilteAppContainer }>
-              <IndexRoute component={ HomeContainer }/>
+              <IndexRoute component={ Home }/>
               <Route path='/events/:id' component={ EventDetailContainer }/>
               <Route path='*' component={ Error }/>
             </Route>

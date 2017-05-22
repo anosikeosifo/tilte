@@ -1,7 +1,7 @@
 import { API_BASE_URL } from '../constants';
 
 
-export const fetchConfig = () => {
-  return fetch(`${ API_BASE_URL }/events`)
+export const fetchConfigAPI = () => {
+  return fetch(`${ API_BASE_URL }`)
           .then(response => response.json());
 }

@@ -1,0 +1,44 @@
+.component__modalwrapper {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 500;
+
+  .modal__wrap {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: table;
+
+    .modal__container {
+      display: table-cell;
+      vertical-align: middle;
+
+      .modal__content {
+        background-color: #fff;
+        margin: auto;
+        padding: 5px;
+
+        .header {
+          height: 20px;
+          position: relative;
+
+          .close__trigger {
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: pointer;
+          }
+        }
+
+        .body {
+          padding: 10px;
+        }
+      }
+    }
+
+  }
+}

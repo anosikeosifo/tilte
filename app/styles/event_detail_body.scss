@@ -6,12 +6,11 @@
   .event__detail__wrap {
     display: flex;
     justify-content: space-between;
-    min-height: 850px;
 
     .eventdetail__sidebar__wrap {
       display: block;
       float: left;
-      width: 285px;
+      width: 30%;
       background-color: #f6f6f6;
       bottom: 0;
 
@@ -26,13 +25,13 @@
     .event__detail__main {
       display: inline-block;
       border-left: 1px solid #dadada;
-      width: 665px;
+      width: 70%;
       background-color: #fff;
       position: relative;
 
       &.fixed {
         padding-top: 11em;
-        margin-left: 285px;
+        margin-left: 30%;
       }
 
       .details__header__wrap {

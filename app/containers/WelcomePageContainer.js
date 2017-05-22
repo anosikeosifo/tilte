@@ -34,6 +34,11 @@ class WelcomePageContainer extends Component {
     // this.props.loadTopMoments();
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.currentUser != nextProps.currentUser
+      || this.props.featuredEvents != nextProps.featuredEvents;
+  }
+
   showItemDetail(itemId, actorId) {
     this.props.showItemDetail(itemId, actorId);
   }

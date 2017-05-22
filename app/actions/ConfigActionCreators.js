@@ -1,29 +1,38 @@
-import { UPDATE_CATEGORY_CONFIG, FETCH_CONFIG_DATA, FETCH_CONFIG_DATA_SUCCESS, FETCH_CONFIG_DATA_ERROR } from '../constants';
-import { fetchConfig } from '../api/ConfigAPI';
+import { CONFIG_ACTIONS } from '../constants';
+import { fetchConfigAPI } from '../api/ConfigAPI';
 
+const configActionSuccess = (actionType, payload) => ({
+  type: CONFIG_ACTIONS[`${actionType}Success`], success: true, payload
+});
 
-export const updateCategoryPreference = () => ({ 
+const configActionError = (actionType, error) => ({
+  type: CONFIG_ACTIONS[`${actionType}Error`], success: false, error
+});
+
+export const updateCategoryPreference = () => ({
   type: UPDATE_CATEGORY_CONFIG,
 });
 
-const requestConfigData = () => ({
-  type: FETCH_CONFIG_DATA,
-});
-
-const fetchConfigDataSuccess = (payload) => ({
-  type: FETCH_CONFIG_DATA_SUCCESS, payload 
-});
-
-const fetchConfigDataError = (error) => ({
-  type: FETCH_CONFIG_DATA_ERROR, error 
+const triggerFetchConfig = () => ({
+  type: CONFIG_ACTIONS.fetchConfigRequest
 });
 
 export const fetchConfigData = () => {
+  const actionType = 'fetchConfig';
+
   return (dispatch) => {
-    requestConfigData();
-    
-    fetchConfig()
-      .then(dispatch(fetchConfigDataSuccess))
-      .catch(dispatch(fetchConfigDataError));
+    triggerFetchConfig();
+
+    fetchConfigAPI()
+      .then(payload => dispatch(configActionSuccess(actionType, payload)))
+      .catch(error => dispatch(configActionError(actionType, error)));
   }
+};
+
+export const setActiveModal = (modalName) => {
+  return (dispatch) => dispatch({
+    type: CONFIG_ACTIONS.updateCurrentModal,
+    success: true,
+    payload: modalName
+  });
 };

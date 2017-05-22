@@ -53,10 +53,10 @@ class EventDetailHeader extends Component {
         style={headerStyle} >
         <div className='control__wrap'>
           <div className='event__banner__controls'>
-            { /* <span className='control toggle__banner' onClick={ this.handleBannerToggle.bind(this) }>
+            <span className='control toggle__banner' onClick={ this.handleBannerToggle.bind(this) }>
               <Icon icon={ this.BANNER_TOGGLE_ICONS[this.state.shouldDisplayBanner] } viewBox={ 100 } size={ 36 } color={ this.state.iconColor } />
             </span>
-            */ }
+            
             <span className='control share'>
               <Icon icon={ ICON_SHARE } size={ 36 } viewBox={ 100 } color={ this.state.iconColor } onClick={ this.handleBannerShare.bind(this) } />
             </span>
