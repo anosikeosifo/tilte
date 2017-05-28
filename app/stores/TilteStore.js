@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-import rootReducer from '../reducers/RootReducer';
+import rootReducer from '../main/RootReducer';
 import thunk from 'redux-thunk';
 
 const tilteStore = createStore(

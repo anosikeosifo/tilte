@@ -1,0 +1,28 @@
+.component__eventaction {
+  font-size: 16px;
+  cursor: pointer;
+
+  .btn {
+    color: #fff;
+
+    &.registration__confirmed {
+      padding: 0 6px 0 12px;
+
+      .icon__wrap {
+        margin-right: 5px;
+      }
+    }
+
+    &:active {
+      outline: none;
+    }
+  }
+
+  .registered__more__ctions {
+    margin-left: 12px;
+    border-left: 1px solid #cfe0d0;
+    margin-right: 0 !important;
+    display: inline-block;
+    padding: 6px 0 6px 6px;
+  }
+}

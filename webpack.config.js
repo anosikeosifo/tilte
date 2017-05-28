@@ -12,7 +12,7 @@ const sassLoaders = [
 
 const config = {
   // devtool: 'eval-source-map',
-  entry: __dirname + "/app/index",
+  entry: __dirname + "/app/main/index",
   output: {
     path: __dirname + "/static/js",
     filename: "bundle.js"
