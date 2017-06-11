@@ -17,7 +17,8 @@ const ModalWrapper = (props) => {
   };
 
   const handleCloseTrigger= () => {
-    props.callBacks.close();
+    //pre close code here.
+    props.closeCallback();
   };
 
   const modalStyles = {

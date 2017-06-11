@@ -1,4 +1,3 @@
-import { buildUrlQueryParams } from '../helpers/HttpHelper';
 import { USER_ACTIONS } from './constants';
 import { fetchUserStatsAPI, followUserAPI, unfollowUserAPI, getFollowStatusAPI, fetchUserDetailsAPI } from './UserAPI';
 
@@ -54,13 +53,10 @@ export const fetchUserDetails = (userId, actorId) => {
 
 export const fetchUserStats = (userId, actorId) => {
   const actionType = 'fetchUserStats';
-  const requestParams = buildUrlQueryParams({
-    actorId, userId
-  });
 
   return (dispatch) => {
     triggerFetchUserStats();
-    fetchUserStatsAPI(requestParams)
+    fetchUserStatsAPI({ actorId, userId })
       .then(payload => dispatch(userActionSuccess(actionType, payload)))
       .catch(error => dispatch(userActionError(actionType, error)));
   }
@@ -99,13 +95,9 @@ export const followAction = (actionType, userId, actorId) => {
 export const fetchFollowStatus = (userId, actorId) => {
   const actionType = 'getFollowStatus';
 
-  const requestData = buildUrlQueryParams({
-    actorId, userId
-  });
-
   return (dispatch) => {
     triggerGetFollowStatus();
-    getFollowStatusAPI(requestData)
+    getFollowStatusAPI({ actorId, userId })
       .then(payload => dispatch(userActionSuccess(actionType, payload)))
   }
 };

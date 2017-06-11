@@ -1,6 +1,7 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 const webpack = require('webpack');
 
 const sassLoaders = [
@@ -45,6 +46,10 @@ const config = {
       'process.env': {
         'NODE_ENV': JSON.stringify('development')
       }
+    }),
+
+    new Dotenv({
+      path: './.env',
     })
   ],
 

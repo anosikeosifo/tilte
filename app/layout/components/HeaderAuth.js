@@ -5,7 +5,7 @@ import React, { Component, PropTypes } from 'react';
 const HeaderAuth = (props) => {
 
   const updateCurrentModal = (modalName) => {
-    props.callBacks.setCurrentModal(modalName)
+    props.callbacks.setCurrentModal(modalName)
   }
 
   return(

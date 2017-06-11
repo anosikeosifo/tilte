@@ -1,4 +1,4 @@
-import { Provider, connect } from 'react-redux';
+import { connect } from 'react-redux';
 import React, { PropTypes, Component } from 'react';
 import OAuth from '../components/OAuth';
 import { setActiveModal } from '../../core/CoreActionCreators';
@@ -18,16 +18,13 @@ const mapDispatchToProps = (dispatch) => ({
 class OAuthContainer extends Component {
   render() {
     const { loginWithFacebook, loginWithTwitter, loginWithLinkedin } = this.props;
-
     const strategies = [
       { name: 'facebook', authUrl: '', callbackUrl: '', callbackAction: loginWithFacebook },
       { name: 'twitter', authUrl: '', callbackUrl: '', callbackAction: loginWithTwitter },
       { name: 'linkedin', authUrl: '', callbackUrl: '', callbackAction: loginWithLinkedin },
     ];
 
-    return(
-      <OAuth strategies={ strategies } />
-    );
+    return <OAuth strategies={ strategies }/>;
   }
 }
 

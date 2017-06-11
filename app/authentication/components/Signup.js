@@ -57,7 +57,8 @@ class Signup extends Component {
     return(
       <ModalWrapper
         width={ VIEW_DATA.dimension.width }
-        height={ VIEW_DATA.dimension.height }>
+        height={ VIEW_DATA.dimension.height }
+        closeCallback={ this.props.setCurrentModal }>
 
         <section className='component__signup'>
           <div className='signup__container'>

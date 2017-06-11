@@ -12,7 +12,8 @@ import update from 'immutability-helper';
 
 
 const mapStateToProps = (state) => ({
-  appConfig: state.configData,
+  configData: state.configData,
+  authData: state.authData,
   eventObject: state.eventData.eventDetail,
 });
 
@@ -25,8 +26,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class EventDetailContainer extends Component {
-  constructor() {
-    super();
+  initUIState() {
     this.state = {
       scrollState: {
         header: '',
@@ -36,9 +36,10 @@ class EventDetailContainer extends Component {
   }
 
   componentDidMount() {
+    this.initUIState();
     window.addEventListener('scroll', this.handleScroll.bind(this));
-    this.props.fetchDetails(this.props.params.id, (this.props.appConfig.currentUser && this.props.appConfig.currentUser.id));
-    this.props.showMapView(this.props.params.id, (this.props.appConfig.currentUser && this.props.appConfig.currentUser.id));
+    this.props.fetchDetails(this.props.params.id, (this.props.configData.currentUser && this.props.configData.currentUser.id));
+    this.props.showMapView(this.props.params.id, (this.props.configData.currentUser && this.props.configData.currentUser.id));
   }
 
   handleScroll(event) {
@@ -68,15 +69,15 @@ class EventDetailContainer extends Component {
   }
 
   renderComponentElements() {
-    const { register: registerNow, saveForLater, makeComment, showMapView, eventObject, appConfig, setCurrentModal } = this.props
+    const { register: registerNow, saveForLater, makeComment, showMapView, eventObject, configData, authData, setCurrentModal, logoutUser } = this.props
 
     return(
-      <DefaultLayout currentUser={ appConfig.currentUser } setCurrentModal={ setCurrentModal } appDetails={ appConfig.appDetails }>
+      <DefaultLayout currentUser={ authData.currentUser } callbacks={{ setCurrentModal, logoutUser }} appDetails={ configData.appDetails }>
         <section className='event__detail__container'>
           <div className='detail__view'>
             <EventDetailHeader eventObject={ this.props.eventObject } />
             <EventDetailBody
-              actor={ appConfig.currentUser }
+              actor={ authData.currentUser }
               scrollState={ this.state.scrollState }
               actionCallbacks = { { makeComment, showMapView, setCurrentModal } }
               eventObject={ eventObject }
@@ -85,7 +86,7 @@ class EventDetailContainer extends Component {
               ]} />
           </div>
           <div className='map__view'>
-            <EventMapViewContainer eventObject={ this.props.eventObject } actor={ appConfig.currentUser }/>
+            <EventMapViewContainer eventObject={ this.props.eventObject } actor={ authData.currentUser }/>
           </div>
         </section>
       </DefaultLayout>

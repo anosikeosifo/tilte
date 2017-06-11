@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Provider, connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { loadUserFeed } from './FeedActionCreators';
 import Feed from '../components/Feed';
 

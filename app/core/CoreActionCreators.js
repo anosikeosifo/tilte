@@ -33,6 +33,6 @@ export const setActiveModal = (modalName) => {
   return (dispatch) => dispatch({
     type: CORE_ACTIONS.updateCurrentModal,
     success: true,
-    payload: modalName
+    payload: modalName || null,
   });
 };

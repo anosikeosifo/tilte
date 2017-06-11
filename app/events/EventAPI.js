@@ -2,7 +2,7 @@ import { API_BASE_URL } from '../core/constants';
 import { makePostRequest, makeGetRequest } from '../helpers/HttpHelper';
 
 export const fetchEventDetailsAPI = (requestData) => {
-  return makePostRequest(`${ API_BASE_URL }/events/show`, requestData);
+  return makePostRequest(`${ API_BASE_URL }/events/show`, JSON.stringify(requestData));
 };
 
 export const fetchCommentsAPI = (requestData) => {
@@ -14,7 +14,7 @@ export const fetchCommentsAPI = (requestData) => {
 };
 
 export const eventRegistrationAPI = (requestData) => {
-  return makePostRequest(`${ API_BASE_URL }/events/register`, requestData);
+  return makePostRequest(`${ API_BASE_URL }/events/register`,  JSON.stringify(requestData));
 };
 
 export const saveEventAPI = (requestParams) => {
@@ -26,5 +26,5 @@ return Promise.resolve({success: true, data: 'trending events has not been imple
 };
 
 export const fetchFeaturedEventsAPI = (requestData) => {
-  return makePostRequest(`${ API_BASE_URL }/events/featured`, requestData);
+  return makePostRequest(`${ API_BASE_URL }/events/featured`,  JSON.stringify(requestData));
 };

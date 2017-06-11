@@ -28,6 +28,12 @@ class Header extends Component {
     }
   }
 
+  renderHeaderActions(loggedInUser) {
+    console.log('loggedInUser: ', loggedInUser);
+    if(loggedInUser === null) return(<HeaderAuth callbacks={ this.props.callBacks }/>)
+    if(loggedInUser) return(<HeaderProfile currentUser={ loggedInUser } callbacks={ this.props.callBacks } />);
+  }
+
   render() {
     const uiClasses = classNames({
       'component__header': true,
@@ -35,7 +41,8 @@ class Header extends Component {
       'layout': this.props.usage.toLowerCase() == 'layout',
     });
 
-    const { callBacks, appDetails, loggedInUser } = this.props;
+    const { callBacks, appDetails, isUserStatusDetermined, loggedInUser } = this.props;
+
     return(
       <section className={ uiClasses } ref={ (ref) => this.appHeader = ref }>
         <nav className='navbar navigation__container'>
@@ -49,12 +56,12 @@ class Header extends Component {
               <span className='app__name inline__block'>{ appDetails.name }</span>
             </section>
             <div className='search__container'>
-              <SearchInput/>
+              <SearchInput />
             </div>
           </div>
 
           <div className='pull__right'>
-            { loggedInUser ? <HeaderProfile currentUser={ loggedInUser  }/> : <HeaderAuth callBacks={ callBacks }/> }
+            { this.renderHeaderActions(loggedInUser) }
           </div>
         </nav>
       </section>

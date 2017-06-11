@@ -1,7 +1,6 @@
 import { EVENT_ACTIONS } from './constants';
 import { fetchEventDetailsAPI, fetchTrendingEventsAPI, fetchFeaturedEventsAPI, eventRegistrationAPI, saveEventAPI } from './EventAPI';
 import { loadMapAPI } from '../location/LocationAPI';
-import { buildUrlQueryParams } from '../helpers/HttpHelper';
 import { followUserAPI, unfollowUserAPI } from '../users/UserAPI';
 
 const eventActionSuccess = (actionType, payload) => ({

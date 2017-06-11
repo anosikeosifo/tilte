@@ -1,6 +1,5 @@
 import { MOMENT_ACTIONS } from './constants';
 import { likeMomentAPI, fetchMomentAPI, fetchCommentsAPI, postCommentAPI ,loadMapAPI, fetchTopMomentsAPI } from './MomentAPI';
-import { buildUrlQueryParams } from '../helpers/HttpHelper';
 
 const momentActionSuccess = (actionType, payload) => ({
   type: MOMENT_ACTIONS[`${actionType}Success`], success: true, payload
@@ -51,9 +50,6 @@ export const likeMoment = (eventId, actorId) => {
 
 export const fetchMomentDetails = (eventId, actorId) => {
   const actionType = 'fetchDetails';
-  const requestParams = buildUrlQueryParams({
-    id: eventId, user_id: actorId
-  });
 
   return (dispatch) => {
     triggerFetchMomentDetails();

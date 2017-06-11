@@ -10,6 +10,7 @@ const HeaderProfile = (props) => {
       <span className='profile__image__wrap'>
         <img src={ props.currentUser.avatarUrl } className='image'/>
       </span>
+      <div onClick={ props.callbacks.logoutUser }>Logout</div>
     </section>
   );
 }

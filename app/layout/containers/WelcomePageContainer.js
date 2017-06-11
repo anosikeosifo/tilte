@@ -1,7 +1,7 @@
 require('../styles/welcome_page_container.scss');
 
 import React, { Component, PropTypes } from 'react';
-import { Provider, connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { fetchFeaturedEvents,
          fetchTrendingEvents
        } from '../../events/EventActionCreators';
@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class WelcomePageContainer extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.loadFeaturedEvents();
     // this.props.loadTrendingEvents();
     // this.props.loadTopMoments();

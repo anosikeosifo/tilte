@@ -6,7 +6,6 @@ const initialState = {
     name: 'Borderless',
     logo: `${ ASSETS_BASE_URL }/images/logo.png`,
   },
-  currentUser: null,
   currentModal: null,
 }
 
@@ -15,6 +14,14 @@ export const configData = (state = initialState, action) => {
     case CORE_ACTIONS.updateCurrentModal:
       return update(state, {
         currentModal: { $set: action.payload }
+      });
+    case OAUTH_ACTIONS.facebookAuthVerifySuccess:
+    case OAUTH_ACTIONS.linkedinAuthVerifySuccess:
+    case OAUTH_ACTIONS.twitterAuthVerifySuccess:
+    case OAUTH_ACTIONS.facebookAuthSuccess:
+
+      return update(state, {
+        currentModal: { $set: null }
       });
     default:
       return state;

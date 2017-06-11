@@ -7,13 +7,13 @@ import CarouselContainer from '../layout/containers/CarouselContainer';
 import Footer from '../layout/components/Footer';
 
 const Home = (props) => {
-  const { setCurrentModal, configData: { currentUser, appDetails, carouselConfig} } = props;
+  const { setCurrentModal, logoutUser, configData: { appDetails, carouselConfig}, authData: { currentUser } } = props;
   return(
     <section className='index__shell'>
       <Header loggedInUser={ currentUser }
               appDetails={ appDetails }
               usage={ 'home' }
-              callBacks={ { setCurrentModal } }/>
+              callBacks={ { setCurrentModal, logoutUser } }/>
 
       <CarouselContainer carouselConfig={ carouselConfig } />
 

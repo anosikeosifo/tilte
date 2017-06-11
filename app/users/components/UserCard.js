@@ -42,7 +42,7 @@ const UserCard = (props) => {
 
 UserCard.propTypes = {
   user: PropTypes.object.isRequired,
-  actorId: PropTypes.string,
+  actorId: PropTypes.number,
   userDetails: PropTypes.object
 };
 

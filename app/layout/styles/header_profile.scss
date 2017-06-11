@@ -1,7 +1,9 @@
 .component__header__profile {
-  width: 2.3em;
-  display: inline-block;
-
+  display: flex;
+  justify-content: space-around;
+  vertical-align: bottom;
+  padding-top: 3px;
+  
   .profile__image__wrap {
     border: 1px solid #555;
     border-radius: 50%;

@@ -6,11 +6,11 @@ export const fetchUserStatsAPI = (requestData) => {
 }
 
 export const followUserAPI = (requestData) => {
-  return makePostRequest(`${ API_BASE_URL }/users/follow`, requestData);
+  return makePostRequest(`${ API_BASE_URL }/users/follow`, JSON.stringify(requestData));
 }
 
 export const unfollowUserAPI = (requestData) => {
-  return makePostRequest(`${ API_BASE_URL }/users/unfollow`, requestData);
+  return makePostRequest(`${ API_BASE_URL }/users/unfollow`, JSON.stringify(requestData));
 }
 
 export const getFollowStatusAPI = (requestData) => {
@@ -18,5 +18,5 @@ export const getFollowStatusAPI = (requestData) => {
 };
 
 export const fetchUserDetailsAPI = (requestData) => {
-  return makePostRequest(`${ API_BASE_URL }/users/show`, requestData);
+  return makePostRequest(`${ API_BASE_URL }/users/show`, JSON.stringify(requestData));
 }
